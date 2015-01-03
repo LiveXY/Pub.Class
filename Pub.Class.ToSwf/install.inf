@@ -1,0 +1,20 @@
+[Version]
+Signature="$CHICAGO$"
+Provider=cexo255@163.com, 2011
+
+[DefaultInstall]
+AddReg=Install_AddReg
+
+[DefaultUnInstall]
+DelReg=Uninstall_DelReg
+
+[Uninstall_DelReg]
+hkcr,"*\Shell\ToSwfFlv"
+hkcr,"Directory\Shell\ToSwfFlv"
+
+[Install_AddReg]
+hkcr,"*\Shell\ToSwfFlv",,,"视频转flv，文档转swf(&B)"
+hkcr,"*\Shell\ToSwfFlv\command",,,"""%01%\converter.cmd"" ""%%1"""
+hkcr,"Directory\Shell\ToSwfFlv",,,"批量视频转flv，文档转swf(&B)"
+hkcr,"Directory\Shell\ToSwfFlv\command",,,"""%01%\converter_path.cmd"" ""%%1"""
+

@@ -1,0 +1,5 @@
+E:\net_pro\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.dll
+E:\net_pro\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.pdb
+E:\net_pro\EntityTool5.4\Pub.Class.ServiceStackText\obj\Debug\ResolveAssemblyReference.cache
+E:\net_pro\EntityTool5.4\Pub.Class.ServiceStackText\obj\Debug\Pub.Class.ServiceStackText.dll
+E:\net_pro\EntityTool5.4\Pub.Class.ServiceStackText\obj\Debug\Pub.Class.ServiceStackText.pdb

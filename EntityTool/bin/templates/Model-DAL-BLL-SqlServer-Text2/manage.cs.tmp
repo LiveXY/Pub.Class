@@ -1,0 +1,170 @@
+﻿using System;
+using System.Data;
+using System.Data.Common;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Drawing;
+using System.IO;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using Pub.Class;
+using ${Project}.Helper;
+using ${Project}.Entity;
+
+public partial class ${TableName}Manage : AdminPageBase {
+    protected int page = 1;
+    protected int auto = 0;
+
+    protected void Page_Load(object sender, EventArgs e) {
+#if ($isOnePage)
+        btnAdd.Attributes.Add("onclick", "if (chkData()) " + this.GetPostBackEventReference(btnAdd) + "; else return false;");
+#end
+        if (!IsLogin()) { Response.Redirect("../../login.aspx"); }
+
+        Label _lblTitle = (Label)Master.FindControl("lblTitle");
+        _lblTitle.Text = "${TableNameCN}管理";
+        InitData(0);
+    }
+
+    private void InitData(int page2) {
+        auto = Request2.GetQInt("auto", 0);
+        string where = string.Empty; string order = string.Empty;
+#if ($isOnePage)
+
+#else
+#foreach ($FieldInfo in $Fields)
+#if($FieldInfo.ColumnType=='string')
+        string $helper.LowerFirstChar2(${FieldInfo.ColumnName}) = txt${FieldInfo.ColumnName}.Text.Trim();
+        if (txt${FieldInfo.ColumnName}.Text.Trim().Length > 0) where = where + " and ${FieldInfo.ColumnName} like '%" + $helper.SafeSql($helper.LowerFirstChar2(${FieldInfo.ColumnName})) + "%'";
+#elseif($FieldInfo.ColumnType=='DateTime' || $FieldInfo.ColumnType=='bool')
+
+#else
+        ${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}) = txt${FieldInfo.ColumnName}.Text.To${FieldInfo.CSType}();
+        if (txt${FieldInfo.ColumnName}.Text.Trim().Length > 0) where = where + " and ${FieldInfo.ColumnName}=" + $helper.LowerFirstChar2(${FieldInfo.ColumnName});
+#end
+#end
+#end
+        int totalRecores = 0;
+        page = Request2.GetQInt("page", 1);
+        page = page < 1 ? 1 : page;
+        if (page2 > 0) page = page2;
+
+        gvPage.DataSource = ${TableName}Helper.SelectPageList(page, gvPage.PageSize, out totalRecores, where, order, "", Base.UseCache, "", $PagerSqlEnum);
+        gvPage.DataKeyNames = new string[] { "${helper.GetFirstColumnName(${PKFields})}" };
+        gvPage.DataBind();
+        gvPage.HoverScript("", "#F8FCFC");
+
+        int TotalPage = totalRecores / gvPage.PageSize;
+        if (totalRecores % gvPage.PageSize != 0) TotalPage++;
+
+        Pager _Pager = new Pager();
+        _Pager.Url = string.Format("?auto={0}&".FormatWith(auto), page);
+        _Pager.PageSize = gvPage.PageSize;
+        _Pager.PageIndex = page;
+        _Pager.TotalRecord = totalRecores;
+        _Pager.StyleName = "DVBBSPager";
+        _Pager.HAlign = Pager.Align.Left;
+        _Pager.SetData(this, divPager.ClientID);
+        _Pager.Index = 2;
+        _Pager.HAlign = Pager.Align.Right;
+        _Pager.SetData(this, divPager2.ClientID);
+    }
+#if ($isOnePage)
+
+    public void btnShowEdit_click(object sender, EventArgs e) {
+        Button _btn = (Button)sender;
+        GridViewRow _gvr = (GridViewRow)_btn.NamingContainer;
+        gvPage.EditIndex = _gvr.RowIndex;
+        InitData(0);
+    }
+
+    public void btnEdit_click(object sender, EventArgs e) {
+        Button _btn = (Button)sender;
+        GridViewRow _gvr = (GridViewRow)_btn.NamingContainer;
+#foreach ($FieldInfo in $PKFields)
+        ${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}) = gvPage.DataKeys[_gvr.RowIndex]["${FieldInfo.ColumnName}"].ToString().To${FieldInfo.CSType}();
+#end
+
+        ${TableName} $helper.LowerFirstChar2($TableName) = new ${TableName}();
+#foreach ($FieldInfo in $PKFields)
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = $helper.LowerFirstChar2(${FieldInfo.ColumnName});
+#end
+#foreach ($FieldInfo in $NoPKFields)
+#if($FieldInfo.ColumnType=="bool")
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = ((TextBox)_gvr.FindControl("txt${FieldInfo.ColumnName}")).Text.ToBool();
+#elseif($FieldInfo.ColumnType=="DateTime")
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = ((TextBox)_gvr.FindControl("txt${FieldInfo.ColumnName}")).Text.ToDateTime();
+#else
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = ((TextBox)_gvr.FindControl("txt${FieldInfo.ColumnName}")).Text.To${FieldInfo.CSType}();
+#end
+#end
+
+        if (${TableName}Helper.Update($helper.LowerFirstChar2($TableName), "", Base.UseCache ? new string[] { ".+?" } : null, string.Empty)) {
+            gvPage.EditIndex = -1;
+            Js.Run(this, "livexy.msg.alert('divMsg','系统提示','修改成功！');", false);
+            InitData(0);
+        } else Js.Run(this, "livexy.msg.alert('divMsg','系统提示','修改失败！');", false);
+    }
+
+    public void btnCancel_click(object sender, EventArgs e) {
+        gvPage.EditIndex = -1;
+        InitData(0);
+    }
+
+    public void btn_init(object sender, EventArgs e) {
+        Button _btn = (Button)sender;
+        GridViewRow _gvr = (GridViewRow)_btn.NamingContainer;
+
+        if (_btn.ID == "btnDel") Js.AddAttr(_btn,"onclick", "return isDel();");
+    }
+
+    public void btnAdd_click(object sender, EventArgs e) {
+        ${TableName} $helper.LowerFirstChar2($TableName) = new ${TableName}();
+#foreach ($FieldInfo in $Fields)
+#if(!$FieldInfo.IsIdentity)
+#if($FieldInfo.ColumnType=="bool")
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = chk${FieldInfo.ColumnName}.Checked;
+#elseif($FieldInfo.ColumnType=="DateTime")
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = txt${FieldInfo.ColumnName}.Text.ToDateTime();
+#else
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = txt${FieldInfo.ColumnName}.Text.To${FieldInfo.CSType}();
+#end
+#end
+#end
+
+        if (${TableName}Helper.Insert($helper.LowerFirstChar2($TableName), Base.UseCache ? new string[] { ".+?" } : null, string.Empty)>0) {
+            Js.Run(this, "livexy.msg.alert('divMsg','系统提示','添加成功！');", false);
+#foreach ($FieldInfo in $Fields)
+#if($FieldInfo.ColumnType=="bool")
+
+#elseif(!$FieldInfo.IsIdentity)
+            txt${FieldInfo.ColumnName}.Text = "";
+#end
+#end
+
+            InitData(0);
+        } else Js.Run(this, "livexy.msg.alert('divMsg','系统提示','添加失败！');", false);
+    }
+#end
+
+    public void btnDel_click(object sender, EventArgs e) {
+        Button _btnDel = (Button)sender;
+        GridViewRow _gvr = (GridViewRow)_btnDel.NamingContainer;
+#foreach ($FieldInfo in $PKFields)
+        ${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}) = gvPage.DataKeys[_gvr.RowIndex]["${FieldInfo.ColumnName}"].ToString().To${FieldInfo.CSType}();
+#end
+
+        if (${TableName}Helper.DeleteByID(#foreach ($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end"", Base.UseCache ? new string[] { ".+?" } : null, string.Empty)) InitData(0);
+    }
+
+    public void btnSearch_click(object sender, EventArgs e) {
+        InitData(1);
+    }
+}

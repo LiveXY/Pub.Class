@@ -1,0 +1,114 @@
+﻿//------------------------------------------------------------
+// $CopyRight
+//------------------------------------------------------------
+
+using System;
+using System.Data.Common;
+using System.Data;
+using System.Data.OleDb;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using ${Project}.Model;
+using Pub.Class;
+
+namespace ${Project}.IDAL {
+    /// <summary>
+    /// ${TableNameCN}操作接口
+    /// 
+    /// 修改纪录
+    ///     ${Now} 版本：1.0 系统自动创建此接口
+    /// 
+    /// </summary>
+    public partial interface I${TableName}DAL {
+#if($CacheTime>0)
+        /// <summary>
+        /// 设置${TableNameCN}缓存多少秒 x 5
+        /// </summary>
+        void SetCacheTime(int cacheSeconds);
+#end
+#if($currTableOP.Insert)
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+#if($CacheTime>0)
+        #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string[] delCache = null, string dbkey = "");
+#else
+        #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "");
+#end
+#end
+#if($currTableOP.Update && $NoPKFields.Count>0 && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+#if($CacheTime>0)
+        bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string[] delCache = null, string dbkey = "");
+#else
+        bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string dbkey = "");
+#end
+#end
+#if($currTableOP.DeleteByID && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#if($CacheTime>0)
+        bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string[] delCache = null, string dbkey = "");
+#else
+        bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "");
+#end
+#end
+#if($currTableOP.IsExistByID && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+        bool IsExistByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "");
+#end
+#if($currTableOP.SelectByID && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}查询指定记录
+        /// </summary>
+#if($CacheTime>0)
+        ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", bool useCache = false, string dbkey = "");
+#else
+        ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "");
+#end
+#end
+#if($currTableOP.SelectPageList)
+        /// <summary>
+        /// ${TableNameCN}查询指定条件记录分页 IL
+        /// </summary>
+#if($CacheTime>0)
+        IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, string where = "", string order = "", string fieldList = "", bool useCache = false, string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number);
+#else
+        IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, string where = "", string order = "", string fieldList = "", string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number);
+#end
+#end
+#if($currTableOP.SelectListByFK && $FKFields.Count>0)
+#if($CacheTime>0)
+#foreach ($FieldInfo in $FKFields)
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "", bool useCache = false, string dbkey = "");
+#end
+#else
+#foreach ($FieldInfo in $FKFields)
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "", string dbkey = "");
+#end
+#end
+#end
+#if($currTableOP.SelectListByAll)
+        /// <summary>
+        /// ${TableNameCN}查询所有记录 IL
+        /// </summary>
+#if($CacheTime>0)
+        IList<${TableName}> SelectListByAll(string where = "", string order = "", string fieldList = "", bool useCache = false, string dbkey = "");
+#else
+        IList<${TableName}> SelectListByAll(string where = "", string order = "", string fieldList = "", string dbkey = "");
+#end
+#end
+    }
+}

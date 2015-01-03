@@ -1,0 +1,5 @@
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.dll
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.pdb
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.ServiceStackText\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.ServiceStackText\obj\Debug\Pub.Class.ServiceStackText.dll
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.ServiceStackText\obj\Debug\Pub.Class.ServiceStackText.pdb

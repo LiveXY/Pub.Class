@@ -1,0 +1,90 @@
+﻿using System;
+using System.Data;
+using System.Data.Common;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Drawing;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using Pub.Class;
+using System.IO;
+using ${Project}.BLL;
+using ${Project}.Model;
+
+public partial class ${TableName}Add : AdminPageBase {
+    protected int id = 0;
+    protected int page = 1;
+    protected string active = string.Empty;
+
+    protected void Page_Load(object sender, EventArgs e) {
+        btnSave.Attributes.Add("onclick", "if (chkData()) " + this.GetPostBackEventReference(btnSave) + "; else return false;");
+
+        if (!IsLogin()) { Response.Redirect("../../login.aspx"); }
+
+        active = Request2.GetQ("active");
+        id = Request2.GetQ("id").ToInt();
+        page = Request2.GetQInt("page", 1);
+
+        if (id < 0) { Response.Write("参数错误！"); Response.End(); }
+
+        if (active.Equals("edit")) {
+            if (!IsPostBack) {
+                $TableName $helper.LowerFirstChar2($TableName) = ${TableName}BLL.SelectByID(id, "", Base.UseCache, "");
+#foreach ($FieldInfo in $Fields)
+#if(!$FieldInfo.IsIdentity)
+#if($FieldInfo.ColumnType=="bool")
+                chk${FieldInfo.ColumnName}.Checked = $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName}.Value;
+#else
+#if($FieldInfo.Length>2000 || $FieldInfo.DBType=="ntext" || $FieldInfo.DBType=="text" || $FieldInfo.Length<=0)
+                txt${FieldInfo.ColumnName}.Value = $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName}.ToStr();
+#elseif($FieldInfo.Length>200)
+                txt${FieldInfo.ColumnName}.Text = $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName}.ToStr();
+#else
+                txt${FieldInfo.ColumnName}.Text = $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName}.ToStr();
+#end
+#end
+#end
+#end
+            }
+        }
+   }
+
+    protected void btnSave_click(object sender, EventArgs e) {
+        $TableName $helper.LowerFirstChar2($TableName) = new $TableName();
+#foreach ($FieldInfo in $Fields)
+#if(!$FieldInfo.IsIdentity)
+#if($FieldInfo.ColumnType=="bool")
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = chk${FieldInfo.ColumnName}.Checked;
+#elseif($FieldInfo.ColumnType=="DateTime")
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = txt${FieldInfo.ColumnName}.Text.ToDateTime();
+#else
+#if($FieldInfo.Length>2000 || $FieldInfo.DBType=="ntext" || $FieldInfo.DBType=="text" || $FieldInfo.Length<=0)
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = txt${FieldInfo.ColumnName}.Value;
+#elseif($FieldInfo.Length>200)
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = txt${FieldInfo.ColumnName}.Text;
+#else
+        $helper.LowerFirstChar2($TableName).${FieldInfo.ColumnName} = txt${FieldInfo.ColumnName}.Text.To${FieldInfo.CSType}();
+#end
+#end
+#end
+#end
+
+        if (active.Equals("edit")) {
+            $helper.LowerFirstChar2(${TableName}).${helper.GetFirstColumnName(${Fields})} = id;
+            if (${TableName}BLL.Update($helper.LowerFirstChar2($TableName), "", Base.UseCache ? new string[] { "(.+?)" } : null, string.Empty)) {
+                Js.Run(this, "parent.livexy.msg.alert('divMsg1','系统提示','修改成功！',null,null,function() { parent.reload(); });", false);
+            } else Js.Run(this, "parent.livexy.msg.alert('divMsg','系统提示','修改失败！');", true); 
+        } else {
+            if (${TableName}BLL.Insert($helper.LowerFirstChar2($TableName), Base.UseCache ? new string[] { "(.+?)" } : null, string.Empty)>0) {
+                Js.Run(this, "parent.livexy.msg.alert('divMsg1','系统提示','添加成功！',null,null,function() { parent.reload(); });", true); 
+            } else Js.Run(this, "parent.livexy.msg.alert('divMsg','系统提示','添加失败！');", true); 
+        }
+    }
+}

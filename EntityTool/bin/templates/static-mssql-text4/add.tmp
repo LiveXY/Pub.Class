@@ -1,0 +1,37 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/admin2.master" AutoEventWireup="true" CodeFile="${helper.LowerFirstChar2($TableName)}Add.aspx.cs" Inherits="${TableName}Add" ValidateRequest="false" EnableViewState="false" %>
+<%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
+<asp:Content ID="_Main" ContentPlaceHolderID="Main" Runat="Server">
+    <script>
+        function chkData() {
+
+            livexy.msg.setEnable("#<%=btnSave.ClientID%>",true);
+            return true;
+        }
+    </script>
+    <div class="toolmaininfo2">
+        <table width="100%" border="0"><tr><td align="left" style="padding-left:10px; padding-top:10px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border=0 class="GridView mainCentertable"  style="border-width:0px;border-collapse:collapse;">
+#foreach ($FieldInfo in $Fields)
+#if(!$FieldInfo.IsIdentity)
+#if($FieldInfo.ColumnType=="bool")
+                <tr class="TR"><th align="right" style="height:30px;width:10%;"><strong>${helper.GetMemo(${FieldInfo.Memo})}：</strong></th><td class="left pl10" valign="middle"><asp:CheckBox ID="chk$FieldInfo.ColumnName" runat="server" Text="${helper.GetMemo(${FieldInfo.Memo})}" /></td></tr>
+#else
+#if($FieldInfo.Length>2000 || $FieldInfo.DBType=="ntext" || $FieldInfo.DBType=="text" || $FieldInfo.Length<=0)
+                <tr class="TR"><th align="right" style="height:30px;width:10%;"><strong>${helper.GetMemo(${FieldInfo.Memo})}：</strong></th><td class="left pl10" valign="middle"><FCKeditorV2:FCKeditor ID="txt$FieldInfo.ColumnName" runat="server" DefaultLanguage="zh-cn" ToolbarSet="Default" Height="500"></FCKeditorV2:FCKeditor></td></tr>
+#elseif($FieldInfo.Length>200)
+                <tr class="TR"><th align="right" style="height:30px;width:10%;"><strong>${helper.GetMemo(${FieldInfo.Memo})}：</strong></th><td class="left pl10" valign="middle"><asp:TextBox ID="txt$FieldInfo.ColumnName" runat="server" Width="320px" TextMode="MultiLine" Height="134px" CssClass="Normal"></asp:TextBox></td></tr>
+#else
+                <tr class="TR"><th align="right" style="height:30px;width:10%;"><strong>${helper.GetMemo(${FieldInfo.Memo})}：</strong></th><td class="left pl10" valign="middle"><asp:TextBox ID="txt$FieldInfo.ColumnName" runat="server" Width="320px" CssClass="Normal"></asp:TextBox></td></tr>
+#end
+#end
+#end
+#end
+            </table>
+        </td></tr></table>
+    </div>
+    <hr class="hr" />
+    <div class="bottom">
+        <asp:Button ID="btnSave" runat="server" Text="保存" CssClass="btn4" OnClick="btnSave_click" />
+        <asp:Button ID="btnCancel" runat="server" Text="返 回" CssClass="btn4" OnClientClick="parent.livexy.msg.hide('divMsg');return false;" />
+    </div>
+</asp:Content>

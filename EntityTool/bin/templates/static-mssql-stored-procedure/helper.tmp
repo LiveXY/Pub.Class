@@ -1,0 +1,388 @@
+﻿//------------------------------------------------------------
+// $CopyRight
+//------------------------------------------------------------
+
+using System;
+using System.Data.Common;
+using System.Data;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using ${Project}.Entity;
+using Pub.Class;
+
+namespace ${Project}.${DesignPatternExtName} {
+    /// <summary>
+    /// ${TableNameCN}操作类
+    /// 
+    /// 修改纪录
+    ///     ${Now} 版本：1.0 系统自动创建此类
+    /// 
+    /// </summary>
+    public partial class ${TableName}${DesignPatternExtName} {
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}缓存多少秒 x 5
+        /// </summary>
+        public static int cacheSeconds = $CacheTime;
+#end
+#if($currTableOP.Insert)
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+#if($CacheTime>0)
+        public static #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string[] delCache = null, string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $NoPKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}),
+#end
+            };
+#if($helper.IsNull($PKInfo.ColumnName))
+            bool istrue = dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_Insert", dbParams) == 1 : Data.Pool(dbkey).ExecSql("${TableName}_Insert", dbParams) == 1;
+            if (delCache.IsNull()) return istrue;
+            foreach (string s in delCache) Cache2.RemoveByPattern("(${TableName}Cache_" + s + ")");
+            return istrue;
+#else
+            object objValue = dbkey.IsNullEmpty() ? Data.GetScalar("${TableName}_Insert", dbParams) : Data.Pool(dbkey).GetScalar("${TableName}_Insert", dbParams);
+            if (objValue.IsNull()) return 0;
+            ${PKInfo.ColumnType} value = objValue.To${PKInfo.CSType}();
+            if (delCache.IsNull()) return value;
+            foreach (string s in delCache) Cache2.RemoveByPattern("(${TableName}Cache_" + s + ")");
+            return value;
+#end
+        }
+#else
+        public static #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $NoPKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}),
+#end
+            };
+#if($helper.IsNull($PKInfo.ColumnName))
+            return dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_Insert", dbParams) == 1 : Data.Pool(dbkey).ExecSql("${TableName}_Insert", dbParams) == 1;
+#else
+            object objValue = dbkey.IsNullEmpty() ? Data.GetScalar("${TableName}_Insert", dbParams) : Data.Pool(dbkey).GetScalar("${TableName}_Insert", dbParams);
+            if (objValue.IsNull()) return 0;
+            ${PKInfo.ColumnType} value = objValue.To${PKInfo.CSType}();
+            return value;
+#end
+        }
+#end
+#end
+#if($currTableOP.Update && $NoPKFields.Count>0 && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+#if($CacheTime>0)
+        public static bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string[] delCache = null, string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $Fields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}),
+#end
+                Data.MakeInParam("@UpdateWhere", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_Update", dbParams) : Data.Pool(dbkey).ExecSql("${TableName}_Update", dbParams);
+            if (value <= 0) return false;
+            if (delCache.IsNull()) return true;
+            foreach (string s in delCache) Cache2.RemoveByPattern("(${TableName}Cache_" + s + ")");
+            return true;
+        }
+#else
+        public static bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $Fields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}),
+#end
+                Data.MakeInParam("@UpdateWhere", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_Update", dbParams) : Data.Pool(dbkey).ExecSql("${TableName}_Update", dbParams);
+            return value == 1 ? true : false;
+        }
+#end
+#end
+#if($currTableOP.DeleteByID && $PKFields.Count>0)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string[] delCache = null, string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $PKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${FieldInfo.ColumnName})),
+#end
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_DeleteByID", dbParams) :  Data.Pool(dbkey).ExecSql("${TableName}_DeleteByID", dbParams);
+            if (value != 1) return false;
+            if (delCache.IsNull()) return true;
+            foreach (string s in delCache) Cache2.RemoveByPattern("(${TableName}Cache_" + s + ")");
+            return true;
+        }
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+        public static bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end string where = "", string[] delCache = null, string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $PKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}List", (DbType)SqlDbType.VarChar, -1, $helper.LowerFirstChar2(${FieldInfo.ColumnName})List),
+#end
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_DeleteByIDList", dbParams) :  Data.Pool(dbkey).ExecSql("${TableName}_DeleteByIDList", dbParams);
+            if (value != 1) return false;
+            if (delCache.IsNull()) return true;
+            foreach (string s in delCache) Cache2.RemoveByPattern("(${TableName}Cache_" + s + ")");
+            return true;
+        }
+#end
+#else
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $PKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${FieldInfo.ColumnName})),
+#end
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_DeleteByID", dbParams) :  Data.Pool(dbkey).ExecSql("${TableName}_DeleteByID", dbParams);
+            return value == 1 ? true : false;
+        }
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+        public static bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end string where = "", string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $PKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}List", (DbType)SqlDbType.VarChar, -1, $helper.LowerFirstChar2(${FieldInfo.ColumnName})List),
+#end
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql("${TableName}_DeleteByIDList", dbParams) :  Data.Pool(dbkey).ExecSql("${TableName}_DeleteByIDList", dbParams);
+            return value == 1 ? true : false;
+        }
+#end
+#end
+#end
+#if($currTableOP.IsExistByID && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+        public static bool IsExistByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $PKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${FieldInfo.ColumnName})),
+#end
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            int value = dbkey.IsNullEmpty() ? Data.GetScalar("${TableName}_IsExistByID", dbParams).ToInt(0) :  Data.Pool(dbkey).GetScalar("${TableName}_IsExistByID", dbParams).ToInt(0);
+            return value == 1 ? true : false;
+        }
+#end
+#if($currTableOP.SelectByID && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}查询指定记录
+        /// </summary>
+#if($CacheTime>0)
+        public static ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", bool useCache = false, string dbkey = "") {
+            ${TableName} $helper.LowerFirstChar2(${TableName}) = null;
+            string cacheNameKey = string.Empty; string cacheName = string.Empty;
+            if (useCache) {
+                cacheName = "${TableName}Cache_SelectByID_{0}";
+                cacheNameKey = string.Format(cacheName, #foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}) + "_" + #end "_" + where);
+                $helper.LowerFirstChar2(${TableName}) = (${TableName})Cache2.Get(cacheNameKey);
+                if (!${helper.LowerFirstChar2(${TableName})}.IsNull()) { return $helper.LowerFirstChar2(${TableName}); }
+            }
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $PKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${FieldInfo.ColumnName})),
+#end
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            $helper.LowerFirstChar2(${TableName}) = Data.Pool(dbkey).GetDbDataReader("${TableName}_SelectByID", dbParams).ToList<${TableName}>().FirstOrDefault();
+            if (useCache) Cache2.Insert(cacheNameKey, $helper.LowerFirstChar2(${TableName}), cacheSeconds);
+            return $helper.LowerFirstChar2(${TableName});
+        }
+#else
+        public static ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            DbParameter[] dbParams = {
+#foreach ($FieldInfo in $PKFields)
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${FieldInfo.ColumnName})),
+#end
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where)
+            };
+            return Data.Pool(dbkey).GetDbDataReader("${TableName}_SelectByID", dbParams).ToList<${TableName}>().FirstOrDefault();
+        }
+#end
+#if($CacheTime>0)
+        /// <summary>
+        /// 清除${TableNameCN}查询指定记录的缓存
+        /// </summary>
+        public static void ClearCacheSelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "") {
+            string cacheName = "${TableName}Cache_SelectByID_{0}";
+            string cacheNameKey = string.Format(cacheName, #foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}) + "_" + #end "_" + where);
+            Cache2.Remove(cacheNameKey);
+        }
+#end
+#end
+#if($currTableOP.SelectPageList)
+        /// <summary>
+        /// ${TableNameCN}查询指定条件记录分页 IL
+        /// </summary>
+#if($CacheTime>0)
+        public static IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, string where = "", string order = "", string fieldList = "", bool useCache = false, string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number) {
+            totalRecords = 0;
+            IList<${TableName}> list = null;
+            string cacheNameKey = string.Empty; string cacheRecordsKey = string.Empty; 
+            if (useCache) {
+                string cacheName = "${TableName}Cache_SelectPageList_{0}_{1}_{2}_{3}";
+                string cacheRecords = "${TableName}Cache_RecordsSelectPageList_{0}_{1}_{2}_{3}";
+                cacheNameKey = string.Format(cacheName, pageIndex, pageSize, where, order);
+                cacheRecordsKey = string.Format(cacheRecords, pageIndex, pageSize, where, order);
+                list = (IList<${TableName}>)Cache2.Get(cacheNameKey);
+                if (!list.IsNull()) { totalRecords = (int)Cache2.Get(cacheRecordsKey); return list; }
+            }
+            using (PagerSQLHelper s = new PagerSQLHelper(pageEnum)) {
+                PagerSql sql = s.GetSQL(pageIndex, pageSize, "[${TableName}]", "[${helper.GetFirstColumnName(${Fields})}]", "#foreach($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end", where, "", order);
+                DataSet ds = Data.Pool(dbkey).GetDataSet(sql.DataSql + ";" + sql.CountSql);
+                if (ds.IsNull()) return list;
+                list = ds.Tables[0].ToList<${TableName}>();
+                totalRecords = ds.Tables[1].Rows[0][0].ToInt();
+                ds.Dispose(); ds = null;
+            }
+            if (useCache) {
+                Cache2.Insert(cacheNameKey, list, cacheSeconds);
+                Cache2.Insert(cacheRecordsKey, totalRecords, cacheSeconds);
+            }
+            return list;
+        }
+#else
+        public static IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, string where = "", string order = "", string fieldList = "", string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number) {
+            totalRecords = 0;
+            IList<${TableName}> list = null;
+            using (PagerSQLHelper s = new PagerSQLHelper(pageEnum)) {
+                PagerSql sql = s.GetSQL(pageIndex, pageSize, "[${TableName}]", "[${helper.GetFirstColumnName(${Fields})}]", "#foreach($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end", where, "", order);
+                DataSet ds = Data.Pool(dbkey).GetDataSet(sql.DataSql + ";" + sql.CountSql);
+                if (ds.IsNull()) return list;
+                list = ds.Tables[0].ToList<${TableName}>();
+                totalRecords = ds.Tables[1].Rows[0][0].ToInt();
+                ds.Dispose(); ds = null;
+            }
+            return list;
+        }
+#end
+#if($CacheTime>0)
+        /// <summary>
+        /// 清除${TableNameCN}查询指定条件记录分页缓存
+        /// </summary>
+        public static void ClearCacheSelectPageList() {
+            string cacheNameKey = "${TableName}Cache_SelectPageList_(.+?)";
+            string cacheRecordsKey = "${TableName}Cache_RecordsSelectPageList_(.+?)";
+            Cache2.RemoveByPattern(cacheNameKey);
+            Cache2.RemoveByPattern(cacheRecordsKey);
+        }
+#end
+#end
+#if($currTableOP.SelectListByFK && $FKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+#if($CacheTime>0)
+#foreach ($FieldInfo in $FKFields)
+        public static IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "", bool useCache = false, string dbkey = "") {
+            IList<${TableName}> list = null; string cacheKey = string.Empty;
+            if (useCache) {
+                string cacheName = "${TableName}Cache_SelectListBy${FieldInfo.ColumnName}_{0}_{1}_{2}_{3}";
+                cacheKey = string.Format(cacheName, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), order, fieldList, where);
+                list = (IList<${TableName}>)Cache2.Get(cacheKey);
+                if (!list.IsNull()) return list;
+            }
+            if (fieldList.IsNullEmpty()) fieldList = "#foreach ($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end".Trim(',');
+            DbParameter[] dbParams = {
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${FieldInfo.ColumnName})),
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where),
+                Data.MakeInParam("@Fields", (DbType)SqlDbType.VarChar, 1000, fieldList),
+                Data.MakeInParam("@Order", (DbType)SqlDbType.VarChar, 100, order)
+            };
+            list = Data.Pool(dbkey).GetDbDataReader("${TableName}_SelectListBy${FieldInfo.ColumnName}", dbParams).ToList<${TableName}>();
+
+            if (useCache) Cache2.Insert(cacheKey, list, cacheSeconds);
+            return list;
+        }
+        /// <summary>
+        /// 清除${TableNameCN}查询指定外键记录缓存
+        /// </summary>
+        public static void ClearCacheSelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "") {
+            string cacheName = "${TableName}Cache_SelectListBy${FieldInfo.ColumnName}_{0}_{1}_{2}_{3}";
+            string cacheNameKey = string.Format(cacheName, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), order, fieldList, where);
+            Cache2.Remove(cacheNameKey);
+        }
+#end
+#else
+#foreach ($FieldInfo in $FKFields)
+        public static IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "", string dbkey = "") {
+            if (fieldList.IsNullEmpty()) fieldList = "#foreach ($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end".Trim(',');
+            DbParameter[] dbParams = {
+                Data.MakeInParam("@${FieldInfo.ColumnName}", (DbType)SqlDbType.${helper.MSSQLDBTypeToCSType(${FieldInfo.DBType})}, ${FieldInfo.Length}, $helper.LowerFirstChar2(${FieldInfo.ColumnName})),
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where),
+                Data.MakeInParam("@Fields", (DbType)SqlDbType.VarChar, 1000, fieldList),
+                Data.MakeInParam("@Order", (DbType)SqlDbType.VarChar, 100, order)
+            };
+            return Data.Pool(dbkey).GetDbDataReader("${TableName}_SelectListBy${FieldInfo.ColumnName}", dbParams).ToList<${TableName}>();
+        }
+#end
+#end
+#end
+#if($currTableOP.SelectListByAll)
+        /// <summary>
+        /// ${TableNameCN}查询所有记录 IL
+        /// </summary>
+#if($CacheTime>0)
+        public static IList<${TableName}> SelectListByAll(string where = "", string order = "", string fieldList = "", bool useCache = false, string dbkey = "") {
+            string cacheKey = string.Format("${TableName}Cache_SelectListByAll_{0}_{1}_{2}", order, fieldList, where); IList<${TableName}> list = null;
+            if (useCache) {
+                list = (IList<${TableName}>)Cache2.Get(cacheKey);
+                if (!list.IsNull()) return list;
+            }
+            if (fieldList.IsNullEmpty()) fieldList = "#foreach ($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end".Trim(',');
+            DbParameter[] dbParams = {
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where),
+                Data.MakeInParam("@Fields", (DbType)SqlDbType.VarChar, 1000, fieldList),
+                Data.MakeInParam("@Order", (DbType)SqlDbType.VarChar, 100, order)
+            };
+            list = Data.Pool(dbkey).GetDbDataReader("${TableName}_SelectListByAll", dbParams).ToList<${TableName}>();
+
+            if (useCache) Cache2.Insert(cacheKey, list, cacheSeconds);
+            return list;
+        }
+#else
+        public static IList<${TableName}> SelectListByAll(string where = "", string order = "", string fieldList = "", string dbkey = "") {
+            if (fieldList.IsNullEmpty()) fieldList = "#foreach ($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end".Trim(',');
+            DbParameter[] dbParams = {
+                Data.MakeInParam("@Where", (DbType)SqlDbType.VarChar, 1000, where),
+                Data.MakeInParam("@Fields", (DbType)SqlDbType.VarChar, 1000, fieldList),
+                Data.MakeInParam("@Order", (DbType)SqlDbType.VarChar, 100, order)
+            };
+            return Data.Pool(dbkey).GetDbDataReader("${TableName}_SelectListByAll", dbParams).ToList<${TableName}>();
+        }
+#end
+#if($CacheTime>0)
+        /// <summary>
+        /// 清除${TableNameCN}查询所有记录缓存
+        /// </summary>
+        public static void ClearCacheSelectListByAll() {
+            Cache2.Remove("${TableName}Cache_SelectListByAll___");
+        }
+        /// <summary>
+        /// 清除${TableNameCN}所有缓存
+        /// </summary>
+        public static void ClearCacheAll() {
+            Cache2.RemoveByPattern("${TableName}Cache_(.+?)");
+        }
+#end
+#end
+    }
+}

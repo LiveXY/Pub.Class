@@ -1,0 +1,35 @@
+﻿//------------------------------------------------------------
+// $CopyRight
+//------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Pub.Class;
+
+namespace ${Project}.Model {
+    /// <summary>
+    /// ${TableNameCN}实体类
+    /// 
+    /// 修改纪录
+    ///     ${Now} 版本：1.0 系统自动创建此类
+    /// 
+    /// </summary>
+    [Serializable]
+    [EntityInfo("${TableNameCN}")]
+    public partial class ${TableName} {
+        public static readonly string _ = "${TableName}";
+#foreach ($FieldInfo in $Fields)
+
+        public static readonly string _${FieldInfo.ColumnName} = "$TableName.${FieldInfo.ColumnName}";
+        private ${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end $helper.LowerFirstChar2($FieldInfo.ColumnName) = null;
+        /// <summary>
+        /// ${FieldInfo.Memo}
+        /// </summary>
+        [EntityInfo("${FieldInfo.Memo}")]
+        public new ${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end ${FieldInfo.ColumnName} { get { return $helper.LowerFirstChar2($FieldInfo.ColumnName); } set { $helper.LowerFirstChar2($FieldInfo.ColumnName) = value; } }
+#end
+    }
+}
+
+

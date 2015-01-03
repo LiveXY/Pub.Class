@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2AD0BF74-CE88-4004-A609-239C7EBD51BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pub.Class</RootNamespace>
+    <AssemblyName>Pub.Class</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Pub.Class.Release\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Pub.Class.Release\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Pub.Class.Release\bin\Pub.Class.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\Cache2.cs" />
+    <Compile Include="Class\Compress\Compress.cs" />
+    <Compile Include="Class\Compress\Decompress.cs" />
+    <Compile Include="Class\Disposable.cs" />
+    <Compile Include="Class\Email\Email.cs" />
+    <Compile Include="Class\Email\IEmail.cs" />
+    <Compile Include="Class\EntityInfo.cs" />
+    <Compile Include="Class\DataTableEntityBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\Data.cs" />
+    <Compile Include="Class\Extensions\ExpressionExtensions.cs" />
+    <Compile Include="Class\Extensions\FileStreamExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\Extensions\HashtableExtensions.cs" />
+    <Compile Include="Class\Extensions\HttpResponseExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\ImagesHandler.cs" />
+    <Compile Include="Class\Js.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\Log\Log.cs" />
+    <Compile Include="Class\Log\ILog.cs" />
+    <Compile Include="Class\Log\NullLog.cs" />
+    <Compile Include="Class\Log\TraceLog.cs" />
+    <Compile Include="Class\PagerSQL\NotInPagerSQL.cs" />
+    <Compile Include="Class\PagerSQL\MaxTopPagerSQL.cs" />
+    <Compile Include="Class\PagerSQL\RowNumberPagerSQL.cs" />
+    <Compile Include="Class\PagerSQL\MySqlPagerSQL.cs" />
+    <Compile Include="Class\PagerSQL\OraclePagerSQL.cs" />
+    <Compile Include="Class\PagerSQL\TopTopPagerSQL.cs" />
+    <Compile Include="Class\PagerSQL\SqlitePagerSQL.cs" />
+    <Compile Include="Class\PinYin.cs" />
+    <Compile Include="Class\Serialize\ISerializeString.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\Serialize\ISerializeBytes.cs" />
+    <Compile Include="Class\Serialize\JavaScriptSerializerString.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\Serialize\SerializeJson.cs" />
+    <Compile Include="Class\Serialize\XmlSerializerString.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\Serialize\BinaryFormatterBytes.cs" />
+    <Compile Include="Class\Serialize\SerializeBytes.cs" />
+    <Compile Include="Class\Serialize\SerializeXml.cs" />
+    <Compile Include="Class\SQL.cs" />
+    <Compile Include="Class\SQL`T.cs" />
+    <Compile Include="Class\TaskTimer.cs" />
+    <Compile Include="Class\Update.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Class\WebService.cs" />
+    <Compile Include="Class\HttpHelper.cs" />
+    <Compile Include="Class\IDataReaderEntityBuilder.cs" />
+    <Compile Include="Class\Cookie2.cs" />
+    <Compile Include="Class\CutImage.cs" />
+    <Compile Include="Class\Extensions\HttpContextExtensions.cs" />
+    <Compile Include="Class\Extensions\DataTableExtensions.cs" />
+    <Compile Include="Class\Extensions\IDataReaderExtensions.cs" />
+    <Compile Include="Class\Extensions\ObjectExtensions.cs" />
+    <Compile Include="Class\Extensions\ClassExtensions.cs" />
+    <Compile Include="Class\Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Class\Extensions\TypeExtensions.cs" />
+    <Compile Include="Class\Extensions\BooleanExtensions.cs" />
+    <Compile Include="Class\Extensions\IntExtensions.cs" />
+    <Compile Include="Class\Extensions\DecimalExtensions.cs" />
+    <Compile Include="Class\Extensions\DoubleExtensions.cs" />
+    <Compile Include="Class\Extensions\LongExtensions.cs" />
+    <Compile Include="Class\Extensions\FuncExtensions.cs" />
+    <Compile Include="Class\Extensions\ActionExtensions.cs" />
+    <Compile Include="Class\Extensions\XmlNodeExtensions.cs" />
+    <Compile Include="Class\Extensions\IListExtensions.cs" />
+    <Compile Include="Class\Extensions\ICollectionExtensions.cs" />
+    <Compile Include="Class\Extensions\IDictionaryExtensions.cs" />
+    <Compile Include="Class\Extensions\StringBuilderExtensions.cs" />
+    <Compile Include="Class\Extensions\FloatExtensions.cs" />
+    <Compile Include="Class\FileDirectory.cs" />
+    <Compile Include="Class\IDbProvider.cs" />
+    <Compile Include="Class\Identify.cs" />
+    <Compile Include="Class\ShareConnect.cs" />
+    <Compile Include="Class\IniFile.cs" />
+    <Compile Include="Class\IPScanner.cs" />
+    <Compile Include="Class\MasterPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Class\WebService\IWebService.cs" />
+    <Compile Include="Class\WebService\WebServiceEnum.cs" />
+    <Compile Include="Class\WebService\WebServiceHelper.cs" />
+    <Compile Include="Class\WebService\GetWebService.cs" />
+    <Compile Include="Class\WebService\PostWebService.cs" />
+    <Compile Include="Class\WebService\SoapWebService.cs" />
+    <Compile Include="Class\WebService\DynamicWebService.cs" />
+    <Compile Include="Class\WinApi.cs" />
+    <Compile Include="Class\Log\SimpleLog.cs" />
+    <Compile Include="Class\Msg.cs" />
+    <Compile Include="Class\Net2.cs" />
+    <Compile Include="Class\Pager.cs" />
+    <Compile Include="Class\PostQueue.cs" />
+    <Compile Include="Class\Rand.cs" />
+    <Compile Include="Class\Request2.cs" />
+    <Compile Include="Class\Safe.cs" />
+    <Compile Include="Class\Server2.cs" />
+    <Compile Include="Class\Session2.cs" />
+    <Compile Include="Class\Upload.cs" />
+    <Compile Include="Class\Watermark.cs" />
+    <Compile Include="Class\WebConfig.cs" />
+    <Compile Include="Class\Extensions\WebControl.cs" />
+    <Compile Include="Class\Xml2.cs" />
+    <Compile Include="Class\Database.cs" />
+    <Compile Include="Class\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Class\Extensions\DateExtensions.cs" />
+    <Compile Include="Class\Extensions\EncryptExtensions.cs" />
+    <Compile Include="Class\Extensions\StringExtensions.cs" />
+    <Compile Include="Class\Extensions\ArrayExtensions.cs" />
+    <Compile Include="Class\ThreadPoolEx.cs" />
+    <Compile Include="Class\ICache2.cs" />
+    <Compile Include="Class\Registry2.cs" />
+    <Compile Include="Class\Sorter.cs" />
+    <Compile Include="Class\SymmetryCryptor.cs" />
+    <Compile Include="Class\Singleton.cs" />
+    <Compile Include="Class\Excel\ExcelReader.cs" />
+    <Compile Include="Class\Excel\ExcelWriter.cs" />
+    <Compile Include="Class\Where.cs" />
+    <Compile Include="Class\IAddIn.cs" />
+    <Compile Include="Class\PagerSQL\IPagerSQL.cs" />
+    <Compile Include="Class\PagerSQL\PagerSQLEnum.cs" />
+    <Compile Include="Class\PagerSQL\PagerSQLHelper.cs" />
+    <Compile Include="Class\UrlParameter.cs" />
+    <Compile Include="Class\DownFile.cs" />
+    <Compile Include="Class\SafeDictionary.cs" />
+    <Compile Include="Class\SystemInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\FredCK.FCKeditorV2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

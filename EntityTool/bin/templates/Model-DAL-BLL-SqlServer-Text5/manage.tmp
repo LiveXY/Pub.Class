@@ -1,0 +1,121 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/admin.master" AutoEventWireup="true" CodeFile="${helper.LowerFirstChar2($TableName)}Manage.aspx.cs" Inherits="${TableName}Manage" EnableViewState="false" ValidateRequest="false" %>
+<%@ Import Namespace="Pub.Class" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Main" Runat="Server">
+    <script type="text/javascript">
+        function isDel() { return confirm('删除数据将无法恢复，删除否?'); }
+#if($isOnePage)
+        function chkData() {
+            livexy.msg.setEnable($('#<%=btnAdd.ClientID%>'), true);
+            return true;
+        }
+#else
+        function add(url) { url = url || ''; livexy.msg.show('divMsg', url == '' ? '添加' : '修改', '${helper.LowerFirstChar2($TableName)}Add.aspx' + url, livexy.getWinSize().w<500 ? 400 : livexy.getWinSize().w - 200, livexy.getWinSize().h<361 ? $WinHeight : livexy.getWinSize().h - 80); }
+        var reload = function () { $("#<%=btnSearch.ClientID %>").click(); }
+#end
+        var gvBgColor = '';
+    </script>
+    <div class="toolmaininfo">
+        <div class="left" id="divSearch" runat="server">
+#if ($isOnePage)
+#foreach ($FieldInfo in $Fields)
+#if(!$FieldInfo.IsIdentity)
+#if($FieldInfo.ColumnType=="bool")
+            <span>${helper.GetMemo(${FieldInfo.Memo})}：<asp:CheckBox ID="chk$FieldInfo.ColumnName" runat="server" Text="${helper.GetMemo(${FieldInfo.Memo})}" /></span>
+#else
+            <span>${helper.GetMemo(${FieldInfo.Memo})}：<asp:TextBox ID="txt$FieldInfo.ColumnName" runat="server" Width="100px" CssClass="Normal"></asp:TextBox></span>
+#end
+#end
+#end
+            <asp:Button ID="btnAdd" runat="server" Text=" 添加 " CssClass="but1" OnClick="btnAdd_click" />
+#else
+#foreach ($FieldInfo in $Fields)
+#if($FieldInfo.ColumnType=="bool")
+
+#else
+            <span>${helper.GetMemo(${FieldInfo.Memo})}：<asp:TextBox ID="txt$FieldInfo.ColumnName" runat="server" Width="100px" CssClass="Normal"></asp:TextBox></span>
+#end
+#end
+            <asp:Button ID="btnSearch" runat="server" Text=" 搜索 " OnClick="btnSearch_click" CssClass="but1" />
+#end
+
+            <hr />
+        </div>
+        <table width="100%" border="0" id="resList" style="display:none;"><tr><td align="center">
+            <div id="divPager2" runat="server"></div>
+            <asp:GridView BorderWidth="0" ID="gvPage" runat="server" AllowPaging="true" AllowSorting="true" AutoGenerateColumns="false" PageSize="$PageSize" CssClass="GridView">
+            <RowStyle CssClass="TR" />
+            <AlternatingRowStyle  CssClass="TRARS" />
+            <PagerStyle CssClass="PS" HorizontalAlign="Right" />
+            <EmptyDataRowStyle CssClass="EDRS pl10 center" />
+            <EmptyDataTemplate>暂无数据！#if(!$isOnePage)<input type='submit' name='btnEdit' value='添 加' id='btnEdit' onclick='add();return false;' class='but1' />#end</EmptyDataTemplate>
+            <Columns>
+#if ($isOnePage)
+#foreach ($FieldInfo in $PKFields)
+                <asp:TemplateField HeaderText="${helper.GetMemo(${FieldInfo.Memo})}" ItemStyle-CssClass="center w5_">
+                    <ItemTemplate>
+                        <%# Eval("$FieldInfo.ColumnName").ToStr().UnHtml() %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+#end
+#foreach ($FieldInfo in $NoPKFields)
+                <asp:TemplateField HeaderText="${helper.GetMemo(${FieldInfo.Memo})}" ItemStyle-CssClass="center">
+                    <ItemTemplate>
+                        <%# Eval("$FieldInfo.ColumnName").ToStr().RemoveAllHTML().SubString(100,"..").UnHtml() %>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txt$FieldInfo.ColumnName" runat="server" Text='<%# Eval("$FieldInfo.ColumnName") %>' CssClass="Normal"></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+#end
+#else
+#foreach ($FieldInfo in $PKFields)
+                <asp:TemplateField HeaderText="${helper.GetMemo(${FieldInfo.Memo})}" ItemStyle-CssClass="center w5_">
+                    <ItemTemplate>
+                        <%# Eval("$FieldInfo.ColumnName").ToStr().UnHtml() %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+#end
+#foreach ($FieldInfo in $NoPKFields)
+                <asp:TemplateField HeaderText="${helper.GetMemo(${FieldInfo.Memo})}" ItemStyle-CssClass="center">
+                    <ItemTemplate>
+                        <%# Eval("$FieldInfo.ColumnName").ToStr().RemoveAllHTML().SubString(100,"..").UnHtml() %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+#end
+#end
+
+                <asp:TemplateField HeaderText="操作 #if(!$isOnePage)<input type='submit' name='btnEdit' value='添 加' id='btnEdit' onclick='add();return false;' class='but1' />#end" ItemStyle-CssClass="center w15_">
+#if ($isOnePage)
+                    <ItemTemplate>
+                        <asp:Button ID="btnShowEdit" runat="server" Text=" 编辑 " OnDataBinding="btn_init" CausesValidation="false" CssClass="but1" OnClick="btnShowEdit_click"/>
+                        <asp:Button ID="btnDel" runat="server" Text="删 除" CssClass="but1" OnClick="btnDel_click" OnClientClick="return isDel();" />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:Button ID="btnEdit" runat="server" Text=" 修改 " CausesValidation="false" CssClass="but1" OnClick="btnEdit_click"/>
+                        <asp:Button ID="btnCancel" runat="server" Text="取消" CausesValidation="false" CssClass="but1" OnClick="btnCancel_click"/>
+                    </EditItemTemplate>
+#else
+                    <ItemTemplate>
+                        <input type="submit" name="btnEdit" value="编 辑" id="btnEdit" onclick="add('?active=edit&id=<%#Eval("${helper.GetFirstColumnName(${Fields})}") %>&page=<%=page %>');return false;" class="but1" />
+                        <asp:Button ID="btnDel" runat="server" Text="删 除" CssClass="but1" OnClick="btnDel_click" OnClientClick="return isDel();" />
+                    </ItemTemplate>
+#end
+                </asp:TemplateField>
+            </Columns>
+            </asp:GridView>
+            <div id="divPager" runat="server"></div>
+        </td></tr></table>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            if (livexy.request.get("auto") == "1") return;
+            jQuery("body").append("<div id='floatArraw'></div><div id='floatBox'></div>")
+            jQuery("#floatBox").load("../../../admin/xml/db.aspx");
+            jQuery("#floatBox").mouseleave(function() { livexy.menu.hide("#floatBox"); });
+            jQuery("#floatArraw").mouseover(function() {
+                livexy.menu.show("#floatBox", "#floatArraw",0,0);
+            })
+        }
+    </script>
+</asp:Content>

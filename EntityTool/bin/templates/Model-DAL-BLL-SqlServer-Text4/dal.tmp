@@ -1,0 +1,645 @@
+﻿//-------------------------------------------------------------------------------------------------------------------------------------
+// $CopyRight
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Data.Common;
+using System.Data;
+using System.Data.OleDb;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using ${Project}.Model;
+using ${Project}.IDAL;
+using Pub.Class;
+
+namespace ${Project}.${TemplateName}DAL {
+    /// <summary>
+    /// ${TableNameCN}操作类
+    /// 
+    /// 修改纪录
+    ///     ${Now} 版本：1.0 系统自动创建此类
+    /// 
+    /// </summary>
+    public partial class ${TableName}DAL : I${TableName}DAL {
+#if($CacheTime>0)
+        private readonly int cacheSeconds = $CacheTime;
+
+#end
+#if($currTableOP.Insert)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="delCache">添加成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>#if($helper.IsNull($PKInfo.ColumnName))添加是否成功#else返回添加成功后的ID#end</returns>
+        public #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string[] delCache = null, string dbkey = "") {
+            string strSql = new SQL().Insert(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                .Value(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+                .ToString();
+#if($helper.IsNull($PKInfo.ColumnName))
+            bool istrue = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) == 1 : Data.Pool(dbkey).ExecSql(strSql) == 1;
+            if (delCache.IsNull()) return istrue;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return istrue;
+#else
+            strSql += ";select SCOPE_IDENTITY();";
+            object objValue = dbkey.IsNullEmpty() ? Data.GetScalar(strSql) : Data.Pool(dbkey).GetScalar(strSql);
+            if (objValue.IsAllNull()) return 0;
+            ${PKInfo.ColumnType} value = objValue.ToString().To${PKInfo.CSType}();
+            if (delCache.IsNull()) return value;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return value;
+#end
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>#if($helper.IsNull($PKInfo.ColumnName))添加是否成功#else返回添加成功后的ID#end</returns>
+        public #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "") {
+            string strSql = new SQL().Insert(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                .Value(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+                .ToString();
+#if($helper.IsNull($PKInfo.ColumnName))
+            return dbkey.IsNullEmpty() ? Data.ExecSql(strSql) == 1 : Data.Pool(dbkey).ExecSql(strSql) == 1;
+#else
+            strSql += ";select SCOPE_IDENTITY();";
+            object objValue = dbkey.IsNullEmpty() ? Data.GetScalar(strSql) : Data.Pool(dbkey).GetScalar(strSql);
+            if (objValue.IsAllNull()) return 0;
+            ${PKInfo.ColumnType} value = objValue.ToString().To${PKInfo.CSType}();
+            return value;
+#end
+        }
+#end
+#end
+#if($currTableOP.Update && $NoPKFields.Count>0 && $PKFields.Count>0)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">修改成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改是否成功</returns>
+        public bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), Where where = null, string[] delCache = null, string dbkey = "") {
+            if (#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}.#if($FieldInfo.ColumnType != "string")
+IsNull#else
+IsNullEmpty#end()#between
+  && #end) return false;
+            string strSql = new SQL().Update(${TableName}._)
+#foreach ($FieldInfo in $NoPKFields)
+                .Set(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}, Operator.Equal, true)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) : Data.Pool(dbkey).ExecSql(strSql);
+            if (value <= 0) return false;
+            if (delCache.IsNull()) return true;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return true;
+        }
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}修改多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">修改成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改是否成功</returns>
+        public bool UpdateByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end ${TableName} $helper.LowerFirstChar2(${TableName}), Where where = null, string[] delCache = null, string dbkey = "") {
+            string strSql = new SQL().Update(${TableName}._)
+#foreach ($FieldInfo in $NoPKFields)
+                .Set(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, "(" + $helper.LowerFirstChar2(${FieldInfo.ColumnName})List + ")", Operator.In)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) : Data.Pool(dbkey).ExecSql(strSql);
+            if (value <= 0) return false;
+            if (delCache.IsNull()) return true;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return true;
+        }
+#end
+#else
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改是否成功</returns>
+        public bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), Where where = null, string dbkey = "") {
+            if (#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}.#if($FieldInfo.ColumnType != "string")
+IsNull#else
+IsNullEmpty#end()#between
+  && #end) return false;
+            string strSql = new SQL().Update(${TableName}._)
+#foreach ($FieldInfo in $NoPKFields)
+                .Set(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+                .Where("1=1").Where(new Where()
+#foreach($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}, Operator.Equal, true)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) : Data.Pool(dbkey).ExecSql(strSql);
+            return value == 1 ? true : false;
+        }
+#end
+#end
+#if($currTableOP.UpdateAndInsert && $NoPKFields.Count>0 && $PKFields.Count>0)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}存在时修改记录，否则添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">修改成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改或添加是否成功</returns>
+        public #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end UpdateAndInsert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "", Where where = null, string[] delCache = null) {
+            if (#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}.#if($FieldInfo.ColumnType != "string")
+IsNull#else
+IsNullEmpty#end()#between
+  && #end) return #if($helper.IsNull($PKInfo.ColumnName)) false #else 0 #end;
+            string insertSql = new SQL().Insert(${TableName}._)
+#if($helper.IsNull($PKInfo.ColumnName))
+#foreach ($FieldInfo in $Fields)
+                .Value(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+#else
+#foreach ($FieldInfo in $NoPKFields)
+                .Value(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+#end
+                .ToString();
+            string updateSql = new SQL().Update(${TableName}._)
+#foreach ($FieldInfo in $NoPKFields)
+                .Set(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}, Operator.Equal, true)
+#end
+                ).Where(where).ToString();
+            string strSql = new SQL().From(${TableName}._)
+                .Select("1")
+                .Where("1=1").Where(
+                    new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}, Operator.Equal, true)
+#end
+                    .ToString()
+                ).Where(where).ToString();
+#if($helper.IsNull($PKInfo.ColumnName) || $PKFields.Count > 1)
+            strSql = "if exists(" + strSql + ") " + updateSql + " else " + insertSql;
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) : Data.Pool(dbkey).ExecSql(strSql);
+            if (value <= 0) return false;
+            if (delCache.IsNull()) return true;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return true;
+#else            
+            strSql = "if exists(" + strSql + ") begin " + updateSql + ";if (@@ROWCOUNT=1) select 0; else select -1; end else begin " + insertSql + ";if (@@ROWCOUNT=1) select SCOPE_IDENTITY(); else select -1; end;";
+            object objValue = dbkey.IsNullEmpty() ? Data.GetScalar(strSql) : Data.Pool(dbkey).GetScalar(strSql);
+            if (objValue.IsAllNull()) return 0;
+            ${PKInfo.ColumnType} value = objValue.ToString().To${PKInfo.CSType}();
+            if (delCache.IsNull()) return value;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return value;
+#end
+        }
+        /// <summary>
+        /// ${TableNameCN}存在时修改记录，否则添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>修改或添加是否成功</returns>
+        public #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end UpdateAndInsert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "") {
+            return UpdateAndInsert($helper.LowerFirstChar2(${TableName}), dbkey, null, null);
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}存在时修改记录，否则添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改或添加是否成功</returns>
+        public bool UpdateAndInsert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "", Where where = null) {
+            string insertSql = new SQL().Insert(${TableName}._)
+#if($helper.IsNull($PKInfo.ColumnName))
+#foreach ($FieldInfo in $Fields)
+                .Value(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+#else
+#foreach ($FieldInfo in $NoPKFields)
+                .Value(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+#end
+                .Where(where).ToString();
+            string updateSql = new SQL().Update(${TableName}._)
+#foreach ($FieldInfo in $NoPKFields)
+                .Set(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName})
+#end
+                .Where("1=1").Where(new Where()
+#foreach($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}, Operator.Equal)
+#end
+                ).Where(where).ToString();
+            string strSql = new SQL().From(${TableName}._)
+                .Select("1")
+                .Where("1=1").Where(
+                    new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${TableName}).${FieldInfo.ColumnName}, Operator.Equal, true)
+#end
+                    .ToString()
+                ).Where(where).ToString();
+#if($helper.IsNull($PKInfo.ColumnName) || $PKFields.Count > 1)
+            strSql = "if exists(" + strSql + ") " + updateSql + " else " + insertSql;
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) : Data.Pool(dbkey).ExecSql(strSql);
+            return value == 1 ? true : false;
+#else            
+            strSql = "if exists(" + strSql + ") begin " + updateSql + ";if (@@ROWCOUNT=1) select 0; else select -1; end else begin " + insertSql + ";if (@@ROWCOUNT=1) select SCOPE_IDENTITY(); else select -1; end;";
+            object objValue = dbkey.IsNullEmpty() ? Data.GetScalar(strSql) : Data.Pool(dbkey).GetScalar(strSql);
+            if (objValue.IsAllNull()) return 0;
+            ${PKInfo.ColumnType} value = objValue.ToString().To${PKInfo.CSType}();
+            return value;
+#end
+        }
+        /// <summary>
+        /// ${TableNameCN}存在时修改记录，否则添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>修改或添加是否成功</returns>
+        public bool UpdateAndInsert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "") {
+            return UpdateAndInsert($helper.LowerFirstChar2(${TableName}), dbkey, null);
+        }
+#end
+#end
+#if($currTableOP.DeleteByID && $PKFields.Count>0)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">删除成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end Where where = null, string[] delCache = null, string dbkey = "") {
+            if (#foreach($FieldInfo in $PKFields)${helper.LowerFirstChar2(${FieldInfo.ColumnName})}.#if($FieldInfo.ColumnType != "string")
+IsNull#else
+IsNullEmpty#end()#between
+  && #end) return false;
+            string strSql = new SQL().Delete(${TableName}._)
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal, true)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) :  Data.Pool(dbkey).ExecSql(strSql);
+            if (value != 1) return false;
+            if (delCache.IsNull()) return true;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return true;
+        }
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="where">删除时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">修改成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end Where where = null, string[] delCache = null, string dbkey = "") {
+            string strSql = new SQL().Delete(${TableName}._)
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, "(" + $helper.LowerFirstChar2(${FieldInfo.ColumnName})List + ")", Operator.In)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) :  Data.Pool(dbkey).ExecSql(strSql);
+            if (value == 0) return false;
+            if (delCache.IsNull()) return true;
+            Cache2.Remove("${Project}.${TableName}Cache_", delCache);
+            return true;
+        }
+#end
+#else
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">删除时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end Where where = null, string dbkey = "") {
+            if (#foreach($FieldInfo in $PKFields)${helper.LowerFirstChar2(${FieldInfo.ColumnName})}.#if($FieldInfo.ColumnType != "string")
+IsNull#else
+IsNullEmpty#end()#between
+  && #end) return false;
+            string strSql = new SQL().Delete(${TableName}._)
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal, true)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) :  Data.Pool(dbkey).ExecSql(strSql);
+            return value == 1 ? true : false;
+        }
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="where">删除时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end Where where = null, string dbkey = "") {
+            string strSql = new SQL().Delete(${TableName}._)
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, "(" + $helper.LowerFirstChar2(${FieldInfo.ColumnName})List + ")", Operator.In)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.ExecSql(strSql) :  Data.Pool(dbkey).ExecSql(strSql);
+            return value == 0 ? false : true;
+        }
+#end
+#end
+#end
+#if($currTableOP.IsExistByID && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}记录是否存在
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>记录是否存在</returns>
+        public bool IsExistByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end Where where = null, string dbkey = "") {
+            string strSql = new SQL().Count(${TableName}._${helper.GetFirstColumnName(${PKFields})}).From(${TableName}._)
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal)
+#end
+                ).Where(where).ToString();
+            int value = dbkey.IsNullEmpty() ? Data.GetScalar(strSql).ToString().ToInt(0) :  Data.Pool(dbkey).GetScalar(strSql).ToString().ToInt(0);
+            return value == 1 ? true : false;
+        }
+#end
+#if($currTableOP.SelectByID && $PKFields.Count>0)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}按主键查询，返回数据的实体类
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回单条记录的实体类</returns>
+        public ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end Where where = null, string dbkey = "") {
+            string cacheNameKey = "${Project}.${TableName}Cache_SelectByID_{0}".FormatWith(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}) + "_" + #end "_" + where);
+            return Cache2.Get<${TableName}>(cacheNameKey, cacheSeconds, () => {
+                string strSql = new SQL().From(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                    .Select(${TableName}._${FieldInfo.ColumnName})
+#end
+                    .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                        .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal)
+#end
+                    ).Where(where).ToString();
+                return Data.Pool(dbkey).GetDbDataReader(strSql).ToList<${TableName}>().FirstOrDefault();
+            });
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}按主键查询，返回数据的实体类
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回单条记录的实体类</returns>
+        public ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end Where where = null, string dbkey = "") {
+            string strSql = new SQL().From(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                .Select(${TableName}._${FieldInfo.ColumnName})
+#end
+                .Where("1=1").Where(new Where()
+#foreach ($FieldInfo in $PKFields)
+                    .And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal)
+#end
+                ).Where(where).ToString();
+            return Data.Pool(dbkey).GetDbDataReader(strSql).ToList<${TableName}>().FirstOrDefault();
+        }
+#end
+#end
+#if($currTableOP.SelectPageList)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}查询数据，带分页
+        /// </summary>
+        /// <param name="pageIndex">当前第几页，从1开始</param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="totalRecords">返回总记录数</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <param name="pageEnum">使用哪种分页方式（not_in、max_top、top_top、row_number、mysql、oracle、sqlite）</param>
+        /// <returns>返回实体记录集</returns>
+        public IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, Where where = null, string order = "", string fieldList = "", string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number) {
+            totalRecords = 0;
+            string cacheNameKey = "${Project}.${TableName}Cache_SelectPageList_{0}_{1}_{2}_{3}_{4}".FormatWith(pageIndex, pageSize, where, order, fieldList);
+            string cacheRecordsKey = "${Project}.${TableName}Cache_RecordsSelectPageList_{0}_{1}_{2}_{3}_{4}".FormatWith(pageIndex, pageSize, where, order, fieldList);
+            IList<${TableName}> list = (IList<${TableName}>)Cache2.Get(cacheNameKey);
+            if (!list.IsNull()) { totalRecords = (int)Cache2.Get(cacheRecordsKey); return list; }
+
+            using (PagerSQLHelper s = new PagerSQLHelper(pageEnum)) {
+                PagerSql sql = s.GetSQL(pageIndex, pageSize, ${TableName}._, ${TableName}._${helper.GetFirstColumnName(${Fields})}, fieldList.IfNullOrEmpty("#foreach($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end"), where, "", order);
+                DataSet ds = Data.Pool(dbkey).GetDataSet(sql.DataSql + ";" + sql.CountSql);
+                if (ds.IsNull()) return list;
+                list = ds.Tables[0].ToList<${TableName}>();
+                totalRecords = ds.Tables[1].Rows[0][0].ToString().ToInt();
+                ds.Dispose(); ds = null;
+            }
+            Cache2.Insert(cacheNameKey, list, cacheSeconds);
+            Cache2.Insert(cacheRecordsKey, totalRecords, cacheSeconds);
+            return list;
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}查询记录，带分页
+        /// </summary>
+        /// <param name="pageIndex">当前第几页，从1开始</param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="totalRecords">返回总记录数</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <param name="pageEnum">使用哪种分页方式（not_in、max_top、top_top、row_number、mysql、oracle、sqlite）</param>
+        /// <returns>返回实体记录集</returns>
+        public IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, Where where = null, string order = "", string fieldList = "", string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number) {
+            totalRecords = 0;
+            IList<${TableName}> list = null;
+            using (PagerSQLHelper s = new PagerSQLHelper(pageEnum)) {
+                PagerSql sql = s.GetSQL(pageIndex, pageSize, ${TableName}._, ${TableName}._${helper.GetFirstColumnName(${Fields})}, fieldList.IfNullOrEmpty("#foreach($FieldInfo in $Fields)[${FieldInfo.ColumnName}],#end"), where, "", order);
+                DataSet ds = Data.Pool(dbkey).GetDataSet(sql.DataSql + ";" + sql.CountSql);
+                if (ds.IsNull()) return list;
+                list = ds.Tables[0].ToList<${TableName}>();
+                totalRecords = ds.Tables[1].Rows[0][0].ToString().ToInt();
+                ds.Dispose(); ds = null;
+            }
+            return list;
+        }
+#end
+#end
+#if($currTableOP.SelectListByFK && $FKFields.Count>0)
+#if($CacheTime>0)
+#foreach ($FieldInfo in $FKFields)
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Where where = null, string order = "", string fieldList = "", string dbkey = "") {
+            string cacheNameKey = "${Project}.${TableName}Cache_SelectListBy${FieldInfo.ColumnName}_{0}_{1}_{2}_{3}".FormatWith($helper.LowerFirstChar2(${FieldInfo.ColumnName}), where, order, fieldList);
+            return Cache2.Get<IList<${TableName}>>(cacheNameKey, cacheSeconds, () => {
+			    string strSql = string.Empty;
+			    if (fieldList.IsNullEmpty()) {
+                    strSql = new SQL().From(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                        .Select(${TableName}._${FieldInfo.ColumnName})
+#end
+                        .Where("1=1").Where(new Where().And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal))
+                        .Where(where).Order(order).ToString();
+                } else {
+			        strSql = new SQL().From(${TableName}._).Select(fieldList)
+                        .Where("1=1").Where(new Where().And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal))
+                        .Where(where).Order(order).ToString();
+                }
+                return Data.Pool(dbkey).GetDbDataReader(strSql).ToList<${TableName}>();
+            });
+        }
+#end
+#else
+#foreach ($FieldInfo in $FKFields)
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Where where = null, string order = "", string fieldList = "", string dbkey = "") {
+			string strSql = string.Empty;
+			if (fieldList.IsNullEmpty()) {
+                strSql = new SQL().From(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                    .Select(${TableName}._${FieldInfo.ColumnName})
+#end
+                    .Where("1=1").Where(new Where().And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal))
+                    .Where(where).Order(order).ToString();
+            } else {
+			    strSql = new SQL().From(${TableName}._).Select(fieldList)
+                    .Where("1=1").Where(new Where().And(${TableName}._${FieldInfo.ColumnName}, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), Operator.Equal))
+                    .Where(where).Order(order).ToString();
+            }
+            return Data.Pool(dbkey).GetDbDataReader(strSql).ToList<${TableName}>();
+        }
+#end
+#end
+#end
+#if($currTableOP.SelectListByAll)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}查询所有记录
+        /// </summary>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public IList<${TableName}> SelectListByAll(Where where = null, string order = "", string fieldList = "", string dbkey = "") {
+            string cacheNameKey = "${Project}.${TableName}Cache_SelectListByAll_{0}_{1}_{2}".FormatWith(where, order, fieldList);
+            return Cache2.Get<IList<${TableName}>>(cacheNameKey, cacheSeconds, () => {
+                string strSql = string.Empty;
+			    if (fieldList.IsNullEmpty()) {
+                    strSql = new SQL().From(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                        .Select(${TableName}._${FieldInfo.ColumnName})
+#end
+                        .Where("1=1").Where(where).Order(order).ToString();
+                } else {
+			        strSql = new SQL().From(${TableName}._).Select(fieldList).Where("1=1").Where(where).Order(order).ToString();
+                }
+                return Data.Pool(dbkey).GetDbDataReader(strSql).ToList<${TableName}>();
+            });
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}查询所有记录
+        /// </summary>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public IList<${TableName}> SelectListByAll(Where where = null, string order = "", string fieldList = "", string dbkey = "") {
+            string strSql = string.Empty;
+			if (fieldList.IsNullEmpty()) {
+                strSql = new SQL().From(${TableName}._)
+#foreach ($FieldInfo in $Fields)
+                    .Select(${TableName}._${FieldInfo.ColumnName})
+#end
+                    .Where("1=1").Where(where).Order(order).ToString();
+            } else {
+			    strSql = new SQL().From(${TableName}._).Select(fieldList).Where("1=1").Where(where).Order(order).ToString();
+            }
+            return Data.Pool(dbkey).GetDbDataReader(strSql).ToList<${TableName}>();
+        }
+#end
+#end
+    }
+}

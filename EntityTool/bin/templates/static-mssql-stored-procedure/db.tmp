@@ -1,0 +1,313 @@
+﻿#if($currTableOP.Insert)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_Insert]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_Insert]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：${TableNameCN}添加数据
+-- =============================================
+create procedure [dbo].[${TableName}_Insert](
+#if ($PKFields.Count>1)
+#foreach ($FieldInfo in $PKFields)
+	@${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})} = null#between
+,
+#end 
+#else
+#foreach ($FieldInfo in $NoPKFields)
+	@${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})} = null#between
+,
+#end 
+#end
+
+) as begin
+	declare @insertSql nvarchar(max),@fieldSql nvarchar(1500),@valueSql nvarchar(1500)
+	set @fieldSql = ''; set @valueSql = ''
+
+#foreach ($FieldInfo in $NoPKFields)
+	if (@${FieldInfo.ColumnName} is not null) begin set @fieldSql = @fieldSql + ',[${FieldInfo.ColumnName}]'; set @valueSql = @valueSql + ',@temp${FieldInfo.ColumnName}'; end 
+#end
+
+	set @fieldSql=ltrim(@fieldSql);
+	if left(@fieldSql,1)=',' set @fieldSql=substring(@fieldSql,2,len(@fieldSql)-1);
+	set @valueSql=ltrim(@valueSql);
+	if left(@valueSql,1)=',' set @valueSql=substring(@valueSql,2,len(@valueSql)-1);
+
+	set @insertSql = 'insert into [${TableName}] (' + @fieldSql + ') values (' + @valueSql + ')';
+
+	begin tran
+	execute sp_executesql @insertSql, N'#foreach ($FieldInfo in $NoPKFields)#if($velocityCount>1),#end@temp${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})}#end'#foreach ($FieldInfo in $NoPKFields),@${FieldInfo.ColumnName}#end
+
+	if @@error!=0 rollback else commit
+	select isnull(@@identity,0)
+
+	-- ${TableName}_Insert #foreach ($FieldInfo in $NoPKFields)#if($velocityCount>1),#end@${FieldInfo.ColumnName}#end
+
+end
+GO
+#end
+
+#if($currTableOP.update && $NoPKFields.Count>0 && $PKFields.Count>0)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_Update]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：${TableNameCN}修改数据
+-- =============================================
+create procedure [dbo].[${TableName}_Update](
+#foreach ($FieldInfo in $Fields)
+	@${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})} = null,
+#end 
+	@UpdateWhere varchar(1000)
+) as begin
+#foreach ($FieldInfo in $PKFields)
+	if (@${FieldInfo.ColumnName} is null or @${FieldInfo.ColumnName} = '') return;
+#end 
+	declare @updateSql nvarchar(max)
+	set @updateSql = '';
+	if (@UpdateWhere is null or @UpdateWhere='') set @UpdateWhere='' else set @UpdateWhere = @UpdateWhere
+
+#foreach ($FieldInfo in $NoPKFields)
+	if (@${FieldInfo.ColumnName} is not null) set @updateSql = @updateSql + ', [${FieldInfo.ColumnName}]=@temp${FieldInfo.ColumnName}'
+#end
+
+	set @updateSql=ltrim(@updateSql);
+	if left(@updateSql,1)=',' set @updateSql=substring(@updateSql,2,len(@updateSql)-1);
+	set @updateSql = 'update [${TableName}] set ' + @updateSql + ' WHERE #foreach ($FieldInfo in $PKFields)[${FieldInfo.ColumnName}]=@temp${FieldInfo.ColumnName}#between
+ and 
+	#end' + @UpdateWhere
+
+	begin tran
+	execute sp_executesql @updateSql, N'#foreach ($FieldInfo in $Fields)#if($velocityCount>1),#end@temp${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})}#end'#foreach ($FieldInfo in $Fields),@${FieldInfo.ColumnName}#end
+	
+	if @@error!=0 rollback else commit
+
+	-- ${TableName}_update #foreach ($FieldInfo in $Fields)#if($velocityCount>1),#end@${FieldInfo.ColumnName}#end
+
+end
+GO
+#end
+
+#if($currTableOP.DeleteByID && $PKFields.Count>0)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_DeleteByID]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_DeleteByID]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：${TableNameCN}删除数据
+-- =============================================
+create procedure [dbo].[${TableName}_DeleteByID](
+#foreach ($FieldInfo in $PKFields)
+	@${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})},
+#end 
+	@Where varchar(1000)
+) as begin
+#foreach ($FieldInfo in $PKFields)
+	if (@${FieldInfo.ColumnName} is null or @${FieldInfo.ColumnName} = '') return;
+#end 
+	declare @deleteSql nvarchar(4000)
+	if (@Where is null or @Where='') set @Where='' else set @Where = @Where
+	set @deleteSql = 'delete from [${TableName}] where #foreach ($FieldInfo in $PKFields)[${FieldInfo.ColumnName}]=''' + cast(@${FieldInfo.ColumnName} as varchar(1000)) + '''#between
+ and 
+	#end ' + @Where;
+	begin tran
+	exec(@deleteSql)
+	if @@error!=0 rollback else commit
+	-- ${TableName}_DeleteByID #foreach ($FieldInfo in $PKFields)@${FieldInfo.ColumnName},#end null
+end
+GO
+#if($PKFields.Count==1)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_DeleteByIDList]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_DeleteByIDList]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：${TableNameCN}删除多条数据
+-- =============================================
+create procedure [dbo].[${TableName}_DeleteByIDList](
+#foreach ($FieldInfo in $PKFields)
+	@${FieldInfo.ColumnName}List varchar(max),
+#end 
+	@Where varchar(1000)
+) as begin
+#foreach ($FieldInfo in $PKFields)
+	if (@${FieldInfo.ColumnName}List is null or @${FieldInfo.ColumnName}List = '') return;
+#end 
+	declare @deleteSql nvarchar(4000)
+	if (@Where is null or @Where='') set @Where='' else set @Where = @Where
+	set @deleteSql = 'delete from [${TableName}] where #foreach ($FieldInfo in $PKFields)[${FieldInfo.ColumnName}] in ' + @${FieldInfo.ColumnName}List #end + ' ' + @Where;
+	begin tran
+	exec(@deleteSql)
+	if @@error!=0 rollback else commit
+	-- ${TableName}_DeleteByID #foreach ($FieldInfo in $PKFields)@${FieldInfo.ColumnName}List,#end null
+end
+GO
+#end
+#end
+
+#if($currTableOP.IsExistByID && $PKFields.Count>0)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_IsExistByID]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_IsExistByID]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：${TableNameCN}数据是否存在
+-- =============================================
+create procedure [dbo].[${TableName}_IsExistByID](
+#foreach ($FieldInfo in $PKFields)
+	@${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})},
+#end 
+	@Where varchar(1000)
+) as begin
+#foreach ($FieldInfo in $PKFields)
+	if (@${FieldInfo.ColumnName} is null or @${FieldInfo.ColumnName} = '') return;
+#end 
+	declare @selectSql nvarchar(4000)
+	if (@Where is null or @Where='') set @Where='' else set @Where = @Where
+	set @selectSql = 'select count(${helper.GetFirstColumnName(${Fields})}) from [${TableName}] where #foreach ($FieldInfo in $PKFields)[${FieldInfo.ColumnName}]=''' + cast(@${FieldInfo.ColumnName} as varchar(1000)) + '''#between
+ and 
+	#end ' + @Where;
+	begin tran
+	exec(@selectSql)
+	if @@error!=0 rollback else commit
+	-- ${TableName}_IsExistByID #foreach ($FieldInfo in $PKFields)@${FieldInfo.ColumnName},#end null
+end
+GO
+#end
+
+#if($currTableOP.SelectByID && $PKFields.Count>0)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_SelectByID]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_SelectByID]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：按主键查询${TableNameCN}数据
+-- =============================================
+create procedure [dbo].[${TableName}_SelectByID](
+#foreach ($FieldInfo in $PKFields)
+	@${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})},
+#end 
+	@Where varchar(1000) = ''
+) as begin
+#foreach ($FieldInfo in $PKFields)
+	if (@${FieldInfo.ColumnName} is null or @${FieldInfo.ColumnName} = '') return;
+#end 
+	declare @selectSql nvarchar(4000)
+	if (@Where is null or @Where='') set @Where='' else set @Where = @Where
+	set @selectSql = 'select #foreach ($FieldInfo in $Fields)#if($velocityCount>1),#end[${FieldInfo.ColumnName}]#end from [${TableName}] where #foreach ($FieldInfo in $PKFields)[${FieldInfo.ColumnName}]=''' + cast(@${FieldInfo.ColumnName} as varchar(1000)) + '''#between
+ and 
+	#end ' + @Where;
+	exec(@selectSql)
+	-- ${TableName}_SelectByID #foreach ($FieldInfo in $PKFields)@${FieldInfo.ColumnName},#end null
+end
+GO
+#end
+
+#if($currTableOP.SelectPageList)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_SelectPageList]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_SelectPageList]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：分页查询${TableNameCN}数据
+-- =============================================
+create procedure [dbo].[${TableName}_SelectPageList](
+	@PageIndex int,
+	@PageSize int,
+	@Where varchar(1000),
+	@Order varchar(100),
+	@Fields varchar(1000)=''
+) as begin
+	declare @Counts		int,@Sort bit 				--数据总数
+	declare @strTalbe	varchar(1000)		--表链接
+	declare @strWhere   varchar(1000)     	-- where语句
+	declare @SortField	varchar(100)		--排序字段
+	declare @ReturnFields	varchar(1000)	--返回字段列表
+	declare @LastSort	varchar(5)
+
+	set @strWhere= @Where	--格式化 where sql 语句
+
+	set @strTalbe='[${TableName}]' --表链接
+	set @ReturnFields=@Fields;
+	if (@Fields is null or @Fields='') set @ReturnFields='#foreach ($FieldInfo in $Fields)#if($velocityCount>1),#end[${FieldInfo.ColumnName}]#end'	--返回字段列表
+
+	set @SortField = @Order
+	if (@SortField is null or @SortField='') set @SortField ='${helper.GetFirstColumnName(${Fields})}' --排序字段
+	set @Sort = 1;
+	if (len(@SortField)>5) begin
+		set @LastSort = lower(right(@SortField,5));
+		if (@LastSort=' desc') begin set @Sort = 1; set @SortField = left(@SortField,len(@SortField)-5) end
+		if (right(@LastSort,4)=' asc') begin set @Sort = 0; set @SortField = left(@SortField,len(@SortField)-4) end
+	end
+
+	exec getPagerTopMAX @strTalbe,'${helper.GetFirstColumnName(${Fields})}',@PageIndex,@PageSize,@ReturnFields,@SortField,@Sort,@strWhere,0,@Counts out
+	select @Counts as TotalRecords
+
+	-- ${TableName}_SelectPageList 1,10,'',''
+	-- ${TableName}_SelectPageList 2,10,'',''
+	-- ${TableName}_SelectPageList 3,10,'',''
+	-- ${TableName}_SelectPageList 4,10,'',''
+end
+GO
+#end
+
+#if($currTableOP.SelectListByFK && $FKFields.Count>0)
+#foreach ($FieldInfo in $FKFields)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_SelectListBy${FieldInfo.ColumnName}]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_SelectListBy${FieldInfo.ColumnName}]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：按外键查询${TableNameCN}数据
+-- =============================================
+create procedure [dbo].[${TableName}_SelectListBy${FieldInfo.ColumnName}](
+	@${FieldInfo.ColumnName} ${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})},
+	@Where varchar(1000) = '',
+	@Order varchar(100) = '',
+	@Fields varchar(1000) = ''
+) as begin
+	declare @selectSql nvarchar(4000)
+	if (@Where is null or @Where='') set @Where='' else set @Where = @Where
+	if (@Fields is null or @Fields='') set @Fields='#foreach ($FieldInfo in $Fields)#if($velocityCount>1),#end[${FieldInfo.ColumnName}]#end'	--返回字段列表
+	if (@Order is not null and @Order<>'') set @Order = ' order by ' + @Order; else set @Order=''
+	set @selectSql = 'select ' + @Fields + ' from [${TableName}] where [${FieldInfo.ColumnName}]=''' + cast(@${FieldInfo.ColumnName} as varchar(1000)) + ''' ' + @Where + @Order;
+	exec(@selectSql)
+	-- ${TableName}_SelectListBy${FieldInfo.ColumnName} @${helper.MSSQLCSTypeToDBType(${FieldInfo.ColumnType},${FieldInfo.DBType},${FieldInfo.Length},${FieldInfo.Decimals})}
+
+end
+GO
+#end
+#end
+
+#if($currTableOP.SelectListByAll)
+IF  EXISTS (select * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[${TableName}_SelectListByAll]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[${TableName}_SelectListByAll]
+GO
+-- =============================================
+-- 开发作者：系统自动生成（不允许修改）
+-- 创建日期：${Now}
+-- 功能描述：查询所有${TableNameCN}数据
+-- =============================================
+create procedure [dbo].[${TableName}_SelectListByAll](
+	@Where varchar(1000) = '',
+	@Order varchar(100) = '',
+	@Fields varchar(1000) = ''
+) as begin
+	declare @selectSql nvarchar(4000)
+	if (@Where is null or @Where='') set @Where='' else set @Where = ' where 1=1 ' + @Where
+	if (@Fields is null or @Fields='') set @Fields='#foreach ($FieldInfo in $Fields)#if($velocityCount>1),#end[${FieldInfo.ColumnName}]#end'	--返回字段列表
+	if (@Order is not null and @Order<>'') set @Order = ' order by ' + @Order; else set @Order=''
+	set @selectSql = 'select ' + @Fields + ' from [${TableName}] ' + @Where + @Order;
+	exec(@selectSql)
+	-- ${TableName}_SelectListByAll
+end
+GO
+#end

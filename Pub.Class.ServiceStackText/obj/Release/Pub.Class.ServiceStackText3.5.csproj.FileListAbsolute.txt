@@ -1,0 +1,25 @@
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.dll
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.pdb
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.ServiceStackText\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.dll
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.pdb
+E:\net_pro\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.dll
+E:\net_pro\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.ServiceStackText.pdb
+E:\net_pro\EntityTool5.4\Pub.Class.ServiceStackText\obj\Release\ResolveAssemblyReference.cache
+E:\net_pro\EntityTool5.4\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.dll
+E:\net_pro\EntityTool5.4\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.pdb
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.5\Pub.Class.Release\bin\Pub.Class.ServiceStackText.dll
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.5\Pub.Class.Release\bin\Pub.Class.ServiceStackText.pdb
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.dll
+C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.pdb
+D:\EntityTool5.5\Pub.Class.Release\bin\Pub.Class.ServiceStackText.dll
+D:\EntityTool5.5\Pub.Class.Release\bin\Pub.Class.ServiceStackText.pdb
+D:\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\ResolveAssemblyReference.cache
+D:\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.dll
+D:\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.pdb
+E:\net_pro\EntityTool5.5\Pub.Class.Release\bin\Pub.Class.ServiceStackText.dll
+E:\net_pro\EntityTool5.5\Pub.Class.Release\bin\Pub.Class.ServiceStackText.pdb
+E:\net_pro\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\ResolveAssemblyReference.cache
+E:\net_pro\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.dll
+E:\net_pro\EntityTool5.5\Pub.Class.ServiceStackText\obj\Release\Pub.Class.ServiceStackText.pdb

@@ -1,0 +1,597 @@
+﻿//-------------------------------------------------------------------------------------------------------------------------------------
+// $CopyRight
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Data.Common;
+using System.Data;
+using System.Data.OleDb;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using ${Project}.Model;
+using ${Project}.IDAL;
+#if($UseOneProject)
+using ${Project}.SqlServerDAL;
+#end
+using Pub.Class;
+
+namespace ${Project}.BLL {
+    /// <summary>
+    /// ${TableNameCN}操作类
+    /// 
+    /// 修改纪录
+    ///     ${Now} 版本：1.0 系统自动创建此类
+    /// 
+    /// </summary>
+    public partial class ${TableName}BLL {
+#if($UseOneProject)
+        private static readonly I${TableName}DAL dal = new ${TableName}DAL();
+#else
+        private static readonly I${TableName}DAL dal = (I${TableName}DAL)"${Project}.{0}DAL.${TableName}DAL,${Project}.{0}DAL".FormatWith(Data.DBType).LoadClass();
+#end
+
+#if($currTableOP.Insert)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="delCache">添加成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>#if($helper.IsNull($PKInfo.ColumnName))添加是否成功#else返回添加成功后的ID#end</returns>
+        public static #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string[] delCache = null, string dbkey = "") {
+            return dal.Insert($helper.LowerFirstChar2(${TableName}), delCache, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>#if($helper.IsNull($PKInfo.ColumnName))添加是否成功#else返回添加成功后的ID#end</returns>
+        public static #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName})) {
+            return dal.Insert($helper.LowerFirstChar2(${TableName}), null, "");
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>#if($helper.IsNull($PKInfo.ColumnName))添加是否成功#else返回添加成功后的ID#end</returns>
+        public static #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName}), string dbkey = "") {
+            return dal.Insert($helper.LowerFirstChar2(${TableName}), dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}添加记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>#if($helper.IsNull($PKInfo.ColumnName))添加是否成功#else返回添加成功后的ID#end</returns>
+        public static #if($helper.IsNull($PKInfo.ColumnName))bool#else${PKInfo.ColumnType}#end Insert(${TableName} $helper.LowerFirstChar2(${TableName})) {
+            return dal.Insert($helper.LowerFirstChar2(${TableName}), "");
+        }
+#end
+#end
+#if($currTableOP.Update && $NoPKFields.Count>0 && $PKFields.Count>0)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">修改成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改是否成功</returns>
+        public static bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string[] delCache = null, string dbkey = "") {
+            return dal.Update($helper.LowerFirstChar2(${TableName}), where, delCache, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>修改是否成功</returns>
+        public static bool Update(${TableName} $helper.LowerFirstChar2(${TableName})) {
+            return dal.Update($helper.LowerFirstChar2(${TableName}), "", null, "");
+        }
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}修改多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">修改成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改是否成功</returns>
+        public static bool UpdateByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end ${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string[] delCache = null, string dbkey = ""){
+            return dal.UpdateByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end $helper.LowerFirstChar2(${TableName}), where, delCache, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}修改多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>修改是否成功</returns>
+        public static bool UpdateByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end ${TableName} $helper.LowerFirstChar2(${TableName})){
+            return dal.UpdateByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end $helper.LowerFirstChar2(${TableName}), "", null, "");
+        }
+#end
+#else
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改是否成功</returns>
+        public static bool Update(${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string dbkey = "") {
+            return dal.Update($helper.LowerFirstChar2(${TableName}), where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}修改记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>修改是否成功</returns>
+        public static bool Update(${TableName} $helper.LowerFirstChar2(${TableName})) {
+            return dal.Update($helper.LowerFirstChar2(${TableName}), "", "");
+        }
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}修改多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>修改是否成功</returns>
+        public static bool UpdateByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end ${TableName} $helper.LowerFirstChar2(${TableName}), string where = "", string dbkey = ""){
+            return dal.UpdateByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end $helper.LowerFirstChar2(${TableName}), where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}修改多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="$helper.LowerFirstChar2(${TableName})">${TableNameCN}实体类</param>
+        /// <returns>修改是否成功</returns>
+        public static bool UpdateByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end ${TableName} $helper.LowerFirstChar2(${TableName})){
+            return dal.UpdateByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end $helper.LowerFirstChar2(${TableName}), "", "");
+        }
+#end
+#end
+#end
+#if($currTableOP.DeleteByID && $PKFields.Count>0)
+#set($i = false)
+#foreach($FieldInfo in $PKFields)
+#if($FieldInfo.ColumnType != "string") #set($i = true) #end
+#end
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">删除成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string[] delCache = null, string dbkey = "") {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end where, delCache, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end $helper.LowerFirstChar2(${FieldInfo.ColumnName})#between
+, #end) {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end "", null, "");
+        }
+#if($i)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">修改时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">删除成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string[] delCache = null, string dbkey = "") {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)(${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end where, delCache, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName})#between
+, #end) {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)(${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end "", null, "");
+        }
+#end
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="where">删除时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="delCache">修改成功后清理的CACHE key，支持正则</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end string where = "", string[] delCache = null, string dbkey = "") {
+            return dal.DeleteByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end where, delCache, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List#between
+, #end) {
+            return dal.DeleteByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end "", null, "");
+        }
+#end
+#else
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">删除时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end $helper.LowerFirstChar2(${FieldInfo.ColumnName})#between
+, #end) {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end "", "");
+        }
+#if($i)
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">删除时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)(${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}删除记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName})#between
+, #end) {
+            return dal.DeleteByID(#foreach($FieldInfo in $PKFields)(${FieldInfo.ColumnType}#if($FieldInfo.ColumnType != "string")?#end)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end "", "");
+        }
+#end
+#if ($PKFields.Count==1)
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <param name="where">删除时附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end string where = "", string dbkey = "") {
+            return dal.DeleteByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}删除多条记录
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})List">${FieldInfo.Memo}列表，用“,”号分隔</param>
+#end
+        /// <returns>删除是否成功</returns>
+        public static bool DeleteByIDList(#foreach($FieldInfo in $PKFields)string $helper.LowerFirstChar2(${FieldInfo.ColumnName})List#between
+, #end) {
+            return dal.DeleteByIDList(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName})List, #end "", "");
+        }
+#end
+#end
+#end
+#if($currTableOP.IsExistByID && $PKFields.Count>0)
+        /// <summary>
+        /// ${TableNameCN}记录是否存在
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时使用ConnString连接</param>
+        /// <returns>记录是否存在</returns>
+        public static bool IsExistByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            return dal.IsExistByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}记录是否存在
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <returns>记录是否存在</returns>
+        public static bool IsExistByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName})#between
+, #end) {
+            return dal.IsExistByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end "", "");
+        }
+#end
+#if($currTableOP.SelectByID && $PKFields.Count>0)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}按主键查询，返回数据的实体类
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回单条记录的实体类</returns>
+        public static ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            return dal.SelectByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}按主键查询，返回数据的实体类
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <returns>返回单条记录的实体类</returns>
+        public static ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName})#between
+, #end) {
+            return dal.SelectByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end "", "");
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}按主键查询，返回数据的实体类
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回单条记录的实体类</returns>
+        public static ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "", string dbkey = "") {
+            return dal.SelectByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end where, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}按主键查询，返回数据的实体类
+        /// </summary>
+#foreach($FieldInfo in $PKFields)
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+#end
+        /// <returns>返回单条记录的实体类</returns>
+        public static ${TableName} SelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName})#between
+, #end) {
+            return dal.SelectByID(#foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end "", "");
+        }
+#end
+#if($CacheTime>0)
+        /// <summary>
+        /// 清除${TableNameCN}按主键查询的缓存
+        /// </summary>
+        public static void ClearCacheSelectByID(#foreach($FieldInfo in $PKFields)${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), #end string where = "") {
+            string cacheName = "${TableName}Cache_SelectByID_{0}";
+            string cacheNameKey = string.Format(cacheName, #foreach($FieldInfo in $PKFields)$helper.LowerFirstChar2(${FieldInfo.ColumnName}) + "_" + #end "_" + where);
+            Cache2.Remove(cacheNameKey);
+        }
+#end
+#end
+#if($currTableOP.SelectPageList)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}查询数据，带分页
+        /// </summary>
+        /// <param name="pageIndex">当前第几页，从1开始</param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="totalRecords">返回总记录数</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <param name="pageEnum">使用哪种分页方式（not_in、max_top、top_top、row_number、mysql、oracle、sqlite）</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, string where = "", string order = "", string fieldList = "", string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number) {
+            return dal.SelectPageList(pageIndex, pageSize, out totalRecords, where, order, fieldList, dbkey, pageEnum);
+        }
+        /// <summary>
+        /// ${TableNameCN}查询数据，带分页
+        /// </summary>
+        /// <param name="pageIndex">当前第几页，从1开始</param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="totalRecords">返回总记录数</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords) {
+            return dal.SelectPageList(pageIndex, pageSize, out totalRecords, "", "", "", "", PagerSQLEnum.row_number);
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}查询记录，带分页
+        /// </summary>
+        /// <param name="pageIndex">当前第几页，从1开始</param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="totalRecords">返回总记录数</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <param name="pageEnum">使用哪种分页方式（not_in、max_top、top_top、row_number、mysql、oracle、sqlite）</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, string where = "", string order = "", string fieldList = "", string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number) {
+            return dal.SelectPageList(pageIndex, pageSize, out totalRecords, where, order, fieldList, dbkey, pageEnum);
+        }
+        /// <summary>
+        /// ${TableNameCN}查询记录，带分页
+        /// </summary>
+        /// <param name="pageIndex">当前第几页，从1开始</param>
+        /// <param name="pageSize">每页记录数</param>
+        /// <param name="totalRecords">返回总记录数</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectPageList(int pageIndex, int pageSize, out int totalRecords, string where = "", string order = "", string fieldList = "", string dbkey = "", PagerSQLEnum pageEnum = PagerSQLEnum.row_number) {
+            return dal.SelectPageList(pageIndex, pageSize, out totalRecords, "", "", "", "", PagerSQLEnum.row_number);
+        }
+#end
+#if($CacheTime>0)
+        /// <summary>
+        /// 清除${TableNameCN}查询记录，带分页的缓存
+        /// </summary>
+        public static void ClearCacheSelectPageList() {
+            string cacheNameKey = "${TableName}Cache_SelectPageList_(.+?)";
+            string cacheRecordsKey = "${TableName}Cache_RecordsSelectPageList_(.+?)";
+            Cache2.RemoveByPattern(cacheNameKey);
+            Cache2.RemoveByPattern(cacheRecordsKey);
+        }
+#end
+#end
+#if($currTableOP.SelectListByFK && $FKFields.Count>0)
+#if($CacheTime>0)
+#foreach ($FieldInfo in $FKFields)
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "", string dbkey = "") {
+            return dal.SelectListBy${FieldInfo.ColumnName}($helper.LowerFirstChar2(${FieldInfo.ColumnName}), where, order, fieldList, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName})) {
+            return dal.SelectListBy${FieldInfo.ColumnName}($helper.LowerFirstChar2(${FieldInfo.ColumnName}), "", "", "", "");
+        }
+        /// <summary>
+        /// 清除${TableNameCN}查询指定外键记录的缓存
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        public static void ClearCacheSelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "") {
+            string cacheName = "${TableName}Cache_SelectListBy${FieldInfo.ColumnName}_{0}_{1}_{2}_{3}";
+            string cacheNameKey = string.Format(cacheName, $helper.LowerFirstChar2(${FieldInfo.ColumnName}), where, order, fieldList);
+            Cache2.Remove(cacheNameKey);
+        }
+#end
+#else
+#foreach ($FieldInfo in $FKFields)
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName}), string where = "", string order = "", string fieldList = "", string dbkey = "") {
+            return dal.SelectListBy${FieldInfo.ColumnName}($helper.LowerFirstChar2(${FieldInfo.ColumnName}), where, order, fieldList, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}查询指定外键记录
+        /// </summary>
+        /// <param name="$helper.LowerFirstChar2(${FieldInfo.ColumnName})">${FieldInfo.Memo}</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListBy${FieldInfo.ColumnName}(${FieldInfo.ColumnType} $helper.LowerFirstChar2(${FieldInfo.ColumnName})) {
+            return dal.SelectListBy${FieldInfo.ColumnName}($helper.LowerFirstChar2(${FieldInfo.ColumnName}), "", "", "", "");
+        }
+#end
+#end
+#end
+#if($currTableOP.SelectListByAll)
+#if($CacheTime>0)
+        /// <summary>
+        /// ${TableNameCN}查询所有记录
+        /// </summary>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListByAll(string where = "", string order = "", string fieldList = "", string dbkey = "") {
+            return dal.SelectListByAll(where, order, fieldList, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}查询所有记录
+        /// </summary>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListByAll() {
+            return dal.SelectListByAll("", "", "", "");
+        }
+#else
+        /// <summary>
+        /// ${TableNameCN}查询所有记录
+        /// </summary>
+        /// <param name="where">附加条件，统一的前面要加链接符（and、or等等）</param>
+        /// <param name="order">排序字段，不加“order by”</param>
+        /// <param name="fieldList">设置需要返回的字段</param>
+        /// <param name="dbkey">存在数据库连接池中的连接key，为空时随机取连接key</param>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListByAll(string where = "", string order = "", string fieldList = "", string dbkey = "") {
+            return dal.SelectListByAll(where, order, fieldList, dbkey);
+        }
+        /// <summary>
+        /// ${TableNameCN}查询所有记录
+        /// </summary>
+        /// <returns>返回实体记录集</returns>
+        public static IList<${TableName}> SelectListByAll() {
+            return dal.SelectListByAll("", "", "", "");
+        }
+#end
+#if($CacheTime>0)
+        /// <summary>
+        /// 清除${TableNameCN}查询所有记录的缓存
+        /// </summary>
+        public static void ClearCacheSelectListByAll() {
+            //Cache2.Remove("${TableName}Cache_SelectListByAll___");
+            Cache2.RemoveByPattern("${TableName}Cache_SelectListByAll_(.+?)");
+        }
+        /// <summary>
+        /// 清除${TableNameCN}所有缓存
+        /// </summary>
+        public static void ClearCacheAll() {
+            Cache2.RemoveByPattern("${TableName}Cache_(.+?)");
+        }
+#end
+#end
+    }
+}
