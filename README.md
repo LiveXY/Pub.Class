@@ -1,2 +1,3 @@
 pub.class
 =========
+test
