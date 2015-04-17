@@ -93,6 +93,17 @@
     <Compile Include="Class\Js.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Class\Json\Delegate.cs" />
+    <Compile Include="Class\Json\ILoadMember.cs" />
+    <Compile Include="Class\Json\Json.cs" />
+    <Compile Include="Class\Json\JsonBuilder.cs" />
+    <Compile Include="Class\Json\JsonParser.cs" />
+    <Compile Include="Class\Json\Literacy.cs" />
+    <Compile Include="Class\Json\ObjectProperty.cs" />
+    <Compile Include="Class\Json\ObjectPropertyCollection.cs" />
+    <Compile Include="Class\Json\QuickJsonBuilder.cs" />
+    <Compile Include="Class\Json\UnsafeJsonReader.cs" />
+    <Compile Include="Class\Json\UnsafeStringWriter.cs" />
     <Compile Include="Class\Linq\Buffer.cs" />
     <Compile Include="Class\Linq\EmptyEnumerable.cs" />
     <Compile Include="Class\Linq\Enumerable.cs" />
@@ -153,7 +164,6 @@
     <Compile Include="Class\Extensions\BooleanExtensions.cs" />
     <Compile Include="Class\Extensions\IntExtensions.cs" />
     <Compile Include="Class\Extensions\DecimalExtensions.cs" />
-    <Compile Include="Class\Extensions\ExpressionExtensions.cs" />
     <Compile Include="Class\Extensions\DoubleExtensions.cs" />
     <Compile Include="Class\Extensions\LongExtensions.cs" />
     <Compile Include="Class\Extensions\FuncExtensions.cs" />
