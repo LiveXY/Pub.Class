@@ -45,3 +45,17 @@ Pub.Class.SharpZip/obj/
 Pub.Class.WebCache/obj/
 EmailService/obj/
 Pub.Class.WinRAR/obj/
+ToSwfService/obj/
+Pub.Class.VelocityCache/obj/
+Pub.Class.ToSwfWCF/obj/
+Pub.Class.ToSwf/obj/
+Pub.Class.ServiceStackText/obj/
+Pub.Class.RedisCache/obj/
+Pub.Class.AppFabricCache/obj/
+Pub.Class.Mongodb/obj/
+EntityTool3.5.suo
+EntityTool/bin/EntityTool.exe
+EntityTool/bin/EntityTool.pdb
+EntityTool/bin/Pub.Class.dll
+EntityTool/bin/Pub.Class.pdb
+EntityTool/bin/Pub.Class.xml

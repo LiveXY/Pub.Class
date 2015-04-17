@@ -106,6 +106,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pub.Class.ToSwfWCF\Pub.Class.ToSwfWCF3.5.csproj">
+      <Project>{C9F10DCD-6BEB-480D-9E79-8F1734C6BB99}</Project>
+      <Name>Pub.Class.ToSwfWCF3.5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pub.Class\Pub.Class3.5.csproj">
+      <Project>{2AD0BF74-CE88-4004-A609-239C7EBD51BF}</Project>
+      <Name>Pub.Class3.5</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
