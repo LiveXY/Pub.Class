@@ -11,58 +11,58 @@ using System.Web.Configuration;
 
 namespace Pub.Class {
     /// <summary>
-    /// Web.ConfigÅäÖÃÀà
+    /// Web.Configé…ç½®ç±»
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2006.05.15 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2006.05.15 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public class WebConfig {
         /// <summary>
-        /// Web.Config ÖĞÅäÖÃDoMainÇøÓò
+        /// Web.Config ä¸­é…ç½®DoMainåŒºåŸŸ
         /// </summary>
         public static readonly string DoMain = WebConfig.GetApp("DoMain") ?? string.Empty;
         //#region GetApp
         /// <summary>
-        /// È¡appSettings½áµãÊı¾İ
+        /// å–appSettingsç»“ç‚¹æ•°æ®
         /// </summary>
         /// <param name="key">key</param>
-        /// <returns>·µ»ØÖµ</returns>
+        /// <returns>è¿”å›å€¼</returns>
         public static string GetApp(string key) {
             if (ConfigurationManager.AppSettings[key].IsNotNull()) return ConfigurationManager.AppSettings[key].ToString();
             return null;
         }
         /// <summary>
-        /// È¡appSettings½áµãÊı¾İ
+        /// å–appSettingsç»“ç‚¹æ•°æ®
         /// </summary>
         /// <param name="key">key</param>
-        /// <param name="value">Ä¬ÈÏÖµ</param>
-        /// <returns>·µ»ØÖµ</returns>
+        /// <param name="value">é»˜è®¤å€¼</param>
+        /// <returns>è¿”å›å€¼</returns>
         public static T GetApp<T>(string key, T value) {
             if (ConfigurationManager.AppSettings[key].IsNotNull()) return ConfigurationManager.AppSettings[key].ToString().ConvertTo<T>();
             return default(T);
         }
         /// <summary>
-        /// È¡appSettings½áµãÊı¾İ
+        /// å–appSettingsç»“ç‚¹æ•°æ®
         /// </summary>
-        /// <param name="i">Ë÷Òı</param>
-        /// <returns>È¡appSettings½áµãÊı¾İ</returns>
+        /// <param name="i">ç´¢å¼•</param>
+        /// <returns>å–appSettingsç»“ç‚¹æ•°æ®</returns>
         public static string GetApp(int i) {
             if (ConfigurationManager.AppSettings[i].IsNotNull()) return ConfigurationManager.AppSettings[i].ToString();
             return null;
         }
         /// <summary>
-        /// È¡appSettings½áµãÊı¾İ
+        /// å–appSettingsç»“ç‚¹æ•°æ®
         /// </summary>
-        /// <returns>È¡appSettings½áµãÊı¾İ</returns>
+        /// <returns>å–appSettingsç»“ç‚¹æ•°æ®</returns>
         public static NameValueCollection GetApp() {
             return ConfigurationManager.AppSettings;
         }
         /// <summary>
-        /// ĞŞ¸ÄappSettings½áµãÊı¾İ Èç¹û²»´æÔÚ Ìí¼Ó
+        /// ä¿®æ”¹appSettingsç»“ç‚¹æ•°æ® å¦‚æœä¸å­˜åœ¨ æ·»åŠ 
         /// </summary>
         /// <param name="key">key</param>
-        /// <param name="value">È¡appSettings½áµãÊı¾İ</param>
+        /// <param name="value">å–appSettingsç»“ç‚¹æ•°æ®</param>
         public static void SetApp(string key, string value) {
             Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
             AppSettingsSection section = (AppSettingsSection)config.GetSection("appSettings");
@@ -74,7 +74,7 @@ namespace Pub.Class {
             config.Save();
         }
         /// <summary>
-        /// É¾³ıÒ»¸öappSettings½Úµã
+        /// åˆ é™¤ä¸€ä¸ªappSettingsèŠ‚ç‚¹
         /// </summary>
         /// <param name="key">key</param>
         /// <returns></returns>
@@ -86,38 +86,38 @@ namespace Pub.Class {
         }
         //#endregion
         //#region GetConn
-#if !MONO40
+//#if !MONO40
         /// <summary>
-        /// È¡connectionStrings½áµãÊı¾İ
+        /// å–connectionStringsç»“ç‚¹æ•°æ®
         /// </summary>
         /// <param name="key">key</param>
-        /// <returns>È¡connectionStrings½áµãÊı¾İ</returns>
+        /// <returns>å–connectionStringsç»“ç‚¹æ•°æ®</returns>
         public static string GetConn(string key) {
             if (ConfigurationManager.ConnectionStrings[key].IsNotNull()) return ConfigurationManager.ConnectionStrings[key].ToString();
             return null;
         }
         /// <summary>
-        /// È¡connectionStrings½áµãÊı¾İ
+        /// å–connectionStringsç»“ç‚¹æ•°æ®
         /// </summary>
-        /// <param name="i">Ë÷Òı</param>
-        /// <returns>È¡connectionStrings½áµãÊı¾İ</returns>
+        /// <param name="i">ç´¢å¼•</param>
+        /// <returns>å–connectionStringsç»“ç‚¹æ•°æ®</returns>
         public static string GetConn(int i) {
             if (ConfigurationManager.ConnectionStrings[i].IsNotNull()) return ConfigurationManager.ConnectionStrings[i].ToString();
             return null;
         }
         /// <summary>
-        /// È¡connectionStrings½áµãÊı¾İ
+        /// å–connectionStringsç»“ç‚¹æ•°æ®
         /// </summary>
-        /// <returns>È¡connectionStrings½áµãÊı¾İ</returns>
+        /// <returns>å–connectionStringsç»“ç‚¹æ•°æ®</returns>
         public static ConnectionStringSettingsCollection GetConn() {
             return ConfigurationManager.ConnectionStrings;
         }
         /// <summary>
-        /// ÉèÖÃ/ÖØĞ´Ò»¸öÊı¾İ¿âÁ¬½Ó´®
+        /// è®¾ç½®/é‡å†™ä¸€ä¸ªæ•°æ®åº“è¿æ¥ä¸²
         /// </summary>
-        /// <param name="key">¼ü</param>
-        /// <param name="connString">Á¬½Ó×Ö·û´®</param>
-        /// <param name="providerName">Êı¾İ¿âÀàĞÍ</param>
+        /// <param name="key">é”®</param>
+        /// <param name="connString">è¿æ¥å­—ç¬¦ä¸²</param>
+        /// <param name="providerName">æ•°æ®åº“ç±»å‹</param>
         /// <returns></returns>
         public static void SetConn(string key, string connString, string providerName) {
             Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
@@ -129,14 +129,14 @@ namespace Pub.Class {
             }
             config.Save();
         }
-#endif
+//#endif
         //#endregion
         //#region GetSection
         /// <summary>
         /// GetSection&lt;appSettings>("configuration/appSettings")
         /// </summary>
-        /// <typeparam name="TReturn">·µ»ØÀàĞÍ</typeparam>
-        /// <param name="sectionName">½Úµã</param>
+        /// <typeparam name="TReturn">è¿”å›ç±»å‹</typeparam>
+        /// <param name="sectionName">èŠ‚ç‚¹</param>
         /// <returns></returns>
         public static TReturn GetSection<TReturn>(string sectionName) {
             return (TReturn)ConfigurationManager.GetSection(sectionName);

@@ -212,7 +212,7 @@ namespace Pub.Class {
         public static int MakeLParam(int p, int p_2) {
             return ((p_2 << 16) | (p & 0xFFFF));
         }
-#if !MONO40
+//#if !MONO40
         /// <summary>
         /// 鼠标左键单击
         /// </summary>
@@ -625,7 +625,7 @@ namespace Pub.Class {
         public static extern IntPtr GetCurrentThread();
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool GetThreadTimes(IntPtr hThread, out long lpCreationTime, out long lpExitTime, out long lpKernelTime, out long lpUserTime);
-#endif
+//#endif
         [DllImport("user32.dll")]
         public static extern IntPtr GetDlgItem(IntPtr hDlg, int nIDDlgItem);
         /// <summary>

@@ -34,64 +34,64 @@ using System.Runtime.InteropServices;
 
 namespace Pub.Class {
     /// <summary>
-    /// string À©Õ¹
+    /// string æ‰©å±•
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2009.06.25 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2009.06.25 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public static class StringExtensions {
         /// <summary>
-        /// ¹ıÂË×Ö·û´®
+        /// è¿‡æ»¤å­—ç¬¦ä¸²
         /// </summary>
-        public const string BANWORD = "(Ã«Ôó¶«|ÖÜ¶÷À´|ÁõÉÙÆæ|ÖìµÂ|ÅíµÂ»³|ÁÖ±ë|Áõ²®³Ğ|³ÂÒã|ºØÁú|ÄôÈÙÕé|ĞìÏòÇ°|ÂŞÈÙ»¸|Ò¶½£Ó¢|Àî´óîÈ|³Â¶ÀĞã|ËïÖĞÉ½|ËïÎÄ|ËïÒİÏÉ|µËĞ¡Æ½|³ÂÔÆ|½­ÔóÃñ|ÀîÅô|ÖìéF»ù|ÀîÈğ»·|Î¾½¡ĞĞ|Àîá°Çå|ºú½õÌÎ|ÂŞ¸É|ÎÂ¼Ò±¦|Îâ°î¹ú|ÔøÇìºì|¼ÖÇìÁÖ|»Æ¾Õ|Îâ¹ÙÕı|Àî³¤´º|ÎâÒÇ|»ØÁ¼Óñ|ÔøÅàÑ×|ÖÜÓÀ¿µ|²Ü¸Õ´¨|ÌÆ¼Òè¯|»ª½¨Ãô|³ÂÖÁÁ¢|³ÂÁ¼Óî|ÕÅµÂ½­|ÕÅÁ¢²ı|ÓáÕıÉù|ÍõÀÖÈª|ÁõÔÆÉ½|Íõ¸Õ|ÍõÕ×¹ú|Áõä¿|ºØ¹úÇ¿|¹ù²®ĞÛ|ºúÒ«°î|ÍõÀÖÈª|ÍõÕ×¹ú|ÖÜÓÀ¿µ|ÀîµÇ»Ô|Á¬Õ½|³ÂË®±â|ËÎ³şè¤|ÂÀĞãÁ«|ÓôÄ½Ã÷|½¯½éÊ¯|½¯ÖĞÕı|½¯¾­¹ú|ÂíÓ¢¾Å±¾À­µÇ|°ÂÂí¶û|²ñÁá|´ïÀµÀ®Âï|½­Çà|ÕÅ´ºÇÅ|Ò¦ÎÄÔª|ÍõºéÎÄ|¶«ÌõÓ¢»ú|Ï£ÌØÀÕ|Ä«Ë÷ÀïÄá|¸Ô´åĞãÊ÷|¸Ô´åÄş´Î|¸ßÀöÆÓ|ÕÔ×ÏÑô|Íõµ¤|ÎÖ¶û¿ªÎ÷|ÀîºéÖ¾|Àî´óÊ¦|Àµ²ıĞÇ|Âí¼Ó¾ôÉ½±¾ÎåÊ®Áù|°¢±â|ÁùËÄ|ÁùËÄÔË¶¯|ÁùËÄ´óÍÀÉ±|6 4ÊÂ¼ş|ÖĞ¹ú1989 6 4ÊÂ¼şÊÓÆµ|6 4ÊÂ¼şÊÓÆµ|1989 6 4ÊÂ¼ş|ÖĞ¹ú1989 6 4ÊÂ¼ş|1989ÊÂ¼şÊÓÆµ|±±¾©ÃñÔË89|1989Äê±±¾©Ñ§Éú|1989ÄêÑ§ÔË¶¯|ÁùËÄ20Äê|°Ë¾ÅÃñÔË|1989ÄêÑ§³±ÊÂ¼ş|ËÄ¶şÁùÉçÂÛ|426ÉçÂÛÃÜ×Ú|ÖĞ¹²ÍÀ³Ç|¹²²úµ³ÍÀ³Ç|Ãñ¹ú|Ãñ½øµ³|ÃñÔË|ÃñÖ÷³±|Ä¦ÃÅ½Ì|ÄÉ´â|ÄÏ»ªÔç±¨|ÄÏÂù|Ã÷»ÛÍø|ÆğÒå|Ç×Ãñµ³|È³ÍÈ°ï|ÈËÃñ±¨|·¨ÂÖ¹¦|·¨ÂÖ´ó·¨|´òµ¹¹²²úµ³|Ì¨¶ÀÍòËê|Ê¥Õ½|Ê¾Íş|Ì¨¶À|Ì¨¶À·Ö×Ó|Ì¨Áª|Ì¨ÍåÃñ¹ú|Ì¨Íåµº¹ú|Ì¨Íå¶ÀÁ¢|Ì«×Óµ³|Ìì°²ÃÅÊÂ¼ş|ÍÀÉ±|Ğ¡Èª|ĞÂµ³|ĞÂ½®¶ÀÁ¢|ĞÂ½®·ÖÁÑ|ĞÂ½®¹ú|½®¶À|Î÷²Ø¶ÀÁ¢|Î÷²Ø·ÖÁÑ|Î÷²Ø¹ú|²Ø¶À|²ØÇà»á|²Ø¸¾»á|Ñ§³±|Ñ§ÔË|Ò»µ³×¨Õş|Ò»ÖĞÒ»Ì¨|Á½¸öÖĞ¹ú|Ò»¹áµÀ|ÓÎĞĞ|Ô²Âú|Ôì·´|ÕæÉÆÈÌ|ÕòÑ¹|Õş±ä|ÕşÖÎ|ÕşÖÎ·´¶ÔÅÉ|ÕşÖÎ·¸|ÖĞ¹²|·´µ³|·´¹²|Õş¸®|ÃñÖ÷µ³|ÖĞ¹úÖ®´º|×ª·¨ÂÖ|×Ô·Ù|¹²µ³|¹²·Ë|ËÕ¼ÒÍÍ|»ùµØ×éÖ¯|ËşÀû°à|¶«ÑÇ²¡·ò|Ö§ÄÇ|¸ßÖÎÁª|¸ß×ÔÁª|ºË¹¤Òµ»ùµØ|ºËÎäÆ÷|ÓË|Ô­×Óµ¯|Çâµ¯|µ¼µ¯|ºËÇ±Í§|´ó²Î¿¼|Ğ¡²Î¿¼|¹úÄÚ¶¯Ì¬ÇåÑù|ÉıÌì|Ê¥Õ½ |°×Á«½Ì |¶«Õı½Ì|´ó·¨|·¨ÂÖ|·¨ÂÖ¹¦|È³ÍÈ°ï|ÕæÀí½Ì|ÕæÉÆÈÌ|×ª·¨ÂÖ|×Ô·Ù|×ßÏòÔ²Âú|»Æ´óÏÉ|·çË®|Ìø´óÉñ|Éñºº|ÉñÆÅ|ÕæÀí½Ì|´óÎÀ½Ì |²Ø¶À|¸ßÀö°ô×Ó|»Ø»Ø|½®¶À|ÃÉ¹Å÷²×Ó|Ì¨¶À|Ì¨¶À·Ö×Ó|Ì¨Áª|Ì¨ÍåÃñ¹ú|Î÷²Ø¶ÀÁ¢|ĞÂ½®¶ÀÁ¢|ÄÏÂù|ÀÏÃ«×Ó|Ï°½üÆ½|¿ª·¿|Ì¨Íåµº¹ú|²ØÇà|²Ø¸´|±¾À­µÇ|Î÷²Ø¹ú|Ç¿¼é|ÂÖ¼é|ÇÀ½Ù|ÏÈ¼éºóÉ±|ÏÂ×¢|Ñº´ó|ÑºĞ¡|³éÍ·|×ø×¯|¶ÄÂí|¶ÄÇò|³ïÂë|ÀÏ»¢»ú|ÂÖÅÌ¶Ä|°²·ÇËûÃü|´óÂé|¿É¿¨Òò|º£ÂåÒò|±ù¶¾|Ò¡Í·Íè|¶ÅÀä¶¡|Ñ»Æ¬|ó¿ËÚ|ÃÔ»ÃÒ©|°×·Û|à¾Ò©|Îü¶¾|åí|°®×Ì|ÁÜ²¡|Ã·¶¾|°®Òº|ŒÂ|±Æ|³ô»ú°Ë|³ô¼¦°Í|´µÀ®°È|´µóï|´ßÇéÒ©|ŒÅ|¸Ø½»|¸ØÃÅ|¹êÍ·|»ÆÉ«|»ú°Ë|»ú°Í|¼¦°Ë|¼¦°Í|»úêş|»ú°Í|¼¦°È|¼¦¼¦|¼¦êş|¼¦¼é|¼ËÅ®|¼é|¾¥|¾«Òº|¾«×Ó|åê|¿Ú½»|ÀÄ½»|ÂÒ½»|ÂÖ¼é|ÂôÒù|Æ¨ÑÛ|æÎæ½|Ç¿¼é|Ç¿¼é·¸|ÇéÉ«|Èâ°ô|Èé·¿|Èé·å|Èé½»|ÈéÍ·|ÈéÔÎ|ÈıÅã|É«Çé|Éä¾«|ÊÖÒù|Íş¶ø¸Ö|Íş¶øÈá|Î°¸ç|ĞÔ¸ß³±|ĞÔ½»|ĞÔÅ°|ĞÔÓû|Ñ¨|ÑÕÉä|ÑôÎï|Ò»Ò¹Çé|Òõ²¿|Òõ´½|ÒõµÀ|ÒõµÙ|ÒõºË|Òõ»§|Òõ¾¥|ÒõÃÅ|Òù|Òù»à|ÒùÂÒ|ÒùË®|ÒùÍŞ|ÒùÒº|ÒùÖ­|ÒùÑ¨|Òù¶´|Ô®½»ÃÃ|×ö°®|ÃÎÒÅ|Ñôğô|ÔçĞ¹|¼éÒù|ĞÔÓû|ĞÔ½»|KËûÃü|°×³Õ|±¿µ°|ŒÂ|±Æ|±äÌ¬|æ»×Ó|²ÙËıÂè|²ÙŠ…Âè|²ÙÄã|²ÙÄãÂè|²ÙËûÂè|²İÄã|ÃH|²áÄÇ|²àÄÇ|²âÄÃ|²å|´ÀÖí|µ´¸¾|·¢É§|·ÏÎï|¸ÉËıÂè|¸ÉŠ…|¸ÉŠ…Äï|¸ÉÄã|¸ÉÄãÂè|¸ÉÄãÂèB|¸ÉÄãÂèb|¸ÉÄãÂè±Æ|¸ÉÄãÄï|¸ÉËûÂè|¹·ÄïÑøµÄ|¹ö|¼¦¼é|¼ú»õ|¼úÈË|ÀÃÈË|ÀÏÄ¸|ÀÏÍÁ|Âè±È|ÂèµÄ|ÂíµÄ|Š…ÀÏÄ¸µÄ|Š…ÄïµÄ|ÄãÂè±Æ|ÆÆĞ¬|ÆÍ½Ö|È¥ËıÂè|È¥Š…µÄ|È¥Š…Âè|È¥ÄãµÄ|È¥ÄãÂè|È¥ËÀ|È¥ËûÂè|ÈÕÄã|ÈüËıÄï|ÈüŠ…Äï|ÈüÄãÄï|ÈüËûÄï|É§»õ|ÉµB|Éµ±È|Éµ×Ó|ÉÏŠ…|ÉÏÄã|Éñ¾­²¡|Êº|ÊºŠ…Äï|ÊºÄãÄï|ËûÂèµÄ|Íõ°Ëµ°|ÎÒÈÕ|Ïç°ÍÀĞ|Öíâ¤|åí|Äò|’õ|ŒÅ|ÆïÄã|ÊªÁË|²ÙÄã|²ÙËû|²ÙËı|ÆïÄã|ÆïËû|ÆïËı|Ç·Æï|Ç·ÈËÆï|À´Ë¬ÎÒ|À´²åÎÒ|¸ÉÄã|¸ÉËû|¸ÉËı|¸ÉËÀ|¸É±¬|¸É»ú|FUCK|»ú°È|³ô¼¦|³ô»ú|ÀÃÄñ|ÀÀ½Ğ|Ñô¾ß|Èâ°ô|Èâºø|ÄÌ×Ó|Ãşßäßä|¸É¼¦|¸ÉÈë|Ğ¡Ñ¨|Ç¿¼é|²åÄã|²åÄã|Ë¬Äã|Ë¬Äã|¸É¸É|¸ÉX|Ëû¸É|¸ÉËü|¸É ­|¸ÉÄú|¸ÉÈê|¸ÉÁÖ|²ÙÁÖ|¸ÉÄá|²ÙÄá|ÎÒßÖ¸É|¸ÉÀÕ|¸ÉÎÒ|¸Éµ½|¸ÉÀ²|¸ÉË¬|Ç·¸É|¹·¸É|ÎÒ¸É|À´¸É|ÂÖ¸É|ÂÖÁ÷¸É|¸ÉÒ»¸É|Ô®½»|ÆïÄã|ÂÖ¼é|¼¦¼é|¼é±©|ÔÙ¼é|ÎÒ¼é|¼éÄã|¼éÄã|¼éËû|¼éËı|¼éÒ»¼é|ÒùË®|ÒùÊª|¼¦Íá|ÆÍ½Ö|³ôÎ÷|åê|µõ|ÒÅ¾«|ÀÃ±Æ|´óÑª±È|µğÄãÂè|¿¿ÄãÂè|²İÄã|¸ÉÄã|ÈÕÄã|²åÄã|¼éÄã|´ÁÄã|±ÆÄãÀÏÄ¸|°¤Çò|ÎÒÈÕÄã|²İÄâÂè|Âô±Æ|¹·²ÙÂô±Æ|¼éÒù|ÈÕËÀ|ÄÌ×Ó|Òõ¾¥|ÄÌÄï|ËûÄï|ËıÄï|É§B|ÄãÂèÁËÃÃ|±ÆÃ«|²åÄãÂè|µğÄã|Ôü²¨²¨|ÄÛb)";
+        public const string BANWORD = "(æ¯›æ³½ä¸œ|å‘¨æ©æ¥|åˆ˜å°‘å¥‡|æœ±å¾·|å½­å¾·æ€€|æ—å½ª|åˆ˜ä¼¯æ‰¿|é™ˆæ¯…|è´ºé¾™|è‚è£è‡»|å¾å‘å‰|ç½—è£æ¡“|å¶å‰‘è‹±|æå¤§é’Š|é™ˆç‹¬ç§€|å­™ä¸­å±±|å­™æ–‡|å­™é€¸ä»™|é‚“å°å¹³|é™ˆäº‘|æ±Ÿæ³½æ°‘|æé¹|æœ±é••åŸº|æç‘ç¯|å°‰å¥è¡Œ|æå²šæ¸…|èƒ¡é”¦æ¶›|ç½—å¹²|æ¸©å®¶å®|å´é‚¦å›½|æ›¾åº†çº¢|è´¾åº†æ—|é»„èŠ|å´å®˜æ­£|æé•¿æ˜¥|å´ä»ª|å›è‰¯ç‰|æ›¾åŸ¹ç‚|å‘¨æ°¸åº·|æ›¹åˆšå·|å”å®¶ç’‡|åå»ºæ•|é™ˆè‡³ç«‹|é™ˆè‰¯å®‡|å¼ å¾·æ±Ÿ|å¼ ç«‹æ˜Œ|ä¿æ­£å£°|ç‹ä¹æ³‰|åˆ˜äº‘å±±|ç‹åˆš|ç‹å…†å›½|åˆ˜æ·‡|è´ºå›½å¼º|éƒ­ä¼¯é›„|èƒ¡è€€é‚¦|ç‹ä¹æ³‰|ç‹å…†å›½|å‘¨æ°¸åº·|æç™»è¾‰|è¿æˆ˜|é™ˆæ°´æ‰|å®‹æ¥šç‘œ|å•ç§€è²|éƒæ…•æ˜|è’‹ä»‹çŸ³|è’‹ä¸­æ­£|è’‹ç»å›½|é©¬è‹±ä¹æœ¬æ‹‰ç™»|å¥¥é©¬å°”|æŸ´ç²|è¾¾èµ–å–‡å˜›|æ±Ÿé’|å¼ æ˜¥æ¡¥|å§šæ–‡å…ƒ|ç‹æ´ªæ–‡|ä¸œæ¡è‹±æœº|å¸Œç‰¹å‹’|å¢¨ç´¢é‡Œå°¼|å†ˆæ‘ç§€æ ‘|å†ˆæ‘å®æ¬¡|é«˜ä¸½æœ´|èµµç´«é˜³|ç‹ä¸¹|æ²ƒå°”å¼€è¥¿|ææ´ªå¿—|æå¤§å¸ˆ|èµ–æ˜Œæ˜Ÿ|é©¬åŠ çˆµå±±æœ¬äº”åå…­|é˜¿æ‰|å…­å››|å…­å››è¿åŠ¨|å…­å››å¤§å± æ€|6 4äº‹ä»¶|ä¸­å›½1989 6 4äº‹ä»¶è§†é¢‘|6 4äº‹ä»¶è§†é¢‘|1989 6 4äº‹ä»¶|ä¸­å›½1989 6 4äº‹ä»¶|1989äº‹ä»¶è§†é¢‘|åŒ—äº¬æ°‘è¿89|1989å¹´åŒ—äº¬å­¦ç”Ÿ|1989å¹´å­¦è¿åŠ¨|å…­å››20å¹´|å…«ä¹æ°‘è¿|1989å¹´å­¦æ½®äº‹ä»¶|å››äºŒå…­ç¤¾è®º|426ç¤¾è®ºå¯†å®—|ä¸­å…±å± åŸ|å…±äº§å…šå± åŸ|æ°‘å›½|æ°‘è¿›å…š|æ°‘è¿|æ°‘ä¸»æ½®|æ‘©é—¨æ•™|çº³ç²¹|å—åæ—©æŠ¥|å—è›®|æ˜æ…§ç½‘|èµ·ä¹‰|äº²æ°‘å…š|ç˜¸è…¿å¸®|äººæ°‘æŠ¥|æ³•è½®åŠŸ|æ³•è½®å¤§æ³•|æ‰“å€’å…±äº§å…š|å°ç‹¬ä¸‡å²|åœ£æˆ˜|ç¤ºå¨|å°ç‹¬|å°ç‹¬åˆ†å­|å°è”|å°æ¹¾æ°‘å›½|å°æ¹¾å²›å›½|å°æ¹¾ç‹¬ç«‹|å¤ªå­å…š|å¤©å®‰é—¨äº‹ä»¶|å± æ€|å°æ³‰|æ–°å…š|æ–°ç–†ç‹¬ç«‹|æ–°ç–†åˆ†è£‚|æ–°ç–†å›½|ç–†ç‹¬|è¥¿è—ç‹¬ç«‹|è¥¿è—åˆ†è£‚|è¥¿è—å›½|è—ç‹¬|è—é’ä¼š|è—å¦‡ä¼š|å­¦æ½®|å­¦è¿|ä¸€å…šä¸“æ”¿|ä¸€ä¸­ä¸€å°|ä¸¤ä¸ªä¸­å›½|ä¸€è´¯é“|æ¸¸è¡Œ|åœ†æ»¡|é€ å|çœŸå–„å¿|é•‡å‹|æ”¿å˜|æ”¿æ²»|æ”¿æ²»åå¯¹æ´¾|æ”¿æ²»çŠ¯|ä¸­å…±|åå…š|åå…±|æ”¿åºœ|æ°‘ä¸»å…š|ä¸­å›½ä¹‹æ˜¥|è½¬æ³•è½®|è‡ªç„š|å…±å…š|å…±åŒª|è‹å®¶å±¯|åŸºåœ°ç»„ç»‡|å¡”åˆ©ç­|ä¸œäºšç—…å¤«|æ”¯é‚£|é«˜æ²»è”|é«˜è‡ªè”|æ ¸å·¥ä¸šåŸºåœ°|æ ¸æ­¦å™¨|é“€|åŸå­å¼¹|æ°¢å¼¹|å¯¼å¼¹|æ ¸æ½œè‰‡|å¤§å‚è€ƒ|å°å‚è€ƒ|å›½å†…åŠ¨æ€æ¸…æ ·|å‡å¤©|åœ£æˆ˜ |ç™½è²æ•™ |ä¸œæ­£æ•™|å¤§æ³•|æ³•è½®|æ³•è½®åŠŸ|ç˜¸è…¿å¸®|çœŸç†æ•™|çœŸå–„å¿|è½¬æ³•è½®|è‡ªç„š|èµ°å‘åœ†æ»¡|é»„å¤§ä»™|é£æ°´|è·³å¤§ç¥|ç¥æ±‰|ç¥å©†|çœŸç†æ•™|å¤§å«æ•™ |è—ç‹¬|é«˜ä¸½æ£’å­|å›å›|ç–†ç‹¬|è’™å¤é‘å­|å°ç‹¬|å°ç‹¬åˆ†å­|å°è”|å°æ¹¾æ°‘å›½|è¥¿è—ç‹¬ç«‹|æ–°ç–†ç‹¬ç«‹|å—è›®|è€æ¯›å­|ä¹ è¿‘å¹³|å¼€æˆ¿|å°æ¹¾å²›å›½|è—é’|è—å¤|æœ¬æ‹‰ç™»|è¥¿è—å›½|å¼ºå¥¸|è½®å¥¸|æŠ¢åŠ«|å…ˆå¥¸åæ€|ä¸‹æ³¨|æŠ¼å¤§|æŠ¼å°|æŠ½å¤´|ååº„|èµŒé©¬|èµŒçƒ|ç­¹ç |è€è™æœº|è½®ç›˜èµŒ|å®‰éä»–å‘½|å¤§éº»|å¯å¡å› |æµ·æ´›å› |å†°æ¯’|æ‘‡å¤´ä¸¸|æœå†·ä¸|é¸¦ç‰‡|ç½‚ç²Ÿ|è¿·å¹»è¯|ç™½ç²‰|å—‘è¯|å¸æ¯’|å±™|çˆ±æ»‹|æ·‹ç—…|æ¢…æ¯’|çˆ±æ¶²|å±„|é€¼|è‡­æœºå…«|è‡­é¸¡å·´|å¹å–‡å­|å¹ç®«|å‚¬æƒ…è¯|å±Œ|è‚›äº¤|è‚›é—¨|é¾Ÿå¤´|é»„è‰²|æœºå…«|æœºå·´|é¸¡å…«|é¸¡å·´|æœºæ°|æœºå·´|é¸¡å­|é¸¡é¸¡|é¸¡æ°|é¸¡å¥¸|å¦“å¥³|å¥¸|èŒ|ç²¾æ¶²|ç²¾å­|å°»|å£äº¤|æ»¥äº¤|ä¹±äº¤|è½®å¥¸|å–æ·«|å±çœ¼|å«–å¨¼|å¼ºå¥¸|å¼ºå¥¸çŠ¯|æƒ…è‰²|è‚‰æ£’|ä¹³æˆ¿|ä¹³å³°|ä¹³äº¤|ä¹³å¤´|ä¹³æ™•|ä¸‰é™ª|è‰²æƒ…|å°„ç²¾|æ‰‹æ·«|å¨è€Œé’¢|å¨è€ŒæŸ”|ä¼Ÿå“¥|æ€§é«˜æ½®|æ€§äº¤|æ€§è™|æ€§æ¬²|ç©´|é¢œå°„|é˜³ç‰©|ä¸€å¤œæƒ…|é˜´éƒ¨|é˜´å”‡|é˜´é“|é˜´è’‚|é˜´æ ¸|é˜´æˆ·|é˜´èŒ|é˜´é—¨|æ·«|æ·«ç§½|æ·«ä¹±|æ·«æ°´|æ·«å¨ƒ|æ·«æ¶²|æ·«æ±|æ·«ç©´|æ·«æ´|æ´äº¤å¦¹|åšçˆ±|æ¢¦é—|é˜³ç—¿|æ—©æ³„|å¥¸æ·«|æ€§æ¬²|æ€§äº¤|Kä»–å‘½|ç™½ç—´|ç¬¨è›‹|å±„|é€¼|å˜æ€|å©Šå­|æ“å¥¹å¦ˆ|æ“å¦³å¦ˆ|æ“ä½ |æ“ä½ å¦ˆ|æ“ä»–å¦ˆ|è‰ä½ |è‚|å†Œé‚£|ä¾§é‚£|æµ‹æ‹¿|æ’|è ¢çŒª|è¡å¦‡|å‘éªš|åºŸç‰©|å¹²å¥¹å¦ˆ|å¹²å¦³|å¹²å¦³å¨˜|å¹²ä½ |å¹²ä½ å¦ˆ|å¹²ä½ å¦ˆB|å¹²ä½ å¦ˆb|å¹²ä½ å¦ˆé€¼|å¹²ä½ å¨˜|å¹²ä»–å¦ˆ|ç‹—å¨˜å…»çš„|æ»š|é¸¡å¥¸|è´±è´§|è´±äºº|çƒ‚äºº|è€æ¯|è€åœŸ|å¦ˆæ¯”|å¦ˆçš„|é©¬çš„|å¦³è€æ¯çš„|å¦³å¨˜çš„|ä½ å¦ˆé€¼|ç ´é‹|ä»†è¡—|å»å¥¹å¦ˆ|å»å¦³çš„|å»å¦³å¦ˆ|å»ä½ çš„|å»ä½ å¦ˆ|å»æ­»|å»ä»–å¦ˆ|æ—¥ä½ |èµ›å¥¹å¨˜|èµ›å¦³å¨˜|èµ›ä½ å¨˜|èµ›ä»–å¨˜|éªšè´§|å‚»B|å‚»æ¯”|å‚»å­|ä¸Šå¦³|ä¸Šä½ |ç¥ç»ç—…|å±|å±å¦³å¨˜|å±ä½ å¨˜|ä»–å¦ˆçš„|ç‹å…«è›‹|æˆ‘æ—¥|ä¹¡å·´ä½¬|çŒªçŒ¡|å±™|å°¿|æ¯|å±Œ|éª‘ä½ |æ¹¿äº†|æ“ä½ |æ“ä»–|æ“å¥¹|éª‘ä½ |éª‘ä»–|éª‘å¥¹|æ¬ éª‘|æ¬ äººéª‘|æ¥çˆ½æˆ‘|æ¥æ’æˆ‘|å¹²ä½ |å¹²ä»–|å¹²å¥¹|å¹²æ­»|å¹²çˆ†|å¹²æœº|FUCK|æœºå­|è‡­é¸¡|è‡­æœº|çƒ‚é¸Ÿ|è§ˆå«|é˜³å…·|è‚‰æ£’|è‚‰å£¶|å¥¶å­|æ‘¸å’ªå’ª|å¹²é¸¡|å¹²å…¥|å°ç©´|å¼ºå¥¸|æ’ä½ |æ’ä½ |çˆ½ä½ |çˆ½ä½ |å¹²å¹²|å¹²X|ä»–å¹²|å¹²å®ƒ|å¹²ç‰ |å¹²æ‚¨|å¹²æ±|å¹²æ—|æ“æ—|å¹²å°¼|æ“å°¼|æˆ‘å’§å¹²|å¹²å‹’|å¹²æˆ‘|å¹²åˆ°|å¹²å•¦|å¹²çˆ½|æ¬ å¹²|ç‹—å¹²|æˆ‘å¹²|æ¥å¹²|è½®å¹²|è½®æµå¹²|å¹²ä¸€å¹²|æ´äº¤|éª‘ä½ |è½®å¥¸|é¸¡å¥¸|å¥¸æš´|å†å¥¸|æˆ‘å¥¸|å¥¸ä½ |å¥¸ä½ |å¥¸ä»–|å¥¸å¥¹|å¥¸ä¸€å¥¸|æ·«æ°´|æ·«æ¹¿|é¸¡æ­ª|ä»†è¡—|è‡­è¥¿|å°»|åŠ|é—ç²¾|çƒ‚é€¼|å¤§è¡€æ¯”|å¼ä½ å¦ˆ|é ä½ å¦ˆ|è‰ä½ |å¹²ä½ |æ—¥ä½ |æ’ä½ |å¥¸ä½ |æˆ³ä½ |é€¼ä½ è€æ¯|æŒ¨çƒ|æˆ‘æ—¥ä½ |è‰æ‹Ÿå¦ˆ|å–é€¼|ç‹—æ“å–é€¼|å¥¸æ·«|æ—¥æ­»|å¥¶å­|é˜´èŒ|å¥¶å¨˜|ä»–å¨˜|å¥¹å¨˜|éªšB|ä½ å¦ˆäº†å¦¹|é€¼æ¯›|æ’ä½ å¦ˆ|å¼ä½ |æ¸£æ³¢æ³¢|å«©b)";
         /// <summary>
-        /// ×Ö·û´®ÊÇ·ñÎªstring.Empty || null || ""
+        /// å­—ç¬¦ä¸²æ˜¯å¦ä¸ºstring.Empty || null || ""
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsNullEmpty(this string str) {
             return string.IsNullOrEmpty(str);
         }
         /// <summary>
-        /// GuidÊÇ·ñÎª null || "000000-0000-0000-0000000000"
+        /// Guidæ˜¯å¦ä¸º null || "000000-0000-0000-0000000000"
         /// </summary>
-        /// <param name="guid">GuidÀ©Õ¹</param>
+        /// <param name="guid">Guidæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsNull(this Guid? guid) {
             return guid.IsNull() || guid == Guid.Empty;
         }
         ///// <summary>
-        ///// Èç¹û×Ö·û´®Îªstring.Empty || null || "" ·µ»ØdefaultValue ·ñÔòÔ­×Ö·û´®·µ»Ø
+        ///// å¦‚æœå­—ç¬¦ä¸²ä¸ºstring.Empty || null || "" è¿”å›defaultValue å¦åˆ™åŸå­—ç¬¦ä¸²è¿”å›
         ///// </summary>
-        ///// <param name="str">stringÀ©Õ¹</param>
-        ///// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        ///// <param name="str">stringæ‰©å±•</param>
+        ///// <param name="defaultValue">é»˜è®¤å€¼</param>
         ///// <returns></returns>
         //public static string IsNullEmpty(this string str, string defaultValue) {
         //    return str.IsNullEmpty() ? defaultValue : str;
         //}
         /// <summary>
-        /// ·ÀÖ¹JS HTML´úÂë±»Ö´ĞĞ "" &lt; > \n &amp; ¿Õ¸ñ
+        /// é˜²æ­¢JS HTMLä»£ç è¢«æ‰§è¡Œ "" &lt; > \n &amp; ç©ºæ ¼
         /// </summary>
-        /// <param name="htmlStr">stringÀ©Õ¹</param>
+        /// <param name="htmlStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UnHtml(this string htmlStr) {
             if (htmlStr.IsNullEmpty()) return string.Empty;
             return htmlStr.Replace("\"", "\\\"").ShowXmlHtml().Replace(" ", "&nbsp;").Replace("\n", "<br />");
         }
         /// <summary>
-        /// ·ÀÖ¹JS HTML´úÂë±»Ö´ĞĞ "" &lt; > &amp; ¿Õ¸ñ ÎŞ\n
+        /// é˜²æ­¢JS HTMLä»£ç è¢«æ‰§è¡Œ "" &lt; > &amp; ç©ºæ ¼ æ— \n
         /// </summary>
-        /// <param name="htmlStr">stringÀ©Õ¹</param>
+        /// <param name="htmlStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UnHtmlNoBR(this string htmlStr) {
             if (htmlStr.IsNullEmpty()) return string.Empty;
             return htmlStr.Replace("\"", "\\\"").ShowXmlHtml().Replace(" ", "&nbsp;");
         }
         /// <summary>
-        /// ×ª»»ÎªºÏ·¨µÄXMLÎÄ¼ş
+        /// è½¬æ¢ä¸ºåˆæ³•çš„XMLæ–‡ä»¶
         /// </summary>
-        /// <param name="htmlStr">stringÀ©Õ¹</param>
+        /// <param name="htmlStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ShowXmlHtml(this string htmlStr) {
             if (htmlStr.IsNullEmpty()) return string.Empty;
@@ -99,9 +99,9 @@ namespace Pub.Class {
             return str;
         }
         /// <summary>
-        /// ¹ıÂËJSÊÂ¼ş
+        /// è¿‡æ»¤JSäº‹ä»¶
         /// </summary>
-        /// <param name="htmlStr">stringÀ©Õ¹</param>
+        /// <param name="htmlStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ShowHtml(this string htmlStr) {
             if (htmlStr.IsNullEmpty()) return string.Empty;
@@ -122,7 +122,7 @@ namespace Pub.Class {
         /// <summary>
         /// UrlEncode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UrlEncode(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -131,7 +131,7 @@ namespace Pub.Class {
         /// <summary>
         /// UrlUpperEncode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UrlUpperEncode(this string str) {
             str = str.UrlEncode();
@@ -148,7 +148,7 @@ namespace Pub.Class {
         /// <summary>
         /// UrlEncode
         /// </summary>
-        /// <param name="value">Öµ</param>
+        /// <param name="value">å€¼</param>
         /// <returns></returns>
         public static string UrlEncode2(this string value) {
             StringBuilder result = new StringBuilder();
@@ -165,8 +165,8 @@ namespace Pub.Class {
         /// <summary>
         /// UrlEncode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="encoding">ç¼–ç </param>
         /// <returns></returns>
         public static string UrlEncode(this string str, Encoding encoding) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -175,7 +175,7 @@ namespace Pub.Class {
         /// <summary>
         /// UrlDecode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UrlDecode(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -184,17 +184,17 @@ namespace Pub.Class {
         /// <summary>
         /// UrlDecode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="encoding">ç¼–ç </param>
         /// <returns></returns>
         public static string UrlDecode(this string str, Encoding encoding) {
             if (str.IsNullEmpty()) return string.Empty;
             return HttpUtility.UrlDecode(str, encoding);
         }
         /// <summary>
-        /// UrlEncodeUnicodeµÈÍ¬ÓÚJSµÄescape()
+        /// UrlEncodeUnicodeç­‰åŒäºJSçš„escape()
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UrlEncodeUnicode(this string str) {
             return HttpUtility.UrlEncodeUnicode(str);
@@ -202,15 +202,15 @@ namespace Pub.Class {
         /// <summary>
         /// UrlPathEncode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UrlPathEncode(this string str) {
             return HttpUtility.UrlPathEncode(str);
         }
         /// <summary>
-        /// ÏÂÔØÊ±EncodeÎÄ¼şÃû³Æ
+        /// ä¸‹è½½æ—¶Encodeæ–‡ä»¶åç§°
         /// </summary>
-        /// <param name="fileName">Ô´ÎÄ¼şÃû</param>
+        /// <param name="fileName">æºæ–‡ä»¶å</param>
         /// <returns></returns>
         public static string EncodeFileName(this string fileName) {
             foreach (string s in Request2.Get("ALL_RAW").Split("\r\n")) {
@@ -227,7 +227,7 @@ namespace Pub.Class {
         /// <summary>
         /// HtmlEncode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string HtmlEncode(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -236,27 +236,27 @@ namespace Pub.Class {
         /// <summary>
         /// HtmlDecode
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string HtmlDecode(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
             return HttpUtility.HtmlDecode(str);
         }
         /// <summary>
-        /// ÖĞÎÄ×Ö·û´®³¤¶È
+        /// ä¸­æ–‡å­—ç¬¦ä¸²é•¿åº¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static int CnLength(this string str) {
             if (str.IsNullEmpty()) return 0;
             return Encoding.Default.GetBytes(str).Length;
         }
         /// <summary>
-        /// È¡Ö¸¶¨³¤¶ÈµÄ×Ö·û´® ÖĞÎÄ×Ö·ûÕ¼2¸ö×Ö·û³¤¶È
+        /// å–æŒ‡å®šé•¿åº¦çš„å­—ç¬¦ä¸² ä¸­æ–‡å­—ç¬¦å 2ä¸ªå­—ç¬¦é•¿åº¦
         /// </summary>
-        /// <param name="strInput">stringÀ©Õ¹</param>
-        /// <param name="len">³¤¶È</param>
-        /// <param name="flg">ºó×º</param>
+        /// <param name="strInput">stringæ‰©å±•</param>
+        /// <param name="len">é•¿åº¦</param>
+        /// <param name="flg">åç¼€</param>
         /// <returns></returns>
         public static string SubString(this string strInput, int len, string flg) {
             if (strInput.IsNullEmpty()) return string.Empty;
@@ -286,42 +286,42 @@ namespace Pub.Class {
             return myResult;
         }
         /// <summary>
-        /// È¡ÎÄ¼şÀ©Õ¹Ãû ÓĞ.
+        /// å–æ–‡ä»¶æ‰©å±•å æœ‰.
         /// </summary>
-        /// <param name="filename">stringÀ©Õ¹</param>
+        /// <param name="filename">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string GetExtension(this string filename) {
             return System.IO.Path.GetExtension(filename);
         }
         /// <summary>
-        /// ĞŞ¸ÄÀ©Õ¹Ãû ÓĞ.
+        /// ä¿®æ”¹æ‰©å±•å æœ‰.
         /// </summary>
-        /// <param name="filename">stringÀ©Õ¹</param>
-        /// <param name="ext">À©Õ¹Ãû</param>
+        /// <param name="filename">stringæ‰©å±•</param>
+        /// <param name="ext">æ‰©å±•å</param>
         /// <returns></returns>
         public static string ChangeExtension(this string filename, string ext) {
             return System.IO.Path.ChangeExtension(filename, ext);
         }
         /// <summary>
-        /// È¡ÎÄ¼şÃû ÓĞÀ©Õ¹Ãû
+        /// å–æ–‡ä»¶å æœ‰æ‰©å±•å
         /// </summary>
-        /// <param name="filename">stringÀ©Õ¹</param>
+        /// <param name="filename">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string GetFileName(this string filename) {
             return System.IO.Path.GetFileName(filename);
         }
         /// <summary>
-        /// È¡ÎÄ¼şÃû ÎŞÀ©Õ¹Ãû
+        /// å–æ–‡ä»¶å æ— æ‰©å±•å
         /// </summary>
-        /// <param name="filename">stringÀ©Õ¹</param>
+        /// <param name="filename">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string GetFileNameWithoutExtension(this string filename) {
             return System.IO.Path.GetFileNameWithoutExtension(filename);
         }
         /// <summary>
-        /// È¡URLÖĞµÄÎÄ¼şÃû ÓĞÀ©Õ¹Ãû
+        /// å–URLä¸­çš„æ–‡ä»¶å æœ‰æ‰©å±•å
         /// </summary>
-        /// <param name="url">stringÀ©Õ¹</param>
+        /// <param name="url">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string GetUrlFileName(this string url) {
             if (url.IsNullEmpty()) return string.Empty;
@@ -329,9 +329,9 @@ namespace Pub.Class {
             return strs1[strs1.Length - 1].Split(new char[] { '?' })[0];
         }
         /// <summary>
-        /// È¡ href="ÖĞµÄÁ¬½Ó">
+        /// å– href="ä¸­çš„è¿æ¥">
         /// </summary>
-        /// <param name="HtmlCode">stringÀ©Õ¹</param>
+        /// <param name="HtmlCode">stringæ‰©å±•</param>
         /// <returns></returns>
         public static IList<string> GetHref(this string HtmlCode) {
             IList<string> MatchVale = new List<string>();
@@ -343,9 +343,9 @@ namespace Pub.Class {
             return MatchVale;
         }
         /// <summary>
-        /// È¡ src="ÖĞµÄÁ¬½Ó">
+        /// å– src="ä¸­çš„è¿æ¥">
         /// </summary>
-        /// <param name="HtmlCode">stringÀ©Õ¹</param>
+        /// <param name="HtmlCode">stringæ‰©å±•</param>
         /// <returns></returns>
         public static IList<string> GetSrc(this string HtmlCode) {
             IList<string> MatchVale = new List<string>();
@@ -357,27 +357,27 @@ namespace Pub.Class {
             return MatchVale;
         }
         /// <summary>
-        /// È¡EMAILµØÖ·ÖĞµÄ@163.com ÓĞ@
+        /// å–EMAILåœ°å€ä¸­çš„@163.com æœ‰@
         /// </summary>
-        /// <param name="strEmail">stringÀ©Õ¹</param>
+        /// <param name="strEmail">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string GetEmailHostName(this string strEmail) {
             if (strEmail.IsNullEmpty() || strEmail.IndexOf("@") < 0) return string.Empty;
             return strEmail.Substring(strEmail.LastIndexOf("@")).ToLower();
         }
         /// <summary>
-        /// ×Ö·û´®×ªÈÕÆÚ
+        /// å­—ç¬¦ä¸²è½¬æ—¥æœŸ
         /// </summary>
-        /// <param name="DateTimeStr">stringÀ©Õ¹</param>
+        /// <param name="DateTimeStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static DateTime ToDateTime(this string DateTimeStr) {
             if (DateTimeStr.IsNullEmpty()) return DateTime.Now;
             return DateTime.Parse(DateTimeStr);
         }
         /// <summary>
-        /// ×Ö·û´®×ªÈÕÆÚ×Ö·û´®
+        /// å­—ç¬¦ä¸²è½¬æ—¥æœŸå­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="fDateTime">stringÀ©Õ¹</param>
+        /// <param name="fDateTime">stringæ‰©å±•</param>
         /// <param name="formatStr">format</param>
         /// <returns></returns>
         public static string ToDateTimeString(this string fDateTime, string formatStr) {
@@ -385,9 +385,9 @@ namespace Pub.Class {
             return s.ToString(formatStr);
         }
         /// <summary>
-        /// ×Ö·û´®×ªÈÕÆÚ×Ö·û´®
+        /// å­—ç¬¦ä¸²è½¬æ—¥æœŸå­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="date">stringÀ©Õ¹</param>
+        /// <param name="date">stringæ‰©å±•</param>
         /// <param name="format">format</param>
         /// <param name="format2">format</param>
         /// <returns></returns>
@@ -396,20 +396,20 @@ namespace Pub.Class {
             return DateTime.ParseExact(date, format, System.Globalization.CultureInfo.CurrentCulture).ToString(format2);
         }
         /// <summary>
-        /// ×Ö·û´®×ªÈÕÆÚ
+        /// å­—ç¬¦ä¸²è½¬æ—¥æœŸ
         /// </summary>
-        /// <param name="DateTimeStr">stringÀ©Õ¹</param>
-        /// <param name="defDate">Ä¬ÈÏÖµ</param>
+        /// <param name="DateTimeStr">stringæ‰©å±•</param>
+        /// <param name="defDate">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static DateTime ToDateTime(this string DateTimeStr, DateTime defDate) {
             DateTime.TryParse(DateTimeStr, out defDate);
             return defDate;
         }
         /// <summary>
-        /// ×Ö·û´®×ªÈÕÆÚ
+        /// å­—ç¬¦ä¸²è½¬æ—¥æœŸ
         /// </summary>
-        /// <param name="DateTimeStr">stringÀ©Õ¹</param>
-        /// <param name="defDate">Ä¬ÈÏÖµ</param>
+        /// <param name="DateTimeStr">stringæ‰©å±•</param>
+        /// <param name="defDate">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static DateTime? ToDateTime(this string DateTimeStr, DateTime? defDate) {
             DateTime dt = DateTime.Now;
@@ -419,17 +419,17 @@ namespace Pub.Class {
             return dt;
         }
         /// <summary>
-        /// ×Ö·û´®×ª×Ö½Ú
+        /// å­—ç¬¦ä¸²è½¬å­—èŠ‚
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
+        /// <param name="value">stringæ‰©å±•</param>
         /// <returns></returns>
         public static byte[] ToBytes(this string value) {
             return value.ToBytes(null);
         }
         /// <summary>
-        /// ×Ö·û´®×ª×Ö½Ú
+        /// å­—ç¬¦ä¸²è½¬å­—èŠ‚
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
+        /// <param name="value">stringæ‰©å±•</param>
         /// <param name="encoding">Encoding</param>
         /// <returns></returns>
         public static byte[] ToBytes(this string value, Encoding encoding) {
@@ -438,17 +438,17 @@ namespace Pub.Class {
             return encoding.GetBytes(value);
         }
         /// <summary>
-        /// ×Ö·û´®×ª×Ö½Ú UTF8
+        /// å­—ç¬¦ä¸²è½¬å­—èŠ‚ UTF8
         /// </summary>
-        /// <param name="valueToExpand">stringÀ©Õ¹</param>
+        /// <param name="valueToExpand">stringæ‰©å±•</param>
         /// <returns></returns>
         public static byte[] ToUTF8Bytes(this string valueToExpand) {
             return Encoding.UTF8.GetBytes(valueToExpand);
         }
         /// <summary>
-        /// É¾³ıHTML±ê¼Ç
+        /// åˆ é™¤HTMLæ ‡è®°
         /// </summary>
-        /// <param name="HtmlCode">stringÀ©Õ¹</param>
+        /// <param name="HtmlCode">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string RemoveHTML(this string HtmlCode) {
             if (HtmlCode.IsNullEmpty()) return string.Empty;
@@ -459,9 +459,9 @@ namespace Pub.Class {
             return MatchVale;
         }
         /// <summary>
-        /// É¾³ıHTML±ê¼Ç
+        /// åˆ é™¤HTMLæ ‡è®°
         /// </summary>
-        /// <param name="content">stringÀ©Õ¹</param>
+        /// <param name="content">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string RemoveAllHTML(this string content) {
             if (content.IsNullEmpty()) return string.Empty;
@@ -470,36 +470,36 @@ namespace Pub.Class {
         }
 #if !MONO40
         /// <summary>
-        /// ×ª¼òÌåÖĞÎÄ
+        /// è½¬ç®€ä½“ä¸­æ–‡
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToSChinese(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
             return Strings.StrConv(str, VbStrConv.SimplifiedChinese, 0);
         }
         /// <summary>
-        /// ×ª·±ÌåÖĞÎÄ
+        /// è½¬ç¹ä½“ä¸­æ–‡
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToTChinese(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
             return Strings.StrConv(str, VbStrConv.TraditionalChinese, 0);
         }
         /// <summary>
-        /// È¡ÎÄ¼ş×Ö·û´®µÄMIME
+        /// å–æ–‡ä»¶å­—ç¬¦ä¸²çš„MIME
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <returns>È¡ÎÄ¼ş×Ö·û´®µÄMIME</returns>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <returns>å–æ–‡ä»¶å­—ç¬¦ä¸²çš„MIME</returns>
         public static string GetMimeType(this string str) {
             return Encoding.UTF8.GetBytes(str).GetMimeType();
         }
 #endif
         ///// <summary>
-        ///// ¼ÆËã±í´ïÊ¾Öµ
+        ///// è®¡ç®—è¡¨è¾¾ç¤ºå€¼
         ///// </summary>
-        ///// <param name="ExprStr">stringÀ©Õ¹</param>
+        ///// <param name="ExprStr">stringæ‰©å±•</param>
         ///// <returns></returns>
         //public static double Evel(this string ExprStr) {
         //    if (ExprStr.IsNullEmpty()) return 0;
@@ -507,9 +507,9 @@ namespace Pub.Class {
         //    return expression.Compute(0);
         //}
         /// <summary>
-        /// ×Ö·ûµ¹ÅÅÁĞ
+        /// å­—ç¬¦å€’æ’åˆ—
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
+        /// <param name="value">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string Reverse(this string value) {
             if (value.IsNullEmpty()) return string.Empty;
@@ -519,10 +519,10 @@ namespace Pub.Class {
             return new string(chars);
         }
         /// <summary>
-        /// ¹ıÂËÔà»°
+        /// è¿‡æ»¤è„è¯
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="word">Èç£º(TMD|MB)</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="word">å¦‚ï¼š(TMD|MB)</param>
         /// <returns></returns>
         public static string Filter(this string str, string word = "") {
             if (str.IsNullEmpty()) return string.Empty;
@@ -533,7 +533,7 @@ namespace Pub.Class {
         /// <summary>
         /// UBB
         /// </summary>
-        /// <param name="chr">stringÀ©Õ¹</param>
+        /// <param name="chr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UBB(this string chr) {
             if (chr.IsNullEmpty()) return string.Empty;
@@ -573,39 +573,39 @@ namespace Pub.Class {
             chr = Regex.Replace(chr, @"\[list=1\](?<x>[^\]]*)\[/list\]", @"<ol type=1>$1</ol id=1>", RegexOptions.IgnoreCase);
             chr = Regex.Replace(chr, @"\[list=a\](?<x>[^\]]*)\[/list\]", @"<ol type=a>$1</ol id=a>", RegexOptions.IgnoreCase);
             chr = Regex.Replace(chr, @"\[\*\](?<x>[^\]]*)\[/\*\]", @"<li>$1</li>", RegexOptions.IgnoreCase);
-            chr = Regex.Replace(chr, @"\[quote](?<x>.*)\[/quote]", @"<center>¡ª¡ª ÒÔÏÂÊÇÒıÓÃ ¡ª¡ª<table border='1' width='80%' cellpadding='10' cellspacing='0' ><tr><td>$1</td></tr></table></center>", RegexOptions.IgnoreCase);
+            chr = Regex.Replace(chr, @"\[quote](?<x>.*)\[/quote]", @"<center>â€”â€” ä»¥ä¸‹æ˜¯å¼•ç”¨ â€”â€”<table border='1' width='80%' cellpadding='10' cellspacing='0' ><tr><td>$1</td></tr></table></center>", RegexOptions.IgnoreCase);
             return (chr);
         }
         /// <summary>
         /// ClearUBB
         /// </summary>
-        /// <param name="sDetail">stringÀ©Õ¹</param>
+        /// <param name="sDetail">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ClearUBB(this string sDetail) {
             return Regex.Replace(sDetail, @"\[[^\]]*?\]", string.Empty, RegexOptions.IgnoreCase);
         }
         /// <summary>
-        /// ×Ö·û´®¸ñÊ½»¯
+        /// å­—ç¬¦ä¸²æ ¼å¼åŒ–
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="args">Öµ</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="args">å€¼</param>
         /// <returns></returns>
         public static string FormatWith(this string str, params object[] args) {
             return string.Format(str, args);
         }
         /// <summary>
-        /// ×Ö·û´®¸ñÊ½»¯
+        /// å­—ç¬¦ä¸²æ ¼å¼åŒ–
         /// </summary>
-        /// <param name="format">stringÀ©Õ¹</param>
-        /// <param name="args">Öµ</param>
+        /// <param name="format">stringæ‰©å±•</param>
+        /// <param name="args">å€¼</param>
         /// <returns></returns>
         public static string AppendFormat(this string format, params object[] args) {
             return new StringBuilder().AppendFormat(format, args).ToString();
         }
         /// <summary>
-        /// ×Ö·û´®Áª½Ó
+        /// å­—ç¬¦ä¸²è”æ¥
         /// </summary>
-        /// <param name="args">Öµ</param>
+        /// <param name="args">å€¼</param>
         /// <returns></returns>
         public static string ConcatWith(params object[] args) {
             return string.Concat(args);
@@ -616,84 +616,84 @@ namespace Pub.Class {
         //    return new StringBuilder(capacity).AppendFormat( format, args).ToString(); 
         //}
         /// <summary>
-        /// ×Ö·û´®¸ñÊ½»¯
+        /// å­—ç¬¦ä¸²æ ¼å¼åŒ–
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
-        /// <param name="arg0">Öµ</param>
+        /// <param name="text">stringæ‰©å±•</param>
+        /// <param name="arg0">å€¼</param>
         /// <returns></returns>
         public static string FormatWith(this string text, object arg0) {
             return string.Format(text, arg0);
         }
         /// <summary>
-        /// ×Ö·û´®¸ñÊ½»¯
+        /// å­—ç¬¦ä¸²æ ¼å¼åŒ–
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
-        /// <param name="arg0">Öµ</param>
-        /// <param name="arg1">Öµ</param>
+        /// <param name="text">stringæ‰©å±•</param>
+        /// <param name="arg0">å€¼</param>
+        /// <param name="arg1">å€¼</param>
         /// <returns></returns>
         public static string FormatWith(this string text, object arg0, object arg1) {
             return string.Format(text, arg0, arg1);
         }
         /// <summary>
-        /// ×Ö·û´®¸ñÊ½»¯
+        /// å­—ç¬¦ä¸²æ ¼å¼åŒ–
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
-        /// <param name="arg0">Öµ</param>
-        /// <param name="arg1">Öµ</param>
-        /// <param name="arg2">Öµ</param>
+        /// <param name="text">stringæ‰©å±•</param>
+        /// <param name="arg0">å€¼</param>
+        /// <param name="arg1">å€¼</param>
+        /// <param name="arg2">å€¼</param>
         /// <returns></returns>
         public static string FormatWith(this string text, object arg0, object arg1, object arg2) {
             return string.Format(text, arg0, arg1, arg2);
         }
         /// <summary>
-        /// ×Ö·û´®¸ñÊ½»¯
+        /// å­—ç¬¦ä¸²æ ¼å¼åŒ–
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
+        /// <param name="text">stringæ‰©å±•</param>
         /// <param name="provider">IFormatProvider</param>
-        /// <param name="args">Öµ</param>
+        /// <param name="args">å€¼</param>
         /// <returns></returns>
         public static string FormatWith(this string text, IFormatProvider provider, params object[] args) {
             return string.Format(provider, text, args);
         }
         /// <summary>
-        /// ×Ö·û´®Ìæ»»
+        /// å­—ç¬¦ä¸²æ›¿æ¢
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="replaceValue">Ìæ»»Öµ</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="replaceValue">æ›¿æ¢å€¼</param>
         /// <returns></returns>
         public static string ReplaceWith(this string value, string regexPattern, string replaceValue) {
             if (value.IsNullEmpty()) return string.Empty;
             return ReplaceWith(value, regexPattern, replaceValue, RegexOptions.None);
         }
         /// <summary>
-        /// ×Ö·û´®Ìæ»»
+        /// å­—ç¬¦ä¸²æ›¿æ¢
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="replaceValue">Ìæ»»Öµ</param>
-        /// <param name="options">Ñ¡Ïî</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="replaceValue">æ›¿æ¢å€¼</param>
+        /// <param name="options">é€‰é¡¹</param>
         /// <returns></returns>
         public static string ReplaceWith(this string value, string regexPattern, string replaceValue, RegexOptions options) {
             if (value.IsNullEmpty()) return string.Empty;
             return Regex.Replace(value, regexPattern, replaceValue, options);
         }
         /// <summary>
-        /// ×Ö·û´®Ìæ»»
+        /// å­—ç¬¦ä¸²æ›¿æ¢
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
         /// <param name="evaluator">MatchEvaluator</param>
         /// <returns></returns>
         public static string ReplaceWith(this string value, string regexPattern, MatchEvaluator evaluator) {
             return ReplaceWith(value, regexPattern, RegexOptions.None, evaluator);
         }
         /// <summary>
-        /// ×Ö·û´®Ìæ»»
+        /// å­—ç¬¦ä¸²æ›¿æ¢
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="options">Ñ¡Ïî</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="options">é€‰é¡¹</param>
         /// <param name="evaluator">MatchEvaluator</param>
         /// <returns></returns>
         public static string ReplaceWith(this string value, string regexPattern, RegexOptions options, MatchEvaluator evaluator) {
@@ -701,23 +701,23 @@ namespace Pub.Class {
             return Regex.Replace(value, regexPattern, evaluator, options);
         }
         /// <summary>
-        /// ×Ö·û´®Ìæ»»
+        /// å­—ç¬¦ä¸²æ›¿æ¢
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="ReplaceString">Ìæ»»</param>
-        /// <param name="IsCaseInsensetive">²»Çø·Ö´óĞ¡Ğ´</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="ReplaceString">æ›¿æ¢</param>
+        /// <param name="IsCaseInsensetive">ä¸åŒºåˆ†å¤§å°å†™</param>
         /// <returns></returns>
         public static string ReplaceWith(this string value, string regexPattern, string ReplaceString, bool IsCaseInsensetive) {
             if (value.IsNullEmpty()) return string.Empty;
             return Regex.Replace(value, regexPattern, ReplaceString, IsCaseInsensetive ? RegexOptions.IgnoreCase : RegexOptions.None);
         }
         /// <summary>
-        /// ×Ö·û´®Ìæ»»
+        /// å­—ç¬¦ä¸²æ›¿æ¢
         /// </summary>
-        /// <param name="RegValue">stringÀ©Õ¹</param>
-        /// <param name="regStart">¿ªÊ¼</param>
-        /// <param name="regEnd">½áÊø</param>
+        /// <param name="RegValue">stringæ‰©å±•</param>
+        /// <param name="regStart">å¼€å§‹</param>
+        /// <param name="regEnd">ç»“æŸ</param>
         /// <returns></returns>
         public static string Replace(this string RegValue, string regStart, string regEnd) {
             if (RegValue.IsNullEmpty()) return string.Empty;
@@ -729,43 +729,43 @@ namespace Pub.Class {
             return s;
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ to MatchCollection
+        /// æ­£åˆ™å–å€¼ to MatchCollection
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
         /// <returns></returns>
         public static MatchCollection GetMatches(this string value, string regexPattern) {
             if (value.IsNullEmpty()) return null;
             return GetMatches(value, regexPattern, RegexOptions.None);
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ to MatchCollection
+        /// æ­£åˆ™å–å€¼ to MatchCollection
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="options">Ñ¡Ïî</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="options">é€‰é¡¹</param>
         /// <returns></returns>
         public static MatchCollection GetMatches(this string value, string regexPattern, RegexOptions options) {
             if (value.IsNullEmpty()) return null;
             return Regex.Matches(value, regexPattern, options);
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ to MatchCollection
+        /// æ­£åˆ™å–å€¼ to MatchCollection
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="startString">¿ªÊ¼</param>
-        /// <param name="endString">½áÊø</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="startString">å¼€å§‹</param>
+        /// <param name="endString">ç»“æŸ</param>
         /// <returns></returns>
         public static MatchCollection FindBetween(this string s, string startString, string endString) {
             return s.FindBetween(startString, endString, true);
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ to MatchCollection
+        /// æ­£åˆ™å–å€¼ to MatchCollection
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="startString">¿ªÊ¼</param>
-        /// <param name="endString">½áÊø</param>
-        /// <param name="recursive">µİ¹é</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="startString">å¼€å§‹</param>
+        /// <param name="endString">ç»“æŸ</param>
+        /// <param name="recursive">é€’å½’</param>
         /// <returns></returns>
         public static MatchCollection FindBetween(this string s, string startString, string endString, bool recursive) {
             if (s.IsNullEmpty()) return null;
@@ -787,20 +787,20 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ to list
+        /// æ­£åˆ™å–å€¼ to list
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
         /// <returns></returns>
         public static IEnumerable<string> GetMatchingValues(this string value, string regexPattern) {
             return GetMatchingValues(value, regexPattern, RegexOptions.None);
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ to list
+        /// æ­£åˆ™å–å€¼ to list
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="options">Ñ¡Ïî</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="options">é€‰é¡¹</param>
         /// <returns></returns>
         public static IEnumerable<string> GetMatchingValues(this string value, string regexPattern, RegexOptions options) {
             foreach (Match match in GetMatches(value, regexPattern, options)) {
@@ -808,12 +808,12 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ to list
+        /// æ­£åˆ™å–å€¼ to list
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="rep1">Ìæ»»1</param>
-        /// <param name="rep2">Ìæ»»2</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="rep1">æ›¿æ¢1</param>
+        /// <param name="rep2">æ›¿æ¢2</param>
         /// <returns></returns>
         public static IList<string> GetMatchingValues(this string value, string regexPattern, string rep1, string rep2) {
             IList<string> txtTextArr = new List<string>();
@@ -826,12 +826,12 @@ namespace Pub.Class {
             return txtTextArr;
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ
+        /// æ­£åˆ™å–å€¼
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="rep1">Ìæ»»1</param>
-        /// <param name="rep2">Ìæ»»2</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="rep1">æ›¿æ¢1</param>
+        /// <param name="rep2">æ›¿æ¢2</param>
         /// <returns></returns>
         public static string GetMatchingValue(this string value, string regexPattern, string rep1, string rep2) {
             if (value.IsNullEmpty()) return string.Empty;
@@ -840,12 +840,12 @@ namespace Pub.Class {
             return value.Replace(rep1, "").Replace(rep2, "").Trim();
         }
         /// <summary>
-        /// ÕıÔòÈ¡Öµ
+        /// æ­£åˆ™å–å€¼
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="left">×ó³¤</param>
-        /// <param name="right">ÓÒ³¤</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="left">å·¦é•¿</param>
+        /// <param name="right">å³é•¿</param>
         /// <returns></returns>
         public static string GetMatchingValue(this string value, string regexPattern, int left, int right) {
             if (value.IsNullEmpty()) return string.Empty;
@@ -856,39 +856,39 @@ namespace Pub.Class {
             return value.Trim();
         }
         /// <summary>
-        /// ·Ö¸î×Ö·û´®
+        /// åˆ†å‰²å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
-        /// <param name="options">Ñ¡Ïî</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
+        /// <param name="options">é€‰é¡¹</param>
         /// <returns></returns>
         public static string[] Split(this string value, string regexPattern, RegexOptions options) {
             if (value.IsNullEmpty()) return new string[] { };
             return Regex.Split(value, regexPattern, options);
         }
         /// <summary>
-        /// ·Ö¸î×Ö·û´®
+        /// åˆ†å‰²å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="regexPattern">ÕıÔò</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="regexPattern">æ­£åˆ™</param>
         /// <returns></returns>
         public static string[] Split(this string value, string regexPattern) {
             return value.Split(regexPattern, RegexOptions.None);
         }
 #if !NET20
         /// <summary>
-        /// xml×Ö·û´®×ª XDocument/XmlDocument/XPathNavigator
+        /// xmlå­—ç¬¦ä¸²è½¬ XDocument/XmlDocument/XPathNavigator
         /// </summary>
-        /// <param name="xml">stringÀ©Õ¹</param>
+        /// <param name="xml">stringæ‰©å±•</param>
         /// <returns></returns>
         public static XDocument ToXDocument(this string xml) {
             return XDocument.Parse(xml);
         }
 #endif
         /// <summary>
-        /// xml×Ö·û´®×ª XmlDocument
+        /// xmlå­—ç¬¦ä¸²è½¬ XmlDocument
         /// </summary>
-        /// <param name="xml">stringÀ©Õ¹</param>
+        /// <param name="xml">stringæ‰©å±•</param>
         /// <returns></returns>
         public static XmlDocument ToXmlDOM(this string xml) {
             var document = new XmlDocument();
@@ -896,27 +896,27 @@ namespace Pub.Class {
             return document;
         }
         /// <summary>
-        /// xml×Ö·û´®×ª XPathNavigator
+        /// xmlå­—ç¬¦ä¸²è½¬ XPathNavigator
         /// </summary>
-        /// <param name="xml">stringÀ©Õ¹</param>
+        /// <param name="xml">stringæ‰©å±•</param>
         /// <returns></returns>
         public static XPathNavigator ToXPath(this string xml) {
             var document = new XPathDocument(new StringReader(xml));
             return document.CreateNavigator();
         }
         /// <summary>
-        /// ×ªÆ´Òô
+        /// è½¬æ‹¼éŸ³
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
+        /// <param name="s">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToPinyin(this string s) {
             if (s.IsNullEmpty()) return string.Empty;
             return PinYin.Instance().Search(s).ToLower();
         }
         /// <summary>
-        /// ×ªÆ´ÒôÊ××ÖÄ¸
+        /// è½¬æ‹¼éŸ³é¦–å­—æ¯
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
+        /// <param name="s">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToPinyinChar(this string s) {
             if (s.IsNullEmpty()) return string.Empty;
@@ -924,9 +924,9 @@ namespace Pub.Class {
             if (strVal.ToLower() == strVal.ToUpper()) return "*"; else return strVal.ToLower();
         }
         /// <summary>
-        /// ×ªÆ´ÒôÊ××ÖÄ¸
+        /// è½¬æ‹¼éŸ³é¦–å­—æ¯
         /// </summary>
-        /// <param name="c">stringÀ©Õ¹</param>
+        /// <param name="c">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToPinyinChar2(this string c) {
             byte[] array = new byte[2];
@@ -959,10 +959,10 @@ namespace Pub.Class {
             return "*";
         }
         /// <summary>
-        /// ×ó½Ø×Ö·û´®
+        /// å·¦æˆªå­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="length">³¤</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="length">é•¿</param>
         /// <returns></returns>
         public static string Left(this string str, int length) {
             if (length <= 0 || str.Length == 0) return string.Empty;
@@ -970,10 +970,10 @@ namespace Pub.Class {
             return str.Substring(0, length);
         }
         /// <summary>
-        /// ÓÒ½Ø×Ö·û´®
+        /// å³æˆªå­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="length">³¤</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="length">é•¿</param>
         /// <returns></returns>
         public static string Right(this string str, int length) {
             if (length <= 0 || str.Length == 0) return string.Empty;
@@ -981,10 +981,10 @@ namespace Pub.Class {
             return str.Substring(str.Length - length, length);
         }
         /// <summary>
-        /// JsonÌØ·û×Ö·û¹ıÂË£¬²Î¼ûhttp://www.json.org/
+        /// Jsonç‰¹ç¬¦å­—ç¬¦è¿‡æ»¤ï¼Œå‚è§http://www.json.org/
         /// </summary>
-        /// <param name="sourceStr">Òª¹ıÂËµÄÔ´×Ö·û´®</param>
-        /// <returns>·µ»Ø¹ıÂËµÄ×Ö·û´®</returns>
+        /// <param name="sourceStr">è¦è¿‡æ»¤çš„æºå­—ç¬¦ä¸²</param>
+        /// <returns>è¿”å›è¿‡æ»¤çš„å­—ç¬¦ä¸²</returns>
         public static string JsonEscape(string sourceStr) {
             var builder = new StringBuilder();
             foreach (var c in sourceStr)
@@ -1003,55 +1003,55 @@ namespace Pub.Class {
             return builder.ToString();
         }
         /// <summary>
-        /// ×ªÃ¶¾ÙÀàĞÍ Èç public enum test { test1, test2 } Msg.WriteEnd("0".ToEnum&lt;test>()); ÖµÊÇtest1
+        /// è½¬æšä¸¾ç±»å‹ å¦‚ public enum test { test1, test2 } Msg.WriteEnd("0".ToEnum&lt;test>()); å€¼æ˜¯test1
         /// </summary>
         /// <example>
         /// <code>
         /// public enum test { test1, test2 } 
-        /// Msg.WriteEnd("0".ToEnum&lt;test>()); //ÖµÊÇtest1
+        /// Msg.WriteEnd("0".ToEnum&lt;test>()); //å€¼æ˜¯test1
         /// </code>
         /// </example>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="value">stringÀ©Õ¹</param>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="value">stringæ‰©å±•</param>
         /// <returns></returns>
         public static T ToEnum<T>(this string value) {
             return ToEnum<T>(value, false);
         }
         /// <summary>
-        /// ×ªÃ¶¾ÙÀàĞÍ
+        /// è½¬æšä¸¾ç±»å‹
         /// </summary>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="ignorecase">´óĞ¡Ğ´</param>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="ignorecase">å¤§å°å†™</param>
         /// <returns></returns>
         public static T ToEnum<T>(this string value, bool ignorecase) {
-            if (value.IsNull()) throw new ArgumentNullException("value²»ÄÜÎª¿Õ");
+            if (value.IsNull()) throw new ArgumentNullException("valueä¸èƒ½ä¸ºç©º");
             value = value.Trim();
-            if (value.Length == 0) throw new ArgumentNullException("value²»ÊÇÓĞĞ§Enum×Ö·û´®", "value");
+            if (value.Length == 0) throw new ArgumentNullException("valueä¸æ˜¯æœ‰æ•ˆEnumå­—ç¬¦ä¸²", "value");
             Type t = typeof(T);
-            if (!t.IsEnum) throw new ArgumentException("Type²»ÊÇÓĞĞ§Enum", "T");
+            if (!t.IsEnum) throw new ArgumentException("Typeä¸æ˜¯æœ‰æ•ˆEnum", "T");
             return (T)Enum.Parse(t, value, ignorecase);
         }
         /// <summary>
-        /// ×ªÃ¶¾ÙÀàĞÍ
+        /// è½¬æšä¸¾ç±»å‹
         /// </summary>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
-        public static T ToEnum<T>(string value, T defaultValue) where T : struct, IConvertible { if (!typeof(T).IsEnum) throw new ArgumentException("T±ØĞëÊÇEnumÀàĞÍ"); if (string.IsNullOrEmpty(value)) return defaultValue; foreach (T item in Enum.GetValues(typeof(T))) { if (item.ToString().ToLower().Equals(value.Trim().ToLower())) return item; } return defaultValue; }
+        public static T ToEnum<T>(string value, T defaultValue) where T : struct, IConvertible { if (!typeof(T).IsEnum) throw new ArgumentException("Tå¿…é¡»æ˜¯Enumç±»å‹"); if (string.IsNullOrEmpty(value)) return defaultValue; foreach (T item in Enum.GetValues(typeof(T))) { if (item.ToString().ToLower().Equals(value.Trim().ToLower())) return item; } return defaultValue; }
         /// <summary>
-        /// »ñÈ¡Ã¶¾ÙËùÓĞ³ÉÔ±Ãû³Æ
+        /// è·å–æšä¸¾æ‰€æœ‰æˆå‘˜åç§°
         /// </summary>
-        /// <typeparam name="T">Ã¶¾ÙÃû,±ÈÈçEnum1</typeparam>
+        /// <typeparam name="T">æšä¸¾å,æ¯”å¦‚Enum1</typeparam>
         public static string[] GetEnumNames<T>() {
             return System.Enum.GetNames(typeof(T));
         }
         /// <summary>
-        /// ×Ö·û´æÔÚÊıÁ¿
+        /// å­—ç¬¦å­˜åœ¨æ•°é‡
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="character">×Ö·û</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="character">å­—ç¬¦</param>
         /// <returns></returns>
         public static int CharacterCount(this string value, char character) {
             int intReturnValue = 0;
@@ -1063,10 +1063,10 @@ namespace Pub.Class {
             return intReturnValue;
         }
         /// <summary>
-        /// ¼ÓÇ°×º
+        /// åŠ å‰ç¼€
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="prefix">Ç°×º</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="prefix">å‰ç¼€</param>
         /// <returns></returns>
         public static string ForcePrefix(this string s, string prefix) {
             if (s.IsNullEmpty()) return string.Empty;
@@ -1075,10 +1075,10 @@ namespace Pub.Class {
             return result;
         }
         /// <summary>
-        /// ¼Óºó×º
+        /// åŠ åç¼€
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="suffix">ºó×º</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="suffix">åç¼€</param>
         /// <returns></returns>
         public static string ForceSuffix(this string s, string suffix) {
             if (s.IsNullEmpty()) return string.Empty;
@@ -1087,41 +1087,41 @@ namespace Pub.Class {
             return result;
         }
         /// <summary>
-        /// É¾³ıÇ°×º
+        /// åˆ é™¤å‰ç¼€
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="prefix">Ç°×º</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="prefix">å‰ç¼€</param>
         /// <returns></returns>
         public static string RemovePrefix(this string s, string prefix) {
             if (s.IsNullEmpty()) return string.Empty;
             return Regex.Replace(s, "^" + prefix, System.String.Empty, RegexOptions.IgnoreCase);
         }
         /// <summary>
-        /// É¾³ıºó×º
+        /// åˆ é™¤åç¼€
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="suffix">ºó×º</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="suffix">åç¼€</param>
         /// <returns></returns>
         public static string RemoveSuffix(this string s, string suffix) {
             if (s.IsNullEmpty()) return string.Empty;
             return Regex.Replace(s, suffix + "$", System.String.Empty, RegexOptions.IgnoreCase);
         }
         /// <summary>
-        /// ÔÚÓÒ±ß²¹×Ö·û´®
+        /// åœ¨å³è¾¹è¡¥å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="pad">¸½¼Ó</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="pad">é™„åŠ </param>
         /// <returns></returns>
         public static string PadLeft(this string s, string pad) {
             return s.PadLeft(pad, s.Length + pad.Length, false);
         }
         /// <summary>
-        /// ÔÚÓÒ±ß²¹×Ö·û´®
+        /// åœ¨å³è¾¹è¡¥å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="pad">¸½¼Ó</param>
-        /// <param name="totalWidth">¿í</param>
-        /// <param name="cutOff">ÊÇ·ñ¼ôÇĞ</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="pad">é™„åŠ </param>
+        /// <param name="totalWidth">å®½</param>
+        /// <param name="cutOff">æ˜¯å¦å‰ªåˆ‡</param>
         /// <returns></returns>
         public static string PadLeft(this string s, string pad, int totalWidth, bool cutOff) {
             if (s.IsNullEmpty()) return string.Empty;
@@ -1133,21 +1133,21 @@ namespace Pub.Class {
             return paddedString;
         }
         /// <summary>
-        /// ÔÚ×ó±ß²¹×Ö·û´®
+        /// åœ¨å·¦è¾¹è¡¥å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="pad">¸½¼Ó</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="pad">é™„åŠ </param>
         /// <returns></returns>
         public static string PadRight(this string s, string pad) {
             return PadRight(s, pad, s.Length + pad.Length, false);
         }
         /// <summary>
-        /// ÔÚ×ó±ß²¹×Ö·û´®
+        /// åœ¨å·¦è¾¹è¡¥å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <param name="pad">¸½¼Ó</param>
-        /// <param name="length">³¤</param>
-        /// <param name="cutOff">ÊÇ·ñ¼ôÇĞ</param>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <param name="pad">é™„åŠ </param>
+        /// <param name="length">é•¿</param>
+        /// <param name="cutOff">æ˜¯å¦å‰ªåˆ‡</param>
         /// <returns></returns>
         public static string PadRight(this string s, string pad, int length, bool cutOff) {
             if (s.IsNullEmpty()) return string.Empty;
@@ -1159,9 +1159,9 @@ namespace Pub.Class {
             return paddedString;
         }
         /// <summary>
-        /// ×Ö·û´®×ªÑÕÉ« Èç"ffffff".ToColor()
+        /// å­—ç¬¦ä¸²è½¬é¢œè‰² å¦‚"ffffff".ToColor()
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
+        /// <param name="s">stringæ‰©å±•</param>
         /// <returns></returns>
         public static Color ToColor(this string s) {
             if (s.IsNullEmpty()) return new Color() { };
@@ -1180,19 +1180,19 @@ namespace Pub.Class {
             return Color.FromArgb(a, r, g, b);
         }
         /// <summary>
-        /// ×Ö·û´®Êı×éÖĞÊÇ·ñ°üº¬ value
+        /// å­—ç¬¦ä¸²æ•°ç»„ä¸­æ˜¯å¦åŒ…å« value
         /// </summary>
-        /// <param name="value">stringÀ©Õ¹</param>
-        /// <param name="keywords">×Ö·û´®</param>
+        /// <param name="value">stringæ‰©å±•</param>
+        /// <param name="keywords">å­—ç¬¦ä¸²</param>
         /// <returns></returns>
         public static bool ContainsArray(this string value, params string[] keywords) {
             return keywords.All((s) => value.Contains(s));
         }
         /// <summary>
-        /// ×Ö·û´®×ªTÀàĞÍµÄNULL Èç "123".ToNullable&lt;long>() ¿ÉÎªnull
+        /// å­—ç¬¦ä¸²è½¬Tç±»å‹çš„NULL å¦‚ "123".ToNullable&lt;long>() å¯ä¸ºnull
         /// </summary>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="s">stringÀ©Õ¹</param>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="s">stringæ‰©å±•</param>
         /// <returns></returns>
         public static Nullable<T> ToNullable<T>(this string s) where T : struct {
             T? result = null;
@@ -1203,27 +1203,27 @@ namespace Pub.Class {
             return result;
         }
         /// <summary>
-        /// ×Ö·û´®×ªTÀàĞÍµÄNULL Èç 0.ToNullable&lt;long>() ¿ÉÎªnull
+        /// å­—ç¬¦ä¸²è½¬Tç±»å‹çš„NULL å¦‚ 0.ToNullable&lt;long>() å¯ä¸ºnull
         /// </summary>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="value">Öµ</param>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="value">å€¼</param>
         /// <returns></returns>
         public static T? ToNullable<T>(this T value) where T : struct {
             return (value.IsDefault<T>() ? null : (T?)value);
         }
         /// <summary>
-        /// °´ĞĞ·Ö¸ô×Ö·û´®
+        /// æŒ‰è¡Œåˆ†éš”å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
+        /// <param name="text">stringæ‰©å±•</param>
         /// <returns></returns>
         public static List<string> GetLines(this string text) {
             return text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
         }
         /// <summary>
-        /// ÕıÔòÆ¥Åä·ñ
+        /// æ­£åˆ™åŒ¹é…å¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="op">ÕıÔò</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="op">æ­£åˆ™</param>
         /// <returns></returns>
         public static bool IsMatch(this string str, string op) {
             if (str.IsNullEmpty()) return false;
@@ -1231,9 +1231,9 @@ namespace Pub.Class {
             return re.IsMatch(str);
         }
         /// <summary>
-        /// IP·ñ
+        /// IPå¦
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsIP(this string input) {
             return input.IsMatch(@"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$"); //@"^(([01]?[\d]{1,2})|(2[0-4][\d])|(25[0-5]))(\.(([01]?[\d]{1,2})|(2[0-4][\d])|(25[0-5]))){3}$";
@@ -1242,9 +1242,9 @@ namespace Pub.Class {
             return new Regex(@"^(((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?):([0-9]*))$", RegexOptions.IgnoreCase).IsMatch(input);
         }
         /// <summary>
-        /// IP6·ñ
+        /// IP6å¦
         /// </summary>
-        /// <param name="ip">stringÀ©Õ¹</param>
+        /// <param name="ip">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsIPSect(this string ip) {
             return ip.IsMatch(@"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){2}((2[0-4]\d|25[0-5]|[01]?\d\d?|\*)\.)(2[0-4]\d|25[0-5]|[01]?\d\d?|\*)$");
@@ -1252,7 +1252,7 @@ namespace Pub.Class {
         /// <summary>
         /// IsNumber
         /// </summary>
-        /// <param name="strNumber">stringÀ©Õ¹</param>
+        /// <param name="strNumber">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsNumber(this string strNumber) {
             string pet = @"^([0-9])[0-9]*(\.\w*)?$"; //^-[0-9]+$|^[0-9]+$
@@ -1261,25 +1261,25 @@ namespace Pub.Class {
         /// <summary>
         /// IsDouble
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsDouble(this string input) {
-            string pet = @"^[0-9]*[1-9][0-9]*$";//@"^\d{1,}$"//ÕûÊıĞ£Ñé³£Á¿//@"^-?(0|\d+)(\.\d+)?$"//ÊıÖµĞ£Ñé³£Á¿ 
+            string pet = @"^[0-9]*[1-9][0-9]*$";//@"^\d{1,}$"//æ•´æ•°æ ¡éªŒå¸¸é‡//@"^-?(0|\d+)(\.\d+)?$"//æ•°å€¼æ ¡éªŒå¸¸é‡ 
             return input.IsMatch(pet);
         }
         /// <summary>
-        /// ÕûÊı·ñ
+        /// æ•´æ•°å¦
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsInt(this string input) {
             string pet = @"^[0-9]*$"; //@"^([0-9])[0-9]*(\.\w*)?$";
             return input.IsMatch(pet);
         }
         /// <summary>
-        /// Êı×éÀïÈ«ÊÇÊı×Ö·ñ
+        /// æ•°ç»„é‡Œå…¨æ˜¯æ•°å­—å¦
         /// </summary>
-        /// <param name="strNumber">stringÀ©Õ¹</param>
+        /// <param name="strNumber">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsNumberArray(this string[] strNumber) {
             if (strNumber.IsNull()) return false;
@@ -1289,43 +1289,43 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// ĞÅÏä·ñ
+        /// ä¿¡ç®±å¦
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsEmail(this string input) {
             string pet = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";//@"^\w+((-\w+)|(\.\w+))*\@\w+((\.|-)\w+)*\.\w+$";
             return input.IsMatch(pet);
         }
         /// <summary>
-        /// URL·ñ
+        /// URLå¦
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsUrl(this string input) {
             string pet = @"^(http|https)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|localhost|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{1,10}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&%\$#\=~_\-]+))*$";//@"^http://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?";
             return input.IsMatch(pet);
         }
         /// <summary>
-        /// ÓÊ±à·ñ
+        /// é‚®ç¼–å¦
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsZip(this string input) {
             return input.IsMatch(@"\d{6}");
         }
         /// <summary>
-        /// °²È«SQL×Ö·û´®·ñ
+        /// å®‰å…¨SQLå­—ç¬¦ä¸²å¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsSafeSqlStr(this string str) {
             return !Regex.IsMatch(str, @"[-|;|,|\/|\(|\)|\[|\]|\}|\{|%|@|\*|!|\']");
         }
         /// <summary>
-        /// ÈÕÆÚÊ±¼ä·ñ ÕıÔò
+        /// æ—¥æœŸæ—¶é—´å¦ æ­£åˆ™
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsDateTime(this string input) {
             //string pet = @"^(?:(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\/|-|\.)(?:0?2\1(?:29))$)|(?:(?:1[6-9]|[2-9]\d)?\d{2})(\/|-|\.)(?:(?:(?:0?[13578]|1[02])\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\2(?:0?[1-9]|1\d|2[0-8]))$";
@@ -1333,112 +1333,112 @@ namespace Pub.Class {
             return input.IsMatch(pet);
         }
         /// <summary>
-        /// ÈÕÆÚÊ±¼ä·ñ try catch
+        /// æ—¥æœŸæ—¶é—´å¦ try catch
         /// </summary>
-        /// <param name="DateTimeStr">stringÀ©Õ¹</param>
+        /// <param name="DateTimeStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsDateTime2(this string DateTimeStr) {
             try { DateTime _dt = DateTime.Parse(DateTimeStr); return true; } catch { return false; }
         }
         /// <summary>
-        /// ÈÕÆÚ·ñ try catch
+        /// æ—¥æœŸå¦ try catch
         /// </summary>
-        /// <param name="DateStr">stringÀ©Õ¹</param>
+        /// <param name="DateStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsDate(this string DateStr) {
             try { DateTime _dt = DateTime.Parse(DateStr); return true; } catch { return false; }
         }
         /// <summary>
-        /// Ê±¼ä·ñ
+        /// æ—¶é—´å¦
         /// </summary>
-        /// <param name="TimeStr">stringÀ©Õ¹</param>
+        /// <param name="TimeStr">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsTime(this string TimeStr) {
             return TimeStr.IsMatch(@"^((([0-1]?[0-9])|(2[0-3])):([0-5]?[0-9])(:[0-5]?[0-9])?)$");
         }
         /// <summary>
-        /// µÚÒ»¸ö×ÖÄ¸ÊÇ·ña-zA-Z0-9
+        /// ç¬¬ä¸€ä¸ªå­—æ¯æ˜¯å¦a-zA-Z0-9
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsAlpha(this string input) {
             return input.IsMatch(@"[^a-zA-Z0-9]");
         }
         /// <summary>
-        /// µç»°·ñ
+        /// ç”µè¯å¦
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
-        /// <returns>µç»°·ñ</returns>
+        /// <param name="input">stringæ‰©å±•</param>
+        /// <returns>ç”µè¯å¦</returns>
         public static bool IsTelepone(this string input) {
-            return input.IsMatch(@"^[+]{0,1}(\d){1,3}[ ]?([-]?((\d)|[ ]){1,12})+$");//£º"^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$
+            return input.IsMatch(@"^[+]{0,1}(\d){1,3}[ ]?([-]?((\d)|[ ]){1,12})+$");//ï¼š"^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$
         }
         /// <summary>
-        /// ÊÖ»úºÅ·ñ
+        /// æ‰‹æœºå·å¦
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
-        /// <returns>ÊÖ»úºÅ·ñ</returns>
+        /// <param name="input">stringæ‰©å±•</param>
+        /// <returns>æ‰‹æœºå·å¦</returns>
         public static bool IsMobile(this string input) {
             return input.IsMatch(@"^[+]{0,1}(\d){1,3}[ ]?([-]?((\d)|[ ]){1,12})+$");
         }
         /// <summary>
-        /// Ç¿ÃÜÂë·ñ
+        /// å¼ºå¯†ç å¦
         /// </summary>
-        /// <param name="password">stringÀ©Õ¹</param>
-        /// <returns>Ç¿ÃÜÂë·ñ</returns>
+        /// <param name="password">stringæ‰©å±•</param>
+        /// <returns>å¼ºå¯†ç å¦</returns>
         public static bool IsStrongPassword(this string password) {
             return Regex.IsMatch(password, @"(?=^.{8,255}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*");
         }
         /// <summary>
-        /// ×Ö·û´®ÊÇ·ñÔÚ,·Ö¸ôµÄ×Ö·û´®ÄÚ
+        /// å­—ç¬¦ä¸²æ˜¯å¦åœ¨,åˆ†éš”çš„å­—ç¬¦ä¸²å†…
         /// </summary>
-        /// <param name="stringarray">stringÀ©Õ¹</param>
-        /// <param name="str">×Ö·û´®</param>
+        /// <param name="stringarray">stringæ‰©å±•</param>
+        /// <param name="str">å­—ç¬¦ä¸²</param>
         /// <returns></returns>
         public static bool IsInArray(this string stringarray, string str) {
             return stringarray.Split(",").IsInArray(str, false);
         }
         /// <summary>
-        /// ×Ö·û´®ÊÇ·ñÔÚ,·Ö¸ôµÄ×Ö·û´®ÄÚ
+        /// å­—ç¬¦ä¸²æ˜¯å¦åœ¨,åˆ†éš”çš„å­—ç¬¦ä¸²å†…
         /// </summary>
-        /// <param name="stringarray">stringÀ©Õ¹</param>
-        /// <param name="str">×Ö·û´®</param>
-        /// <param name="strsplit">·Ö¸î·û</param>
+        /// <param name="stringarray">stringæ‰©å±•</param>
+        /// <param name="str">å­—ç¬¦ä¸²</param>
+        /// <param name="strsplit">åˆ†å‰²ç¬¦</param>
         /// <returns></returns>
         public static bool IsInArray(this string stringarray, string str, string strsplit) {
             return stringarray.Split(strsplit).IsInArray(str, false);
         }
         /// <summary>
-        /// ×Ö·û´®ÊÇ·ñÔÚ,·Ö¸ôµÄ×Ö·û´®ÄÚ
+        /// å­—ç¬¦ä¸²æ˜¯å¦åœ¨,åˆ†éš”çš„å­—ç¬¦ä¸²å†…
         /// </summary>
-        /// <param name="stringarray">stringÀ©Õ¹</param>
-        /// <param name="str">×Ö·û´®</param>
-        /// <param name="strsplit">·Ö¸î·û</param>
-        /// <param name="caseInsensetive">Çø·Ö´óĞ¡Ğ´</param>
+        /// <param name="stringarray">stringæ‰©å±•</param>
+        /// <param name="str">å­—ç¬¦ä¸²</param>
+        /// <param name="strsplit">åˆ†å‰²ç¬¦</param>
+        /// <param name="caseInsensetive">åŒºåˆ†å¤§å°å†™</param>
         /// <returns></returns>
         public static bool IsInArray(this string stringarray, string str, string strsplit, bool caseInsensetive) {
             return stringarray.Split(strsplit).IsInArray(str, caseInsensetive);
         }
         /// <summary>
-        ///  BASE64·ñ
+        ///  BASE64å¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsBase64(this string str) {
             return Regex.IsMatch(str, @"[A-Za-z0-9\+\/\=]");
         }
         /// <summary>
-        /// Äê·ñ >=1900 and &lt;=9999
+        /// å¹´å¦ >=1900 and &lt;=9999
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
+        /// <param name="input">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsYear(this string input) {
             int year = input.ToInt();
             return year >= 1900 && year <= 9999;
         }
         /// <summary>
-        /// Í¼Æ¬·ñ jpg jpeg png bmp gif °´ÎÄ¼şÀ©Õ¹ÃûÀ´±È½Ï
+        /// å›¾ç‰‡å¦ jpg jpeg png bmp gif æŒ‰æ–‡ä»¶æ‰©å±•åæ¥æ¯”è¾ƒ
         /// </summary>
-        /// <param name="filename">stringÀ©Õ¹</param>
+        /// <param name="filename">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsImgFileName(this string filename) {
             filename = filename.Trim();
@@ -1448,9 +1448,9 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// ÅĞ¶ÏÊÇ·ñIMGÎÄ¼ş bmp/JPEG/GIF/PNG °´Ç°¼¸¸ö×Ö½Ú±È½Ï
+        /// åˆ¤æ–­æ˜¯å¦IMGæ–‡ä»¶ bmp/JPEG/GIF/PNG æŒ‰å‰å‡ ä¸ªå­—èŠ‚æ¯”è¾ƒ
         /// </summary>
-        /// <param name="filename">stringÀ©Õ¹</param>
+        /// <param name="filename">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsImgFile(this string filename) {
             if (!FileDirectory.FileExists(filename)) return false;
@@ -1470,9 +1470,9 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ÅĞ¶ÏÊÇ·ñIMGÎÄ¼ş bmp/JPEG/GIF/PCX/PNG/PSD/RAS/SGI/TIFF °´Ç°¼¸¸ö×Ö½Ú±È½Ï²¢Ö§³Ö¸ü¶à¸ñÊ½
+        /// åˆ¤æ–­æ˜¯å¦IMGæ–‡ä»¶ bmp/JPEG/GIF/PCX/PNG/PSD/RAS/SGI/TIFF æŒ‰å‰å‡ ä¸ªå­—èŠ‚æ¯”è¾ƒå¹¶æ”¯æŒæ›´å¤šæ ¼å¼
         /// </summary>
-        /// <param name="filename">stringÀ©Õ¹</param>
+        /// <param name="filename">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsImgFile2(this string filename) {
             if (!FileDirectory.FileExists(filename)) return false;
@@ -1502,9 +1502,9 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// GUID·ñ
+        /// GUIDå¦
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
+        /// <param name="s">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsGuid(this string s) {
             if (s.IsNullEmpty()) return false;
@@ -1515,17 +1515,17 @@ namespace Pub.Class {
             return match.Success;
         }
         /// <summary>
-        /// Éí·İÖ¤·ñ
+        /// èº«ä»½è¯å¦
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
+        /// <param name="s">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsCreditCard(this string s) {
             return new Regex(@"^(\d{14}|\d{17})(\d|[xX])$").IsMatch(s);
         }
         /// <summary>
-        /// ÅĞ¶ÏÊÇ·ñÊÇÖĞÎÄ
+        /// åˆ¤æ–­æ˜¯å¦æ˜¯ä¸­æ–‡
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
+        /// <param name="s">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsCNStr(this string s) {
             string[] stringMatchs = new string[] {
@@ -1544,36 +1544,36 @@ namespace Pub.Class {
         /// <summary>
         /// IsColor
         /// </summary>
-        /// <param name="color">stringÀ©Õ¹</param>
+        /// <param name="color">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsColor(this string color) {
             if (color.IsNullEmpty()) return false;
             color = color.Trim().Trim('#');
             if (color.Length != 3 && color.Length != 6) return false;
-            //²»°üº¬0-9  a-fÒÔÍâµÄ×Ö·û
+            //ä¸åŒ…å«0-9  a-fä»¥å¤–çš„å­—ç¬¦
             if (!Regex.IsMatch(color, "[^0-9a-f]", RegexOptions.IgnoreCase)) return true;
             return false;
         }
         /// <summary>
-        /// ÅĞ¶Ï(EÎÄ Êı×Ö ÏÂ»®Ïß)
+        /// åˆ¤æ–­(Eæ–‡ æ•°å­— ä¸‹åˆ’çº¿)
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsUserName(this string str) {
             return new Regex("^[a-zA-Z\\d_]+$", RegexOptions.Compiled).IsMatch(str);
         }
         /// <summary>
-        /// ÅĞ¶Ï(EÎÄ Êı×Ö ÖĞÎÄ ÏÂ»®Ïß)
+        /// åˆ¤æ–­(Eæ–‡ æ•°å­— ä¸­æ–‡ ä¸‹åˆ’çº¿)
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsNickName(this string str) {
             return new Regex(@"^[a-zA-Z\u4e00-\u9fa5\d_]+$", RegexOptions.Compiled).IsMatch(str);
         }
         /// <summary>
-        /// ÅĞ¶Ï×éÃû(²»ÔÊĞí/\&lt;>{}:*?|")
+        /// åˆ¤æ–­ç»„å(ä¸å…è®¸/\&lt;>{}:*?|")
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsGroupName(this string str) {
             return new Regex(@"^[^\/""{}<>:?*|]+$", RegexOptions.Compiled).IsMatch(str);
@@ -1581,7 +1581,7 @@ namespace Pub.Class {
         /// <summary>
         /// IsAscii > 127
         /// </summary>
-        /// <param name="data">stringÀ©Õ¹</param>
+        /// <param name="data">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsAscii(this string data) {
             if ((data.IsNull()) || (data.Length == 0)) return true;
@@ -1593,7 +1593,7 @@ namespace Pub.Class {
         /// <summary>
         /// IsBinary
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool IsBinary(this string str) {
             for (int i = 0; i < str.Length; i++) {
@@ -1604,9 +1604,9 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// È¡ÎïÀíÂ·¾¶
+        /// å–ç‰©ç†è·¯å¾„
         /// </summary>
-        /// <param name="strPath">stringÀ©Õ¹</param>
+        /// <param name="strPath">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string GetMapPath(this string strPath) {
             if (HttpContext.Current.IsNotNull())
@@ -1619,17 +1619,17 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ½«ĞéÄâÂ·¾¶×ª»»ÎªÓ¦ÓÃ³ÌĞò¾ø¶ÔÂ·¾¶
+        /// å°†è™šæ‹Ÿè·¯å¾„è½¬æ¢ä¸ºåº”ç”¨ç¨‹åºç»å¯¹è·¯å¾„
         /// </summary>
-        /// <param name="strPath">ĞéÄâÂ·¾¶</param>
+        /// <param name="strPath">è™šæ‹Ÿè·¯å¾„</param>
         /// <returns></returns>
         public static string GetAbsolutePath(this string strPath) {
             return VirtualPathUtility.ToAbsolute(strPath);
         }
         /// <summary>
-        /// È¡ÎïÀíÂ·¾¶ Ö÷ÒªÓÃÔÚGlobalÎÄ¼şÀï
+        /// å–ç‰©ç†è·¯å¾„ ä¸»è¦ç”¨åœ¨Globalæ–‡ä»¶é‡Œ
         /// </summary>
-        /// <param name="strPath">stringÀ©Õ¹</param>
+        /// <param name="strPath">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string GetGlobalMapPath(this string strPath) {
             return System.Web.Hosting.HostingEnvironment.MapPath(strPath);
@@ -1637,7 +1637,7 @@ namespace Pub.Class {
         /// <summary>
         /// ToGUID
         /// </summary>
-        /// <param name="target">stringÀ©Õ¹</param>
+        /// <param name="target">stringæ‰©å±•</param>
         /// <returns></returns>
         public static Guid ToGuid(this string target) {
             if (target.IsGuid()) return new Guid(target);
@@ -1646,28 +1646,28 @@ namespace Pub.Class {
         /// <summary>
         /// ToGUID
         /// </summary>
-        /// <param name="target">GUID×Ö·û´®</param>
+        /// <param name="target">GUIDå­—ç¬¦ä¸²</param>
         /// <returns></returns>
         public static Guid ToUniqueIdentifier(this string target) {
             return target.ToGuid();
         }
         /// <summary>
-        /// "ture"/"1" ×ªÎª true
+        /// "ture"/"1" è½¬ä¸º true
         /// </summary>
-        /// <param name="source">stringÀ©Õ¹</param>
+        /// <param name="source">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool True(this string source) { return string.Compare(source, "true", true) == 0 || string.Compare(source, "1", true) == 0; }
         /// <summary>
-        /// "false"/"0" ×ªÎª false
+        /// "false"/"0" è½¬ä¸º false
         /// </summary>
-        /// <param name="source">stringÀ©Õ¹</param>
+        /// <param name="source">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool False(this string source) { return string.Compare(source, "false", true) == 0 || string.Compare(source, "0", true) == 0; }
         /// <summary>
-        /// ½«×Ö·û´®×ªTÀàĞÍÊı¾İ Èç"123".As&lt;int>()
+        /// å°†å­—ç¬¦ä¸²è½¬Tç±»å‹æ•°æ® å¦‚"123".As&lt;int>()
         /// </summary>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="source">stringÀ©Õ¹</param>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="source">stringæ‰©å±•</param>
         /// <returns></returns>
         public static T As<T>(this string source) {
             if (source.IsNull()) return default(T);
@@ -1678,15 +1678,15 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// json ×ª¶ÔÏó ToJson ·´²Ù×÷
+        /// json è½¬å¯¹è±¡ ToJson åæ“ä½œ
         /// </summary>
         /// <example>
         /// <code>
         /// "{\"MemberID\":1, \"RealName\"}".FormJson&lt;UC_Member>();
         /// </code>
         /// </example>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="json">stringÀ©Õ¹</param>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="json">stringæ‰©å±•</param>
         /// <returns></returns>
         public static T FromJson<T>(this string json) {
             //JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
@@ -1694,9 +1694,9 @@ namespace Pub.Class {
             return SerializeJson.FromJson<T>(json);
         }
         /// <summary>
-        /// soapXml ×ª¶ÔÏñ ToSoap·´²Ù×÷
+        /// soapXml è½¬å¯¹åƒ ToSoapåæ“ä½œ
         /// </summary>
-        /// <param name="soapXml">stringÀ©Õ¹</param>
+        /// <param name="soapXml">stringæ‰©å±•</param>
         /// <returns></returns>
         //public static T FromSoap<T>(this string soapXml) {
         //    using (MemoryStream ms = new MemoryStream((new UTF8Encoding()).GetBytes(soapXml))) {
@@ -1706,38 +1706,38 @@ namespace Pub.Class {
         //    }
         //}
         /// <summary>
-        /// XML×Ö·û´®·´ĞòÁĞ»¯³É¶ÔÏñ
+        /// XMLå­—ç¬¦ä¸²ååºåˆ—åŒ–æˆå¯¹åƒ
         /// </summary>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="xml">objectÀ©Õ¹</param>
-        /// <returns>XML×Ö·û´®·´ĞòÁĞ»¯³É¶ÔÏñ</returns>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="xml">objectæ‰©å±•</param>
+        /// <returns>XMLå­—ç¬¦ä¸²ååºåˆ—åŒ–æˆå¯¹åƒ</returns>
         public static T FromXml<T>(this string xml) {
             return SerializeXml.FromXml<T>(xml);
         }
         /// <summary>
-        /// ·µĞòÁĞ»¯³É¶ÔÏñ
+        /// è¿”åºåˆ—åŒ–æˆå¯¹åƒ
         /// </summary>
-        /// <param name="xml">objectÀ©Õ¹</param>
-        /// <param name="type">ÀàĞÍ</param>
-        /// <returns>·µĞòÁĞ»¯³É¶ÔÏñ</returns>
+        /// <param name="xml">objectæ‰©å±•</param>
+        /// <param name="type">ç±»å‹</param>
+        /// <returns>è¿”åºåˆ—åŒ–æˆå¯¹åƒ</returns>
         //public static object FromXml(this string xml, Type type) {
         //    XmlSerializer serializer = new XmlSerializer(type);
         //    using (TextReader textReader = new StringReader(xml)) return serializer.Deserialize(textReader);
         //}
         /// <summary>
-        /// ´ÓXMLÎÄ¼şÖĞ·´ĞòÁĞ»¯³É¶ÔÏñ
+        /// ä»XMLæ–‡ä»¶ä¸­ååºåˆ—åŒ–æˆå¯¹åƒ
         /// </summary>
-        /// <typeparam name="T">Ô´ÀàĞÍ</typeparam>
-        /// <param name="fileName">objectÀ©Õ¹</param>
-        /// <returns>´ÓXMLÎÄ¼şÖĞ·´ĞòÁĞ»¯³É¶ÔÏñ</returns>
+        /// <typeparam name="T">æºç±»å‹</typeparam>
+        /// <param name="fileName">objectæ‰©å±•</param>
+        /// <returns>ä»XMLæ–‡ä»¶ä¸­ååºåˆ—åŒ–æˆå¯¹åƒ</returns>
         public static T FromXmlFile<T>(this string fileName) {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
             using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read)) return (T)serializer.Deserialize(stream);
         }
         /// <summary>
-        /// ×Ö·û´®×ªÒâ \n \r \a \b \t \" \' \\ \u***
+        /// å­—ç¬¦ä¸²è½¬æ„ \n \r \a \b \t \" \' \\ \u***
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
+        /// <param name="text">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToOriginal(this string text) {
             StringBuilder sb = new StringBuilder();
@@ -1759,9 +1759,9 @@ namespace Pub.Class {
             return sb.ToString();
         }
         /// <summary>
-        /// Ê××ÖÄ¸´óĞ¡
+        /// é¦–å­—æ¯å¤§å°
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UpperFirstChar(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -1769,9 +1769,9 @@ namespace Pub.Class {
             return str.ToUpper().Substring(0, 1) + str.Substring(1, str.Length - 1);
         }
         /// <summary>
-        /// Ê××ÖÄ¸´óĞ´ Èç¹ûÊÇ´óĞ´Ç°¼Ó_
+        /// é¦–å­—æ¯å¤§å†™ å¦‚æœæ˜¯å¤§å†™å‰åŠ _
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string UpperFirstChar2(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -1781,9 +1781,9 @@ namespace Pub.Class {
             return f + str.Substring(1, str.Length - 1);
         }
         /// <summary>
-        /// Ê××ÖÃ¿Ğ¡Ğ´
+        /// é¦–å­—æ¯å°å†™
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string LowerFirstChar(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -1791,9 +1791,9 @@ namespace Pub.Class {
             return str.ToLower().Substring(0, 1) + str.Substring(1, str.Length - 1);
         }
         /// <summary>
-        /// Ê××ÖÄ¸Ğ¡Ğ´ Èç¹ûÊÇĞ¡Ğ´Ç°¼Ó_
+        /// é¦–å­—æ¯å°å†™ å¦‚æœæ˜¯å°å†™å‰åŠ _
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string LowerFirstChar2(this string str) {
             if (str.IsNullEmpty()) return string.Empty;
@@ -1803,11 +1803,11 @@ namespace Pub.Class {
             return f + str.Substring(1, str.Length - 1);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
-        /// <param name="isDelZero">ÊÇ·ñÈ¥³ıĞ¡ÓÚµÈÓÚ0µÄID</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
+        /// <param name="isDelZero">æ˜¯å¦å»é™¤å°äºç­‰äº0çš„ID</param>
         /// <returns></returns>
         public static string FormatToID(this string str, char c = ',', bool isDelZero = true) {
             string newstr = string.Empty;
@@ -1827,11 +1827,11 @@ namespace Pub.Class {
             return newstr;
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
-        /// <param name="isDelZero">ÊÇ·ñÈ¥³ıĞ¡ÓÚµÈÓÚ0µÄID</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
+        /// <param name="isDelZero">æ˜¯å¦å»é™¤å°äºç­‰äº0çš„ID</param>
         /// <returns></returns>
         public static IList<long> FormatToLongID(this string str, char c = ',', bool isDelZero = true) {
             IList<long> list = new List<long>();
@@ -1850,11 +1850,11 @@ namespace Pub.Class {
             return list;
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
-        /// <param name="isDelZero">ÊÇ·ñÈ¥³ıĞ¡ÓÚµÈÓÚ0µÄID</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
+        /// <param name="isDelZero">æ˜¯å¦å»é™¤å°äºç­‰äº0çš„ID</param>
         /// <returns></returns>
         public static IList<int> FormatToIntID(this string str, char c = ',', bool isDelZero = true) {
             IList<int> list = new List<int>();
@@ -1873,46 +1873,46 @@ namespace Pub.Class {
             return list;
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
         /// <returns></returns>
         public static string FormatToID(this string str, char c = ',') {
             return FormatToID(str, c, true);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="isDelZero">ÊÇ·ñÈ¥³ıĞ¡ÓÚµÈÓÚ0µÄID</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="isDelZero">æ˜¯å¦å»é™¤å°äºç­‰äº0çš„ID</param>
         /// <returns></returns>
         public static string FormatToID(this string str, bool isDelZero = true) {
             return FormatToID(str, ',', isDelZero);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string FormatToID(this string str) {
             return FormatToID(str, ',', true);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
         /// <returns></returns>
         public static string FormatToID(this string str, string c = ",") {
             return FormatToID(str, c, true);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
-        /// <param name="isDelZero">ÊÇ·ñÈ¥³ıĞ¡ÓÚµÈÓÚ0µÄID</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
+        /// <param name="isDelZero">æ˜¯å¦å»é™¤å°äºç­‰äº0çš„ID</param>
         /// <returns></returns>
         public static string FormatToID(this string str, string c = ",", bool isDelZero = true) {
             string newstr = string.Empty;
@@ -1932,61 +1932,61 @@ namespace Pub.Class {
             return newstr;
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
         /// <returns></returns>
         public static IList<long> FormatToLongID(this string str, char c = ',') {
             return FormatToLongID(str, c, true);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="isDelZero">ÊÇ·ñÈ¥³ıĞ¡ÓÚµÈÓÚ0µÄID</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="isDelZero">æ˜¯å¦å»é™¤å°äºç­‰äº0çš„ID</param>
         /// <returns></returns>
         public static IList<long> FormatToLongID(this string str, bool isDelZero = true) {
             return FormatToLongID(str, ',', isDelZero);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static IList<long> FormatToLongID(this string str) {
             return FormatToLongID(str, ',', true);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="c">·Ö¸î·û</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="c">åˆ†å‰²ç¬¦</param>
         /// <returns></returns>
         public static IList<int> FormatToIntID(this string str, char c = ',') {
             return FormatToIntID(str, c, true);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="isDelZero">ÊÇ·ñÈ¥³ıĞ¡ÓÚµÈÓÚ0µÄID</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="isDelZero">æ˜¯å¦å»é™¤å°äºç­‰äº0çš„ID</param>
         /// <returns></returns>
         public static IList<int> FormatToIntID(this string str, bool isDelZero = true) {
             return FormatToIntID(str, ',', isDelZero);
         }
         /// <summary>
-        /// ¼ì²é×Ö·û´®IDÊÇ·ñºÏ·¨£¨´óÓÚ0£©£¬È¥³ıĞ¡ÓÚµÈÓÚ0µÄID
+        /// æ£€æŸ¥å­—ç¬¦ä¸²IDæ˜¯å¦åˆæ³•ï¼ˆå¤§äº0ï¼‰ï¼Œå»é™¤å°äºç­‰äº0çš„ID
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static IList<int> FormatToIntID(this string str) {
             return FormatToIntID(str, ',', true);
         }
         /// <summary>
-        /// °²È«SQL
+        /// å®‰å…¨SQL
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string SafeSql(this string str) {
             if (str.IsNull() || str.IsNullEmpty()) return string.Empty;
@@ -1998,9 +1998,9 @@ namespace Pub.Class {
             return str;
         }
         /// <summary>
-        /// °²È«SQL
+        /// å®‰å…¨SQL
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string SafeSql2(this string str) {
             if (str.IsNull() || str.IsNullEmpty()) return string.Empty;
@@ -2012,16 +2012,16 @@ namespace Pub.Class {
             return str;
         }
         /// <summary>
-        /// °²È«SQL '
+        /// å®‰å…¨SQL '
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string SafeSqlSimple(this string str) {
             str = str.IsNullEmpty() ? "" : str.Replace("'", "''");
             return str;
         }
         /// <summary>
-        /// »¹Ô­SafeSql×ª»»Ö®ºóµÄÊı¾İ
+        /// è¿˜åŸSafeSqlè½¬æ¢ä¹‹åçš„æ•°æ®
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -2035,7 +2035,7 @@ namespace Pub.Class {
             return str;
         }
         /// <summary>
-        /// »¹Ô­SafeSql×ª»»Ö®ºóµÄÊı¾İ
+        /// è¿˜åŸSafeSqlè½¬æ¢ä¹‹åçš„æ•°æ®
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -2051,64 +2051,64 @@ namespace Pub.Class {
         /// <summary>
         /// ToInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static int ToInt(this string strValue, int defValue) { int def = 0; int.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToTinyInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static byte ToTinyInt(this string strValue, byte defValue) { byte def = 0; byte.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToSmallInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static short ToSmallInt(this string strValue, short defValue) { short def = 0; short.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToDecimal
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal ToDecimal(this string strValue, decimal defValue) { decimal def = 0; decimal.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToFloat
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static float ToFloat(this string strValue, float defValue) { float def = 0; float.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToBigInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static Int64 ToBigInt(this string strValue, Int64 defValue) { Int64 def = 0; Int64.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToMoney
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal ToMoney(this string strValue, decimal defValue) { decimal def = 0; decimal.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToInteger
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static int ToInteger(this string strValue, int defValue) { int def = 0; int.TryParse(strValue, out def); return def == 0 ? defValue : def; }
         /// <summary>
         /// ToBool
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
-        /// <param name="defValue">Ä¬ÈÏÖµ</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
+        /// <param name="defValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static bool ToBool(this string strValue, bool defValue) {
             if (!strValue.IsNullEmpty()) {
@@ -2122,68 +2122,68 @@ namespace Pub.Class {
         /// <summary>
         /// ToInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static int ToInt(this string strValue) { return strValue.ToInt(0); }
         /// <summary>
         /// ToInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static int ToInt(this char strValue) { return strValue.ToString().ToInt(0); }
         /// <summary>
         /// ToTinyInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static byte ToTinyInt(this string strValue) { return strValue.ToTinyInt(0); }
         /// <summary>
         /// ToSmallInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static short ToSmallInt(this string strValue) { return strValue.ToSmallInt(0); }
         /// <summary>
         /// ToDecimal
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static decimal ToDecimal(this string strValue) { return strValue.ToDecimal(0); }
         /// <summary>
         /// ToFloat
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static float ToFloat(this string strValue) { return strValue.ToFloat(0); }
         /// <summary>
         /// ToBigInt
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static Int64 ToBigInt(this string strValue) { return strValue.ToBigInt(0); }
         /// <summary>
         /// ToMoney
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static decimal ToMoney(this string strValue) { return strValue.ToMoney(0); }
         /// <summary>
         /// ToInteger
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static int ToInteger(this string strValue) { return strValue.ToInteger(0); }
         /// <summary>
         /// ToBool
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static bool ToBool(this string strValue) { return strValue.ToBool(false); }
         /// <summary>
-        /// °ë½Ç×ªÈ«½Ç
+        /// åŠè§’è½¬å…¨è§’
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
-        /// <returns>È«½Ç</returns>
+        /// <param name="input">stringæ‰©å±•</param>
+        /// <returns>å…¨è§’</returns>
         public static string ToSBC(this string input) {
             char[] c = input.ToCharArray();
             for (int i = 0; i < c.Length; i++) {
@@ -2196,10 +2196,10 @@ namespace Pub.Class {
             return new string(c);
         }
         /// <summary>
-        /// È«½Ç×ª°ë½Ç
+        /// å…¨è§’è½¬åŠè§’
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
-        /// <returns>°ë½Ç</returns>
+        /// <param name="input">stringæ‰©å±•</param>
+        /// <returns>åŠè§’</returns>
         public static string ToDBC(this string input) {
             char[] c = input.ToCharArray();
             for (int i = 0; i < c.Length; i++) {
@@ -2212,10 +2212,10 @@ namespace Pub.Class {
             return new string(c);
         }
         /// <summary>
-        /// SQLiteÊı¾İÀàĞÍ×ªDbType
+        /// SQLiteæ•°æ®ç±»å‹è½¬DbType
         /// </summary>
-        /// <param name="sqlType">stringÀ©Õ¹</param>
-        /// <returns>SQLiteÊı¾İÀàĞÍ×ªDbType</returns>
+        /// <param name="sqlType">stringæ‰©å±•</param>
+        /// <returns>SQLiteæ•°æ®ç±»å‹è½¬DbType</returns>
         public static DbType ToDbTypeForSQLite(this string sqlType) {
             switch (sqlType.ToLowerInvariant()) {
                 case "longtext":
@@ -2259,10 +2259,10 @@ namespace Pub.Class {
             return DbType.String;
         }
         /// <summary>
-        /// Sql2005Êı¾İÀàĞÍ×ªDbType
+        /// Sql2005æ•°æ®ç±»å‹è½¬DbType
         /// </summary>
-        /// <param name="sqlType">stringÀ©Õ¹</param>
-        /// <returns>Sql2005Êı¾İÀàĞÍ×ªDbType</returns>
+        /// <param name="sqlType">stringæ‰©å±•</param>
+        /// <returns>Sql2005æ•°æ®ç±»å‹è½¬DbType</returns>
         public static DbType ToDbTypeForSql2005(this string sqlType) {
             switch (sqlType) {
                 case "varchar": return DbType.AnsiString;
@@ -2296,10 +2296,10 @@ namespace Pub.Class {
             return DbType.AnsiString;
         }
         /// <summary>
-        /// MySqlÊı¾İÀàĞÍ×ªDbType
+        /// MySqlæ•°æ®ç±»å‹è½¬DbType
         /// </summary>
-        /// <param name="mySqlType">stringÀ©Õ¹</param>
-        /// <returns>MySqlÊı¾İÀàĞÍ×ªDbType</returns>
+        /// <param name="mySqlType">stringæ‰©å±•</param>
+        /// <returns>MySqlæ•°æ®ç±»å‹è½¬DbType</returns>
         public static DbType ToDbTypeForMySql(this string mySqlType) {
             switch (mySqlType.ToLowerInvariant()) {
                 case "longtext":
@@ -2344,13 +2344,13 @@ namespace Pub.Class {
             return DbType.String;
         }
         /// <summary>
-        /// ÎÄ¼şÀ©Õ¹ÃûÈ¡HttpContentType Èç.doc application/msword
+        /// æ–‡ä»¶æ‰©å±•åå–HttpContentType å¦‚.doc application/msword
         /// </summary>
-        /// <param name="extension">ÎÄ¼şÀ©Õ¹Ãû</param>
-        /// <returns>ÎÄ¼şÀ©Õ¹ÃûÈ¡HttpContentType Èç.doc application/msword</returns>
+        /// <param name="extension">æ–‡ä»¶æ‰©å±•å</param>
+        /// <returns>æ–‡ä»¶æ‰©å±•åå–HttpContentType å¦‚.doc application/msword</returns>
         public static string GetContentType(string extension) {
             switch (extension.Trim('.')) {
-                #region ³£ÓÃÎÄ¼şÀàĞÍ
+                #region å¸¸ç”¨æ–‡ä»¶ç±»å‹
                 case "jpeg": return "image/jpeg";
                 case "jpg": return "image/jpeg";
                 case "js": return "application/x-javascript";
@@ -2683,9 +2683,9 @@ namespace Pub.Class {
             return "application/octet-stream";
         }
         /// <summary>
-        /// ×ªSecureString
+        /// è½¬SecureString
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns>SecureString</returns>
         public static SecureString ToSecureString(this string str) {
             SecureString secureString = new SecureString();
@@ -2693,7 +2693,7 @@ namespace Pub.Class {
             return secureString;
         }
         /// <summary>
-        /// ·µ»ØDLLÎÄ¼şµÄÈ«Â·¾¶
+        /// è¿”å›DLLæ–‡ä»¶çš„å…¨è·¯å¾„
         /// </summary>
         /// <example>
         /// <code>
@@ -2708,8 +2708,8 @@ namespace Pub.Class {
         /// Msg.Write("~/test.dllx".GetBinFileFullPath() + "&lt;br />&lt;br />");
         /// </code>
         /// </example>
-        /// <param name="fileName">ÎÄ¼şÃû/ÎÄ¼ş¾ø¶ÔÂ·¾¶/ÎÄ¼şÏà¶ÔÂ·¾¶</param>
-        /// <param name="ext">Ö¸¶¨À©Õ¹Ãû</param>
+        /// <param name="fileName">æ–‡ä»¶å/æ–‡ä»¶ç»å¯¹è·¯å¾„/æ–‡ä»¶ç›¸å¯¹è·¯å¾„</param>
+        /// <param name="ext">æŒ‡å®šæ‰©å±•å</param>
         /// <returns></returns>
         public static string GetBinFileFullPath(this string fileName, string ext = ".dll") {
             if (!ext.IsNullEmpty() && !fileName.EndsWith(ext, true, null)) fileName = fileName + ".dll";
@@ -2726,32 +2726,32 @@ namespace Pub.Class {
             //return fileName;
         }
         /// <summary>
-        /// ¶ÁÎÄ¼şÁ÷
+        /// è¯»æ–‡ä»¶æµ
         /// </summary>
-        /// <param name="dllFullPath">dllÂ·¾¶»òÎÄ¼şÃû</param>
+        /// <param name="dllFullPath">dllè·¯å¾„æˆ–æ–‡ä»¶å</param>
         /// <returns></returns>
         public static byte[] LoadFileStream(this string dllFullPath) {
             return new FileStream(dllFullPath.GetBinFileFullPath(), FileMode.Open).ToBytes();
         }
         private static readonly ISafeDictionary<string, Assembly> assemblyCache = new SafeDictionary<string, Assembly>();
         /// <summary>
-        /// ¶¯Ì¬¼ÓÔØdll³ÌĞò¼¯ CACHE
+        /// åŠ¨æ€åŠ è½½dllç¨‹åºé›† CACHE
         /// </summary>
-        /// <param name="dllFullPath">dllÂ·¾¶»òÎÄ¼şÃû</param>
+        /// <param name="dllFullPath">dllè·¯å¾„æˆ–æ–‡ä»¶å</param>
         /// <returns></returns>
         public static Assembly LoadDynamicDLLAssembly(this string dllFullPath) {
             if (assemblyCache.ContainsKey(dllFullPath)) return assemblyCache[dllFullPath];
 
             Assembly assembly = null;
-            byte[] addinStream = dllFullPath.GetBinFileFullPath().LoadFileStream();//ÏÈ½«²å¼ş¿½±´µ½ÄÚ´æ»º³å
-            assembly = Assembly.Load(addinStream); //¼ÓÔØÄÚ´æÖĞµÄDll
+            byte[] addinStream = dllFullPath.GetBinFileFullPath().LoadFileStream();//å…ˆå°†æ’ä»¶æ‹·è´åˆ°å†…å­˜ç¼“å†²
+            assembly = Assembly.Load(addinStream); //åŠ è½½å†…å­˜ä¸­çš„Dll
             if (!assemblyCache.ContainsKey(dllFullPath)) assemblyCache.Add(dllFullPath, assembly);
             return assembly;
         }
         /// <summary>
-        /// ¼ÓÔØDLL³ÌĞò¼¯ CACHE
+        /// åŠ è½½DLLç¨‹åºé›† CACHE
         /// </summary>
-        /// <param name="dllFullPath">dllÂ·¾¶»òÎÄ¼şÃû</param>
+        /// <param name="dllFullPath">dllè·¯å¾„æˆ–æ–‡ä»¶å</param>
         /// <returns></returns>
         public static Assembly LoadDLLAssembly(this string dllFullPath) {
             if (assemblyCache.ContainsKey(dllFullPath)) return assemblyCache[dllFullPath];
@@ -2760,9 +2760,9 @@ namespace Pub.Class {
             return assembly;
         }
         /// <summary>
-        /// ¼ÓÔØ³ÌĞò¼¯ CACHE
+        /// åŠ è½½ç¨‹åºé›† CACHE
         /// </summary>
-        /// <param name="assembly">³ÌĞò¼¯Ãû³Æ»òdllÂ·¾¶»òÎÄ¼şÃû</param>
+        /// <param name="assembly">ç¨‹åºé›†åç§°æˆ–dllè·¯å¾„æˆ–æ–‡ä»¶å</param>
         /// <returns></returns>
         public static Assembly LoadAssembly(this string assembly) {
             if (assembly.IndexOf("\\") != -1 || assembly.IndexOf("/") != -1 || assembly.EndsWith(".dll", true, null)) return assembly.LoadDLLAssembly();
@@ -2773,10 +2773,10 @@ namespace Pub.Class {
         }
         private static readonly ISafeDictionary<string, object> classCache = new SafeDictionary<string, object>();
         /// <summary>
-        /// ¶¯Ì¬¼ÓÔØÖ¸¶¨Ä¿Â¼ÏÂµÄDLLÀà Activator.CreateInstance CACHE
+        /// åŠ¨æ€åŠ è½½æŒ‡å®šç›®å½•ä¸‹çš„DLLç±» Activator.CreateInstance CACHE
         /// </summary>
-        /// <param name="dllFileName">binÄ¿Â¼ÏÂµÄdllÎÄ¼şÃû</param>
-        /// <param name="className">ÃüÃû¿Õ¼äºÍÀàÃû</param>
+        /// <param name="dllFileName">binç›®å½•ä¸‹çš„dllæ–‡ä»¶å</param>
+        /// <param name="className">å‘½åç©ºé—´å’Œç±»å</param>
         /// <returns></returns>
         public static object LoadDLLClass(this string dllFileName, string className = "") {
             dllFileName = dllFileName.GetBinFileFullPath();
@@ -2787,10 +2787,10 @@ namespace Pub.Class {
             return obj;
         }
         /// <summary>
-        /// ¶¯Ì¬¼ÓÔØÀà Activator.CreateInstance CACHE
+        /// åŠ¨æ€åŠ è½½ç±» Activator.CreateInstance CACHE
         /// </summary>
-        /// <param name="assembly">³ÌĞò¼¯Ãû³Æ»òdllÎÄ¼şÂ·¾¶ Ö§³Ö¾ø¶ÔÂ·¾¶ºÍÏà¶ÔÂ·¾¶</param>
-        /// <param name="className">ÃüÃû¿Õ¼ä.ÀàÃû</param>
+        /// <param name="assembly">ç¨‹åºé›†åç§°æˆ–dllæ–‡ä»¶è·¯å¾„ æ”¯æŒç»å¯¹è·¯å¾„å’Œç›¸å¯¹è·¯å¾„</param>
+        /// <param name="className">å‘½åç©ºé—´.ç±»å</param>
         /// <returns></returns>
         public static object LoadClass(this string assembly, string className = "") {
             if (assembly.IndexOf("\\") != -1 || assembly.IndexOf("/") != -1 || assembly.EndsWith(".dll", true, null)) return assembly.LoadDLLClass(className);
@@ -2800,10 +2800,10 @@ namespace Pub.Class {
             return obj;
         }
         /// <summary>
-        /// ¶¯Ì¬¼ÓÔØÖ¸¶¨Ä¿Â¼ÏÂµÄDLLÀà Activator.CreateInstance CACHE
+        /// åŠ¨æ€åŠ è½½æŒ‡å®šç›®å½•ä¸‹çš„DLLç±» Activator.CreateInstance CACHE
         /// </summary>
-        /// <param name="dllFileName">dllÎÄ¼şÂ·¾¶ Ö§³Ö¾ø¶ÔÂ·¾¶ºÍÏà¶ÔÂ·¾¶</param>
-        /// <param name="className">ÃüÃû¿Õ¼ä.ÀàÃû</param>
+        /// <param name="dllFileName">dllæ–‡ä»¶è·¯å¾„ æ”¯æŒç»å¯¹è·¯å¾„å’Œç›¸å¯¹è·¯å¾„</param>
+        /// <param name="className">å‘½åç©ºé—´.ç±»å</param>
         /// <returns></returns>
         public static object LoadDynamicDLLClass(this string dllFileName, string className = "") {
             dllFileName = dllFileName.GetBinFileFullPath();
@@ -2814,24 +2814,24 @@ namespace Pub.Class {
             return obj;
         }
         /// <summary>
-        /// ·µ»Ø³ÌĞò¼¯µÄCache
+        /// è¿”å›ç¨‹åºé›†çš„Cache
         /// </summary>
         /// <returns></returns>
         public static ISafeDictionary<string, object> GetClassCache() {
             return classCache;
         }
         /// <summary>
-        /// ·µ»ØÀàµÄCache
+        /// è¿”å›ç±»çš„Cache
         /// </summary>
         /// <returns></returns>
         public static ISafeDictionary<string, Assembly> GetAssemblyCache() {
             return assemblyCache;
         }
         /// <summary>
-        /// ¶¯Ì¬¼ÓÔØÀà CACHE
+        /// åŠ¨æ€åŠ è½½ç±» CACHE
         /// </summary>
-        /// <param name="assembly">³ÌĞò¼¯Ãû»òdllÎÄ¼şÂ·¾¶ Ö§³Ö¾ø¶ÔÂ·¾¶ºÍÏà¶ÔÂ·¾¶</param>
-        /// <param name="className">ÃüÃû¿Õ¼ä.ÀàÃû</param>
+        /// <param name="assembly">ç¨‹åºé›†åæˆ–dllæ–‡ä»¶è·¯å¾„ æ”¯æŒç»å¯¹è·¯å¾„å’Œç›¸å¯¹è·¯å¾„</param>
+        /// <param name="className">å‘½åç©ºé—´.ç±»å</param>
         /// <returns></returns>
         public static object LoadDynamicClass(this string assembly, string className = "") {
             if (assembly.IndexOf("\\") != -1 || assembly.IndexOf("/") != -1 || assembly.EndsWith(".dll", true, null)) return assembly.LoadDynamicDLLClass(className);
@@ -2841,9 +2841,9 @@ namespace Pub.Class {
             return obj;
         }
         /// <summary>
-        /// ¼ÓÔØÀà Activator.CreateInstance CACHE
+        /// åŠ è½½ç±» Activator.CreateInstance CACHE
         /// </summary>
-        /// <param name="classNameAndAssembly">ÃüÃû¿Õ¼ä.ÀàÃû,³ÌĞò¼¯Ãû³Æ</param>
+        /// <param name="classNameAndAssembly">å‘½åç©ºé—´.ç±»å,ç¨‹åºé›†åç§°</param>
         /// <returns></returns>
         public static object LoadClass(this string classNameAndAssembly) {
             if (classNameAndAssembly.IndexOf("\\") != -1 || classNameAndAssembly.IndexOf("/") != -1 || classNameAndAssembly.EndsWith(".dll", true, null)) {
@@ -2856,18 +2856,18 @@ namespace Pub.Class {
             return obj;
         }
         ///// <summary>
-        ///// HashÖµ
+        ///// Hashå€¼
         ///// </summary>
-        ///// <param name="content">stringÀ©Õ¹</param>
-        ///// <returns>HashÖµ</returns>
+        ///// <param name="content">stringæ‰©å±•</param>
+        ///// <returns>Hashå€¼</returns>
         //public static string Hash(this string content) {
         //    return Encoding.UTF8.GetBytes(content).MD5();
         //}
         /// <summary>
-        /// Unicode·ñ
+        /// Unicodeå¦
         /// </summary>
-        /// <param name="s">stringÀ©Õ¹</param>
-        /// <returns>Unicode·ñ</returns>
+        /// <param name="s">stringæ‰©å±•</param>
+        /// <returns>Unicodeå¦</returns>
         //public static bool IsUnicode(this string Input) {
         //    if (string.IsNullOrEmpty(Input)) return true;
         //    UnicodeEncoding Encoding = new UnicodeEncoding();
@@ -2878,10 +2878,10 @@ namespace Pub.Class {
         //    return true;
         //}
         ///// <summary>
-        ///// Unicode·ñ Ê¹ÓÃÕıÔò
+        ///// Unicodeå¦ ä½¿ç”¨æ­£åˆ™
         ///// </summary>
-        ///// <param name="Input">stringÀ©Õ¹</param>
-        ///// <returns>Unicode·ñ</returns>
+        ///// <param name="Input">stringæ‰©å±•</param>
+        ///// <returns>Unicodeå¦</returns>
         //public static bool IsUnicodeRegex(this string Input) {
         //    return Input.IsNullEmpty() ? true : Regex.Replace(Input, @"[^\u0000-\u007F]", "") != Input;
         //}
@@ -2890,31 +2890,31 @@ namespace Pub.Class {
             return Regex.IsMatch(s, text1);
         }
         /// <summary>
-        /// \r\nÌæ»»³É¿Õ¸ñ
+        /// \r\næ›¿æ¢æˆç©ºæ ¼
         /// </summary>
-        /// <param name="input">ÒªÈ¥³ıĞÂĞĞµÄ×Ö·û´®</param>
-        /// <param name="replace">ÊÇ·ñÌí¼Ó¿Õ¸ñ</param>
-        /// <returns>ÒÑ¾­È¥³ıĞÂĞĞµÄ×Ö·û´®</returns>
+        /// <param name="input">è¦å»é™¤æ–°è¡Œçš„å­—ç¬¦ä¸²</param>
+        /// <param name="replace">æ˜¯å¦æ·»åŠ ç©ºæ ¼</param>
+        /// <returns>å·²ç»å»é™¤æ–°è¡Œçš„å­—ç¬¦ä¸²</returns>
         public static string ReplaceRN(this string input, string replace = " ") {
             string pattern = @"[\r|\n]";
             Regex regEx = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline);
             return regEx.Replace(input, replace);
         }
         /// <summary>
-        /// \r\nÌæ»»³É&lt;br />
+        /// \r\næ›¿æ¢æˆ&lt;br />
         /// </summary>
-        /// <param name="input">stringÀ©Õ¹</param>
-        /// <returns>\r\nÌæ»»³Ébr</returns>
+        /// <param name="input">stringæ‰©å±•</param>
+        /// <returns>\r\næ›¿æ¢æˆbr</returns>
         public static string ReplaceRNToBR(this string input) {
             return input.ReplaceRN("<br />");
         }
         /// <summary>
-        /// ½Ø¶ÏHTML´úÂë³¤¶È
+        /// æˆªæ–­HTMLä»£ç é•¿åº¦
         /// </summary>
-        /// <param name="htmlString">stringÀ©Õ¹</param>
-        /// <param name="maxLength">×î´ó³¤</param>
-        /// <param name="flg">À©Õ¹×Ö·û</param>
-        /// <returns>½Ø¶ÏHTML´úÂë³¤¶È</returns>
+        /// <param name="htmlString">stringæ‰©å±•</param>
+        /// <param name="maxLength">æœ€å¤§é•¿</param>
+        /// <param name="flg">æ‰©å±•å­—ç¬¦</param>
+        /// <returns>æˆªæ–­HTMLä»£ç é•¿åº¦</returns>
         public static string SubHtmlString(this string htmlString, int maxLength, string flg) {
             bool isText = true; StringBuilder r = new StringBuilder(); int i = 0;
             char currentChar = ' '; int lastSpacePosition = -1; char lastChar = ' ';
@@ -2968,7 +2968,7 @@ namespace Pub.Class {
         /// <summary>
         /// UTF8ToGB2312
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns>UTF8ToGB2312</returns>
         public static string UTF8ToGB2312(this string str) {
             Encoding utf8 = Encoding.GetEncoding(65001);
@@ -2981,7 +2981,7 @@ namespace Pub.Class {
         /// <summary>
         /// GB2312ToUTF8
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         /// <returns>GB2312ToUTF8</returns>
         public static string GB2312ToUTF8(this string str) {
             Encoding uft8 = Encoding.GetEncoding(65001);
@@ -2992,7 +2992,7 @@ namespace Pub.Class {
             return result;
         }
         /// <summary>
-        /// È¡¸¸Â·¾¶
+        /// å–çˆ¶è·¯å¾„
         /// </summary>
         /// <example>
         /// <code>
@@ -3001,9 +3001,9 @@ namespace Pub.Class {
         /// Msg.Write("c:\\test\\www".GetParentPath('\\'));
         /// </code>
         /// </example>
-        /// <param name="path">stringÀ©Õ¹</param>
+        /// <param name="path">stringæ‰©å±•</param>
         /// <param name="c">char</param>
-        /// <returns>È¡¸¸Â·¾¶</returns>
+        /// <returns>å–çˆ¶è·¯å¾„</returns>
         public static string GetParentPath(this string path, char c = '/') {
             if (string.IsNullOrEmpty(path)) return null;
             int length = path.TrimEnd(c).LastIndexOf(c);
@@ -3011,27 +3011,27 @@ namespace Pub.Class {
             return path.Substring(0, length) + c;
         }
         /// <summary>
-        /// È¡¸¸Â·¾¶
+        /// å–çˆ¶è·¯å¾„
         /// </summary>
-        /// <param name="path">stringÀ©Õ¹</param>
-        /// <returns>È¡¸¸Â·¾¶</returns>
+        /// <param name="path">stringæ‰©å±•</param>
+        /// <returns>å–çˆ¶è·¯å¾„</returns>
         public static string GetParentPath(this string path) {
             return path.GetParentPath('/');
         }
         /// <summary>
-        /// ×ª»»³¤ÎÄ¼şÃûÎª¶ÌÎÄ¼şÃû
+        /// è½¬æ¢é•¿æ–‡ä»¶åä¸ºçŸ­æ–‡ä»¶å
         /// </summary>
         /// <example>
         /// <code>
         /// string name = "http://www.testxt.test.com/test/test/test/test/test.aspx".GetSimpleFileName("...", 20, 10, 30)
         /// </code>
         /// </example>
-        /// <param name="fullname">stringÀ©Õ¹</param>
-        /// <param name="repstring">Ìæ»»µÄ×Ö·û´®</param>
-        /// <param name="leftnum">×ó³¤</param>
-        /// <param name="rightnum">ÓÒ³¤</param>
-        /// <param name="charnum">×Ü³¤</param>
-        /// <returns>×ª»»³¤ÎÄ¼şÃûÎª¶ÌÎÄ¼şÃû</returns>
+        /// <param name="fullname">stringæ‰©å±•</param>
+        /// <param name="repstring">æ›¿æ¢çš„å­—ç¬¦ä¸²</param>
+        /// <param name="leftnum">å·¦é•¿</param>
+        /// <param name="rightnum">å³é•¿</param>
+        /// <param name="charnum">æ€»é•¿</param>
+        /// <returns>è½¬æ¢é•¿æ–‡ä»¶åä¸ºçŸ­æ–‡ä»¶å</returns>
         public static string GetSimpleFileName(this string fullname, string repstring, int leftnum, int rightnum, int charnum) {
             string simplefilename = "", leftstring = "", rightstring = "", filename = "";
             string extname = fullname.GetExtension();
@@ -3053,72 +3053,72 @@ namespace Pub.Class {
             return simplefilename;
         }
         /// <summary>
-        /// ÏòÒ³ÃæÊä³öxmlÄÚÈİ
+        /// å‘é¡µé¢è¾“å‡ºxmlå†…å®¹
         /// </summary>
-        /// <param name="xmlnode">xmlÄÚÈİ</param>
+        /// <param name="xmlnode">xmlå†…å®¹</param>
         public static void WriteXMLEnd(this string xmlnode) {
             Msg.WriteXMLEnd(xmlnode);
         }
         /// <summary>
-        /// Êä³öjsonÄÚÈİ
+        /// è¾“å‡ºjsonå†…å®¹
         /// </summary>
-        /// <param name="json">stringÀ©Õ¹</param>
+        /// <param name="json">stringæ‰©å±•</param>
         public static void WriteJSONEnd(this string json) {
             Msg.WriteJSONEnd(json);
         }
         /// <summary>
-        /// Êä³öjsonpÄÚÈİ
+        /// è¾“å‡ºjsonpå†…å®¹
         /// </summary>
-        /// <param name="json">stringÀ©Õ¹</param>
+        /// <param name="json">stringæ‰©å±•</param>
         public static void WriteJSONPEnd(this string json) {
             Msg.WriteJSONPEnd(json);
         }
         /// <summary>
-        /// Êä³öÄÚÈİ ²¢½áÊø
+        /// è¾“å‡ºå†…å®¹ å¹¶ç»“æŸ
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
+        /// <param name="text">stringæ‰©å±•</param>
         public static void WriteEnd(this string text) {
             Msg.WriteEnd(text);
         }
         /// <summary>
-        /// Êä³öÄÚÈİ
+        /// è¾“å‡ºå†…å®¹
         /// </summary>
-        /// <param name="text">stringÀ©Õ¹</param>
+        /// <param name="text">stringæ‰©å±•</param>
         public static void Write(this string text) {
             Msg.Write(text);
         }
         /// <summary>
-        /// É¾³ı×îºóN¸ö×Ö·û
+        /// åˆ é™¤æœ€åNä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="lastchar">×îºóÒ»¸ö×Ö·û´®</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="lastchar">æœ€åä¸€ä¸ªå­—ç¬¦ä¸²</param>
         public static string TrimEnd(this string str, string lastchar) {
             if (str.EndsWith(lastchar, true, null)) { return str.Substring(0, str.Length - lastchar.Length); }
             return str;
         }
         /// <summary>
-        /// É¾³ı×îºóN¸ö×Ö·û
+        /// åˆ é™¤æœ€åNä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         public static string TrimEnd(this string str) {
             if (!str.IsNullEmpty()) return str.Remove(str.Length - 1, 1);
             return string.Empty;
         }
         /// <summary>
-        /// É¾³ı×îºóN¸ö×Ö·û
+        /// åˆ é™¤æœ€åNä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="len">³¤¶È</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="len">é•¿åº¦</param>
         public static string TrimEnd(this string str, int len) {
             if (str.IsNullEmpty()) return string.Empty;
             if (str.Length >= len) return str.Remove(str.Length - len, len);
             return str;
         }
         /// <summary>
-        /// É¾³ıÇ°ÃæN¸ö×Ö·û
+        /// åˆ é™¤å‰é¢Nä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="prevchar">×îºóÒ»¸ö×Ö·û´®</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="prevchar">æœ€åä¸€ä¸ªå­—ç¬¦ä¸²</param>
         public static string TrimStart(this string str, string prevchar) {
             if (str.StartsWith(prevchar, true, null)) { return str.Substring(prevchar.Length); }
             //int length = str.IndexOf(prevchar);
@@ -3126,90 +3126,90 @@ namespace Pub.Class {
             return str;
         }
         /// <summary>
-        /// É¾³ıÇ°ÃæN¸ö×Ö·û
+        /// åˆ é™¤å‰é¢Nä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
+        /// <param name="str">stringæ‰©å±•</param>
         public static string TrimStart(this string str) {
             if (!str.IsNullEmpty()) return str.Remove(0, 1);
             return string.Empty;
         }
         /// <summary>
-        /// É¾³ıÇ°ÃæN¸ö×Ö·û
+        /// åˆ é™¤å‰é¢Nä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="len">³¤¶È</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="len">é•¿åº¦</param>
         public static string TrimStart(this string str, int len) {
             if (str.IsNullEmpty()) return string.Empty;
             if (str.Length >= len) return str.Remove(0, len);
             return str;
         }
         /// <summary>
-        /// É¾³ıÇ°ÃæºÍºóÃæN¸ö×Ö·û
+        /// åˆ é™¤å‰é¢å’Œåé¢Nä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="len">³¤¶È</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="len">é•¿åº¦</param>
         public static string Trim(this string str, int len) {
             str = str.TrimStart(len);
             str = str.TrimEnd(len);
             return str;
         }
         /// <summary>
-        /// É¾³ıÇ°ÃæºÍºóÃæN¸ö×Ö·û
+        /// åˆ é™¤å‰é¢å’Œåé¢Nä¸ªå­—ç¬¦
         /// </summary>
-        /// <param name="str">stringÀ©Õ¹</param>
-        /// <param name="nchar">×îºóÒ»¸ö×Ö·û´®</param>
+        /// <param name="str">stringæ‰©å±•</param>
+        /// <param name="nchar">æœ€åä¸€ä¸ªå­—ç¬¦ä¸²</param>
         public static string Trim(this string str, string nchar) {
             str = str.TrimStart(nchar);
             str = str.TrimEnd(nchar);
             return str;
         }
         /// <summary>
-        /// ±£´æµ½ÎÄ¼ş
+        /// ä¿å­˜åˆ°æ–‡ä»¶
         /// </summary>
-        /// <param name="str">ÄÚÈİ</param>
-        /// <param name="fileName">ÎÄ¼şÂ·¾¶</param>
-        /// <param name="encoding">±àÂë</param>
-        /// <param name="isOver">ÊÇ·ñÖØĞ´</param>
+        /// <param name="str">å†…å®¹</param>
+        /// <param name="fileName">æ–‡ä»¶è·¯å¾„</param>
+        /// <param name="encoding">ç¼–ç </param>
+        /// <param name="isOver">æ˜¯å¦é‡å†™</param>
         public static void ToFile(this string str, string fileName, Encoding encoding, bool isOver = true) {
             if (isOver) FileDirectory.FileDelete(fileName);
             FileDirectory.FileWrite(fileName, str, encoding);
         }
         /// <summary>
-        /// ±£´æµ½ÎÄ¼ş
+        /// ä¿å­˜åˆ°æ–‡ä»¶
         /// </summary>
-        /// <param name="str">ÄÚÈİ</param>
-        /// <param name="fileName">ÎÄ¼şÂ·¾¶</param>
+        /// <param name="str">å†…å®¹</param>
+        /// <param name="fileName">æ–‡ä»¶è·¯å¾„</param>
         public static void ToFile(this string str, string fileName) {
             str.ToFile(fileName, Encoding.UTF8, true);
         }
         /// <summary>
-        /// ±£´æµ½ÎÄ¼ş
+        /// ä¿å­˜åˆ°æ–‡ä»¶
         /// </summary>
-        /// <param name="str">ÄÚÈİ</param>
-        /// <param name="fileName">ÎÄ¼şÂ·¾¶</param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="str">å†…å®¹</param>
+        /// <param name="fileName">æ–‡ä»¶è·¯å¾„</param>
+        /// <param name="encoding">ç¼–ç </param>
         public static void ToFile(this string str, string fileName, Encoding encoding) {
             str.ToFile(fileName, encoding, true);
         }
         /// <summary>
-        /// CheckOnNullEmpty ¼ì²âÊÇ·ñÎª¿Õ£¬Èç¹ûÎª¿ÕÌáÊ¾Òì³£
+        /// CheckOnNullEmpty æ£€æµ‹æ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºæç¤ºå¼‚å¸¸
         /// </summary>
-        /// <param name="str">objectÀ©Õ¹</param>
-        /// <param name="parameterName">²ÎÊıÃû</param>
+        /// <param name="str">objectæ‰©å±•</param>
+        /// <param name="parameterName">å‚æ•°å</param>
         public static void CheckOnNullEmpty(this string str, string parameterName) {
             if (str.IsNullEmpty()) throw new ArgumentNullException(parameterName);
         }
         /// <summary>
-        /// CheckOnNullEmpty ¼ì²âÊÇ·ñÎª¿Õ£¬Èç¹ûÎª¿ÕÌáÊ¾Òì³£
+        /// CheckOnNullEmpty æ£€æµ‹æ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºæç¤ºå¼‚å¸¸
         /// </summary>
-        /// <param name="str">objectÀ©Õ¹</param>
-        /// <param name="parameterName">²ÎÊıÃû</param>
-        /// <param name="message">ÏûÏ¢</param>
+        /// <param name="str">objectæ‰©å±•</param>
+        /// <param name="parameterName">å‚æ•°å</param>
+        /// <param name="message">æ¶ˆæ¯</param>
         public static void CheckOnNullEmpty(this string str, string parameterName, string message) {
             if (str.IsNullEmpty()) throw new ArgumentNullException(parameterName, message);
         }
         /// <summary>
-        /// È¡HTMLÄÚÈİ±àÂë ÕıÔò utf8 gb_2312 utf_8 zh_cn
+        /// å–HTMLå†…å®¹ç¼–ç  æ­£åˆ™ utf8 gb_2312 utf_8 zh_cn
         /// </summary>
         /// <param name="contentType"></param>
         /// <param name="defaultEncoding">Encoding</param>
@@ -3230,7 +3230,7 @@ namespace Pub.Class {
             return encoding;
         }
         /// <summary>
-        /// È¥³ıjsonµÄ¿ÕÊôĞÔ
+        /// å»é™¤jsonçš„ç©ºå±æ€§
         /// </summary>
         /// <param name="json">json</param>
         /// <returns></returns>
@@ -3242,10 +3242,10 @@ namespace Pub.Class {
             return json;
         }
         /// <summary>
-        /// È¥³ıxmlÖĞµÄ¿Õ½Úµã
+        /// å»é™¤xmlä¸­çš„ç©ºèŠ‚ç‚¹
         /// </summary>
         /// <param name="xml">xml</param>
-        /// <returns>ÕûÀí¹ıµÄxml×Ö·û´®</returns>
+        /// <returns>æ•´ç†è¿‡çš„xmlå­—ç¬¦ä¸²</returns>
         public static string RemoveEmptyNodes(string xml) {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
@@ -3264,120 +3264,120 @@ namespace Pub.Class {
             return xml;
         }
         /// <summary>
-        /// Èç¹û³¤µÈÓÚ
+        /// å¦‚æœé•¿ç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="length">³¤¶È</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="length">é•¿åº¦</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfLengthEqual(this string obj, int length, string defaultValue) {
             return !obj.IsNullEmpty() && obj.Length == length ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û³¤²»µÈÓÚ
+        /// å¦‚æœé•¿ä¸ç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="length">³¤¶È</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="length">é•¿åº¦</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfLengthNotEqual(this string obj, int length, string defaultValue) {
             return !obj.IsNullEmpty() && obj.Length != length ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û³¤´óÓÚ
+        /// å¦‚æœé•¿å¤§äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="length">³¤¶È</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="length">é•¿åº¦</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfLengthMoreThan(this string obj, int length, string defaultValue) {
             return !obj.IsNullEmpty() && obj.Length > length ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û³¤Ğ¡ÓÚ
+        /// å¦‚æœé•¿å°äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="length">³¤¶È</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="length">é•¿åº¦</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfLengthLessThan(this string obj, int length, string defaultValue) {
             return !obj.IsNullEmpty() && obj.Length < length ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û³¤´óÓÚµÈÓÚ
+        /// å¦‚æœé•¿å¤§äºç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="length">³¤¶È</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="length">é•¿åº¦</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfLengthMoreThanOrEqual(this string obj, int length, string defaultValue) {
             return !obj.IsNullEmpty() && obj.Length >= length ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û³¤Ğ¡ÓÚµÈÓÚ
+        /// å¦‚æœé•¿å°äºç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="length">³¤¶È</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="length">é•¿åº¦</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfLengthLessThanOrEqual(this string obj, int length, string defaultValue) {
             return !obj.IsNullEmpty() && obj.Length <= length ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹ûµÈÓÚ
+        /// å¦‚æœç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfEqual(this string obj, string value, string defaultValue) {
             return !obj.IsNullEmpty() && obj == value ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û²»µÈÓÚ
+        /// å¦‚æœä¸ç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfNotEqual(this string obj, string value, string defaultValue) {
             return !obj.IsNullEmpty() && obj != value ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û¿Õ
+        /// å¦‚æœç©º
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfNullOrEmpty(this string obj, string defaultValue) {
             return obj.IsNullEmpty() ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û·Ç¿Õ
+        /// å¦‚æœéç©º
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static string IfNotNullOrEmpty(this string obj, string defaultValue) {
             return !obj.IsNullEmpty() ? defaultValue : obj;
         }
         /// <summary>
-        /// É¾³ı½áÎ²´¦Ö¸¶¨×Ö·û´®ÒÔºóµÄ×Ö·û
+        /// åˆ é™¤ç»“å°¾å¤„æŒ‡å®šå­—ç¬¦ä¸²ä»¥åçš„å­—ç¬¦
         /// </summary>
-        /// <param name="obj">Ô´×Ö·û´®</param>
-        /// <param name="end">´æÔÚµÄ×Ö·û´®</param>
-        /// <returns>É¾³ı½áÎ²´¦Ö¸¶¨×Ö·û´®ÒÔºóµÄ×Ö·û</returns>
+        /// <param name="obj">æºå­—ç¬¦ä¸²</param>
+        /// <param name="end">å­˜åœ¨çš„å­—ç¬¦ä¸²</param>
+        /// <returns>åˆ é™¤ç»“å°¾å¤„æŒ‡å®šå­—ç¬¦ä¸²ä»¥åçš„å­—ç¬¦</returns>
         public static string TrimIndexEnd(this string obj, string end) {
             int len = obj.LastIndexOf(end);
             if (len == -1) return obj;
             return obj.Substring(0, len);
         }
         /// <summary>
-        /// É¾³ıĞĞÊ×´¦Ö¸¶¨×Ö·û´®ÒÔÇ°µÄ×Ö·û
+        /// åˆ é™¤è¡Œé¦–å¤„æŒ‡å®šå­—ç¬¦ä¸²ä»¥å‰çš„å­—ç¬¦
         /// </summary>
-        /// <param name="obj">Ô´×Ö·û´®</param>
-        /// <param name="start">´æÔÚµÄ×Ö·û´®</param>
-        /// <returns>É¾³ıĞĞÊ×´¦Ö¸¶¨×Ö·û´®ÒÔÇ°µÄ×Ö·û</returns>
+        /// <param name="obj">æºå­—ç¬¦ä¸²</param>
+        /// <param name="start">å­˜åœ¨çš„å­—ç¬¦ä¸²</param>
+        /// <returns>åˆ é™¤è¡Œé¦–å¤„æŒ‡å®šå­—ç¬¦ä¸²ä»¥å‰çš„å­—ç¬¦</returns>
         public static string TrimIndexStart(this string obj, string start) {
             int len = obj.IndexOf(start);
             if (len == -1) return obj;
@@ -3385,10 +3385,10 @@ namespace Pub.Class {
             return obj.Substring(len + start.Length);
         }
         /// <summary>
-        /// unicode asciiÂë×ªÖĞÎÄ Native2Ascii·´²Ù×÷
+        /// unicode asciiç è½¬ä¸­æ–‡ Native2Asciiåæ“ä½œ
         /// </summary>
-        /// <param name="str">×Ö·û´®</param>
-        /// <returns>×ª»»ºóµÄ×Ö·û´®</returns>
+        /// <param name="str">å­—ç¬¦ä¸²</param>
+        /// <returns>è½¬æ¢åçš„å­—ç¬¦ä¸²</returns>
         public static string Ascii2Native(this string str) {
             string outStr = "";
             if (!string.IsNullOrEmpty(str)) {
@@ -3398,10 +3398,10 @@ namespace Pub.Class {
             return outStr.Trim();
         }
         /// <summary>
-        /// ÖĞÎÄ×ªunicode asciiÂë Ascii2Native·´²Ù×÷
+        /// ä¸­æ–‡è½¬unicode asciiç  Ascii2Nativeåæ“ä½œ
         /// </summary>
-        /// <param name="str">×Ö·û´®</param>
-        /// <returns>×ª»»ºóµÄ×Ö·û´®</returns>
+        /// <param name="str">å­—ç¬¦ä¸²</param>
+        /// <returns>è½¬æ¢åçš„å­—ç¬¦ä¸²</returns>
         public static string Native2Ascii(this string str) {
             string outStr = "";
             if (!string.IsNullOrEmpty(str)) {
@@ -3410,10 +3410,10 @@ namespace Pub.Class {
             return outStr.Trim();
         }
         /// <summary>
-        /// 16½øÖÆ×Ö½Ú×ª×Ö·û´®
+        /// 16è¿›åˆ¶å­—èŠ‚è½¬å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="s">16½øÖÆ×Ö½Ú</param>
-        /// <returns>×Ö·û´®</returns>
+        /// <param name="s">16è¿›åˆ¶å­—èŠ‚</param>
+        /// <returns>å­—ç¬¦ä¸²</returns>
         public static byte[] To16Bytes(this string s) {
             s = s.Replace(" ", "");
             byte[] buffer = new byte[s.Length / 2];
@@ -3423,38 +3423,38 @@ namespace Pub.Class {
         /// <summary>
         /// ToStr()
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToStr(this string strValue) { return strValue.IsNull() || strValue.IsDBNull() || strValue.IsNullEmpty() ? string.Empty : strValue.ShowSafeSql(); }
         /// <summary>
         /// ToStr()
         /// </summary>
-        /// <param name="strValue">stringÀ©Õ¹</param>
+        /// <param name="strValue">stringæ‰©å±•</param>
         /// <returns></returns>
         public static string ToStr2(this string strValue) { return strValue.IsNull() || strValue.IsDBNull() || strValue.IsNullEmpty() ? string.Empty : strValue.ShowSafeSql2(); }
         /// <summary>
-        /// ¶ÁÈ¡ÎÄ¼ş³É×Ö½Ú
+        /// è¯»å–æ–‡ä»¶æˆå­—èŠ‚
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
+        /// <param name="fileName">æ–‡ä»¶å</param>
         /// <returns></returns>
         public static byte[] ReadAllBytes(this string fileName) {
             return File.ReadAllBytes(fileName);
         }
         /// <summary>
-        /// ×Ö·û´®×ªÈÕÆÚ
+        /// å­—ç¬¦ä¸²è½¬æ—¥æœŸ
         /// </summary>
-        /// <param name="date">stringÀ©Õ¹</param>
+        /// <param name="date">stringæ‰©å±•</param>
         /// <param name="format">format</param>
         /// <returns></returns>
         public static DateTime ToDateTime(this string date, string format) {
             return DateTime.ParseExact(date, format, System.Globalization.CultureInfo.CurrentCulture);
         }
         /// <summary>
-        /// string×ªIDictionary ToDictionary("=","&amp;")
+        /// stringè½¬IDictionary ToDictionary("=","&amp;")
         /// </summary>
         /// <param name="parameters">string</param>
-        /// <param name="split1">·Ö¸ô·û1</param>
-        /// <param name="split2">·Ö¸ô·û2</param>
+        /// <param name="split1">åˆ†éš”ç¬¦1</param>
+        /// <param name="split2">åˆ†éš”ç¬¦2</param>
         /// <returns></returns>
         public static IDictionary<string, string> ToDictionary(this string parameters, string split1 = "=", string split2 = "&") {
             IDictionary<string, string> list = new Dictionary<string, string>();
@@ -3475,7 +3475,7 @@ namespace Pub.Class {
             return list;
         }
         /// <summary>
-        /// ¹ıÂËJSON ¡°¡±£û£ı¡¾¡¿¡° £º
+        /// è¿‡æ»¤JSON â€œâ€ï½›ï½ã€ã€‘â€œ ï¼š
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -3483,82 +3483,82 @@ namespace Pub.Class {
             return str.Replace("\"\"", "\" \"").Replace("{}", "{ }").Replace("[]", "[ ]").Replace("\" : ", "\":").Replace("\" :", "\":");
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static string GetJsonString(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":\"(.+?)\"".FormatWith(key), key.Length + 4, 1);
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static int GetJsonInt(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":(-?\\d+)".FormatWith(key), key.Length + 3, 0).ToInt(0);
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static bool GetJsonBool(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":(true|false)".FormatWith(key), key.Length + 3, 0).ToBool(false);
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static long GetJsonLong(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":(-?\\d+)".FormatWith(key), key.Length + 3, 0).ToBigInt(0);
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static decimal GetJsonDecimal(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":(-?(0|\\d+)(\\.\\d+)?)".FormatWith(key), key.Length + 3, 0).ToDecimal(0);
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static string GetJsonObject(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":{1}(.+?){2}".FormatWith(key, "{", "}"), key.Length + 3, 0);
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static string GetJsonArray(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":[(.+?)]".FormatWith(key), key.Length + 3, 0);
         }
         /// <summary>
-        /// ÌáÈ¡JSONÖ¸¶¨keyµÄÖµ
+        /// æå–JSONæŒ‡å®škeyçš„å€¼
         /// </summary>
-        /// <param name="json">json×Ö·û´®</param>
+        /// <param name="json">jsonå­—ç¬¦ä¸²</param>
         /// <param name="key">key</param>
         /// <returns></returns>
         public static string[] GetJsonArrays(this string json, string key) {
             return json.GetMatchingValue("\"{0}\":[(.+?)]".FormatWith(key), key.Length + 4, 1).Split(',');
         }
         /// <summary>
-        /// ÌáÈ¡XMLÖ¸¶¨½ÚµãµÄÄÚÈİ
+        /// æå–XMLæŒ‡å®šèŠ‚ç‚¹çš„å†…å®¹
         /// </summary>
-        /// <param name="xml">xml×Ö·û´®</param>
-        /// <param name="nodeName">½ÚµãÃû³Æ</param>
+        /// <param name="xml">xmlå­—ç¬¦ä¸²</param>
+        /// <param name="nodeName">èŠ‚ç‚¹åç§°</param>
         /// <returns></returns>
         public static IList<string> GetXmlNodeText(this string xml, string nodeName) {
             string reg = "<{0}>(.+?)</{0}>".FormatWith(nodeName);
@@ -3571,11 +3571,11 @@ namespace Pub.Class {
             return list;
         }
         /// <summary>
-        /// ÌáÈ¡XMLÖ¸¶¨½ÚµãµÄÊôĞÔÖµ
+        /// æå–XMLæŒ‡å®šèŠ‚ç‚¹çš„å±æ€§å€¼
         /// </summary>
-        /// <param name="xml">xml×Ö·û´®</param>
-        /// <param name="nodeName">½ÚµãÃû³Æ</param>
-        /// <param name="attrName">ÊôĞÔÃû³Æ</param>
+        /// <param name="xml">xmlå­—ç¬¦ä¸²</param>
+        /// <param name="nodeName">èŠ‚ç‚¹åç§°</param>
+        /// <param name="attrName">å±æ€§åç§°</param>
         /// <returns></returns>
         public static IList<string> GetXmlNodeAttrString(this string xml, string nodeName, string attrName) {
             xml = xml.Replace("\"\"", "\" \"").Replace("= \"", "=\"").Replace(" = \"", "=\"").Replace("\">", "\" >");
@@ -3588,11 +3588,11 @@ namespace Pub.Class {
             return list;
         }
         /// <summary>
-        /// ÌáÈ¡XMLÖ¸¶¨½ÚµãµÄÊôĞÔÖµ
+        /// æå–XMLæŒ‡å®šèŠ‚ç‚¹çš„å±æ€§å€¼
         /// </summary>
-        /// <param name="xml">xml×Ö·û´®</param>
-        /// <param name="nodeName">½ÚµãÃû³Æ</param>
-        /// <param name="attrName">ÊôĞÔÃû³Æ</param>
+        /// <param name="xml">xmlå­—ç¬¦ä¸²</param>
+        /// <param name="nodeName">èŠ‚ç‚¹åç§°</param>
+        /// <param name="attrName">å±æ€§åç§°</param>
         /// <returns></returns>
         public static IList<int> GetXmlNodeAttrInt(this string xml, string nodeName, string attrName) {
             IList<string> list = xml.GetXmlNodeAttrString(nodeName, attrName);
@@ -3609,11 +3609,11 @@ namespace Pub.Class {
             return intlist;
         }
         /// <summary>
-        /// ÌáÈ¡XMLÖ¸¶¨½ÚµãµÄÊôĞÔÖµ
+        /// æå–XMLæŒ‡å®šèŠ‚ç‚¹çš„å±æ€§å€¼
         /// </summary>
-        /// <param name="xml">xml×Ö·û´®</param>
-        /// <param name="nodeName">½ÚµãÃû³Æ</param>
-        /// <param name="attrName">ÊôĞÔÃû³Æ</param>
+        /// <param name="xml">xmlå­—ç¬¦ä¸²</param>
+        /// <param name="nodeName">èŠ‚ç‚¹åç§°</param>
+        /// <param name="attrName">å±æ€§åç§°</param>
         /// <returns></returns>
         public static IList<long> GetXmlNodeAttrLong(this string xml, string nodeName, string attrName) {
             IList<string> list = xml.GetXmlNodeAttrString(nodeName, attrName);
@@ -3630,11 +3630,11 @@ namespace Pub.Class {
             return longlist;
         }
         /// <summary>
-        /// ÌáÈ¡XMLÖ¸¶¨½ÚµãµÄÊôĞÔÖµ
+        /// æå–XMLæŒ‡å®šèŠ‚ç‚¹çš„å±æ€§å€¼
         /// </summary>
-        /// <param name="xml">xml×Ö·û´®</param>
-        /// <param name="nodeName">½ÚµãÃû³Æ</param>
-        /// <param name="attrName">ÊôĞÔÃû³Æ</param>
+        /// <param name="xml">xmlå­—ç¬¦ä¸²</param>
+        /// <param name="nodeName">èŠ‚ç‚¹åç§°</param>
+        /// <param name="attrName">å±æ€§åç§°</param>
         /// <returns></returns>
         public static IList<decimal> GetXmlNodeAttrDecimal(this string xml, string nodeName, string attrName) {
             IList<string> list = xml.GetXmlNodeAttrString(nodeName, attrName);
@@ -3651,23 +3651,23 @@ namespace Pub.Class {
             return decimallist;
         }
         /// <summary>
-        /// base64×ª×Ö½Ú
+        /// base64è½¬å­—èŠ‚
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
         public static byte[] FromBase64(this string str) { return Convert.FromBase64String(str); }
         /// <summary>
-        /// base64×ª×Ö·û´®
+        /// base64è½¬å­—ç¬¦ä¸²
         /// </summary>
         /// <param name="str"></param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="encoding">ç¼–ç </param>
         /// <returns></returns>
         public static string FromBase64(this string str, Encoding encoding = null) { return (encoding.IsNull() ? Encoding.UTF8 : encoding).GetString(str.FromBase64()); }
         /// <summary>
-        /// ·Ö½â;·Ö¸ô×Ö·û´®
+        /// åˆ†è§£;åˆ†éš”å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="str">×Ö·û´®</param>
-        /// <param name="split">·Ö¸ô×Ö·û´®</param>
+        /// <param name="str">å­—ç¬¦ä¸²</param>
+        /// <param name="split">åˆ†éš”å­—ç¬¦ä¸²</param>
         /// <returns></returns>
         public static string[] ToStrings(this string str, char split = ';') {
             str = str.Trim().Trim(';').Trim();
@@ -3675,7 +3675,7 @@ namespace Pub.Class {
             return str.Split(split);
         }
         /// <summary>
-        /// ÕıÔò×Ö·û×ªÒâ
+        /// æ­£åˆ™å­—ç¬¦è½¬æ„
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -3686,7 +3686,7 @@ namespace Pub.Class {
                 .Replace("[", "\\[").Replace("]", "\\]");
         }
         /// <summary>
-        /// ÊÇ·ñencode±àÂë
+        /// æ˜¯å¦encodeç¼–ç 
         /// </summary>
         /// <param name="chr"></param>
         /// <returns></returns>
@@ -3696,7 +3696,7 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// ÊÇ·ñencode±àÂë
+        /// æ˜¯å¦encodeç¼–ç 
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -3707,7 +3707,7 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// ÊÇ·ñÎïÀíÂ·¾¶
+        /// æ˜¯å¦ç‰©ç†è·¯å¾„
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -3716,7 +3716,7 @@ namespace Pub.Class {
             return Regex.IsMatch(s, text1);
         }
         /// <summary>
-        /// ÊÇ·ñÏà¶ÔÂ·¾¶
+        /// æ˜¯å¦ç›¸å¯¹è·¯å¾„
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>

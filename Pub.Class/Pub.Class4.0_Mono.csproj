@@ -31,12 +31,11 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath>..\Pub.Class.Release\bin\</OutputPath>
     <DefineConstants>TRACE;DEBUG;MONO40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -47,7 +46,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>..\Pub.Class.Release\bin\</OutputPath>
     <DefineConstants>TRACE;MONO40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -57,7 +56,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -77,6 +75,7 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Cache2.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Class\Extensions\HttpResponseExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Class\Extensions\ExpressionExtensions.cs" />
     <Compile Include="Class\ImagesHandler.cs" />
     <Compile Include="Class\Js.cs">
       <SubType>Code</SubType>
@@ -148,6 +146,7 @@
     <Compile Include="Class\Extensions\BooleanExtensions.cs" />
     <Compile Include="Class\Extensions\IntExtensions.cs" />
     <Compile Include="Class\Extensions\DecimalExtensions.cs" />
+    <Compile Include="Class\Extensions\ExpressionExtensions.cs" />
     <Compile Include="Class\Extensions\DoubleExtensions.cs" />
     <Compile Include="Class\Extensions\LongExtensions.cs" />
     <Compile Include="Class\Extensions\FuncExtensions.cs" />
@@ -215,9 +214,7 @@
     <Compile Include="Class\SystemInfo.cs" />
     <Compile Include="Class\SQL`T.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="dll\FredCK.FCKeditorV2.dll" />
+    <Compile Include="Class\ShareConnect.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

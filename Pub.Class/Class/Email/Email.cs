@@ -16,18 +16,18 @@ using System.Net;
 
 namespace Pub.Class {
     /// <summary>
-    /// ·¢ËÍEMAIL
+    /// å‘é€EMAIL
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2012.02.20 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2012.02.20 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// <example>
     /// <code>
     /// var email = new Email("Pub.Class.SmtpClient.SendEmail,Pub.Class.SmtpClient")
     ///     .Host("smtp.163.com").Port(25)
-    ///     .From("ĞÜ»ª´º", "cexo255@163.com")
-    ///     .Body("²âÊÔÊı¾İ")
-    ///     .Subject("²âÊÔ")
+    ///     .From("ç†Šåæ˜¥", "cexo255@163.com")
+    ///     .Body("æµ‹è¯•æ•°æ®")
+    ///     .Subject("æµ‹è¯•")
     ///     .IsBodyHtml(true)
     ///     .Credentials("cexo255@163.com", "cexo851029")
     ///     .To(to => to.Add("hcxiong@elibiz.com"))
@@ -43,10 +43,10 @@ namespace Pub.Class {
         private readonly MailMessage message = null;
         private readonly IList<LinkedResource> linkeds = null;
         /// <summary>
-        /// ¹¹ÔìÆ÷ Ö¸¶¨DLLÎÄ¼şºÍÈ«ÀàÃû
+        /// æ„é€ å™¨ æŒ‡å®šDLLæ–‡ä»¶å’Œå…¨ç±»å
         /// </summary>
-        /// <param name="dllFileName">dllÎÄ¼şÃû</param>
-        /// <param name="className">ÃüÃû¿Õ¼ä.ÀàÃû</param>
+        /// <param name="dllFileName">dllæ–‡ä»¶å</param>
+        /// <param name="className">å‘½åç©ºé—´.ç±»å</param>
         public Email(string dllFileName, string className) {
             errorMessage = string.Empty;
             if (email.IsNull()) {
@@ -57,9 +57,9 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ¹¹ÔìÆ÷ Ö¸¶¨classNameDllName(EmailProviderName) Ä¬ÈÏPub.Class.SmtpClient.SendEmail,Pub.Class.SmtpClient
+        /// æ„é€ å™¨ æŒ‡å®šclassNameDllName(EmailProviderName) é»˜è®¤Pub.Class.SmtpClient.SendEmail,Pub.Class.SmtpClient
         /// </summary>
-        /// <param name="classNameAndAssembly">ÃüÃû¿Õ¼ä.ÀàÃû,³ÌĞò¼¯Ãû³Æ</param>
+        /// <param name="classNameAndAssembly">å‘½åç©ºé—´.ç±»å,ç¨‹åºé›†åç§°</param>
         public Email(string classNameAndAssembly) {
             errorMessage = string.Empty;
             if (email.IsNull()) {
@@ -70,7 +70,7 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ¹¹ÔìÆ÷ ´ÓWeb.configÖĞ¶ÁEmailProviderName Ä¬ÈÏPub.Class.SmtpClient.SendEmail,Pub.Class.SmtpClient
+        /// æ„é€ å™¨ ä»Web.configä¸­è¯»EmailProviderName é»˜è®¤Pub.Class.SmtpClient.SendEmail,Pub.Class.SmtpClient
         /// </summary>
         public Email() {
             errorMessage = string.Empty;
@@ -82,10 +82,10 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ¹¹ÔìÆ÷ Ö±½Ó·¢ËÍ ²»ĞèÒªÖ¸¶¨EmailProviderName»òclassNameDllName
+        /// æ„é€ å™¨ ç›´æ¥å‘é€ ä¸éœ€è¦æŒ‡å®šEmailProviderNameæˆ–classNameDllName
         /// </summary>
-        /// <param name="host">SMTP ÊÂÎñµÄÖ÷»úµÄÃû³Æ»ò IP µØÖ·</param>
-        /// <param name="port">host ÉÏÊ¹ÓÃµÄ¶Ë¿Ú</param>
+        /// <param name="host">SMTP äº‹åŠ¡çš„ä¸»æœºçš„åç§°æˆ– IP åœ°å€</param>
+        /// <param name="port">host ä¸Šä½¿ç”¨çš„ç«¯å£</param>
         public Email(string host, int port) {
             errorMessage = string.Empty;
             smtpClient = new SmtpClient(host, port);
@@ -94,40 +94,40 @@ namespace Pub.Class {
             isSend = true;
         }
         /// <summary>
-        /// ÓÃusing ×Ô¶¯ÊÍ·Å
+        /// ç”¨using è‡ªåŠ¨é‡Šæ”¾
         /// </summary>
         protected override void InternalDispose() {
             base.InternalDispose();
         }
         ///<summary>
-        /// ÊµÀı»¯MailMessage
+        /// å®ä¾‹åŒ–MailMessage
         ///</summary>
         public MailMessage Message {
             get { return message; }
         }
         ///<summary>
-        /// FromÏÔÊ¾Ãû³ÆºÍµØÖ·
+        /// Fromæ˜¾ç¤ºåç§°å’Œåœ°å€
         ///</summary>
-        ///<param name="fromMail">FromÏÔÊ¾µØÖ·</param>
+        ///<param name="fromMail">Fromæ˜¾ç¤ºåœ°å€</param>
         ///<returns>Email(this)</returns>
         public virtual Email From(string fromMail) {
             Message.From = new MailAddress(fromMail);
             return this;
         }
         ///<summary>
-        /// FromÏÔÊ¾Ãû³ÆºÍµØÖ·
+        /// Fromæ˜¾ç¤ºåç§°å’Œåœ°å€
         ///</summary>
-        ///<param name="fromDisplayName">FromÏÔÊ¾Ãû³Æ</param>
-        ///<param name="fromMail">FromÏÔÊ¾µØÖ·</param>
+        ///<param name="fromDisplayName">Fromæ˜¾ç¤ºåç§°</param>
+        ///<param name="fromMail">Fromæ˜¾ç¤ºåœ°å€</param>
         ///<returns>Email(this)</returns>
         public virtual Email From(string fromDisplayName, string fromMail) {
             Message.From = new MailAddress(fromMail, fromDisplayName);
             return this;
         }
         ///<summary>
-        /// Ìí¼Ó·¢ËÍÓÊ¼şµØÖ·
+        /// æ·»åŠ å‘é€é‚®ä»¶åœ°å€
         ///</summary>
-        ///<param name="mailAddresses">ÓÊ¼şµØÖ·</param>
+        ///<param name="mailAddresses">é‚®ä»¶åœ°å€</param>
         ///<returns>Email(this)</returns>
         public virtual Email To(Func<MailAddresses, MailAddresses> mailAddresses) {
             foreach (var address in mailAddresses(new MailAddresses()).AddressCollection)
@@ -136,7 +136,7 @@ namespace Pub.Class {
             return this;
         }
         /// <summary>
-        /// ÒÆ³ıËùÓĞ·¢ËÍµÄEMAILµØÖ·
+        /// ç§»é™¤æ‰€æœ‰å‘é€çš„EMAILåœ°å€
         /// </summary>
         /// <returns></returns>
         public virtual Email ClearTo() {
@@ -144,9 +144,9 @@ namespace Pub.Class {
             return this;
         }
         /// <summary>
-        /// Ìí¼Ó¸½¼ş
+        /// æ·»åŠ é™„ä»¶
         /// </summary>
-        /// <param name="filePath">¸½¼şÂ·¾¶</param>
+        /// <param name="filePath">é™„ä»¶è·¯å¾„</param>
         /// <returns>Email(this)</returns>
         public virtual Email AddAttachment(string filePath) {
             Attachment data = new Attachment(filePath, MediaTypeNames.Application.Octet);
@@ -158,9 +158,9 @@ namespace Pub.Class {
             return this;
         }
         ///<summary>
-        /// Ìí¼Ó·¢ËÍÓÊ¼şµØÖ·
+        /// æ·»åŠ å‘é€é‚®ä»¶åœ°å€
         ///</summary>
-        ///<param name="mailAddresses">ÓÊ¼şµØÖ·</param>
+        ///<param name="mailAddresses">é‚®ä»¶åœ°å€</param>
         ///<returns>Email(this)</returns>
         public virtual Email Cc(Func<MailAddresses, MailAddresses> mailAddresses) {
             foreach (var address in mailAddresses(new MailAddresses()).AddressCollection)
@@ -169,7 +169,7 @@ namespace Pub.Class {
             return this;
         }
         /// <summary>
-        /// ÒÆ³ıËùÓĞ³­ËÍµÄEMAILµØÖ·
+        /// ç§»é™¤æ‰€æœ‰æŠ„é€çš„EMAILåœ°å€
         /// </summary>
         /// <returns></returns>
         public virtual Email ClearCc() {
@@ -177,9 +177,9 @@ namespace Pub.Class {
             return this;
         }
         ///<summary>
-        /// Ìí¼Ó·¢ËÍÓÊ¼şµØÖ·
+        /// æ·»åŠ å‘é€é‚®ä»¶åœ°å€
         ///</summary>
-        ///<param name="mailAddresses">ÓÊ¼şµØÖ·</param>
+        ///<param name="mailAddresses">é‚®ä»¶åœ°å€</param>
         ///<returns>Email(this)</returns>
         public virtual Email Bcc(Func<MailAddresses, MailAddresses> mailAddresses) {
             foreach (var address in mailAddresses(new MailAddresses()).AddressCollection)
@@ -197,7 +197,7 @@ namespace Pub.Class {
             return AddLinkedResource(fileName, "image/gif", cid);
         }
         /// <summary>
-        /// ÒÆ³ıËùÓĞÃÜ¼ş³­ËÍµÄEMAILµØÖ·
+        /// ç§»é™¤æ‰€æœ‰å¯†ä»¶æŠ„é€çš„EMAILåœ°å€
         /// </summary>
         /// <returns></returns>
         public virtual Email ClearBcc() {
@@ -205,7 +205,7 @@ namespace Pub.Class {
             return this;
         }
         /// <summary>
-        /// ÒÆ³ıËùÓĞTo/Cc/BccµÄEMAILµØÖ·
+        /// ç§»é™¤æ‰€æœ‰To/Cc/Bccçš„EMAILåœ°å€
         /// </summary>
         /// <returns></returns>
         public virtual Email Clear() {
@@ -215,36 +215,36 @@ namespace Pub.Class {
             return this;
         }
         ///<summary>
-        /// ·¢ËÍ±êÌâ
+        /// å‘é€æ ‡é¢˜
         ///</summary>
-        ///<param name="subject">±êÌâ</param>
+        ///<param name="subject">æ ‡é¢˜</param>
         ///<returns>Email(this)</returns>
         public virtual Email Subject(string subject) {
             Message.Subject = subject;
             return this;
         }
         ///<summary>
-        /// ·¢ËÍÄÚÈİ
+        /// å‘é€å†…å®¹
         ///</summary>
-        ///<param name="body">ÄÚÈİ</param>
+        ///<param name="body">å†…å®¹</param>
         ///<returns>Email(this)</returns>
         public virtual Email Body(string body) {
             Message.Body = body;
             return this;
         }
         ///<summary>
-        /// ·¢ËÍ±êÌâ±àÂë
+        /// å‘é€æ ‡é¢˜ç¼–ç 
         ///</summary>
-        ///<param name="subjectEncoding">±êÌâ±àÂë</param>
+        ///<param name="subjectEncoding">æ ‡é¢˜ç¼–ç </param>
         ///<returns>Email(this)</returns>
         public virtual Email SubjectEncoding(Encoding subjectEncoding) {
             Message.SubjectEncoding = subjectEncoding;
             return this;
         }
         ///<summary>
-        /// ·¢ËÍÄÚÈİ±àÂë
+        /// å‘é€å†…å®¹ç¼–ç 
         ///</summary>
-        ///<param name="bodyEncoding">ÄÚÈİ±àÂë</param>
+        ///<param name="bodyEncoding">å†…å®¹ç¼–ç </param>
         ///<returns>Email(this)</returns>
         public virtual Email BodyEncoding(Encoding bodyEncoding) {
             Message.BodyEncoding = bodyEncoding;
@@ -255,39 +255,39 @@ namespace Pub.Class {
             return this;
         }
         ///<summary>
-        /// ÄÚÈİÊÇ·ñÒÔHTMLĞÎÊ½·¢ËÍ
+        /// å†…å®¹æ˜¯å¦ä»¥HTMLå½¢å¼å‘é€
         ///</summary>
-        ///<param name="isBodyHtml">ÊÇ·ñÒÔHTMLĞÎÊ½·¢ËÍ true/false</param>
+        ///<param name="isBodyHtml">æ˜¯å¦ä»¥HTMLå½¢å¼å‘é€ true/false</param>
         ///<returns>Email(this)</returns>
         public virtual Email IsBodyHtml(bool isBodyHtml) {
             Message.IsBodyHtml = isBodyHtml;
             return this;
         }
-#if !MONO40
+//#if !MONO40
         ///<summary>
-        /// Èç¹ûÊ¹ÓÃÄ¬ÈÏÆ¾¾İ£¬ÔòÎª true£»·ñÔòÎª false¡£Ä¬ÈÏÖµÎª false¡£
+        /// å¦‚æœä½¿ç”¨é»˜è®¤å‡­æ®ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚é»˜è®¤å€¼ä¸º falseã€‚
         ///</summary>
-        ///<param name="useDefaultCredentials">Èç¹ûÊ¹ÓÃÄ¬ÈÏÆ¾¾İ£¬ÔòÎª true£»·ñÔòÎª false¡£Ä¬ÈÏÖµÎª true¡£</param>
+        ///<param name="useDefaultCredentials">å¦‚æœä½¿ç”¨é»˜è®¤å‡­æ®ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚é»˜è®¤å€¼ä¸º trueã€‚</param>
         ///<returns>Email(this)</returns>
         public virtual Email UseDefaultCredentials(bool useDefaultCredentials = true) {
             smtpClient.UseDefaultCredentials = useDefaultCredentials;
             return this;
         }
-#endif
+//#endif
         ///<summary>
-        /// ÓÊ¼ş·şÎñÆ÷Ö÷»ú
+        /// é‚®ä»¶æœåŠ¡å™¨ä¸»æœº
         ///</summary>
-        ///<param name="host">ÓÊ¼ş·şÎñÆ÷Ö÷»ú</param>
+        ///<param name="host">é‚®ä»¶æœåŠ¡å™¨ä¸»æœº</param>
         ///<returns>Email(this)</returns>
         public virtual Email Host(string host) {
             smtpClient.Host = host;
             return this;
         }
         ///<summary>
-        /// ÓÊ¼ş·şÎñÆ÷
+        /// é‚®ä»¶æœåŠ¡å™¨
         ///</summary>
-        ///<param name="host">ÓÊ¼ş·şÎñÆ÷Ö÷»ú</param>
-        ///<param name="port">Ö¸¶¨µÄ¶Ë¿Ú</param>
+        ///<param name="host">é‚®ä»¶æœåŠ¡å™¨ä¸»æœº</param>
+        ///<param name="port">æŒ‡å®šçš„ç«¯å£</param>
         ///<returns>Email(this)</returns>
         public virtual Email Server(string host, int port = 25) {
             smtpClient.Host = host;
@@ -295,60 +295,60 @@ namespace Pub.Class {
             return this;
         }
         ///<summary>
-        /// Ö¸¶¨µÄ¶Ë¿Ú
+        /// æŒ‡å®šçš„ç«¯å£
         ///</summary>
-        ///<param name="port">Ö¸¶¨µÄ¶Ë¿Ú</param>
+        ///<param name="port">æŒ‡å®šçš„ç«¯å£</param>
         ///<returns>Email(this)</returns>
         public virtual Email Port(int port) {
             smtpClient.Port = port;
             return this;
         }
         ///<summary>
-        /// ÊÇ·ñÆôÓÃSSL
+        /// æ˜¯å¦å¯ç”¨SSL
         ///</summary>
-        ///<param name="enableSsl">ÊÇ·ñÆôÓÃSSL</param>
+        ///<param name="enableSsl">æ˜¯å¦å¯ç”¨SSL</param>
         ///<returns>Email(this)</returns>
         public virtual Email Ssl(bool enableSsl) {
             smtpClient.EnableSsl = enableSsl;
             return this;
         }
         ///<summary>
-        /// ³¬Ê±Ê±¼ä
+        /// è¶…æ—¶æ—¶é—´
         ///</summary>
-        ///<param name="timeout">³¬Ê±Ê±¼ä</param>
+        ///<param name="timeout">è¶…æ—¶æ—¶é—´</param>
         ///<returns>Email(this)</returns>
         public virtual Email Timeout(int timeout) {
             smtpClient.Timeout = timeout;
             return this;
         }
         ///<summary>
-        /// ¶¨ÒåÒªÊ¹ÓÃµÄÆ¾¾İ·¢ËÍÓÊ¼ş£¨NetworkCredentials£©
+        /// å®šä¹‰è¦ä½¿ç”¨çš„å‡­æ®å‘é€é‚®ä»¶ï¼ˆNetworkCredentialsï¼‰
         ///</summary>
-        ///<param name="username">ÓÃ»§Ãû</param>
-        ///<param name="password">ÃÜÂë</param>
+        ///<param name="username">ç”¨æˆ·å</param>
+        ///<param name="password">å¯†ç </param>
         ///<returns>Email(this)</returns>
         public virtual Email Credentials(string username, string password) {
-#if !MONO40
+//#if !MONO40
             if (username.IsNullEmpty() || password.IsNullEmpty()) UseDefaultCredentials(true);
             else smtpClient.Credentials = new NetworkCredential(username, password);
-#else
-            smtpClient.Credentials = new NetworkCredential(username, password);
-#endif
+//#else
+//            smtpClient.Credentials = new NetworkCredential(username, password);
+//#endif
             return this;
         }
         ///<summary>
-        /// ¶¨ÒåÒªÊ¹ÓÃµÄÆ¾¾İ·¢ËÍÓÊ¼ş£¨NetworkCredentials£©
+        /// å®šä¹‰è¦ä½¿ç”¨çš„å‡­æ®å‘é€é‚®ä»¶ï¼ˆNetworkCredentialsï¼‰
         ///</summary>
-        ///<param name="username">ÓÃ»§Ãû</param>
-        ///<param name="password">ÃÜÂë</param>
-        ///<param name="domain">Óò</param>
+        ///<param name="username">ç”¨æˆ·å</param>
+        ///<param name="password">å¯†ç </param>
+        ///<param name="domain">åŸŸ</param>
         ///<returns>Email(this)</returns>
         public virtual Email Credentials(string username, string password, string domain) {
             smtpClient.Credentials = new NetworkCredential(username, password, domain);
             return this;
         }
         ///<summary>
-        /// ·¢ËÍ
+        /// å‘é€
         ///</summary>
         ///<example>
         /// <code>
@@ -411,40 +411,40 @@ namespace Pub.Class {
             return isTrue;
         }
         ///<summary>
-        /// MailAddressesÀà
+        /// MailAddressesç±»
         ///</summary>
         public class MailAddresses {
             private readonly MailAddressCollection addressCollection = null;
             internal MailAddressCollection AddressCollection { get { return addressCollection; } }
             /// <summary>
-            /// ¹¹ÔìÆ÷
+            /// æ„é€ å™¨
             /// </summary>
             public MailAddresses() {
                 addressCollection = new MailAddressCollection();
             }
             ///<summary>
-            /// Ìí¼ÓÒ»¸öĞÂµÄÓÊ¼şµØÖ·
+            /// æ·»åŠ ä¸€ä¸ªæ–°çš„é‚®ä»¶åœ°å€
             ///</summary>
-            ///<param name="mail">ÓÊ¼şµØÖ·</param>
+            ///<param name="mail">é‚®ä»¶åœ°å€</param>
             ///<returns>MailAddresses(this)</returns>
             public MailAddresses Add(string mail) {
                 AddressCollection.Add(new MailAddress(mail));
                 return this;
             }
             ///<summary>
-            /// Ìí¼ÓÒ»¸öĞÂµÄÓÊ¼şµØÖ·
+            /// æ·»åŠ ä¸€ä¸ªæ–°çš„é‚®ä»¶åœ°å€
             ///</summary>
-            ///<param name="displayName">ÏÔÊ¾Ãû³Æ</param>
-            ///<param name="mail">ÓÊ¼şµØÖ·</param>
+            ///<param name="displayName">æ˜¾ç¤ºåç§°</param>
+            ///<param name="mail">é‚®ä»¶åœ°å€</param>
             ///<returns>MailAddresses(this)</returns>
             public MailAddresses Add(string displayName, string mail) {
                 AddressCollection.Add(new MailAddress(mail, displayName));
                 return this;
             }
             ///<summary>
-            /// Ìí¼ÓÒ»¸öĞÂµÄÓÊ¼şµØÖ·
+            /// æ·»åŠ ä¸€ä¸ªæ–°çš„é‚®ä»¶åœ°å€
             ///</summary>
-            ///<param name="mails">ÓÊ¼şÁĞ±í</param>
+            ///<param name="mails">é‚®ä»¶åˆ—è¡¨</param>
             ///<returns>MailAddresses(this)</returns>
             public MailAddresses Add(IEnumerable<string> mails) {
                 foreach (var mail in mails) {
@@ -453,9 +453,9 @@ namespace Pub.Class {
                 return this;
             }
             ///<summary>
-            /// Ìí¼ÓÒ»¸öĞÂµÄÓÊ¼şµØÖ·
+            /// æ·»åŠ ä¸€ä¸ªæ–°çš„é‚®ä»¶åœ°å€
             ///</summary>
-            ///<param name="contacts">ÓÊ¼şÁĞ±í</param>
+            ///<param name="contacts">é‚®ä»¶åˆ—è¡¨</param>
             ///<returns>MailAddresses(this)</returns>
             public MailAddresses Add(Dictionary<string, string> contacts) {
                 foreach (var contact in contacts) {
@@ -466,7 +466,7 @@ namespace Pub.Class {
         }
         private string errorMessage = string.Empty;
         /// <summary>
-        /// ³ö´íÏûÏ¢
+        /// å‡ºé”™æ¶ˆæ¯
         /// </summary>
         public string ErrorMessage { get { return errorMessage; } }
     }

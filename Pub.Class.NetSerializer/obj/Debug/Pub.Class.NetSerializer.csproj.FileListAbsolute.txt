@@ -1,5 +1,0 @@
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.NetSerializer\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.NetSerializer.dll
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.NetSerializer.pdb
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.NetSerializer\obj\Debug\Pub.Class.NetSerializer.dll
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.NetSerializer\obj\Debug\Pub.Class.NetSerializer.pdb

@@ -1,5 +1,0 @@
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Protobuf\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.Protobuf.dll
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.Protobuf.pdb
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Protobuf\obj\Debug\Pub.Class.Protobuf.dll
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Protobuf\obj\Debug\Pub.Class.Protobuf.pdb

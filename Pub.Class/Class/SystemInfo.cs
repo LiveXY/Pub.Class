@@ -17,16 +17,16 @@ using Microsoft.VisualBasic.Devices;
 
 namespace Pub.Class {
     /// <summary>
-    /// ÏµÍ³ĞÅÏ¢Àà
+    /// ç³»ç»Ÿä¿¡æ¯ç±»
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2012.05.31 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2012.05.31 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public class SystemInfo {
         class _ {
             /// <summary>
-            /// »úÆ÷Ãû
+            /// æœºå™¨å
             /// </summary>
             public static string MachineName {
                 get {
@@ -36,7 +36,7 @@ namespace Pub.Class {
 #if !MONO40
             private static string baseBoard;
             /// <summary>
-            /// Ö÷°åĞòÁĞºÅ
+            /// ä¸»æ¿åºåˆ—å·
             /// </summary>
             public static string BaseBoard {
                 get {
@@ -50,7 +50,7 @@ namespace Pub.Class {
             }
             private static string processors;
             /// <summary>
-            /// ´¦ÀíÆ÷ĞòÁĞºÅ
+            /// å¤„ç†å™¨åºåˆ—å·
             /// </summary>
             public static string Processors {
                 get {
@@ -62,7 +62,7 @@ namespace Pub.Class {
             }
             private static Int64? _Memory;
             /// <summary>
-            /// ÄÚ´æ×ÜÁ¿
+            /// å†…å­˜æ€»é‡
             /// </summary>
             public static Int64 Memory {
                 get {
@@ -75,19 +75,19 @@ namespace Pub.Class {
             }
             private static string disk;
             /// <summary>
-            /// ´ÅÅÌÃû³Æ
+            /// ç£ç›˜åç§°
             /// </summary>
             public static string Disk {
                 get {
                     if (disk == null) disk = GetInfo("Win32_DiskDrive", "Model");
                     return disk;
-                    //ÉÏÃæµÄ·½Ê½È¡Çı¶¯Æ÷ĞòÁĞºÅ»áÈ¡µÃ°üÀ¨UÅÌºÍÍøÂçÓ³ÉäÇı¶¯Æ÷µÄĞòÁĞºÅ£¬Êµ¼ÊÖ»Òªµ±Ç°ËùÔÚÅÌ¾Í¿ÉÒÔÁË
+                    //ä¸Šé¢çš„æ–¹å¼å–é©±åŠ¨å™¨åºåˆ—å·ä¼šå–å¾—åŒ…æ‹¬Uç›˜å’Œç½‘ç»œæ˜ å°„é©±åŠ¨å™¨çš„åºåˆ—å·ï¼Œå®é™…åªè¦å½“å‰æ‰€åœ¨ç›˜å°±å¯ä»¥äº†
                     //return Volume;
                 }
             }
             private static string diskSerial = string.Empty;
             /// <summary>
-            /// ´ÅÅÌĞòÁĞºÅ
+            /// ç£ç›˜åºåˆ—å·
             /// </summary>
             public static string DiskSerial {
                 get {
@@ -97,12 +97,12 @@ namespace Pub.Class {
             }
             private static string volume;
             /// <summary>
-            /// Çı¶¯Æ÷ĞòÁĞºÅ
+            /// é©±åŠ¨å™¨åºåˆ—å·
             /// </summary>
             public static string Volume {
                 get {
                     //if (string.IsNullOrEmpty(_Volume)) _Volume = GetInfo("Win32_DiskDrive", "Model");
-                    //´ÅÅÌĞòÁĞºÅ²»¹»Ã÷ÏÔ£¬¹ÊÊ¹ÓÃÇı¶¯Æ÷ĞòÁĞºÅ´úÌæ
+                    //ç£ç›˜åºåˆ—å·ä¸å¤Ÿæ˜æ˜¾ï¼Œæ•…ä½¿ç”¨é©±åŠ¨å™¨åºåˆ—å·ä»£æ›¿
                     string id = AppDomain.CurrentDomain.BaseDirectory.Substring(0, 2);
                     if (volume == null) volume = GetInfo("Win32_LogicalDisk Where DeviceID=\"" + id + "\"", "VolumeSerialNumber");
                     return volume;
@@ -110,7 +110,7 @@ namespace Pub.Class {
             }
             private static string macs;
             /// <summary>
-            /// Íø¿¨µØÖ·ĞòÁĞºÅ
+            /// ç½‘å¡åœ°å€åºåˆ—å·
             /// </summary>
             public static string Macs {
                 get {
@@ -143,7 +143,7 @@ namespace Pub.Class {
             }
             private static string ips;
             /// <summary>
-            /// IPµØÖ·
+            /// IPåœ°å€
             /// </summary>
             public static string IPs {
                 get {
@@ -191,7 +191,7 @@ namespace Pub.Class {
                             bbs.Add(mo.Properties[property].Value.ToString());
                     }
                 } catch (Exception ex) {
-                    //Msg.WriteEnd("»ñÈ¡{0} {1}Ó²¼şĞÅÏ¢Ê§°Ü\r\n{2}", path, property, ex);
+                    //Msg.WriteEnd("è·å–{0} {1}ç¡¬ä»¶ä¿¡æ¯å¤±è´¥\r\n{2}", path, property, ex);
                 }
                 bbs.Sort();
                 StringBuilder sb = new StringBuilder();
@@ -204,7 +204,7 @@ namespace Pub.Class {
 #endif
         }
         /// <summary>
-        /// win7ÒÔÉÏ°æ±¾
+        /// win7ä»¥ä¸Šç‰ˆæœ¬
         /// </summary>
         /// <returns></returns>
         public static bool IsWindows7OrHigher {
@@ -213,7 +213,7 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// Vista°æ±¾
+        /// Vistaç‰ˆæœ¬
         /// </summary>
         /// <returns></returns>
         public static bool IsWindowsVista {
@@ -222,7 +222,7 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// VistaÒÔÉÏ°æ±¾
+        /// Vistaä»¥ä¸Šç‰ˆæœ¬
         /// </summary>
         /// <returns></returns>
         public static bool IsWindowsVistaOrHigher {
@@ -234,79 +234,79 @@ namespace Pub.Class {
         }
 #if !MONO40
         private string machineName;
-        /// <summary>»úÆ÷Ãû</summary>
+        /// <summary>æœºå™¨å</summary>
         public string MachineName {
             get { return machineName; }
             set { machineName = value; }
         }
         private string baseBoard;
-        /// <summary>Ö÷°å</summary>
+        /// <summary>ä¸»æ¿</summary>
         public string BaseBoard {
             get { return baseBoard; }
             set { baseBoard = value; }
         }
         private string processors;
-        /// <summary>´¦ÀíÆ÷</summary>
+        /// <summary>å¤„ç†å™¨</summary>
         public string Processors {
             get { return processors; }
             set { processors = value; }
         }
         private string disk;
-        /// <summary>´ÅÅÌ</summary>
+        /// <summary>ç£ç›˜</summary>
         public string Disk {
             get { return disk; }
             set { disk = value; }
         }
         private string diskSerial;
-        /// <summary>´ÅÅÌĞòÁĞºÅ</summary>
+        /// <summary>ç£ç›˜åºåˆ—å·</summary>
         public string DiskSerial {
             get { return diskSerial; }
             set { diskSerial = value; }
         }
         private string volume;
-        /// <summary>Çı¶¯Æ÷ĞòÁĞºÅ</summary>
+        /// <summary>é©±åŠ¨å™¨åºåˆ—å·</summary>
         public string Volume {
             get { return volume; }
             set { volume = value; }
         }
         private string macs;
-        /// <summary>Íø¿¨</summary>
+        /// <summary>ç½‘å¡</summary>
         public string Macs {
             get { return macs; }
             set { macs = value; }
         }
         private string ips;
-        /// <summary>IPµØÖ·</summary>
+        /// <summary>IPåœ°å€</summary>
         public string IPs {
             get { return ips; }
             set { ips = value; }
         }
         private long memory;
-        /// <summary>ÄÚ´æ</summary>
+        /// <summary>å†…å­˜</summary>
         public long Memory {
             get { return memory; }
             set { memory = value; }
         }
         private string osVersion;
-        /// <summary>ÏµÍ³°æ±¾</summary>
+        /// <summary>ç³»ç»Ÿç‰ˆæœ¬</summary>
         public string OSVersion {
             get { return osVersion; }
             set { osVersion = value; }
         }
         private Int32 screenWidth;
-        /// <summary>ÆÁÄ»¿í</summary>
+        /// <summary>å±å¹•å®½</summary>
         public Int32 ScreenWidth {
             get { return screenWidth; }
             set { screenWidth = value; }
         }
         private Int32 screenHeight;
-        /// <summary>ÆÁÄ»¸ß</summary>
+        /// <summary>å±å¹•é«˜</summary>
         public Int32 ScreenHeight {
             get { return screenHeight; }
             set { screenHeight = value; }
         }
         private Int64 diskSize;
-        /// <summary>´ÅÅÌ´óĞ¡</summary>
+        /// <summary>ç£ç›˜å¤§å°</summary>
         public Int64 DiskSize {
             get { return diskSize; }
             set { diskSize = value; }
@@ -345,7 +345,7 @@ namespace Pub.Class {
             }
         }
         private static SystemInfo current;
-        /// <summary>µ±Ç°»úÆ÷Ó²¼şĞÅÏ¢</summary>
+        /// <summary>å½“å‰æœºå™¨ç¡¬ä»¶ä¿¡æ¯</summary>
         public static SystemInfo Current {
             get {
                 if (current != null) return current;
@@ -406,14 +406,14 @@ namespace Pub.Class {
             return entity;
         }
         /// <summary>
-        /// µ¼³öXML
+        /// å¯¼å‡ºXML
         /// </summary>
         /// <returns></returns>
         public virtual string ToXml() {
             return ToExtend().ToXml();
         }
         /// <summary>
-        /// µ¼Èë
+        /// å¯¼å…¥
         /// </summary>
         /// <param name="xml"></param>
         /// <returns></returns>

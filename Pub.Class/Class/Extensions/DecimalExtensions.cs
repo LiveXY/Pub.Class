@@ -20,53 +20,53 @@ using System.Text.RegularExpressions;
 
 namespace Pub.Class {
     /// <summary>
-    /// DecimalÀ©Õ¹
+    /// Decimalæ‰©å±•
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2009.06.25 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2009.06.25 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public static class DecimalExtensions {
         /// <summary>
-        /// °Ù·ÖÂÊ
+        /// ç™¾åˆ†ç‡
         /// </summary>
-        /// <param name="number">Öµ</param>
-        /// <param name="percent">°Ù·ÖÖ®</param>
-        /// <returns>°Ù·ÖÂÊ</returns>
+        /// <param name="number">å€¼</param>
+        /// <param name="percent">ç™¾åˆ†ä¹‹</param>
+        /// <returns>ç™¾åˆ†ç‡</returns>
         public static decimal PercentageOf(this decimal number, int percent) {
             return (decimal)(number * percent / 100);
         }
         /// <summary>
-        /// °Ù·ÖÂÊ
+        /// ç™¾åˆ†ç‡
         /// </summary>
-        /// <param name="number">Öµ</param>
-        /// <param name="percent">°Ù·ÖÖ®</param>
-        /// <returns>°Ù·ÖÂÊ</returns>
+        /// <param name="number">å€¼</param>
+        /// <param name="percent">ç™¾åˆ†ä¹‹</param>
+        /// <returns>ç™¾åˆ†ç‡</returns>
         public static decimal PercentageOf(this decimal number, decimal percent) {
             return (decimal)(number * percent / 100);
         }
         /// <summary>
-        /// °Ù·ÖÂÊ
+        /// ç™¾åˆ†ç‡
         /// </summary>
-        /// <param name="number">Öµ</param>
-        /// <param name="percent">°Ù·ÖÖ®</param>
-        /// <returns>°Ù·ÖÂÊ</returns>
+        /// <param name="number">å€¼</param>
+        /// <param name="percent">ç™¾åˆ†ä¹‹</param>
+        /// <returns>ç™¾åˆ†ç‡</returns>
         public static decimal PercentageOf(this decimal number, long percent) {
             return (decimal)(number * percent / 100);
         }
         /// <summary>
-        /// °Ù·ÖÖ®
+        /// ç™¾åˆ†ä¹‹
         /// </summary>
-        /// <param name="position">Î»ÖÃ</param>
-        /// <param name="total">×ÜÊı</param>
-        /// <returns>°Ù·ÖÖ®</returns>
+        /// <param name="position">ä½ç½®</param>
+        /// <param name="total">æ€»æ•°</param>
+        /// <returns>ç™¾åˆ†ä¹‹</returns>
         public static decimal PercentOf(this decimal position, int total) {
             decimal result = 0;
             if (position > 0 && total > 0) result = (decimal)position / (decimal)total * 100;
             return result;
         }
         /// <summary>
-        /// °Ù·ÖÖ®
+        /// ç™¾åˆ†ä¹‹
         /// </summary>
         /// <param name="position"></param>
         /// <param name="total"></param>
@@ -77,7 +77,7 @@ namespace Pub.Class {
             return result;
         }
         /// <summary>
-        /// °Ù·ÖÖ®
+        /// ç™¾åˆ†ä¹‹
         /// </summary>
         /// <param name="position"></param>
         /// <param name="total"></param>
@@ -88,38 +88,38 @@ namespace Pub.Class {
             return result;
         }
         /// <summary>
-        /// ±£ÁôdecimalPointsÎ»Ğ¡Êı
+        /// ä¿ç•™decimalPointsä½å°æ•°
         /// </summary>
-        /// <param name="val">Öµ</param>
-        /// <param name="decimalPoints">Ğ¡ÊıÎ»Êı</param>
-        /// <returns>±£ÁôdecimalPointsÎ»Ğ¡Êı</returns>
+        /// <param name="val">å€¼</param>
+        /// <param name="decimalPoints">å°æ•°ä½æ•°</param>
+        /// <returns>ä¿ç•™decimalPointsä½å°æ•°</returns>
         public static decimal Round(this decimal val, int decimalPoints) {
             return Math.Round(val, decimalPoints);
         }
         /// <summary>
-        /// ±£Áô2Î»Ğ¡Êı
+        /// ä¿ç•™2ä½å°æ•°
         /// </summary>
-        /// <param name="val">Öµ</param>
-        /// <returns>±£Áô2Î»Ğ¡Êı</returns>
+        /// <param name="val">å€¼</param>
+        /// <returns>ä¿ç•™2ä½å°æ•°</returns>
         public static decimal Round2(this decimal val) {
             return Math.Round(val, 2);
         }
         /// <summary>
-        /// ½ğ¶î ÈıÎ»,·Ö¸î
+        /// é‡‘é¢ ä¸‰ä½,åˆ†å‰²
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <returns>½ğ¶î ÈıÎ»,·Ö¸î</returns>
+        /// <param name="value">å€¼</param>
+        /// <returns>é‡‘é¢ ä¸‰ä½,åˆ†å‰²</returns>
         public static string ToCurrency(this decimal value) {
             return value.ToString("N");
         }
         /// <summary>
-        /// ÈËÃñ±Ò×ª´óĞ´
+        /// äººæ°‘å¸è½¬å¤§å†™
         /// </summary>
-        /// <param name="num">ÈËÃñ±Ò</param>
-        /// <returns>´óĞ´ÈËÃñ±Ò</returns>
+        /// <param name="num">äººæ°‘å¸</param>
+        /// <returns>å¤§å†™äººæ°‘å¸</returns>
         public static string ToRMB2(this decimal num) {
-            string str = "ÁãÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾Á";
-            string str2 = "ÍòÇª°ÛÊ°ÒÚÇª°ÛÊ°ÍòÇª°ÛÊ°Ôª½Ç·Ö";
+            string str = "é›¶å£¹è´°åè‚†ä¼é™†æŸ’æŒç–";
+            string str2 = "ä¸‡ä»Ÿä½°æ‹¾äº¿ä»Ÿä½°æ‹¾ä¸‡ä»Ÿä½°æ‹¾å…ƒè§’åˆ†";
             string str3 = "";
             string str4 = "";
             string str5 = "";
@@ -130,7 +130,7 @@ namespace Pub.Class {
             str4 = ((long)(num * 100M)).ToString();
             int length = str4.Length;
             if (length > 15) {
-                return "Òç³ö";
+                return "æº¢å‡º";
             }
             str2 = str2.Substring(15 - length);
             for (int i = 0; i < length; i++) {
@@ -142,7 +142,7 @@ namespace Pub.Class {
                         str7 = "";
                         num4++;
                     } else if ((str3 != "0") && (num4 != 0)) {
-                        str6 = "Áã" + str.Substring(startIndex, 1);
+                        str6 = "é›¶" + str.Substring(startIndex, 1);
                         str7 = str2.Substring(i, 1);
                         num4 = 0;
                     } else {
@@ -151,7 +151,7 @@ namespace Pub.Class {
                         num4 = 0;
                     }
                 } else if ((str3 != "0") && (num4 != 0)) {
-                    str6 = "Áã" + str.Substring(startIndex, 1);
+                    str6 = "é›¶" + str.Substring(startIndex, 1);
                     str7 = str2.Substring(i, 1);
                     num4 = 0;
                 } else if ((str3 != "0") && (num4 == 0)) {
@@ -175,81 +175,81 @@ namespace Pub.Class {
                 }
                 str5 = str5 + str6 + str7;
                 if ((i == (length - 1)) && (str3 == "0")) {
-                    str5 = str5 + 'Õû';
+                    str5 = str5 + 'æ•´';
                 }
             }
             if (num == 0M) {
-                str5 = "ÁãÔªÕû";
+                str5 = "é›¶å…ƒæ•´";
             }
             return str5;
         }
         /// <summary>
-        /// °ÑÊı×Ö×ª»»´óĞ´ÈËÃñ±Ò
+        /// æŠŠæ•°å­—è½¬æ¢å¤§å†™äººæ°‘å¸
         /// </summary>
-        /// <param name="input">ÈËÃñ±Ò</param>
-        /// <returns>´óĞ´ÈËÃñ±Ò</returns>
+        /// <param name="input">äººæ°‘å¸</param>
+        /// <returns>å¤§å†™äººæ°‘å¸</returns>
         public static string ToRMB(this decimal input) {
             string s = input.ToString("#L#E#D#C#K#E#D#C#J#E#D#C#I#E#D#C#H#E#D#C#G#E#D#C#F#E#D#C#.0B0A");
             string d = Regex.Replace(s, @"((?<=-|^)[^1-9]*)|((?'z'0)[0A-E]*((?=[1-9])|(?'-z'(?=[F-L\.]|$))))|((?'b'[F-L])(?'z'0)[0A-L]*((?=[1-9])|(?'-z'(?=[\.]|$))))", "${b}${z}");
-            string result = Regex.Replace(d, ".", delegate(Match m) { return "¸ºÔª¿ÕÁãÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾Á¿Õ¿Õ¿Õ¿Õ¿Õ¿Õ¿Õ·Ö½ÇÊ°°ÛÇªÈfƒ|Õ×¾©Ûòïöğ¦"[m.Value[0] - '-'].ToString(); });
+            string result = Regex.Replace(d, ".", delegate(Match m) { return "è´Ÿå…ƒç©ºé›¶å£¹è´°åè‚†ä¼é™†æŸ’æŒç–ç©ºç©ºç©ºç©ºç©ºç©ºç©ºåˆ†è§’æ‹¾ä½°ä»Ÿè¬å„„å…†äº¬å“ç§­ç©°"[m.Value[0] - '-'].ToString(); });
             return result;
         }
         /// <summary>
-        /// Èç¹ûµÈÓÚ
+        /// å¦‚æœç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal IfEqual(this decimal obj, decimal value, decimal defaultValue) {
             return obj == value ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û²»µÈÓÚ
+        /// å¦‚æœä¸ç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal IfNotEqual(this decimal obj, decimal value, decimal defaultValue) {
             return obj != value ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û´óÓÚ
+        /// å¦‚æœå¤§äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal IfMoreThan(this decimal obj, decimal value, decimal defaultValue) {
             return obj > value ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹ûĞ¡ÓÚ
+        /// å¦‚æœå°äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal IfLessThan(this decimal obj, decimal value, decimal defaultValue) {
             return obj < value ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹û´óÓÚµÈÓÚ
+        /// å¦‚æœå¤§äºç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal IfMoreThanOrEqual(this decimal obj, decimal value, decimal defaultValue) {
             return obj >= value ? defaultValue : obj;
         }
         /// <summary>
-        /// Èç¹ûĞ¡ÓÚµÈÓÚ
+        /// å¦‚æœå°äºç­‰äº
         /// </summary>
-        /// <param name="obj">Ô´Êı¾İ</param>
-        /// <param name="value">Ä¿±êÊı¾İ</param>
-        /// <param name="defaultValue">Ä¬ÈÏÖµ</param>
+        /// <param name="obj">æºæ•°æ®</param>
+        /// <param name="value">ç›®æ ‡æ•°æ®</param>
+        /// <param name="defaultValue">é»˜è®¤å€¼</param>
         /// <returns></returns>
         public static decimal IfLessThanOrEqual(this decimal obj, decimal value, decimal defaultValue) {
             return obj <= value ? defaultValue : obj;

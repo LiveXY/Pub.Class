@@ -30,6 +30,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -68,7 +69,6 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -226,9 +226,9 @@
       <Project>{FDE94D2C-3A45-4073-83EB-2A0D192DDDAF}</Project>
       <Name>Pub.Class.SqlServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pub.Class\Pub.Class.csproj">
+    <ProjectReference Include="..\Pub.Class\Pub.Class4.0_Mono.csproj">
       <Project>{2AD0BF74-CE88-4004-A609-239C7EBD51BF}</Project>
-      <Name>Pub.Class</Name>
+      <Name>Pub.Class4.0_Mono</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

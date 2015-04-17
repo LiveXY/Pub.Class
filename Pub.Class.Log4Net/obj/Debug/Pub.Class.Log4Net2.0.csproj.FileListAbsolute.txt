@@ -1,5 +1,0 @@
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.Log4Net.dll
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.Log4Net.pdb
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Log4Net\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Log4Net\obj\Debug\Pub.Class.Log4Net.dll
-C:\Documents and Settings\Administrator\桌面\other\_\EntityTool5.4\Pub.Class.Log4Net\obj\Debug\Pub.Class.Log4Net.pdb

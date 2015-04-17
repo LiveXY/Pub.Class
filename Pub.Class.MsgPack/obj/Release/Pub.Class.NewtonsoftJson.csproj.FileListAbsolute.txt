@@ -1,5 +1,0 @@
-E:\net_pro\EntityTool5.4\Pub.Class.NewtonsoftJson\obj\Release\ResolveAssemblyReference.cache
-E:\net_pro\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.NewtonsoftJson.dll
-E:\net_pro\EntityTool5.4\Pub.Class.Release\bin\Pub.Class.NewtonsoftJson.pdb
-E:\net_pro\EntityTool5.4\Pub.Class.NewtonsoftJson\obj\Release\Pub.Class.NewtonsoftJson.dll
-E:\net_pro\EntityTool5.4\Pub.Class.NewtonsoftJson\obj\Release\Pub.Class.NewtonsoftJson.pdb

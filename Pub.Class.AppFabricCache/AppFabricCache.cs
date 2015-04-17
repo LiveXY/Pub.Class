@@ -15,14 +15,14 @@ using Microsoft.ApplicationServer.Caching;
 
 namespace Pub.Class {
     /// <summary>
-    /// Velocity»º´æ¹ÜÀí
+    /// Velocityç¼“å­˜ç®¡ç†
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2009.11.11 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2009.11.11 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public class AppFabricCache : ICache2 {
-        #region Ë½ÓĞ¾²Ì¬×Ö¶Î
+        #region ç§æœ‰é™æ€å­—æ®µ
         public static readonly string velocityCacheName = WebConfig.GetApp("AppFabricCache.Name") ?? string.Empty;
         private readonly DataCache _cache;
         private readonly DataCacheFactory _factory;
@@ -30,12 +30,12 @@ namespace Pub.Class {
         private static readonly string[] Servers = WebConfig.GetApp("AppFabricCache.Servers").Split(';');
         private static readonly ReaderWriterLockSlim locker = new ReaderWriterLockSlim();
         /// <summary>
-        /// »º´æÒò×Ó
+        /// ç¼“å­˜å› å­
         /// </summary>
         private int Factor = 5;
         #endregion
 
-        #region ¹¹ÔìÆ÷
+        #region æ„é€ å™¨
         public AppFabricCache() {
             if (!velocityCacheName.IsNullEmpty()) {
                 DataCacheServerEndpoint[] cluster = GetClusterEndpoints();
@@ -63,7 +63,7 @@ namespace Pub.Class {
         }
         #endregion
 
-        #region ¾²Ì¬·½·¨
+        #region é™æ€æ–¹æ³•
         public IList<CachedItem> GetList() {
             IList<CachedItem> list = new List<CachedItem>();
             IEnumerable<KeyValuePair<string, object>> result;
@@ -75,15 +75,15 @@ namespace Pub.Class {
             return list;
         }
         /// <summary>
-        /// Çå¿ÕËùÓĞ»º´æÏîÄ¿
+        /// æ¸…ç©ºæ‰€æœ‰ç¼“å­˜é¡¹ç›®
         /// </summary>
         public void Clear() {
             using (new WriterLockSlimDisposable(locker)) { _cache.ClearRegion(RegionName); }
         }
         /// <summary>
-        /// É¾³ı»º´æ
+        /// åˆ é™¤ç¼“å­˜
         /// </summary>
-        /// <param name="pattern">»º´æ¼üÕıÔòÆ¥ÅäÄ£Ê½</param>
+        /// <param name="pattern">ç¼“å­˜é”®æ­£åˆ™åŒ¹é…æ¨¡å¼</param>
         public void RemoveByPattern(string pattern) {
             IEnumerable<KeyValuePair<string, object>> result;
             using (new ReaderLockSlimDisposable(locker)) { result = _cache.GetObjectsInRegion(RegionName); }
@@ -94,9 +94,9 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// É¾³ı»º´æ
+        /// åˆ é™¤ç¼“å­˜
         /// </summary>
-        /// <param name="key">»º´æ¼üÃû</param>
+        /// <param name="key">ç¼“å­˜é”®å</param>
         public void Remove(string key) {
             if (!ContainsKey(key)) return;
             using (new WriterLockSlimDisposable(locker)) {
@@ -104,10 +104,10 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// Ôö¼Ó»º´æÏîÄ¿ 
+        /// å¢åŠ ç¼“å­˜é¡¹ç›® 
         /// </summary>
-        /// <param name="key">»º´æ¼üÃû</param>
-        /// <param name="obj">»º´æ¶ÔÏó</param>
+        /// <param name="key">ç¼“å­˜é”®å</param>
+        /// <param name="obj">ç¼“å­˜å¯¹è±¡</param>
         public void Insert(string key, object obj) {
             if (obj.IsNull()) { Remove(key); return; }
             using (new WriterLockSlimDisposable(locker)) {
@@ -121,11 +121,11 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// Ôö¼Ó»º´æÏîÄ¿
+        /// å¢åŠ ç¼“å­˜é¡¹ç›®
         /// </summary>
-        /// <param name="key">»º´æ¼üÃû</param>
-        /// <param name="obj">»º´æ¶ÔÏó</param>
-        /// <param name="seconds">»º´æÃëÊı</param>
+        /// <param name="key">ç¼“å­˜é”®å</param>
+        /// <param name="obj">ç¼“å­˜å¯¹è±¡</param>
+        /// <param name="seconds">ç¼“å­˜ç§’æ•°</param>
         public void Insert(string key, object obj, int seconds) {
             if (obj.IsNull()) { Remove(key); return; }
             using (new WriterLockSlimDisposable(locker)) {
@@ -139,29 +139,29 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// »ñÈ¡»º´æ¶ÔÏó
+        /// è·å–ç¼“å­˜å¯¹è±¡
         /// </summary>
-        /// <param name="key">»º´æ¼üÃû</param>
-        /// <returns>·µ»Ø»º´æ¶ÔÏó</returns>
+        /// <param name="key">ç¼“å­˜é”®å</param>
+        /// <returns>è¿”å›ç¼“å­˜å¯¹è±¡</returns>
         public object Get(string key) {
             using (new ReaderLockSlimDisposable(locker)) {
                 return _cache.Get(key, RegionName);
             }
         }
         /// <summary>
-        /// »ñÈ¡»º´æ¶ÔÏó
+        /// è·å–ç¼“å­˜å¯¹è±¡
         /// </summary>
-        /// <param name="key">»º´æ¼üÃû</param>
-        /// <returns>·µ»Ø»º´æ¶ÔÏó</returns>
+        /// <param name="key">ç¼“å­˜é”®å</param>
+        /// <returns>è¿”å›ç¼“å­˜å¯¹è±¡</returns>
         public T Get<T>(string key) {
             using (new ReaderLockSlimDisposable(locker)) {
                 return (T)_cache.Get(key, RegionName);
             }
         }
         /// <summary>
-        /// ¼üÊÇ·ñ´æÔÚ
+        /// é”®æ˜¯å¦å­˜åœ¨
         /// </summary>
-        /// <param name="key">¼ü</param>
+        /// <param name="key">é”®</param>
         /// <returns>true/false</returns>
         public bool ContainsKey(string key) {
             using (new ReaderLockSlimDisposable(locker)) {
@@ -169,30 +169,30 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// »º´æÑ¹Ëõ
+        /// ç¼“å­˜å‹ç¼©
         /// </summary>
-        /// <typeparam name="T">ÀàĞÍ</typeparam>
-        /// <param name="key">¼ü</param>
-        /// <param name="obj">Öµ</param>
-        /// <param name="seconds">»º´æÃë</param>
+        /// <typeparam name="T">ç±»å‹</typeparam>
+        /// <param name="key">é”®</param>
+        /// <param name="obj">å€¼</param>
+        /// <param name="seconds">ç¼“å­˜ç§’</param>
         public void Compress<T>(string key, T obj, int seconds) where T : class {
             Insert(key, obj.ToBytes().DeflateCompress(), seconds);
         }
         /// <summary>
-        /// »º´æÑ¹Ëõ
+        /// ç¼“å­˜å‹ç¼©
         /// </summary>
-        /// <typeparam name="T">ÀàĞÍ</typeparam>
-        /// <param name="key">¼ü</param>
-        /// <param name="obj">Öµ</param>
+        /// <typeparam name="T">ç±»å‹</typeparam>
+        /// <param name="key">é”®</param>
+        /// <param name="obj">å€¼</param>
         public void Compress<T>(string key, T obj) where T : class {
             Compress<T>(key, obj, 1);
         }
 
         /// <summary>
-        /// »º´æ½âÑ¹
+        /// ç¼“å­˜è§£å‹
         /// </summary>
-        /// <typeparam name="T">ÀàĞÍ</typeparam>
-        /// <param name="key">¼ü</param>
+        /// <typeparam name="T">ç±»å‹</typeparam>
+        /// <param name="key">é”®</param>
         /// <returns></returns>
         public T Decompress<T>(string key) where T : class {
             return ((byte[])Get(key)).DeflateDecompress().FromBytes<T>();

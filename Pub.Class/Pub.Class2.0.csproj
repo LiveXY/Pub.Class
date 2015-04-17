@@ -31,12 +31,11 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath>..\Pub.Class.Release\bin\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NET20</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -44,29 +43,29 @@
     <DocumentationFile>
     </DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>..\Pub.Class.Release\bin\</OutputPath>
     <DefineConstants>TRACE;NET20</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\Pub.Class.Release\bin\Pub.Class.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Action.cs" />
@@ -94,17 +93,6 @@
     <Compile Include="Class\Js.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Class\Json\Delegate.cs" />
-    <Compile Include="Class\Json\ILoadMember.cs" />
-    <Compile Include="Class\Json\Json.cs" />
-    <Compile Include="Class\Json\JsonBuilder.cs" />
-    <Compile Include="Class\Json\JsonParser.cs" />
-    <Compile Include="Class\Json\Literacy.cs" />
-    <Compile Include="Class\Json\ObjectProperty.cs" />
-    <Compile Include="Class\Json\ObjectPropertyCollection.cs" />
-    <Compile Include="Class\Json\QuickJsonBuilder.cs" />
-    <Compile Include="Class\Json\UnsafeJsonReader.cs" />
-    <Compile Include="Class\Json\UnsafeStringWriter.cs" />
     <Compile Include="Class\Linq\Buffer.cs" />
     <Compile Include="Class\Linq\EmptyEnumerable.cs" />
     <Compile Include="Class\Linq\Enumerable.cs" />
@@ -165,6 +153,7 @@
     <Compile Include="Class\Extensions\BooleanExtensions.cs" />
     <Compile Include="Class\Extensions\IntExtensions.cs" />
     <Compile Include="Class\Extensions\DecimalExtensions.cs" />
+    <Compile Include="Class\Extensions\ExpressionExtensions.cs" />
     <Compile Include="Class\Extensions\DoubleExtensions.cs" />
     <Compile Include="Class\Extensions\LongExtensions.cs" />
     <Compile Include="Class\Extensions\FuncExtensions.cs" />
@@ -234,9 +223,6 @@
     <Compile Include="Class\SystemInfo.cs" />
     <Compile Include="Class\HashSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="dll\FredCK.FCKeditorV2.dll" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.2.0">

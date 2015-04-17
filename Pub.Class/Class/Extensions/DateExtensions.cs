@@ -20,10 +20,10 @@ using System.Data.SqlTypes;
 
 namespace Pub.Class {
     /// <summary>
-    /// ÈÕÆÚÀ©Õ¹
+    /// æ—¥æœŸæ‰©å±•
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2009.06.25 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2009.06.25 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public static class DateExtensions {
@@ -40,177 +40,177 @@ namespace Pub.Class {
         private static readonly TimeSpan _OneYear = new TimeSpan(365, 0, 0, 0);
         private static readonly TimeSpan _TwoYears = new TimeSpan(730, 0, 0, 0);
         /// <summary>
-        /// Ê±¼ä²î
+        /// æ—¶é—´å·®
         /// </summary>
-        /// <param name="startTime">¿ªÊ¼Ê±¼ä</param>
-        /// <param name="endTime">½áÊøÊ±¼ä</param>
-        /// <returns>TimeSpanÊ±¼ä²î</returns>
+        /// <param name="startTime">å¼€å§‹æ—¶é—´</param>
+        /// <param name="endTime">ç»“æŸæ—¶é—´</param>
+        /// <returns>TimeSpanæ—¶é—´å·®</returns>
         public static TimeSpan GetTimeSpan(this DateTime startTime, DateTime endTime) {
             return endTime - startTime;
         }
         /// <summary>
-        /// ÈÕÆÚ×ª×Ö·û´®yyyy-MM-dd HH:mm:ss
+        /// æ—¥æœŸè½¬å­—ç¬¦ä¸²yyyy-MM-dd HH:mm:ss
         /// </summary>
-        /// <param name="time">ÈÕÆÚ</param>
-        /// <returns>×ª×Ö·û´®yyyy-MM-dd HH:mm:ss</returns>
+        /// <param name="time">æ—¥æœŸ</param>
+        /// <returns>è½¬å­—ç¬¦ä¸²yyyy-MM-dd HH:mm:ss</returns>
         public static string ToDateTime(this DateTime time) {
             return time.ToString("yyyy-MM-dd HH:mm:ss");
         }
         /// <summary>
-        /// ÈÕÆÚ×ª×Ö·û´®yyyy-MM-dd
+        /// æ—¥æœŸè½¬å­—ç¬¦ä¸²yyyy-MM-dd
         /// </summary>
-        /// <param name="time">ÈÕÆÚ</param>
-        /// <returns>×ª×Ö·û´®yyyy-MM-dd</returns>
+        /// <param name="time">æ—¥æœŸ</param>
+        /// <returns>è½¬å­—ç¬¦ä¸²yyyy-MM-dd</returns>
         public static string ToDate(this DateTime time) {
             return time.ToString("yyyy-MM-dd");
         }
         /// <summary>
-        /// ÈÕÆÚ×ª×Ö·û´®HH:mm:ss
+        /// æ—¥æœŸè½¬å­—ç¬¦ä¸²HH:mm:ss
         /// </summary>
-        /// <param name="time">ÈÕÆÚ</param>
-        /// <returns>×ª×Ö·û´®HH:mm:ss</returns>
+        /// <param name="time">æ—¥æœŸ</param>
+        /// <returns>è½¬å­—ç¬¦ä¸²HH:mm:ss</returns>
         public static string ToTime(this DateTime time) {
             return time.ToString("HH:mm:ss");
         }
         /// <summary>
-        /// ÈÕÆÚ×ª×Ö·û´®HH:mm
+        /// æ—¥æœŸè½¬å­—ç¬¦ä¸²HH:mm
         /// </summary>
-        /// <param name="time">ÈÕÆÚ</param>
-        /// <returns>×ª×Ö·û´®HH:mm</returns>
+        /// <param name="time">æ—¥æœŸ</param>
+        /// <returns>è½¬å­—ç¬¦ä¸²HH:mm</returns>
         public static string ToHHmm(this DateTime time) {
             return time.ToString("HH:mm");
         }
         /// <summary>
-        /// ÈÕÆÚ×ª×Ö·û´®yyyy-MM-dd HH:mm:ss.fffffff
+        /// æ—¥æœŸè½¬å­—ç¬¦ä¸²yyyy-MM-dd HH:mm:ss.fffffff
         /// </summary>
-        /// <param name="time">ÈÕÆÚ</param>
-        /// <returns>×ª×Ö·û´®yyyy-MM-dd HH:mm:ss.fffffff</returns>
+        /// <param name="time">æ—¥æœŸ</param>
+        /// <returns>è½¬å­—ç¬¦ä¸²yyyy-MM-dd HH:mm:ss.fffffff</returns>
         public static string ToDateTimeF(this DateTime time) {
             return time.ToString("yyyy-MM-dd HH:mm:ss.fffffff");
         }
         /// <summary>
-        /// ÈÕÆÚ×ª×Ö·û´®yyyy-MM-dd HH:mm:ss.fff
+        /// æ—¥æœŸè½¬å­—ç¬¦ä¸²yyyy-MM-dd HH:mm:ss.fff
         /// </summary>
-        /// <param name="time">ÈÕÆÚ</param>
-        /// <returns>×ª×Ö·û´®yyyy-MM-dd HH:mm:ss.fff</returns>
+        /// <param name="time">æ—¥æœŸ</param>
+        /// <returns>è½¬å­—ç¬¦ä¸²yyyy-MM-dd HH:mm:ss.fff</returns>
         public static string ToDateTimeFFF(this DateTime time) {
             return time.ToString("yyyy-MM-dd HH:mm:ss.fff");
         }
         /// <summary>
-        /// È¡ÄêÁä
+        /// å–å¹´é¾„
         /// </summary>
-        /// <param name="dateOfBirth">ÉúÈÕÈÕÆÚ</param>
-        /// <returns>·µ»ØÄêÁä</returns>
+        /// <param name="dateOfBirth">ç”Ÿæ—¥æ—¥æœŸ</param>
+        /// <returns>è¿”å›å¹´é¾„</returns>
         public static int ToAge(this DateTime dateOfBirth) {
             return ToAge(dateOfBirth, DateTime.Today);
         }
         /// <summary>
-        /// È¡ÄêÁä
+        /// å–å¹´é¾„
         /// </summary>
-        /// <param name="dateOfBirth">ÉúÈÕÈÕÆÚ</param>
-        /// <param name="referenceDate">²Î¿¼ÈÕÆÚ</param>
-        /// <returns>·µ»ØÄêÁä</returns>
+        /// <param name="dateOfBirth">ç”Ÿæ—¥æ—¥æœŸ</param>
+        /// <param name="referenceDate">å‚è€ƒæ—¥æœŸ</param>
+        /// <returns>è¿”å›å¹´é¾„</returns>
         public static int ToAge(this DateTime dateOfBirth, DateTime referenceDate) {
             int years = referenceDate.Year - dateOfBirth.Year;
             if (referenceDate.Month < dateOfBirth.Month || (referenceDate.Month == dateOfBirth.Month && referenceDate.Day < dateOfBirth.Day)) --years;
             return years;
         }
         /// <summary>
-        /// ÕâÔÂ¶àÉÙÌì
+        /// è¿™æœˆå¤šå°‘å¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <returns>ÌìÊı</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <returns>å¤©æ•°</returns>
         public static int GetCountDaysOfMonth(this DateTime date) {
             var nextMonth = date.AddMonths(1);
             return new DateTime(nextMonth.Year, nextMonth.Month, 1).AddDays(-1).Day;
         }
         /// <summary>
-        /// ÕâÔÂµÄµÚÒ»Ìì
+        /// è¿™æœˆçš„ç¬¬ä¸€å¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <returns>ÕâÔÂµÄµÚÒ»ÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <returns>è¿™æœˆçš„ç¬¬ä¸€å¤©DateTime</returns>
         public static DateTime GetFirstDayOfMonth(this DateTime date) {
             return new DateTime(date.Year, date.Month, 1);
         }
         /// <summary>
-        /// ÕâÔÂµÄµÚÒ»Ìì
+        /// è¿™æœˆçš„ç¬¬ä¸€å¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <param name="dayOfWeek">ĞÇÆÚ¼¸</param>
-        /// <returns>ÕâÔÂµÄµÚÒ»ÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <param name="dayOfWeek">æ˜ŸæœŸå‡ </param>
+        /// <returns>è¿™æœˆçš„ç¬¬ä¸€å¤©DateTime</returns>
         public static DateTime GetFirstDayOfMonth(this DateTime date, DayOfWeek dayOfWeek) {
             var dt = date.GetFirstDayOfMonth();
             while (dt.DayOfWeek != dayOfWeek) dt = dt.AddDays(1);
             return dt;
         }
         /// <summary>
-        /// ÕâÔÂµÄ×îºóÌì
+        /// è¿™æœˆçš„æœ€åå¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <returns>ÕâÔÂµÄ×îºóÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <returns>è¿™æœˆçš„æœ€åå¤©DateTime</returns>
         public static DateTime GetLastDayOfMonth(this DateTime date) {
             return new DateTime(date.Year, date.Month, GetCountDaysOfMonth(date));
         }
         /// <summary>
-        /// ÕâÔÂµÄ×îºóÌì
+        /// è¿™æœˆçš„æœ€åå¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <param name="dayOfWeek">ĞÇÆÚ¼¸</param>
-        /// <returns>ÕâÔÂµÄ×îºóÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <param name="dayOfWeek">æ˜ŸæœŸå‡ </param>
+        /// <returns>è¿™æœˆçš„æœ€åå¤©DateTime</returns>
         public static DateTime GetLastDayOfMonth(this DateTime date, DayOfWeek dayOfWeek) {
             var dt = date.GetLastDayOfMonth();
             while (dt.DayOfWeek != dayOfWeek) dt = dt.AddDays(-1);
             return dt;
         }
         /// <summary>
-        /// ½ñÌì·ñ
+        /// ä»Šå¤©å¦
         /// </summary>
-        /// <param name="dt">ÈÕÆÚ</param>
+        /// <param name="dt">æ—¥æœŸ</param>
         /// <returns>true/false</returns>
         public static bool IsToday(this DateTime dt) {
             return (dt.Date == DateTime.Today);
         }
         /// <summary>
-        /// ½ñÌì·ñ
+        /// ä»Šå¤©å¦
         /// </summary>
-        /// <param name="dto">Ê±¼äµã</param>
+        /// <param name="dto">æ—¶é—´ç‚¹</param>
         /// <returns>true/false</returns>
         public static bool IsToday(this DateTimeOffset dto) {
             return (dto.Date.IsToday());
         }
         /// <summary>
-        /// ÖØÖµÊ±¼ä
+        /// é‡å€¼æ—¶é—´
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <param name="hours">Ê±</param>
-        /// <param name="minutes">·Ö</param>
-        /// <param name="seconds">Ãë</param>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <param name="hours">æ—¶</param>
+        /// <param name="minutes">åˆ†</param>
+        /// <param name="seconds">ç§’</param>
         /// <returns>DateTime</returns>
         public static DateTime SetTime(this DateTime date, int hours, int minutes, int seconds) {
             return date.SetTime(new TimeSpan(hours, minutes, seconds));
         }
         /// <summary>
-        /// ÖØÖµÊ±¼ä
+        /// é‡å€¼æ—¶é—´
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <param name="time">Ê±¼ä</param>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <param name="time">æ—¶é—´</param>
         /// <returns>DateTime</returns>
         public static DateTime SetTime(this DateTime date, TimeSpan time) {
             return date.Date.Add(time);
         }
 #if !(NET20 || MONO40)
         /// <summary>
-        /// ToDateTimeOffset ÈÕÆÚ×ªÊ±¼äµã
+        /// ToDateTimeOffset æ—¥æœŸè½¬æ—¶é—´ç‚¹
         /// </summary>
-        /// <param name="localDateTime">Ê±¼ä</param>
+        /// <param name="localDateTime">æ—¶é—´</param>
         /// <returns>DateTimeOffset</returns>
         public static DateTimeOffset ToDateTimeOffset(this DateTime localDateTime) {
             return localDateTime.ToDateTimeOffset(null);
         }
         /// <summary>
-        /// ToDateTimeOffset ÈÕÆÚ×ªÊ±¼äµã
+        /// ToDateTimeOffset æ—¥æœŸè½¬æ—¶é—´ç‚¹
         /// </summary>
-        /// <param name="localDateTime">Ê±¼ä</param>
+        /// <param name="localDateTime">æ—¶é—´</param>
         /// <param name="localTimeZone">localTimeZone</param>
         /// <returns>DateTimeOffset</returns>
         public static DateTimeOffset ToDateTimeOffset(this DateTime localDateTime, TimeZoneInfo localTimeZone) {
@@ -220,19 +220,19 @@ namespace Pub.Class {
         }
 #endif
         /// <summary>
-        /// ÕâÖÜµÄµÚÒ»Ìì
+        /// è¿™å‘¨çš„ç¬¬ä¸€å¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <returns>ÕâÖÜµÄµÚÒ»ÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <returns>è¿™å‘¨çš„ç¬¬ä¸€å¤©DateTime</returns>
         public static DateTime GetFirstDayOfWeek(this DateTime date) {
             return date.GetFirstDayOfWeek(null);
         }
         /// <summary>
-        /// ÕâÖÜµÄµÚÒ»Ìì
+        /// è¿™å‘¨çš„ç¬¬ä¸€å¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <param name="cultureInfo">ÇøÓòÉèÖÃ</param>
-        /// <returns>ÕâÖÜµÄµÚÒ»ÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <param name="cultureInfo">åŒºåŸŸè®¾ç½®</param>
+        /// <returns>è¿™å‘¨çš„ç¬¬ä¸€å¤©DateTime</returns>
         public static DateTime GetFirstDayOfWeek(this DateTime date, CultureInfo cultureInfo) {
             cultureInfo = (cultureInfo ?? CultureInfo.CurrentCulture);
             var firstDayOfWeek = cultureInfo.DateTimeFormat.FirstDayOfWeek;
@@ -240,88 +240,88 @@ namespace Pub.Class {
             return date;
         }
         /// <summary>
-        /// ÕâÖÜµÄ×îºóÒ»Ìì
+        /// è¿™å‘¨çš„æœ€åä¸€å¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <returns>ÕâÖÜµÄ×îºóÒ»ÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <returns>è¿™å‘¨çš„æœ€åä¸€å¤©DateTime</returns>
         public static DateTime GetLastDayOfWeek(this DateTime date) {
             return date.GetLastDayOfWeek(null);
         }
         /// <summary>
-        /// ÕâÖÜµÄ×îºóÒ»Ìì
+        /// è¿™å‘¨çš„æœ€åä¸€å¤©
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <param name="cultureInfo">ÇøÓòÉèÖÃ</param>
-        /// <returns>ÕâÖÜµÄ×îºóÒ»ÌìDateTime</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <param name="cultureInfo">åŒºåŸŸè®¾ç½®</param>
+        /// <returns>è¿™å‘¨çš„æœ€åä¸€å¤©DateTime</returns>
         public static DateTime GetLastDayOfWeek(this DateTime date, CultureInfo cultureInfo) {
             return date.GetFirstDayOfWeek(cultureInfo).AddDays(6);
         }
         /// <summary>
-        /// ÖÜÈÕ
+        /// å‘¨æ—¥
         /// </summary>
-        /// <param name="date">Ê±¼ä</param>
-        /// <param name="weekday">ĞÇÆÚ¼¸</param>
-        /// <returns>ÖÜÈÕDateTime</returns>
+        /// <param name="date">æ—¶é—´</param>
+        /// <param name="weekday">æ˜ŸæœŸå‡ </param>
+        /// <returns>å‘¨æ—¥DateTime</returns>
         public static DateTime GetWeekday(this DateTime date, DayOfWeek weekday) {
             return date.GetWeekday(weekday, null);
         }
         /// <summary>
-        /// ÖÜÈÕ
+        /// å‘¨æ—¥
         /// </summary>
-        /// <param name="date">Ê±¼ä</param>
-        /// <param name="weekday">ĞÇÆÚ¼¸</param>
-        /// <param name="cultureInfo">ÇøÓòÉèÖÃ</param>
-        /// <returns>ÖÜÈÕDateTime</returns>
+        /// <param name="date">æ—¶é—´</param>
+        /// <param name="weekday">æ˜ŸæœŸå‡ </param>
+        /// <param name="cultureInfo">åŒºåŸŸè®¾ç½®</param>
+        /// <returns>å‘¨æ—¥DateTime</returns>
         public static DateTime GetWeekday(this DateTime date, DayOfWeek weekday, CultureInfo cultureInfo) {
             var firstDayOfWeek = date.GetFirstDayOfWeek(cultureInfo);
             return firstDayOfWeek.GetNextWeekday(weekday);
         }
         /// <summary>
-        /// ÏÂÖÜÈÕ
+        /// ä¸‹å‘¨æ—¥
         /// </summary>
-        /// <param name="date">Ê±¼ä</param>
-        /// <param name="weekday">ĞÇÆÚ¼¸</param>
-        /// <returns>ÏÂÖÜÈÕDateTime</returns>
+        /// <param name="date">æ—¶é—´</param>
+        /// <param name="weekday">æ˜ŸæœŸå‡ </param>
+        /// <returns>ä¸‹å‘¨æ—¥DateTime</returns>
         public static DateTime GetNextWeekday(this DateTime date, DayOfWeek weekday) {
             while (date.DayOfWeek != weekday) date = date.AddDays(1);
             return date;
         }
         /// <summary>
-        /// ÉÏÖÜÈÕ
+        /// ä¸Šå‘¨æ—¥
         /// </summary>
-        /// <param name="date">Ê±¼ä</param>
-        /// <param name="weekday">ĞÇÆÚ¼¸</param>
-        /// <returns>ÉÏÖÜÈÕDateTime</returns>
+        /// <param name="date">æ—¶é—´</param>
+        /// <param name="weekday">æ˜ŸæœŸå‡ </param>
+        /// <returns>ä¸Šå‘¨æ—¥DateTime</returns>
         public static DateTime GetPreviousWeekday(this DateTime date, DayOfWeek weekday) {
             while (date.DayOfWeek != weekday) date = date.AddDays(-1);
             return date;
         }
 #if !(NET20 || MONO40)
         /// <summary>
-        /// ÉèÖÃÊ±¼ä
+        /// è®¾ç½®æ—¶é—´
         /// </summary>
-        /// <param name="date">Ê±¼äµã</param>
-        /// <param name="hours">Ê±</param>
-        /// <param name="minutes">·Ö</param>
-        /// <param name="seconds">Ãë</param>
+        /// <param name="date">æ—¶é—´ç‚¹</param>
+        /// <param name="hours">æ—¶</param>
+        /// <param name="minutes">åˆ†</param>
+        /// <param name="seconds">ç§’</param>
         /// <returns>DateTimeOffset</returns>
         public static DateTimeOffset SetTime(this DateTimeOffset date, int hours, int minutes, int seconds) {
             return date.SetTime(new TimeSpan(hours, minutes, seconds));
         }
         /// <summary>
-        /// ÉèÖÃÊ±¼ä
+        /// è®¾ç½®æ—¶é—´
         /// </summary>
-        /// <param name="date">Ê±¼äµã</param>
-        /// <param name="time">Ê±¼ä</param>
+        /// <param name="date">æ—¶é—´ç‚¹</param>
+        /// <param name="time">æ—¶é—´</param>
         /// <returns>DateTimeOffset</returns>
         public static DateTimeOffset SetTime(this DateTimeOffset date, TimeSpan time) {
             return date.SetTime(time, null);
         }
         /// <summary>
-        /// ÉèÖÃÊ±¼ä
+        /// è®¾ç½®æ—¶é—´
         /// </summary>
-        /// <param name="date">Ê±¼äµã</param>
-        /// <param name="time">Ê±¼ä</param>
+        /// <param name="date">æ—¶é—´ç‚¹</param>
+        /// <param name="time">æ—¶é—´</param>
         /// <param name="localTimeZone">TimeZoneInfo</param>
         /// <returns>DateTimeOffset</returns>
         public static DateTimeOffset SetTime(this DateTimeOffset date, TimeSpan time, TimeZoneInfo localTimeZone) {
@@ -330,17 +330,17 @@ namespace Pub.Class {
             return localDate.ToDateTimeOffset(localTimeZone);
         }
         /// <summary>
-        /// ÉèÖÃÊ±¼ä
+        /// è®¾ç½®æ—¶é—´
         /// </summary>
-        /// <param name="dateTimeUtc">Ê±¼äµã</param>
+        /// <param name="dateTimeUtc">æ—¶é—´ç‚¹</param>
         /// <returns>DateTime</returns>
         public static DateTime ToLocalDateTime(this DateTimeOffset dateTimeUtc) {
             return dateTimeUtc.ToLocalDateTime(null);
         }
         /// <summary>
-        /// ÉèÖÃÊ±¼ä
+        /// è®¾ç½®æ—¶é—´
         /// </summary>
-        /// <param name="dateTimeUtc">Ê±¼äµã</param>
+        /// <param name="dateTimeUtc">æ—¶é—´ç‚¹</param>
         /// <param name="localTimeZone">TimeZoneInfo</param>
         /// <returns>DateTime</returns>
         public static DateTime ToLocalDateTime(this DateTimeOffset dateTimeUtc, TimeZoneInfo localTimeZone) {
@@ -348,24 +348,24 @@ namespace Pub.Class {
             return TimeZoneInfo.ConvertTime(dateTimeUtc, localTimeZone).DateTime;
         }
         /// <summary>
-        /// °ÑÁ½¸öÊ±¼ä²î£¬ÈıÌìÄÚµÄÊ±¼äÓÃ½ñÌì£¬×òÌì£¬Ç°Ìì±íÊ¾£¬ºó¸úÊ±¼ä£¬ÎŞÈÕÆÚ
+        /// æŠŠä¸¤ä¸ªæ—¶é—´å·®ï¼Œä¸‰å¤©å†…çš„æ—¶é—´ç”¨ä»Šå¤©ï¼Œæ˜¨å¤©ï¼Œå‰å¤©è¡¨ç¤ºï¼Œåè·Ÿæ—¶é—´ï¼Œæ— æ—¥æœŸ
         /// </summary>
-        /// <param name="time">±»±È½ÏµÄÊ±¼ä</param>
-        /// <param name="currentDateTime">Ä¿±êÊ±¼ä</param>
-        /// <returns>°ÑÁ½¸öÊ±¼ä²î£¬ÈıÌìÄÚµÄÊ±¼äÓÃ½ñÌì£¬×òÌì£¬Ç°Ìì±íÊ¾£¬ºó¸úÊ±¼ä£¬ÎŞÈÕÆÚ</returns>
+        /// <param name="time">è¢«æ¯”è¾ƒçš„æ—¶é—´</param>
+        /// <param name="currentDateTime">ç›®æ ‡æ—¶é—´</param>
+        /// <returns>æŠŠä¸¤ä¸ªæ—¶é—´å·®ï¼Œä¸‰å¤©å†…çš„æ—¶é—´ç”¨ä»Šå¤©ï¼Œæ˜¨å¤©ï¼Œå‰å¤©è¡¨ç¤ºï¼Œåè·Ÿæ—¶é—´ï¼Œæ— æ—¥æœŸ</returns>
         public static string ToAgo(this DateTime time, DateTime currentDateTime) {
             string result = "";
-            if (currentDateTime.Year == time.Year && currentDateTime.Month == time.Month) { //Èç¹ûdateºÍµ±Ç°Ê±¼äÄê·İ»òÕßÔÂ·İ²»Ò»ÖÂ£¬ÔòÖ±½Ó·µ»Ø"yyyy-MM-dd HH:mm"¸ñÊ½ÈÕÆÚ
-                if (DateDiff(DateInterval.Hour, time, currentDateTime) <= 10) { //Èç¹ûdateºÍµ±Ç°Ê±¼ä¼ä¸ôÔÚ10Ğ¡Ê±ÄÚ(Ôø¾­ÊÇ3Ğ¡Ê±)
-                    if (DateDiff(DateInterval.Hour, time, currentDateTime) > 0) return DateDiff(DateInterval.Hour, time, currentDateTime) + "Ğ¡Ê±Ç°";
-                    if (DateDiff(DateInterval.Minute, time, currentDateTime) > 0) return DateDiff(DateInterval.Minute, time, currentDateTime) + "·ÖÖÓÇ°";
-                    if (DateDiff(DateInterval.Second, time, currentDateTime) >= 0) return DateDiff(DateInterval.Second, time, currentDateTime) + "ÃëÇ°";
-                    else return "¸Õ²Å";//ÎªÁË½â¾öpostdatetimeÊ±¼ä¾«¶È²»¹»µ¼ÖÂ·¢ÌûÊ±¼äÎÊÌâµÄ¼æÈİ
+            if (currentDateTime.Year == time.Year && currentDateTime.Month == time.Month) { //å¦‚æœdateå’Œå½“å‰æ—¶é—´å¹´ä»½æˆ–è€…æœˆä»½ä¸ä¸€è‡´ï¼Œåˆ™ç›´æ¥è¿”å›"yyyy-MM-dd HH:mm"æ ¼å¼æ—¥æœŸ
+                if (DateDiff(DateInterval.Hour, time, currentDateTime) <= 10) { //å¦‚æœdateå’Œå½“å‰æ—¶é—´é—´éš”åœ¨10å°æ—¶å†…(æ›¾ç»æ˜¯3å°æ—¶)
+                    if (DateDiff(DateInterval.Hour, time, currentDateTime) > 0) return DateDiff(DateInterval.Hour, time, currentDateTime) + "å°æ—¶å‰";
+                    if (DateDiff(DateInterval.Minute, time, currentDateTime) > 0) return DateDiff(DateInterval.Minute, time, currentDateTime) + "åˆ†é’Ÿå‰";
+                    if (DateDiff(DateInterval.Second, time, currentDateTime) >= 0) return DateDiff(DateInterval.Second, time, currentDateTime) + "ç§’å‰";
+                    else return "åˆšæ‰";//ä¸ºäº†è§£å†³postdatetimeæ—¶é—´ç²¾åº¦ä¸å¤Ÿå¯¼è‡´å‘å¸–æ—¶é—´é—®é¢˜çš„å…¼å®¹
                 } else {
                     switch (currentDateTime.Day - time.Day) {
-                        case 0: result = "½ñÌì " + time.ToString("HH") + ":" + time.ToString("mm"); break;
-                        case 1: result = "×òÌì " + time.ToString("HH") + ":" + time.ToString("mm"); break;
-                        case 2: result = "Ç°Ìì " + time.ToString("HH") + ":" + time.ToString("mm"); break;
+                        case 0: result = "ä»Šå¤© " + time.ToString("HH") + ":" + time.ToString("mm"); break;
+                        case 1: result = "æ˜¨å¤© " + time.ToString("HH") + ":" + time.ToString("mm"); break;
+                        case 2: result = "å‰å¤© " + time.ToString("HH") + ":" + time.ToString("mm"); break;
                         default: result = time.ToString("yyyy-MM-dd HH:mm"); break;
                     }
                 }
@@ -373,11 +373,11 @@ namespace Pub.Class {
             return result;
         }
         /// <summary>
-        /// ÈÕÆÚÏà¼õ
+        /// æ—¥æœŸç›¸å‡
         /// </summary>
-        /// <param name="value">¿ªÊ¼Ê±¼ä</param>
-        /// <param name="date">½áÊøÊ±¼ä</param>
-        /// <param name="interval">¸ñÊ½»¯ DateInterval.Year DateInterval.Month DateInterval.Day DateInterval.Hour DateInterval.Minute DateInterval.Second DateInterval.WeekOfYear DateInterval.Quarter</param>
+        /// <param name="value">å¼€å§‹æ—¶é—´</param>
+        /// <param name="date">ç»“æŸæ—¶é—´</param>
+        /// <param name="interval">æ ¼å¼åŒ– DateInterval.Year DateInterval.Month DateInterval.Day DateInterval.Hour DateInterval.Minute DateInterval.Second DateInterval.WeekOfYear DateInterval.Quarter</param>
         /// <returns></returns>
         public static long DateDiff(this DateTime value, DateTime date, DateInterval interval) {
             if (interval == DateInterval.Year) return date.Year - value.Year;
@@ -404,11 +404,11 @@ namespace Pub.Class {
             return 0;
         }
         /// <summary>
-        /// ÈÕÆÚÏà¼õ
+        /// æ—¥æœŸç›¸å‡
         /// </summary>
-        /// <param name="interval">¸ñÊ½»¯ DateInterval.Year DateInterval.Month DateInterval.Day DateInterval.Hour DateInterval.Minute DateInterval.Second DateInterval.WeekOfYear DateInterval.Quarter</param>
-        /// <param name="date1">¿ªÊ¼Ê±¼ä</param>
-        /// <param name="date2">½áÊøÊ±¼ä</param>
+        /// <param name="interval">æ ¼å¼åŒ– DateInterval.Year DateInterval.Month DateInterval.Day DateInterval.Hour DateInterval.Minute DateInterval.Second DateInterval.WeekOfYear DateInterval.Quarter</param>
+        /// <param name="date1">å¼€å§‹æ—¶é—´</param>
+        /// <param name="date2">ç»“æŸæ—¶é—´</param>
         /// <returns></returns>
         private static long DateDiff(this DateInterval interval, DateTime date1, DateTime date2) {
             if (interval == DateInterval.Year) return date2.Year - date1.Year;
@@ -436,32 +436,32 @@ namespace Pub.Class {
         }
 #endif
         /// <summary>
-        /// ***Ç° Èç1·ÖÖÓÇ° 1Ğ¡Ê±Ç°
+        /// ***å‰ å¦‚1åˆ†é’Ÿå‰ 1å°æ—¶å‰
         /// </summary>
-        /// <param name="date">Ê±¼ä</param>
-        /// <returns>***Ç° Èç1·ÖÖÓÇ° 1Ğ¡Ê±Ç°</returns>
+        /// <param name="date">æ—¶é—´</param>
+        /// <returns>***å‰ å¦‚1åˆ†é’Ÿå‰ 1å°æ—¶å‰</returns>
         public static string ToAgo(this DateTime date) {
             TimeSpan timeSpan = date.GetTimeSpan(DateTime.Now);
-            if (timeSpan < TimeSpan.Zero) return "Î´À´";
-            if (timeSpan < _OneMinute) return "ÏÖÔÚ";
-            if (timeSpan < _TwoMinutes) return "1 ·ÖÖÓÇ°";
-            if (timeSpan < _OneHour) return String.Format("{0} ·ÖÖÓÇ°", timeSpan.Minutes);
-            if (timeSpan < _TwoHours) return "1 Ğ¡Ê±Ç°";
-            if (timeSpan < _OneDay) return String.Format("{0} Ğ¡Ê±Ç°", timeSpan.Hours);
-            if (timeSpan < _TwoDays) return "×òÌì";
-            if (timeSpan < _OneWeek) return String.Format("{0} ÌìÇ°", timeSpan.Days);
-            if (timeSpan < _TwoWeeks) return "1 ÖÜÇ°";
-            if (timeSpan < _OneMonth) return String.Format("{0} ÖÜÇ°", timeSpan.Days / 7);
-            if (timeSpan < _TwoMonths) return "1 ÔÂÇ°";
-            if (timeSpan < _OneYear) return String.Format("{0} ÔÂÇ°", timeSpan.Days / 31);
-            if (timeSpan < _TwoYears) return "1 ÄêÇ°";
-            return String.Format("{0} ÄêÇ°", timeSpan.Days / 365);
+            if (timeSpan < TimeSpan.Zero) return "æœªæ¥";
+            if (timeSpan < _OneMinute) return "ç°åœ¨";
+            if (timeSpan < _TwoMinutes) return "1 åˆ†é’Ÿå‰";
+            if (timeSpan < _OneHour) return String.Format("{0} åˆ†é’Ÿå‰", timeSpan.Minutes);
+            if (timeSpan < _TwoHours) return "1 å°æ—¶å‰";
+            if (timeSpan < _OneDay) return String.Format("{0} å°æ—¶å‰", timeSpan.Hours);
+            if (timeSpan < _TwoDays) return "æ˜¨å¤©";
+            if (timeSpan < _OneWeek) return String.Format("{0} å¤©å‰", timeSpan.Days);
+            if (timeSpan < _TwoWeeks) return "1 å‘¨å‰";
+            if (timeSpan < _OneMonth) return String.Format("{0} å‘¨å‰", timeSpan.Days / 7);
+            if (timeSpan < _TwoMonths) return "1 æœˆå‰";
+            if (timeSpan < _OneYear) return String.Format("{0} æœˆå‰", timeSpan.Days / 31);
+            if (timeSpan < _TwoYears) return "1 å¹´å‰";
+            return String.Format("{0} å¹´å‰", timeSpan.Days / 365);
         }
         /// <summary>
-        /// Ò»Äê¶àÉÙÖÜ
+        /// ä¸€å¹´å¤šå°‘å‘¨
         /// </summary>
-        /// <param name="datetime">ÈÕÆÚ</param>
-        /// <returns>Ò»Äê¶àÉÙÖÜ</returns>
+        /// <param name="datetime">æ—¥æœŸ</param>
+        /// <returns>ä¸€å¹´å¤šå°‘å‘¨</returns>
         public static int WeekOfYear(this DateTime datetime) {
             System.Globalization.DateTimeFormatInfo dateinf = new System.Globalization.DateTimeFormatInfo();
             System.Globalization.CalendarWeekRule weekrule = dateinf.CalendarWeekRule;
@@ -469,42 +469,42 @@ namespace Pub.Class {
             return WeekOfYear(datetime, weekrule, firstDayOfWeek);
         }
         /// <summary>
-        /// Ò»Äê¶àÉÙÖÜ
+        /// ä¸€å¹´å¤šå°‘å‘¨
         /// </summary>
-        /// <param name="datetime">ÈÕÆÚ</param>
-        /// <param name="weekrule">µÚÒ»ÖÜµÄ¹æÔò</param>
-        /// <returns>Ò»Äê¶àÉÙÖÜ</returns>
+        /// <param name="datetime">æ—¥æœŸ</param>
+        /// <param name="weekrule">ç¬¬ä¸€å‘¨çš„è§„åˆ™</param>
+        /// <returns>ä¸€å¹´å¤šå°‘å‘¨</returns>
         public static int WeekOfYear(this DateTime datetime, System.Globalization.CalendarWeekRule weekrule) {
             System.Globalization.DateTimeFormatInfo dateinf = new System.Globalization.DateTimeFormatInfo();
             DayOfWeek firstDayOfWeek = dateinf.FirstDayOfWeek;
             return WeekOfYear(datetime, weekrule, firstDayOfWeek);
         }
         /// <summary>
-        /// Ò»Äê¶àÉÙÖÜ
+        /// ä¸€å¹´å¤šå°‘å‘¨
         /// </summary>
-        /// <param name="datetime">ÈÕÆÚ</param>
-        /// <param name="firstDayOfWeek">ĞÇÆÚ¼¸</param>
-        /// <returns>Ò»Äê¶àÉÙÖÜ</returns>
+        /// <param name="datetime">æ—¥æœŸ</param>
+        /// <param name="firstDayOfWeek">æ˜ŸæœŸå‡ </param>
+        /// <returns>ä¸€å¹´å¤šå°‘å‘¨</returns>
         public static int WeekOfYear(this DateTime datetime, DayOfWeek firstDayOfWeek) {
             System.Globalization.DateTimeFormatInfo dateinf = new System.Globalization.DateTimeFormatInfo();
             System.Globalization.CalendarWeekRule weekrule = dateinf.CalendarWeekRule;
             return WeekOfYear(datetime, weekrule, firstDayOfWeek);
         }
         /// <summary>
-        /// Ò»Äê¶àÉÙÖÜ
+        /// ä¸€å¹´å¤šå°‘å‘¨
         /// </summary>
-        /// <param name="datetime">ÈÕÆÚ</param>
-        /// <param name="weekrule">µÚÒ»ÖÜµÄ¹æÔò</param>
-        /// <param name="firstDayOfWeek">ĞÇÆÚ¼¸</param>
-        /// <returns>Ò»Äê¶àÉÙÖÜ</returns>
+        /// <param name="datetime">æ—¥æœŸ</param>
+        /// <param name="weekrule">ç¬¬ä¸€å‘¨çš„è§„åˆ™</param>
+        /// <param name="firstDayOfWeek">æ˜ŸæœŸå‡ </param>
+        /// <returns>ä¸€å¹´å¤šå°‘å‘¨</returns>
         public static int WeekOfYear(this DateTime datetime, System.Globalization.CalendarWeekRule weekrule, DayOfWeek firstDayOfWeek) {
             System.Globalization.CultureInfo ciCurr = System.Globalization.CultureInfo.CurrentCulture;
             return ciCurr.Calendar.GetWeekOfYear(datetime, weekrule, firstDayOfWeek);
         }
         /// <summary>
-        /// µÚ¼¸¼¾¶È
+        /// ç¬¬å‡ å­£åº¦
         /// </summary>
-        /// <param name="month">ÈÕÆÚ</param>
+        /// <param name="month">æ—¥æœŸ</param>
         /// <returns></returns>
         public static int GetQuarter(this int month) {
             if (month <= 3) return 1;
@@ -513,50 +513,50 @@ namespace Pub.Class {
             return 4;
         }
         /// <summary>
-        /// ÖÜÈÕ·ñ
+        /// å‘¨æ—¥å¦
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
+        /// <param name="date">æ—¥æœŸ</param>
         /// <returns>true/false</returns>
         public static bool IsWeekday(this DateTime date) {
             return !date.IsWeekend();
         }
         /// <summary>
-        /// ÖÜÄ©·ñ
+        /// å‘¨æœ«å¦
         /// </summary>
-        /// <param name="value">ÈÕÆÚ</param>
+        /// <param name="value">æ—¥æœŸ</param>
         /// <returns>true/false</returns>
         public static bool IsWeekend(this DateTime value) {
             return value.DayOfWeek == DayOfWeek.Sunday || value.DayOfWeek == DayOfWeek.Saturday;
         }
         /// <summary>
-        /// ÈòÄê·ñ
+        /// é—°å¹´å¦
         /// </summary>
-        /// <param name="value">ÈÕÆÚ</param>
+        /// <param name="value">æ—¥æœŸ</param>
         /// <returns>true/false</returns>
         public static bool IsLeapYear(this DateTime value) {
             return System.DateTime.IsLeapYear(value.Year);
         }
         /// <summary>
-        /// Ò»ÌìµÄ¿ªÊ¼Ê±¼ä Èç2011-1-1 0:0:0
+        /// ä¸€å¤©çš„å¼€å§‹æ—¶é—´ å¦‚2011-1-1 0:0:0
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <returns>Ò»ÌìµÄ¿ªÊ¼Ê±¼ä Èç2011-1-1 0:0:0</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <returns>ä¸€å¤©çš„å¼€å§‹æ—¶é—´ å¦‚2011-1-1 0:0:0</returns>
         public static DateTime DayBegin(this DateTime date) {
             return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0);
         }
         /// <summary>
-        /// Ò»ÌìµÄ½áÊøÊ±¼ä Èç2011-1-1 23:59:59
+        /// ä¸€å¤©çš„ç»“æŸæ—¶é—´ å¦‚2011-1-1 23:59:59
         /// </summary>
-        /// <param name="date">ÈÕÆÚ</param>
-        /// <returns>Ò»ÌìµÄ½áÊøÊ±¼ä Èç2011-1-1 23:59:59</returns>
+        /// <param name="date">æ—¥æœŸ</param>
+        /// <returns>ä¸€å¤©çš„ç»“æŸæ—¶é—´ å¦‚2011-1-1 23:59:59</returns>
         public static DateTime DayEnd(this DateTime date) {
             return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999);
         }
         /// <summary>
-        /// SQLÈÕÆÚ
+        /// SQLæ—¥æœŸ
         /// </summary>
-        /// <param name="obj">Ê±¼ä</param>
-        /// <returns>SQLÈÕÆÚ</returns>
+        /// <param name="obj">æ—¶é—´</param>
+        /// <returns>SQLæ—¥æœŸ</returns>
         public static DateTime ToSqlDate(this object obj) {
             DateTime dt = Convert.ToDateTime(obj);
             DateTime dtMin = SqlDateTime.MinValue.Value;
@@ -566,25 +566,25 @@ namespace Pub.Class {
             return dt;
         }
         /// <summary>
-        /// IsOnTime Ê±¼ävalÓërequiredTimeÖ®¼äµÄ²îÖµÊÇ·ñÔÚmaxToleranceInSecs·¶Î§Ö®ÄÚ¡£
+        /// IsOnTime æ—¶é—´valä¸requiredTimeä¹‹é—´çš„å·®å€¼æ˜¯å¦åœ¨maxToleranceInSecsèŒƒå›´ä¹‹å†…ã€‚
         /// </summary>
-        /// <param name="requiredTime">¿ªÊ¼Ê±¼ä</param>
-        /// <param name="val">½áÊøÊ±¼ä</param>
-        /// <param name="maxToleranceInSecs">·¶Î§</param>
-        /// <returns>IsOnTime Ê±¼ävalÓërequiredTimeÖ®¼äµÄ²îÖµÊÇ·ñÔÚmaxToleranceInSecs·¶Î§Ö®ÄÚ¡£ true/false</returns>
+        /// <param name="requiredTime">å¼€å§‹æ—¶é—´</param>
+        /// <param name="val">ç»“æŸæ—¶é—´</param>
+        /// <param name="maxToleranceInSecs">èŒƒå›´</param>
+        /// <returns>IsOnTime æ—¶é—´valä¸requiredTimeä¹‹é—´çš„å·®å€¼æ˜¯å¦åœ¨maxToleranceInSecsèŒƒå›´ä¹‹å†…ã€‚ true/false</returns>
         public static bool IsOnTime(this DateTime requiredTime, DateTime val, int maxToleranceInSecs) {
             TimeSpan span = val - requiredTime;
             double spanMilliseconds = span.TotalMilliseconds < 0 ? (-span.TotalMilliseconds) : span.TotalMilliseconds;
             return (spanMilliseconds <= (maxToleranceInSecs * 1000));
         }
         /// <summary>
-        /// IsOnTime ¶ÔÓÚÑ­»·µ÷ÓÃ£¬Ê±¼ävalÓëstartTimeÖ®¼äµÄ²îÖµ(>0)¶ÔcycleSpanInSecsÇóÓàÊıµÄ½á¹ûÊÇ·ñÔÚmaxToleranceInSecs·¶Î§Ö®ÄÚ¡£
+        /// IsOnTime å¯¹äºå¾ªç¯è°ƒç”¨ï¼Œæ—¶é—´valä¸startTimeä¹‹é—´çš„å·®å€¼(>0)å¯¹cycleSpanInSecsæ±‚ä½™æ•°çš„ç»“æœæ˜¯å¦åœ¨maxToleranceInSecsèŒƒå›´ä¹‹å†…ã€‚
         /// </summary>
-        /// <param name="startTime">¿ªÊ¼Ê±¼ä</param>
-        /// <param name="val">½áÊøÊ±¼ä</param>
-        /// <param name="cycleSpanInSecs">¶ÔcycleSpanInSecsÇóÓàÊı</param>
-        /// <param name="maxToleranceInSecs">·¶Î§Ö®ÄÚ</param>
-        /// <returns>IsOnTime ¶ÔÓÚÑ­»·µ÷ÓÃ£¬Ê±¼ävalÓëstartTimeÖ®¼äµÄ²îÖµ(>0)¶ÔcycleSpanInSecsÇóÓàÊıµÄ½á¹ûÊÇ·ñÔÚmaxToleranceInSecs·¶Î§Ö®ÄÚ¡£ true/false</returns>
+        /// <param name="startTime">å¼€å§‹æ—¶é—´</param>
+        /// <param name="val">ç»“æŸæ—¶é—´</param>
+        /// <param name="cycleSpanInSecs">å¯¹cycleSpanInSecsæ±‚ä½™æ•°</param>
+        /// <param name="maxToleranceInSecs">èŒƒå›´ä¹‹å†…</param>
+        /// <returns>IsOnTime å¯¹äºå¾ªç¯è°ƒç”¨ï¼Œæ—¶é—´valä¸startTimeä¹‹é—´çš„å·®å€¼(>0)å¯¹cycleSpanInSecsæ±‚ä½™æ•°çš„ç»“æœæ˜¯å¦åœ¨maxToleranceInSecsèŒƒå›´ä¹‹å†…ã€‚ true/false</returns>
         public static bool IsOnTime(this DateTime startTime, DateTime val, int cycleSpanInSecs, int maxToleranceInSecs) {
             TimeSpan span = val - startTime;
             double spanMilliseconds = span.TotalMilliseconds;
@@ -594,8 +594,8 @@ namespace Pub.Class {
         /// <summary>
         /// RFC822
         /// </summary>
-        /// <param name="date">Ê±¼ä</param>
-        /// <returns>RFC822Ê±¼ä×Ö·û´®</returns>
+        /// <param name="date">æ—¶é—´</param>
+        /// <returns>RFC822æ—¶é—´å­—ç¬¦ä¸²</returns>
         public static string ToRFC822Time(this DateTime date) {
             int offset = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
             string timeZone = "+" + offset.ToString().PadLeft(2, '0');
@@ -606,12 +606,12 @@ namespace Pub.Class {
             return date.ToString("ddd, dd MMM yyyy HH:mm:ss " + timeZone.PadRight(5, '0'), System.Globalization.CultureInfo.GetCultureInfo("en-US"));
         }
         /// <summary>
-        /// ÈÕÆÚ×ª´óĞ´
+        /// æ—¥æœŸè½¬å¤§å†™
         /// </summary>
-        /// <param name="time">µ±Ç°Ê±¼ä</param>
-        /// <returns>ÈÕÆÚ×ª´óĞ´</returns>
+        /// <param name="time">å½“å‰æ—¶é—´</param>
+        /// <returns>æ—¥æœŸè½¬å¤§å†™</returns>
         public static string ToUpper(this DateTime time) {
-            string number = "©–Ò»¶şÈıËÄÎåÁùÆß°Ë¾Å";
+            string number = "ã€‡ä¸€äºŒä¸‰å››äº”å…­ä¸ƒå…«ä¹";
             System.Text.StringBuilder date = new System.Text.StringBuilder();
             string[] infos = new string[] { time.Year.ToString(), time.Month.ToString("00"), time.Day.ToString("00") };
             int value;
@@ -619,29 +619,29 @@ namespace Pub.Class {
                 value = int.Parse(infos[0].Substring(i, 1));
                 date.Append(number.Substring(value, 1));
             }
-            date.Append("Äê");
+            date.Append("å¹´");
 
             for (int i = 0; i < infos[1].Length; i++) {
                 value = int.Parse(infos[1].Substring(i, 1));
                 if (i == 0) {
-                    if (value > 0) date.Append("Ê®");
+                    if (value > 0) date.Append("å");
                 } else {
                     if (value > 0) date.Append(number.Substring(value, 1));
                 }
             }
-            date.Append("ÔÂ");
+            date.Append("æœˆ");
             for (int i = 0; i < infos[2].Length; i++) {
                 value = int.Parse(infos[2].Substring(i, 1));
                 if (i == 0) {
                     if (value > 0) {
                         if (value > 1) date.Append(number.Substring(value, 1));
-                        date.Append("Ê®");
+                        date.Append("å");
                     }
                 } else {
                     if (value > 0) date.Append(number.Substring(value, 1));
                 }
             }
-            date.Append("ÈÕ");
+            date.Append("æ—¥");
             return date.ToString();
         }
         /// <summary>
@@ -656,7 +656,7 @@ namespace Pub.Class {
             return ts.TotalMilliseconds;
         }
         /// <summary>
-        /// ÏÂ¸öÔÂ
+        /// ä¸‹ä¸ªæœˆ
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -664,7 +664,7 @@ namespace Pub.Class {
             return dt.AddMonths(1);
         }
         /// <summary>
-        /// ÉÏ¸öÔÂ
+        /// ä¸Šä¸ªæœˆ
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>

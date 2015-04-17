@@ -13,42 +13,42 @@ using System.Runtime.Remoting.Messaging;
 
 namespace Pub.Class {
     /// <summary>
-    /// COPY Ñ¡Ïî
+    /// COPY é€‰é¡¹
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2006.05.02 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2006.05.02 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public enum CopyOptions {
         /// <summary>
-        /// Èç¹ûÊÇĞÂµÄ
+        /// å¦‚æœæ˜¯æ–°çš„
         /// </summary>
         CopyIfNewer,
         /// <summary>
-        /// ×ÜÊÇ
+        /// æ€»æ˜¯
         /// </summary>
         CopyAlways,
         /// <summary>
-        /// ²»¸²¸Ç
+        /// ä¸è¦†ç›–
         /// </summary>
         DoNotOverwrite
     }
 
     /// <summary>
-    /// ÎÄ¼şÄ¿Â¼²Ù×÷Àà
+    /// æ–‡ä»¶ç›®å½•æ“ä½œç±»
     /// 
-    /// ĞŞ¸Ä¼ÍÂ¼
-    ///     2006.05.02 °æ±¾£º1.0 livexy ´´½¨´ËÀà
+    /// ä¿®æ”¹çºªå½•
+    ///     2006.05.02 ç‰ˆæœ¬ï¼š1.0 livexy åˆ›å»ºæ­¤ç±»
     /// 
     /// </summary>
     public class FileDirectory {
         private static readonly object lockHelper = new object();
         //#region Write/Read
         /// <summary>
-        /// ×Ö½ÚĞ´µ½ÎÄ¼ş
+        /// å­—èŠ‚å†™åˆ°æ–‡ä»¶
         /// </summary>
-        /// <param name="bytes">×Ö½Ú</param>
-        /// <param name="fileName">·½¼şÃû</param>
+        /// <param name="bytes">å­—èŠ‚</param>
+        /// <param name="fileName">æ–¹ä»¶å</param>
         /// <param name="fileMode">FileMode</param>
         /// <returns>true/false</returns>
         public static bool FileWrite(string fileName, byte[] bytes, FileMode fileMode = FileMode.CreateNew) {
@@ -61,10 +61,10 @@ namespace Pub.Class {
             return returnValue;
         }
         /// <summary>
-        /// ×Ö½ÚĞ´µ½ÎÄ¼ş
+        /// å­—èŠ‚å†™åˆ°æ–‡ä»¶
         /// </summary>
-        /// <param name="bytes">×Ö½Ú</param>
-        /// <param name="fileName">·½¼şÃû</param>
+        /// <param name="bytes">å­—èŠ‚</param>
+        /// <param name="fileName">æ–¹ä»¶å</param>
         /// <param name="fileMode">FileMode</param>
         /// <returns>true/false</returns>
         public static bool FileWriteLock(string fileName, byte[] bytes, FileMode fileMode = FileMode.CreateNew) {
@@ -73,30 +73,30 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// Ğ´ÈÕÖ¾gb2312 UTF-8 Ïß³Ì°²È«
+        /// å†™æ—¥å¿—gb2312 UTF-8 çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼ş</param>
-        /// <param name="str">ÏûÏ¢</param>
-        /// <param name="encoding">±àÂëgb2312 utf-8</param>
+        /// <param name="fileName">æ–‡ä»¶</param>
+        /// <param name="str">æ¶ˆæ¯</param>
+        /// <param name="encoding">ç¼–ç gb2312 utf-8</param>
         public static bool FileWrite(string fileName, string str, string encoding) {
             if (encoding.IsNullEmpty()) encoding = "utf-8";
             return FileWrite(fileName, str, System.Text.Encoding.GetEncoding(encoding));
         }
         /// <summary>
-        /// Ğ´ÈÕÖ¾ Ïß³Ì°²È«
+        /// å†™æ—¥å¿— çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼ş</param>
-        /// <param name="str">ÏûÏ¢</param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="fileName">æ–‡ä»¶</param>
+        /// <param name="str">æ¶ˆæ¯</param>
+        /// <param name="encoding">ç¼–ç </param>
         public static bool FileWrite(string fileName, string str, Encoding encoding = null) {
             return WriteForStreamWriter(fileName, str, encoding);
         }
         /// <summary>
-        /// Òì²½Ğ´ÈÕÖ¾ Ïß³Ì°²È«
+        /// å¼‚æ­¥å†™æ—¥å¿— çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼ş</param>
-        /// <param name="str">ÏûÏ¢</param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="fileName">æ–‡ä»¶</param>
+        /// <param name="str">æ¶ˆæ¯</param>
+        /// <param name="encoding">ç¼–ç </param>
         public static void FileAsynWrite(string fileName, string str, Encoding encoding = null) {
             Func<string, string, Encoding, bool> action = FileWrite;
             action.BeginInvoke(fileName, str, encoding, iar => {
@@ -105,11 +105,11 @@ namespace Pub.Class {
             }, null);
         }
         /// <summary>
-        /// Ğ´ÈÕÖ¾ Ïß³Ì°²È«
+        /// å†™æ—¥å¿— çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼ş</param>
-        /// <param name="str">ÏûÏ¢</param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="fileName">æ–‡ä»¶</param>
+        /// <param name="str">æ¶ˆæ¯</param>
+        /// <param name="encoding">ç¼–ç </param>
         private static bool WriteForStreamWriter(string fileName, string str, Encoding encoding = null) {
             bool _isTrue = false;
             if (encoding.IsNull()) encoding = Encoding.Default;
@@ -119,11 +119,11 @@ namespace Pub.Class {
             return _isTrue;
         }
         /// <summary>
-        /// Ğ´ÈÕÖ¾ Ïß³Ì°²È«
+        /// å†™æ—¥å¿— çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼ş</param>
-        /// <param name="str">ÏûÏ¢</param>
-        /// <param name="encoding">±àÂë</param>
+        /// <param name="fileName">æ–‡ä»¶</param>
+        /// <param name="str">æ¶ˆæ¯</param>
+        /// <param name="encoding">ç¼–ç </param>
         private static bool WriteForFileStream(string fileName, string str, Encoding encoding = null) {
             bool _isTrue = false;
             if (encoding.IsNull()) encoding = Encoding.Default;
@@ -138,11 +138,11 @@ namespace Pub.Class {
             return _isTrue;
         }
         /// <summary>
-        /// ¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ
+        /// è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
-        /// <param name="encoding">±àÂë</param>
-        /// <returns>¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ</returns>
+        /// <param name="fileName">æ–‡ä»¶å</param>
+        /// <param name="encoding">ç¼–ç </param>
+        /// <returns>è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹</returns>
         public static IList<string> FileRead(string fileName, Encoding encoding = null) {
             string lineText = null; IList<string> txtTextArr = new List<string>();
             if (!FileDirectory.FileExists(fileName)) { return txtTextArr; }
@@ -153,22 +153,22 @@ namespace Pub.Class {
             return txtTextArr;
         }
         /// <summary>
-        /// ¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ  Ïß³Ì°²È«
+        /// è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹  çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
-        /// <param name="encoding">±àÂë</param>
-        /// <returns>¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ</returns>
+        /// <param name="fileName">æ–‡ä»¶å</param>
+        /// <param name="encoding">ç¼–ç </param>
+        /// <returns>è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹</returns>
         public static IList<string> FileReadLock(string fileName, Encoding encoding = null) {
             lock (lockHelper) {
                 return FileRead(fileName, encoding);
             }
         }
         /// <summary>
-        /// ¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ  Ïß³Ì°²È«
+        /// è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹  çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
-        /// <param name="encoding">±àÂë</param>
-        /// <returns>¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ</returns>
+        /// <param name="fileName">æ–‡ä»¶å</param>
+        /// <param name="encoding">ç¼–ç </param>
+        /// <returns>è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹</returns>
         public static string FileReadAll(string fileName, Encoding encoding = null) {
             string text = string.Empty;
             if (!FileDirectory.FileExists(fileName)) { return text; }
@@ -177,11 +177,11 @@ namespace Pub.Class {
                 return reader.ReadToEnd();
         }
         /// <summary>
-        /// ¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ  Ïß³Ì°²È«
+        /// è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹  çº¿ç¨‹å®‰å…¨
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
-        /// <param name="encoding">±àÂë</param>
-        /// <returns>¶ÁÈ¡ÎÄ¼şÖĞµÄÄÚÈİ</returns>
+        /// <param name="fileName">æ–‡ä»¶å</param>
+        /// <param name="encoding">ç¼–ç </param>
+        /// <returns>è¯»å–æ–‡ä»¶ä¸­çš„å†…å®¹</returns>
         public static string FileReadAllLock(string fileName, Encoding encoding = null) {
             lock (lockHelper) {
                 return FileReadAll(fileName, encoding);
@@ -208,26 +208,26 @@ namespace Pub.Class {
             FO_RENAME = 0x0004
         }
         private enum FILEOP_FLAGS {
-            FOF_MULTIDESTFILES = 0x0001, //pTo Ö¸¶¨ÁË¶à¸öÄ¿±êÎÄ¼ş£¬¶ø²»ÊÇµ¥¸öÄ¿Â¼
+            FOF_MULTIDESTFILES = 0x0001, //pTo æŒ‡å®šäº†å¤šä¸ªç›®æ ‡æ–‡ä»¶ï¼Œè€Œä¸æ˜¯å•ä¸ªç›®å½•
             FOF_CONFIRMMOUSE = 0x0002,
-            FOF_SILENT = 0x0044, // ²»ÏÔÊ¾Ò»¸ö½ø¶È¶Ô»°¿ò
-            FOF_RENAMEONCOLLISION = 0x0008, // Åöµ½ÓĞµÖ´¥µÄÃû×ÖÊ±£¬×Ô¶¯·ÖÅäÇ°×º
-            FOF_NOCONFIRMATION = 0x10, // ²»¶ÔÓÃ»§ÏÔÊ¾ÌáÊ¾
-            FOF_WANTMAPPINGHANDLE = 0x0020, // Ìî³ä hNameMappings ×Ö¶Î£¬±ØĞëÊ¹ÓÃ SHFreeNameMappings ÊÍ·Å
-            FOF_ALLOWUNDO = 0x40, // ÔÊĞí³·Ïú
-            FOF_FILESONLY = 0x0080, // Ê¹ÓÃ *.* Ê±, Ö»¶ÔÎÄ¼ş²Ù×÷
-            FOF_SIMPLEPROGRESS = 0x0100, // ¼òµ¥½ø¶ÈÌõ£¬ÒâÎ¶Õß²»ÏÔÊ¾ÎÄ¼şÃû¡£
-            FOF_NOCONFIRMMKDIR = 0x0200, // ½¨ĞÂÄ¿Â¼Ê±²»ĞèÒªÓÃ»§È·¶¨
-            FOF_NOERRORUI = 0x0400, // ²»ÏÔÊ¾³ö´íÓÃ»§½çÃæ
-            FOF_NOCOPYSECURITYATTRIBS = 0x0800, // ²»¸´ÖÆ NT ÎÄ¼şµÄ°²È«ÊôĞÔ
-            FOF_NORECURSION = 0x1000 // ²»µİ¹éÄ¿Â¼
+            FOF_SILENT = 0x0044, // ä¸æ˜¾ç¤ºä¸€ä¸ªè¿›åº¦å¯¹è¯æ¡†
+            FOF_RENAMEONCOLLISION = 0x0008, // ç¢°åˆ°æœ‰æŠµè§¦çš„åå­—æ—¶ï¼Œè‡ªåŠ¨åˆ†é…å‰ç¼€
+            FOF_NOCONFIRMATION = 0x10, // ä¸å¯¹ç”¨æˆ·æ˜¾ç¤ºæç¤º
+            FOF_WANTMAPPINGHANDLE = 0x0020, // å¡«å…… hNameMappings å­—æ®µï¼Œå¿…é¡»ä½¿ç”¨ SHFreeNameMappings é‡Šæ”¾
+            FOF_ALLOWUNDO = 0x40, // å…è®¸æ’¤é”€
+            FOF_FILESONLY = 0x0080, // ä½¿ç”¨ *.* æ—¶, åªå¯¹æ–‡ä»¶æ“ä½œ
+            FOF_SIMPLEPROGRESS = 0x0100, // ç®€å•è¿›åº¦æ¡ï¼Œæ„å‘³è€…ä¸æ˜¾ç¤ºæ–‡ä»¶åã€‚
+            FOF_NOCONFIRMMKDIR = 0x0200, // å»ºæ–°ç›®å½•æ—¶ä¸éœ€è¦ç”¨æˆ·ç¡®å®š
+            FOF_NOERRORUI = 0x0400, // ä¸æ˜¾ç¤ºå‡ºé”™ç”¨æˆ·ç•Œé¢
+            FOF_NOCOPYSECURITYATTRIBS = 0x0800, // ä¸å¤åˆ¶ NT æ–‡ä»¶çš„å®‰å…¨å±æ€§
+            FOF_NORECURSION = 0x1000 // ä¸é€’å½’ç›®å½•
         }
         //#endregion
         //#region Directory
         /// <summary>
-        /// ĞéÄâÄ¿Â¼²»´æÔÚÊ±ĞÂ½¨
+        /// è™šæ‹Ÿç›®å½•ä¸å­˜åœ¨æ—¶æ–°å»º
         /// </summary>
-        /// <param name="filePath">Ä¿Â¼£¨Ïà¶ÔÂ·¾¶:/£©</param>
+        /// <param name="filePath">ç›®å½•ï¼ˆç›¸å¯¹è·¯å¾„:/ï¼‰</param>
         public static void DirectoryVirtualCreate(string filePath) {
             string[] PathArr = filePath.Split(new string[] { "/" }, StringSplitOptions.None);
             string _path = PathArr[0];
@@ -239,18 +239,18 @@ namespace Pub.Class {
                 }
             }
         }
-#if !MONO40
+//#if !MONO40
         /// <summary>
-        /// ´´½¨Ä¿Â¼ Ò»´ÎĞÔ½¨¶à¼¶Ä¿Â¼ ¾ö¶ÔÂ·¾¶ Èç:c:\test\test\test
+        /// åˆ›å»ºç›®å½• ä¸€æ¬¡æ€§å»ºå¤šçº§ç›®å½• å†³å¯¹è·¯å¾„ å¦‚:c:\test\test\test
         /// </summary>
-        /// <param name="name">Ãû³Æ</param>
-        /// <returns>´´½¨ÊÇ·ñ³É¹¦</returns>
+        /// <param name="name">åç§°</param>
+        /// <returns>åˆ›å»ºæ˜¯å¦æˆåŠŸ</returns>
         [DllImport("dbgHelp", SetLastError = true)]
         private static extern bool MakeSureDirectoryPathExists(string name);
         /// <summary>
-        /// ´´½¨Ä¿Â¼ Ò»´ÎĞÔ½¨¶à¼¶Ä¿Â¼ ¾ö¶ÔÂ·¾¶ Èç:c:\\test\\test\\test
+        /// åˆ›å»ºç›®å½• ä¸€æ¬¡æ€§å»ºå¤šçº§ç›®å½• å†³å¯¹è·¯å¾„ å¦‚:c:\\test\\test\\test
         /// </summary>
-        /// <param name="filePath">ÎÄ¼şÂ·¾¶</param>
+        /// <param name="filePath">æ–‡ä»¶è·¯å¾„</param>
         /// <returns>true/false</returns>
         public static bool DirectoryCreate(string filePath) {
             return MakeSureDirectoryPathExists(filePath.TrimEnd('\\') + "\\");
@@ -258,9 +258,9 @@ namespace Pub.Class {
         [DllImport("shell32.dll")]
         private static extern int SHFileOperation(ref SHFILEOPSTRUCT lpFileOp);
         /// <summary>
-        /// APIÉ¾³ı
+        /// APIåˆ é™¤
         /// </summary>
-        /// <param name="path">Ä¿Â¼Â·¾¶</param>
+        /// <param name="path">ç›®å½•è·¯å¾„</param>
         public static int APIDelete(string path) {
             if (string.IsNullOrEmpty(path)) throw new ArgumentNullException("DirectoryPath");
             SHFILEOPSTRUCT lpFileOp = new SHFILEOPSTRUCT();
@@ -272,29 +272,29 @@ namespace Pub.Class {
 
             return SHFileOperation(ref lpFileOp);
         }
-#endif
+//#endif
         /// <summary>
-        /// Ä¿Â¼É¾³ı
+        /// ç›®å½•åˆ é™¤
         /// </summary>
-        /// <param name="DirectoryPath">Ä¿Â¼Â·¾¶</param>
+        /// <param name="DirectoryPath">ç›®å½•è·¯å¾„</param>
         public static void DirectoryDelete(string DirectoryPath) {
             if (string.IsNullOrEmpty(DirectoryPath)) throw new ArgumentNullException("DirectoryPath");
             if (DirectoryExists(DirectoryPath)) Directory.Delete(DirectoryPath, true);
         }
         /// <summary>
-        /// Ä¿Â¼ÊÇ·ñ´æÔÚ
+        /// ç›®å½•æ˜¯å¦å­˜åœ¨
         /// </summary>
-        /// <param name="folderPath">Ä¿Â¼Â·¾¶</param>
+        /// <param name="folderPath">ç›®å½•è·¯å¾„</param>
         /// <returns>true/false</returns>
         public static bool DirectoryExists(string folderPath) {
             return System.IO.Directory.Exists(folderPath);
         }
         /// <summary>
-        /// Ä¿Â¼ÒÆ¶¯
+        /// ç›®å½•ç§»åŠ¨
         /// </summary>
-        /// <param name="Source">Ô´</param>
-        /// <param name="Destination">Ä¿±ê</param>
-        /// <param name="overwrite">¸²¸Ç</param>
+        /// <param name="Source">æº</param>
+        /// <param name="Destination">ç›®æ ‡</param>
+        /// <param name="overwrite">è¦†ç›–</param>
         public static bool DirectoryMove(string Source, string Destination, bool overwrite = true) {
             if (string.IsNullOrEmpty(Source)) throw new ArgumentNullException("Source");
             if (string.IsNullOrEmpty(Destination)) throw new ArgumentNullException("Destination");
@@ -306,21 +306,21 @@ namespace Pub.Class {
             } catch { return false; }
         }
         /// <summary>
-        /// COPYÄ¿Â¼
+        /// COPYç›®å½•
         /// </summary>
-        /// <param name="Source">Ô´</param>
-        /// <param name="Destination">Ä¿±ê</param>
-        /// <param name="Recursive">µİ¹é</param>
-        /// <param name="Options">Ñ¡Ïî</param>
+        /// <param name="Source">æº</param>
+        /// <param name="Destination">ç›®æ ‡</param>
+        /// <param name="Recursive">é€’å½’</param>
+        /// <param name="Options">é€‰é¡¹</param>
         public static void DirectoryCopy(string Source, string Destination, bool Recursive = true, CopyOptions Options = CopyOptions.CopyAlways) {
             if (string.IsNullOrEmpty(Source)) throw new ArgumentNullException("Source");
             if (string.IsNullOrEmpty(Destination)) throw new ArgumentNullException("Destination");
             if (!DirectoryExists(Source)) throw new ArgumentException("Source directory does not exist");
             DirectoryInfo SourceInfo = new DirectoryInfo(Source);
             DirectoryInfo DestinationInfo = new DirectoryInfo(Destination);
-#if !MONO40
+//#if !MONO40
             DirectoryCreate(Destination);
-#endif
+//#endif
             List<FileInfo> Files = FileList(Source, false);
             foreach (FileInfo File in Files) {
                 if (Options == CopyOptions.CopyAlways) {
@@ -346,9 +346,9 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// È¡×ÓÄ¿Â¼ ·Ç×ÓÄ¿Â¼µÄ×ÓÄ¿Â¼
+        /// å–å­ç›®å½• éå­ç›®å½•çš„å­ç›®å½•
         /// </summary>
-        /// <param name="DirectoryPath">Ä¿Â¼Â·¾¶</param>
+        /// <param name="DirectoryPath">ç›®å½•è·¯å¾„</param>
         /// <returns></returns>
         public static List<DirectoryInfo> DirectoryList(string DirectoryPath) {
             if (string.IsNullOrEmpty(DirectoryPath)) throw new ArgumentNullException("DirectoryPath");
@@ -363,10 +363,10 @@ namespace Pub.Class {
             return Directories;
         }
         /// <summary>
-        /// È¡Ä¿Â¼´óĞ¡
+        /// å–ç›®å½•å¤§å°
         /// </summary>
-        /// <param name="path">Ä¿Â¼Â·¾¶</param>
-        /// <returns>È¡Ä¿Â¼´óĞ¡</returns>
+        /// <param name="path">ç›®å½•è·¯å¾„</param>
+        /// <returns>å–ç›®å½•å¤§å°</returns>
         public static long DirectorySize(string path) {
             long size = 0;
             if (!DirectoryExists(path)) return 0;
@@ -377,10 +377,10 @@ namespace Pub.Class {
             return size;
         }
         /// <summary>
-        /// Ä¿Â¼×îºóĞŞ¸ÄÊ±¼ä
+        /// ç›®å½•æœ€åä¿®æ”¹æ—¶é—´
         /// </summary>
-        /// <param name="folderPath">Ä¿Â¼Â·¾¶</param>
-        /// <returns>Ä¿Â¼×îºóĞŞ¸ÄÊ±¼ä</returns>
+        /// <param name="folderPath">ç›®å½•è·¯å¾„</param>
+        /// <returns>ç›®å½•æœ€åä¿®æ”¹æ—¶é—´</returns>
         public static DateTime DirectoryLastModified(string folderPath) {
             var dInfo = new DirectoryInfo(folderPath);
             return dInfo.LastWriteTime;
@@ -388,11 +388,11 @@ namespace Pub.Class {
         //#endregion
         //#region File
         /// <summary>
-        /// ÒÆ¶¯ÎÄ¼ş
+        /// ç§»åŠ¨æ–‡ä»¶
         /// </summary>
-        /// <param name="sourceFileName">Ô´ÎÄ¼ş</param>
-        /// <param name="destFileName">Ä¿±êÎÄ¼ş</param>
-        /// <param name="overwrite">¸²¸Ç</param>
+        /// <param name="sourceFileName">æºæ–‡ä»¶</param>
+        /// <param name="destFileName">ç›®æ ‡æ–‡ä»¶</param>
+        /// <param name="overwrite">è¦†ç›–</param>
         /// <returns>true/false</returns>
         public static bool FileMove(string sourceFileName, string destFileName, bool overwrite = true) {
             if (!File.Exists(sourceFileName)) return false;
@@ -406,11 +406,11 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// ±¸·İÎÄ¼ş
+        /// å¤‡ä»½æ–‡ä»¶
         /// </summary>
-        /// <param name="sourceFileName">Ô´ÎÄ¼ş</param>
-        /// <param name="destFileName">Ä¿±êÎÄ¼ş</param>
-        /// <param name="overwrite">¸²¸Ç</param>
+        /// <param name="sourceFileName">æºæ–‡ä»¶</param>
+        /// <param name="destFileName">ç›®æ ‡æ–‡ä»¶</param>
+        /// <param name="overwrite">è¦†ç›–</param>
         /// <returns>true/false</returns>
         public static bool FileCopy(string sourceFileName, string destFileName, bool overwrite = true) {
             if (!File.Exists(sourceFileName)) return false;
@@ -424,17 +424,17 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// ·µ»ØÎÄ¼şÊÇ·ñ´æÔÚ
+        /// è¿”å›æ–‡ä»¶æ˜¯å¦å­˜åœ¨
         /// </summary>
-        /// <param name="filename">ÎÄ¼şÃû</param>
-        /// <returns>ÊÇ·ñ´æÔÚtrue/false</returns>
+        /// <param name="filename">æ–‡ä»¶å</param>
+        /// <returns>æ˜¯å¦å­˜åœ¨true/false</returns>
         public static bool FileExists(string filename) {
             return System.IO.File.Exists(filename);
         }
         /// <summary>
-        /// É¾³ıÖ¸¶¨Ä¿Â¼ÏÂµÄËùÓĞÎÄ¼ş 
+        /// åˆ é™¤æŒ‡å®šç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶ 
         /// </summary>
-        /// <param name="path">ÎÄ¼şÂ·¾¶</param>
+        /// <param name="path">æ–‡ä»¶è·¯å¾„</param>
         public static void FileDeleteAll(string path) {
             if (!DirectoryExists(path)) return;
             DirectoryInfo Folder = new DirectoryInfo(path);
@@ -444,17 +444,17 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// É¾³ıÖ¸¶¨ÎÄ¼ş
+        /// åˆ é™¤æŒ‡å®šæ–‡ä»¶
         /// </summary>
-        /// <param name="filePath">ÎÄ¼şÂ·¾¶</param>
+        /// <param name="filePath">æ–‡ä»¶è·¯å¾„</param>
         public static void FileDelete(string filePath) {
             if (FileExists(filePath)) System.IO.File.Delete(filePath);
         }
         /// <summary>
-        /// È¡Ö¸¶¨Ä¿Â¼ÏÂµÄËùÓĞÎÄ¼şÃû
+        /// å–æŒ‡å®šç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶å
         /// </summary>
-        /// <param name="path">ÎÄ¼şÂ·¾¶</param>
-        /// <returns>È¡Ö¸¶¨Ä¿Â¼ÏÂµÄËùÓĞÎÄ¼şÃû</returns>
+        /// <param name="path">æ–‡ä»¶è·¯å¾„</param>
+        /// <returns>å–æŒ‡å®šç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶å</returns>
         public static IList<string> FileList(string path) {
             IList<string> list = new List<string>();
             DirectoryInfo Folder = new DirectoryInfo(path);
@@ -463,11 +463,11 @@ namespace Pub.Class {
             return list;
         }
         /// <summary>
-        /// È¡Ä¿Â¼ÏÂµÄËùÓĞÎÄ¼ş µİ¹é
+        /// å–ç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶ é€’å½’
         /// </summary>
-        /// <param name="path">ÎÄ¼şÂ·¾¶</param>
-        /// <param name="fileList">ÁĞ±í</param>
-        /// <param name="delStr">É¾³ıµÄ×Ö·û´®</param>
+        /// <param name="path">æ–‡ä»¶è·¯å¾„</param>
+        /// <param name="fileList">åˆ—è¡¨</param>
+        /// <param name="delStr">åˆ é™¤çš„å­—ç¬¦ä¸²</param>
         public static void FileList(string path, ref IList<string> fileList, string delStr = "") {
             if (delStr.IsNullEmpty()) delStr = path;
             delStr = delStr.TrimEnd('\\') + "\\";
@@ -477,10 +477,10 @@ namespace Pub.Class {
             foreach (string s in dir) FileList(s, ref fileList, delStr);
         }
         /// <summary>
-        /// È¡Ä¿Â¼ÏÂµÄËùÓĞÎÄ¼ş
+        /// å–ç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶
         /// </summary>
-        /// <param name="DirectoryPath">Ä¿Â¼Â·¾¶</param>
-        /// <param name="Recursive">ÊÇ·ñµİ¹é</param>
+        /// <param name="DirectoryPath">ç›®å½•è·¯å¾„</param>
+        /// <param name="Recursive">æ˜¯å¦é€’å½’</param>
         /// <returns></returns>
         public static List<FileInfo> FileList(string DirectoryPath, bool Recursive = false) {
             if (string.IsNullOrEmpty(DirectoryPath)) throw new ArgumentNullException("DirectoryPath");
@@ -498,10 +498,10 @@ namespace Pub.Class {
             return Files;
         }
         /// <summary>
-        /// ÎÄ¼ş±È½Ï
+        /// æ–‡ä»¶æ¯”è¾ƒ
         /// </summary>
-        /// <param name="FileName1">ÎÄ¼ş1</param>
-        /// <param name="FileName2">ÎÄ¼ş2</param>
+        /// <param name="FileName1">æ–‡ä»¶1</param>
+        /// <param name="FileName2">æ–‡ä»¶2</param>
         /// <returns>true/false</returns>
         public static bool FileCompare(string FileName1, string FileName2) {
             if (string.IsNullOrEmpty(FileName1)) throw new ArgumentNullException("FileName1");
@@ -519,11 +519,11 @@ namespace Pub.Class {
             return true;
         }
         /// <summary>
-        /// É¾³ıĞÂÎÄ¼ş
+        /// åˆ é™¤æ–°æ–‡ä»¶
         /// </summary>
-        /// <param name="Directory">Ä¿Â¼</param>
-        /// <param name="CompareDate">Ê±¼ä</param>
-        /// <param name="Recursive">ÊÇ·ñµİ¹é</param>
+        /// <param name="Directory">ç›®å½•</param>
+        /// <param name="CompareDate">æ—¶é—´</param>
+        /// <param name="Recursive">æ˜¯å¦é€’å½’</param>
         public static void FileDeleteNewerThan(string Directory, DateTime CompareDate, bool Recursive = false) {
             if (string.IsNullOrEmpty(Directory))
                 throw new ArgumentNullException("Directory");
@@ -535,11 +535,11 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// É¾³ıÀÏÎÄ¼ş
+        /// åˆ é™¤è€æ–‡ä»¶
         /// </summary>
-        /// <param name="Directory">Ä¿Â¼</param>
-        /// <param name="CompareDate">Ê±¼ä</param>
-        /// <param name="Recursive">ÊÇ·ñµİ¹é</param>
+        /// <param name="Directory">ç›®å½•</param>
+        /// <param name="CompareDate">æ—¶é—´</param>
+        /// <param name="Recursive">æ˜¯å¦é€’å½’</param>
         public static void FileDeleteOlderThan(string Directory, DateTime CompareDate, bool Recursive = false) {
             if (string.IsNullOrEmpty(Directory))
                 throw new ArgumentNullException("Directory");
@@ -551,10 +551,10 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// ÎÄ¼ş¸ÄÃû
+        /// æ–‡ä»¶æ”¹å
         /// </summary>
-        /// <param name="FileName">ÎÄ¼şÃû</param>
-        /// <param name="NewFileName">ĞÂÎÄ¼şÃû</param>
+        /// <param name="FileName">æ–‡ä»¶å</param>
+        /// <param name="NewFileName">æ–°æ–‡ä»¶å</param>
         public static void FileRename(string FileName, string NewFileName) {
             if (string.IsNullOrEmpty(FileName)) throw new ArgumentNullException("FileName");
             if (string.IsNullOrEmpty(NewFileName)) throw new ArgumentNullException("NewFileName");
@@ -562,19 +562,19 @@ namespace Pub.Class {
             File.Move(FileName, NewFileName);
         }
         /// <summary>
-        /// È¡ÎÄ¼ş´óĞ¡
+        /// å–æ–‡ä»¶å¤§å°
         /// </summary>
-        /// <param name="path">ÎÄ¼şÂ·¾¶</param>
-        /// <returns>È¡ÎÄ¼ş´óĞ¡</returns>
+        /// <param name="path">æ–‡ä»¶è·¯å¾„</param>
+        /// <returns>å–æ–‡ä»¶å¤§å°</returns>
         public static long FileSize(string path) {
             if (!FileExists(path)) return 0;
             return new FileInfo(path).Length;
         }
         /// <summary>
-        /// ÎÄ¼ş×îºóĞŞ¸ÄÊ±¼ä
+        /// æ–‡ä»¶æœ€åä¿®æ”¹æ—¶é—´
         /// </summary>
-        /// <param name="filePath">ÎÄ¼şÂ·¾¶</param>
-        /// <returns>ÎÄ¼ş×îºóĞŞ¸ÄÊ±¼ä</returns>
+        /// <param name="filePath">æ–‡ä»¶è·¯å¾„</param>
+        /// <returns>æ–‡ä»¶æœ€åä¿®æ”¹æ—¶é—´</returns>
         public static DateTime FileLastModified(string filePath) {
             if (!FileExists(filePath)) throw new ArgumentException("filePath does not exist");
             var fInfo = new FileInfo(filePath);
@@ -583,10 +583,10 @@ namespace Pub.Class {
         //#endregion
         //#region FileEncoding/GZipCompress/GZipDecompress/GetFileContent
         /// <summary>
-        /// È¡ÎÄ¼ş±àÂë
+        /// å–æ–‡ä»¶ç¼–ç 
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
-        /// <returns>È¡ÎÄ¼ş±àÂë</returns>
+        /// <param name="fileName">æ–‡ä»¶å</param>
+        /// <returns>å–æ–‡ä»¶ç¼–ç </returns>
         public static Encoding FileEncoding(string fileName) {
             /*byte[] Unicode=new byte[]{0xFF,0xFE};
             byte[] UnicodeBIG=new byte[]{0xFE,0xFF};
@@ -615,10 +615,10 @@ namespace Pub.Class {
             }
         }
         /// <summary>
-        /// GZipStreamÑ¹ËõÎÄ¼ş
+        /// GZipStreamå‹ç¼©æ–‡ä»¶
         /// </summary>
-        /// <param name="inFilename">Ô´ÎÄ¼ş</param>
-        /// <param name="outFilename">ĞÂÎÄ¼ş</param>
+        /// <param name="inFilename">æºæ–‡ä»¶</param>
+        /// <param name="outFilename">æ–°æ–‡ä»¶</param>
         public static void GZipCompress(string inFilename, string outFilename) {
             if (!FileExists(inFilename)) return;
             FileStream sourceFile = File.OpenRead(inFilename);
@@ -636,10 +636,10 @@ namespace Pub.Class {
             destFile.Close();
         }
         /// <summary>
-        /// GZipStream½âÑ¹ÎÄ¼ş
+        /// GZipStreamè§£å‹æ–‡ä»¶
         /// </summary>
-        /// <param name="inFileName">Ô´ÎÄ¼ş</param>
-        /// <param name="outFileName">ĞÂÎÄ¼ş</param>
+        /// <param name="inFileName">æºæ–‡ä»¶</param>
+        /// <param name="outFileName">æ–°æ–‡ä»¶</param>
         public static void GZipDecompress(string inFileName, string outFileName) {
             if (!FileExists(inFileName)) return;
             FileStream sourceFile = File.OpenRead(inFileName);
@@ -658,74 +658,74 @@ namespace Pub.Class {
         }
         //#endregion
         /// <summary>
-        /// ¼ÆËãÖ¸¶¨ÎÄ¼şµÄMD5Öµ
+        /// è®¡ç®—æŒ‡å®šæ–‡ä»¶çš„MD5å€¼
         /// </summary>
-        /// <param>Ö¸¶¨ÎÄ¼şµÄÍêÈ«ÏŞ¶¨Ãû³Æ</param>
-        /// <returns>·µ»ØÖµµÄ×Ö·û´®ĞÎÊ½</returns>
+        /// <param>æŒ‡å®šæ–‡ä»¶çš„å®Œå…¨é™å®šåç§°</param>
+        /// <returns>è¿”å›å€¼çš„å­—ç¬¦ä¸²å½¢å¼</returns>
         public static string HashMD5(string fileName) {
             string hashMD5 = string.Empty;
-            //¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ£¬Èç¹ûÎÄ¼ş´æÔÚÔò½øĞĞ¼ÆËã£¬·ñÔò·µ»Ø¿ÕÖµ
+            //æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœæ–‡ä»¶å­˜åœ¨åˆ™è¿›è¡Œè®¡ç®—ï¼Œå¦åˆ™è¿”å›ç©ºå€¼
             if (System.IO.File.Exists(fileName)) {
                 using (System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read)) {
-                    //¼ÆËãÎÄ¼şµÄMD5Öµ
+                    //è®¡ç®—æ–‡ä»¶çš„MD5å€¼
                     System.Security.Cryptography.MD5 calculator = System.Security.Cryptography.MD5.Create();
                     byte[] buffer = calculator.ComputeHash(fs);
                     calculator.Clear();
-                    //½«×Ö½ÚÊı×é×ª»»³ÉÊ®Áù½øÖÆµÄ×Ö·û´®ĞÎÊ½
+                    //å°†å­—èŠ‚æ•°ç»„è½¬æ¢æˆåå…­è¿›åˆ¶çš„å­—ç¬¦ä¸²å½¢å¼
                     StringBuilder stringBuilder = new StringBuilder();
                     for (int i = 0; i < buffer.Length; i++) {
                         stringBuilder.Append(buffer[i].ToString("x2"));
                     }
                     hashMD5 = stringBuilder.ToString();
-                }//¹Ø±ÕÎÄ¼şÁ÷
-            }//½áÊø¼ÆËã
+                }//å…³é—­æ–‡ä»¶æµ
+            }//ç»“æŸè®¡ç®—
             return hashMD5;
         }
         ///// <summary>
-        ///// ¼ÆËãÖ¸¶¨ÎÄ¼şµÄCRC32Öµ
+        ///// è®¡ç®—æŒ‡å®šæ–‡ä»¶çš„CRC32å€¼
         ///// </summary>
-        ///// <param>Ö¸¶¨ÎÄ¼şµÄÍêÈ«ÏŞ¶¨Ãû³Æ</param>
-        ///// <returns>·µ»ØÖµµÄ×Ö·û´®ĞÎÊ½</returns>
+        ///// <param>æŒ‡å®šæ–‡ä»¶çš„å®Œå…¨é™å®šåç§°</param>
+        ///// <returns>è¿”å›å€¼çš„å­—ç¬¦ä¸²å½¢å¼</returns>
         //public static string HashCRC32(string fileName) {
         //    String hashCRC32 = String.Empty;
-        //    //¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ£¬Èç¹ûÎÄ¼ş´æÔÚÔò½øĞĞ¼ÆËã£¬·ñÔò·µ»Ø¿ÕÖµ
+        //    //æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœæ–‡ä»¶å­˜åœ¨åˆ™è¿›è¡Œè®¡ç®—ï¼Œå¦åˆ™è¿”å›ç©ºå€¼
         //    if (System.IO.File.Exists(fileName)) {
         //        using (System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read)) {
-        //            //¼ÆËãÎÄ¼şµÄÄá¿µÊıÂë²úÆ·²âÆÀCSC32Öµ
+        //            //è®¡ç®—æ–‡ä»¶çš„å°¼åº·æ•°ç äº§å“æµ‹è¯„CSC32å€¼
         //            CRC32 calculator = new CRC32();
         //            Byte[] buffer = calculator.ComputeHash(fs);
         //            calculator.Clear();
-        //            //½«×Ö½ÚÊı×é×ª»»³ÉÊ®Áù½øÖÆµÄ×Ö·û´®ĞÎÊ½
+        //            //å°†å­—èŠ‚æ•°ç»„è½¬æ¢æˆåå…­è¿›åˆ¶çš„å­—ç¬¦ä¸²å½¢å¼
         //            StringBuilder stringBuilder = new StringBuilder();
         //            for (int i = 0; i < buffer.Length; i++) {
         //                stringBuilder.Append(buffer[i].ToString("x2"));
         //            }
         //            hashCRC32 = stringBuilder.ToString();
-        //        }//¹Ø±ÕÎÄ¼şÁ÷
+        //        }//å…³é—­æ–‡ä»¶æµ
         //    }
         //    return hashCRC32;
         //}
         /// <summary>
-        /// ¼ÆËãÖ¸¶¨ÎÄ¼şµÄSHA1Öµ
+        /// è®¡ç®—æŒ‡å®šæ–‡ä»¶çš„SHA1å€¼
         /// </summary>
-        /// <param>Ö¸¶¨ÎÄ¼şµÄÍêÈ«ÏŞ¶¨Ãû³Æ</param>
-        /// <returns>·µ»ØÖµµÄ×Ö·û´®ĞÎÊ½</returns>
+        /// <param>æŒ‡å®šæ–‡ä»¶çš„å®Œå…¨é™å®šåç§°</param>
+        /// <returns>è¿”å›å€¼çš„å­—ç¬¦ä¸²å½¢å¼</returns>
         public static string HashSHA1(string fileName) {
             String hashSHA1 = String.Empty;
-            //¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ£¬Èç¹ûÎÄ¼ş´æÔÚÔò½øĞĞ¼ÆËã£¬·ñÔò·µ»Ø¿ÕÖµ
+            //æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœæ–‡ä»¶å­˜åœ¨åˆ™è¿›è¡Œè®¡ç®—ï¼Œå¦åˆ™è¿”å›ç©ºå€¼
             if (System.IO.File.Exists(fileName)) {
                 using (System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read)) {
-                    //¼ÆËãÎÄ¼şµÄSHA1Öµ
+                    //è®¡ç®—æ–‡ä»¶çš„SHA1å€¼
                     System.Security.Cryptography.SHA1 calculator = System.Security.Cryptography.SHA1.Create();
                     Byte[] buffer = calculator.ComputeHash(fs);
                     calculator.Clear();
-                    //½«×Ö½ÚÊı×é×ª»»³ÉÊ®Áù½øÖÆµÄ×Ö·û´®ĞÎÊ½
+                    //å°†å­—èŠ‚æ•°ç»„è½¬æ¢æˆåå…­è¿›åˆ¶çš„å­—ç¬¦ä¸²å½¢å¼
                     StringBuilder stringBuilder = new StringBuilder();
                     for (int i = 0; i < buffer.Length; i++) {
                         stringBuilder.Append(buffer[i].ToString("x2"));
                     }
                     hashSHA1 = stringBuilder.ToString();
-                }//¹Ø±ÕÎÄ¼şÁ÷
+                }//å…³é—­æ–‡ä»¶æµ
             }
             return hashSHA1;
         }
