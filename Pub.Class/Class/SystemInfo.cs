@@ -11,7 +11,9 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 using System.Management;
-#if !MONO40
+#if MONO40
+#elif MONO20
+#else
 using Microsoft.VisualBasic.Devices;
 #endif
 
@@ -33,8 +35,10 @@ namespace Pub.Class {
                     return Environment.MachineName;
                 }
             }
-#if !MONO40
-            private static string baseBoard;
+#if MONO40
+#elif MONO20
+#else
+			private static string baseBoard;
             /// <summary>
             /// 主板序列号
             /// </summary>
@@ -232,7 +236,9 @@ namespace Pub.Class {
         }
         private SystemInfo() {
         }
-#if !MONO40
+#if MONO40
+#elif MONO20
+#else
         private string machineName;
         /// <summary>机器名</summary>
         public string MachineName {

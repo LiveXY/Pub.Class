@@ -79,9 +79,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pub.Class\Pub.Class2.0.csproj">
+    <ProjectReference Include="..\Pub.Class\Pub.Class2.0_Mono.csproj">
       <Project>{2AD0BF74-CE88-4004-A609-239C7EBD51BF}</Project>
-      <Name>Pub.Class2.0</Name>
+      <Name>Pub.Class2.0_Mono</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

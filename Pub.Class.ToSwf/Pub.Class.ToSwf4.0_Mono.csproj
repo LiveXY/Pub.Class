@@ -82,20 +82,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+    <BootstrapperPackage Include="..\..\Pub.Class\Pub.Class.ToSwf\Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+    <BootstrapperPackage Include="..\..\Pub.Class\Pub.Class.ToSwf\Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+    <BootstrapperPackage Include="..\..\Pub.Class\Pub.Class.ToSwf\Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +103,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Pub.Class.ToSwfWCF\Pub.Class.ToSwfWCF4.0_Mono.csproj">
       <Project>{C9F10DCD-6BEB-480D-9E79-8F1734C6BB99}</Project>
-      <Name>Pub.Class.ToSwfWCF</Name>
+      <Name>Pub.Class.ToSwfWCF4.0_Mono</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pub.Class\Pub.Class4.0_Mono.csproj">
       <Project>{2AD0BF74-CE88-4004-A609-239C7EBD51BF}</Project>

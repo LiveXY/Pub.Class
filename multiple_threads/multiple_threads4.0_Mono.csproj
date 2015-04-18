@@ -58,7 +58,7 @@
     <Compile Include="converter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Folder Include="..\..\Pub.Class\multiple_threads\Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

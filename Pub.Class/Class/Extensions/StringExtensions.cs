@@ -468,8 +468,10 @@ namespace Pub.Class {
             string pattern = "<[^>]*>";
             return Regex.Replace(content, pattern, string.Empty, RegexOptions.IgnoreCase);
         }
-#if !MONO40
-        /// <summary>
+#if MONO40
+#elif MONO20
+#else
+		/// <summary>
         /// 转简体中文
         /// </summary>
         /// <param name="str">string扩展</param>

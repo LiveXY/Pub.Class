@@ -103,7 +103,7 @@ namespace ispring2swf {
                     MPP2000();
                     break;
                 default:
-                    WriteLog("Î´°²×°Microsoft PowerPoint×é¼ş£¡");
+                    WriteLog("æœªå®‰è£…Microsoft PowerPointç»„ä»¶ï¼");
                     Exit();
                     break;
             }
@@ -122,57 +122,57 @@ namespace ispring2swf {
         }
 
         public void MPP2000() {
-            WriteLog("Ôİ²»Ö§³ÖMicrosoft PowerPoint 2000...");
+            WriteLog("æš‚ä¸æ”¯æŒMicrosoft PowerPoint 2000...");
             Exit();
         }
         public void MPPXP() {
-            WriteLog("Ôİ²»Ö§³ÖMicrosoft PowerPoint XP...");
+            WriteLog("æš‚ä¸æ”¯æŒMicrosoft PowerPoint XP...");
             Exit();
         }
         public void MPP2003() {
-            WriteLog("Ôİ²»Ö§³ÖMicrosoft PowerPoint 2003...");
+            WriteLog("æš‚ä¸æ”¯æŒMicrosoft PowerPoint 2003...");
             Exit();
         }
         public void MPP2007() {
-            WriteLog("ÏÈ¹Ø±ÕMicrosoft PowerPoint 2007...");
+            WriteLog("å…ˆå…³é—­Microsoft PowerPoint 2007...");
             Safe.KillProcess("POWERPNT");
             WriteLog("ispring2swf \"" + pptName + "\" \"" + swfName + "\"");
             Safe.RunAsync("POWERPNT", System.Diagnostics.ProcessWindowStyle.Normal, "\"" + pptName + "\"");
-            WriteLog("ÕıÔÚ´ò¿ªMicrosoft PowerPoint 2007...");
+            WriteLog("æ­£åœ¨æ‰“å¼€Microsoft PowerPoint 2007...");
 
             setTimeout((i2) => {
                 IntPtr ppt = WinApi.FindWindow("PP12FrameClass", null);
                 if (ppt != IntPtr.Zero) {
-                    WriteLog("ÕÒµ½¡°Microsoft PowerPoint¡±Ö÷´°¿Ú²¢¼¤»î´°¿Ú£¡-" + ppt.ToString());
+                    WriteLog("æ‰¾åˆ°â€œMicrosoft PowerPointâ€ä¸»çª—å£å¹¶æ¿€æ´»çª—å£ï¼-" + ppt.ToString());
                     setTimeout(() => {
                         WinApi.SetActiveWindow(ppt);
                         foreach (string key in Keys) {
                             SendKeys.SendWait(key);
-                            WriteLog("Ä£ÄâÓÃ»§°´: " + (key == "%" ? "alt" : key) + "¼ü£¡");
+                            WriteLog("æ¨¡æ‹Ÿç”¨æˆ·æŒ‰: " + (key == "%" ? "alt" : key) + "é”®ï¼");
                             Thread.Sleep(100);
                         }
                         FileDirectory.FileDelete(swfName);
-                        WriteLog("É¾³ıÀÏµÄ×ª»»ÎÄ¼ş: " + swfName);
+                        WriteLog("åˆ é™¤è€çš„è½¬æ¢æ–‡ä»¶: " + swfName);
                         setTimeout(() => {
                             IList<WinApi.WindowInfo> childWindowNames = WinApi.GetAllDesktopWindows();
                             WinApi.WindowInfo info = childWindowNames.Where(p => p.szWindowName.IndexOf("Generating Flash Movie") != -1).FirstOrDefault();
                             if (info.IsNotNull() && info.hWnd != IntPtr.Zero) {
-                                WriteLog("ÕÒµ½¡°Generating Flash Movie¡±´°¿Ú£¡-" + info.hWnd.ToString());
-                                WriteLog("Ãû³Æ£º" + info.szWindowName);
+                                WriteLog("æ‰¾åˆ°â€œGenerating Flash Movieâ€çª—å£ï¼-" + info.hWnd.ToString());
+                                WriteLog("åç§°ï¼š" + info.szWindowName);
                                 string fileName = info.szWindowName.Substring(23).Left(50);
                                 string filePath = DefaultPath + fileName + "\\" + fileName + ".swf";
 
                                 setTimeout((i3) => {
                                     if (!WinApi.IsWindow(info.hWnd)) {
-                                        WriteLog("Íê³É×ª»»swf£¡");
+                                        WriteLog("å®Œæˆè½¬æ¢swfï¼");
                                         setTimeout(() => {
                                             IntPtr h = WinApi.FindWindow(null, fileName);
                                             if (h != IntPtr.Zero) {
-                                                WriteLog("ÕÒµ½ÎÄ¼ş¼Ğ¾ä±ú£¬²¢¹Ø±Õ£¡");
+                                                WriteLog("æ‰¾åˆ°æ–‡ä»¶å¤¹å¥æŸ„ï¼Œå¹¶å…³é—­ï¼");
                                                 WinApi.SendMessage(h, WMessages.WM_CLOSE, 0, 0);
                                                 return true;
                                             }
-                                            WriteLog("ÕÒ²»µ½ÎÄ¼ş¼Ğ¾ä±ú£º" + fileName);
+                                            WriteLog("æ‰¾ä¸åˆ°æ–‡ä»¶å¤¹å¥æŸ„ï¼š" + fileName);
                                             return false;
                                         }, 1000, 5);
                                         setTimeout(() => {
@@ -186,84 +186,84 @@ namespace ispring2swf {
                                                 }, 1000, 1);
                                                 return true;
                                             }
-                                            WriteLog("Ã»ÕÒµ½×ª»»ºóÎÄ¼ş£º" + filePath, true);
+                                            WriteLog("æ²¡æ‰¾åˆ°è½¬æ¢åæ–‡ä»¶ï¼š" + filePath, true);
                                             return false;
                                         }, 1000, 60, () => {
-                                            WriteLog("ÎÄ¼ş²»´æÔÚ£¬¹Ø±Õ£¡" + filePath);
+                                            WriteLog("æ–‡ä»¶ä¸å­˜åœ¨ï¼Œå…³é—­ï¼" + filePath);
                                             Exit();
                                         });
                                         return true;
                                     }
-                                    WriteLog("ÕıÔÚ×ª»»swf-" + i3.ToString(), true);
+                                    WriteLog("æ­£åœ¨è½¬æ¢swf-" + i3.ToString(), true);
                                     return false;
                                 }, 2000, 0);
                                 return true;
                             }
                             return false;
                         }, 1000, 60, () => {
-                            WriteLog("ÕÒ²»µ½¡°Generating Flash Movie¡±´°¿Ú£¬ÍË³ö£¡");
+                            WriteLog("æ‰¾ä¸åˆ°â€œGenerating Flash Movieâ€çª—å£ï¼Œé€€å‡ºï¼");
                             Exit();
                         });
                         return true;
                     }, 1000, 1);
                     return true;
                 }
-                WriteLog("²éÕÒ¡°Microsoft PowerPoint¡±Ö÷´°¿Ú£¡-" + i2.ToString(), true);
+                WriteLog("æŸ¥æ‰¾â€œMicrosoft PowerPointâ€ä¸»çª—å£ï¼-" + i2.ToString(), true);
                 return false;
             }, 3000, 60, () => {
-                WriteLog("ÕÒ²»µ½¡°Microsoft PowerPoint¡±Ö÷´°¿Ú£¬ÍË³ö£¡");
+                WriteLog("æ‰¾ä¸åˆ°â€œMicrosoft PowerPointâ€ä¸»çª—å£ï¼Œé€€å‡ºï¼");
                 Exit();
             });
         }
         public void MPP2010() {
-            WriteLog("ÏÈ¹Ø±ÕMicrosoft PowerPoint 2010...");
+            WriteLog("å…ˆå…³é—­Microsoft PowerPoint 2010...");
             Safe.KillProcess("POWERPNT");
             WriteLog("ispring2swf \"" + pptName + "\" \"" + swfName + "\"");
             Safe.RunAsync("POWERPNT", System.Diagnostics.ProcessWindowStyle.Normal, "\"" + pptName + "\"");
-            WriteLog("ÕıÔÚ´ò¿ªMicrosoft PowerPoint 2010...");
+            WriteLog("æ­£åœ¨æ‰“å¼€Microsoft PowerPoint 2010...");
 
             setTimeout((i1) => {
-                IntPtr splash = WinApi.FindWindow("MsoSplash", "ÕıÔÚ´ò¿ª - Microsoft PowerPoint");
+                IntPtr splash = WinApi.FindWindow("MsoSplash", "æ­£åœ¨æ‰“å¼€ - Microsoft PowerPoint");
                 if (splash != IntPtr.Zero) {
-                    WriteLog("ÕÒµ½¡°ÕıÔÚ´ò¿ª - Microsoft PowerPoint¡±´°¿Ú£¡-" + splash.ToString());
-                    WriteLog("µÈ´ı¡°ÕıÔÚ´ò¿ª - Microsoft PowerPoint¡±´°¿Ú¹Ø±Õ£¡");
+                    WriteLog("æ‰¾åˆ°â€œæ­£åœ¨æ‰“å¼€ - Microsoft PowerPointâ€çª—å£ï¼-" + splash.ToString());
+                    WriteLog("ç­‰å¾…â€œæ­£åœ¨æ‰“å¼€ - Microsoft PowerPointâ€çª—å£å…³é—­ï¼");
                     setTimeout(() => {
-                        splash = WinApi.FindWindow("MsoSplash", "ÕıÔÚ´ò¿ª - Microsoft PowerPoint");
+                        splash = WinApi.FindWindow("MsoSplash", "æ­£åœ¨æ‰“å¼€ - Microsoft PowerPoint");
                         if (splash == IntPtr.Zero) {
-                            WriteLog("¡°ÕıÔÚ´ò¿ª - Microsoft PowerPoint¡±´°¿ÚÒÑ¹Ø±Õ£¡");
+                            WriteLog("â€œæ­£åœ¨æ‰“å¼€ - Microsoft PowerPointâ€çª—å£å·²å…³é—­ï¼");
                             setTimeout((i2) => {
                                 IntPtr ppt = WinApi.FindWindow("PPTFrameClass", null);
                                 if (ppt != IntPtr.Zero) {
-                                    WriteLog("ÕÒµ½¡°Microsoft PowerPoint¡±Ö÷´°¿Ú²¢¼¤»î´°¿Ú£¡-" + ppt.ToString());
+                                    WriteLog("æ‰¾åˆ°â€œMicrosoft PowerPointâ€ä¸»çª—å£å¹¶æ¿€æ´»çª—å£ï¼-" + ppt.ToString());
                                     setTimeout(() => {
                                         WinApi.SetActiveWindow(ppt);
                                         foreach (string key in Keys) {
                                             SendKeys.SendWait(key);
-                                            WriteLog("Ä£ÄâÓÃ»§°´: " + (key == "%" ? "alt" : key) + "¼ü£¡");
+                                            WriteLog("æ¨¡æ‹Ÿç”¨æˆ·æŒ‰: " + (key == "%" ? "alt" : key) + "é”®ï¼");
                                             Thread.Sleep(100);
                                         }
                                         FileDirectory.FileDelete(swfName);
-                                        WriteLog("É¾³ıÀÏµÄ×ª»»ÎÄ¼ş: " + swfName);
+                                        WriteLog("åˆ é™¤è€çš„è½¬æ¢æ–‡ä»¶: " + swfName);
                                         setTimeout(() => {
                                             IList<WinApi.WindowInfo> childWindowNames = WinApi.GetAllDesktopWindows();
                                             WinApi.WindowInfo info = childWindowNames.Where(p => p.szWindowName.IndexOf("Generating Flash Movie") != -1).FirstOrDefault();
                                             if (info.IsNotNull() && info.hWnd != IntPtr.Zero) {
-                                                WriteLog("ÕÒµ½¡°Generating Flash Movie¡±´°¿Ú£¡-" + info.hWnd.ToString());
-                                                WriteLog("Ãû³Æ£º" + info.szWindowName);
+                                                WriteLog("æ‰¾åˆ°â€œGenerating Flash Movieâ€çª—å£ï¼-" + info.hWnd.ToString());
+                                                WriteLog("åç§°ï¼š" + info.szWindowName);
                                                 string fileName = info.szWindowName.Substring(23).Left(50);
                                                 string filePath = DefaultPath + fileName + "\\" + fileName + ".swf";
 
                                                 setTimeout((i3) => {
                                                     if (!WinApi.IsWindow(info.hWnd)) {
-                                                        WriteLog("Íê³É×ª»»swf£¡");
+                                                        WriteLog("å®Œæˆè½¬æ¢swfï¼");
                                                         setTimeout(() => {
                                                             IntPtr h = WinApi.FindWindow(null, fileName);
                                                             if (h != IntPtr.Zero) {
-                                                                WriteLog("ÕÒµ½ÎÄ¼ş¼Ğ¾ä±ú£¬²¢¹Ø±Õ£¡");
+                                                                WriteLog("æ‰¾åˆ°æ–‡ä»¶å¤¹å¥æŸ„ï¼Œå¹¶å…³é—­ï¼");
                                                                 WinApi.SendMessage(h, WMessages.WM_CLOSE, 0, 0);
                                                                 return true;
                                                             }
-                                                            WriteLog("ÕÒ²»µ½ÎÄ¼ş¼Ğ¾ä±ú£º" + fileName);
+                                                            WriteLog("æ‰¾ä¸åˆ°æ–‡ä»¶å¤¹å¥æŸ„ï¼š" + fileName);
                                                             return false;
                                                         }, 1000, 5);
                                                         setTimeout(() => {
@@ -277,54 +277,54 @@ namespace ispring2swf {
                                                                 }, 1000, 1);
                                                                 return true;
                                                             }
-                                                            WriteLog("Ã»ÕÒµ½×ª»»ºóÎÄ¼ş£º" + filePath, true);
+                                                            WriteLog("æ²¡æ‰¾åˆ°è½¬æ¢åæ–‡ä»¶ï¼š" + filePath, true);
                                                             return false;
                                                         }, 1000, 60, () => {
-                                                            WriteLog("ÎÄ¼ş²»´æÔÚ£¬¹Ø±Õ£¡" + filePath);
+                                                            WriteLog("æ–‡ä»¶ä¸å­˜åœ¨ï¼Œå…³é—­ï¼" + filePath);
                                                             Exit();
                                                         });
                                                         return true;
                                                     }
-                                                    WriteLog("ÕıÔÚ×ª»»swf-" + i3.ToString(), true);
+                                                    WriteLog("æ­£åœ¨è½¬æ¢swf-" + i3.ToString(), true);
                                                     return false;
                                                 }, 2000, 0);
                                                 return true;
                                             }
                                             return false;
                                         }, 1000, 60, () => {
-                                            WriteLog("ÕÒ²»µ½¡°Generating Flash Movie¡±´°¿Ú£¬ÍË³ö£¡");
+                                            WriteLog("æ‰¾ä¸åˆ°â€œGenerating Flash Movieâ€çª—å£ï¼Œé€€å‡ºï¼");
                                             Exit();
                                         });
                                         return true;
                                     }, 1000, 1);
                                     return true;
                                 }
-                                WriteLog("²éÕÒ¡°Microsoft PowerPoint¡±Ö÷´°¿Ú£¡-" + i2.ToString(), true);
+                                WriteLog("æŸ¥æ‰¾â€œMicrosoft PowerPointâ€ä¸»çª—å£ï¼-" + i2.ToString(), true);
                                 return false;
                             }, 1000, 60, () => {
-                                WriteLog("ÕÒ²»µ½¡°Microsoft PowerPoint¡±Ö÷´°¿Ú£¬ÍË³ö£¡");
+                                WriteLog("æ‰¾ä¸åˆ°â€œMicrosoft PowerPointâ€ä¸»çª—å£ï¼Œé€€å‡ºï¼");
                                 Exit();
                             });
                             return true;
                         }
                         return false;
                     }, 1000, 60, () => {
-                        WriteLog("¡°ÕıÔÚ´ò¿ª - Microsoft PowerPoint¡±Î´¹Ø±Õ£¬ÍË³ö£¡");
+                        WriteLog("â€œæ­£åœ¨æ‰“å¼€ - Microsoft PowerPointâ€æœªå…³é—­ï¼Œé€€å‡ºï¼");
                         Exit();
                     });
                     return true;
                 }
-                WriteLog("²éÕÒ¡°ÕıÔÚ´ò¿ª - Microsoft PowerPoint¡±´°¿Ú£¡-" + i1.ToString(), true);
+                WriteLog("æŸ¥æ‰¾â€œæ­£åœ¨æ‰“å¼€ - Microsoft PowerPointâ€çª—å£ï¼-" + i1.ToString(), true);
                 return false;
             }, 1000, 60, () => {
-                WriteLog("ÕÒ²»µ½¡°ÕıÔÚ´ò¿ª - Microsoft PowerPoint¡±´°¿Ú£¬ÍË³ö£¡");
+                WriteLog("æ‰¾ä¸åˆ°â€œæ­£åœ¨æ‰“å¼€ - Microsoft PowerPointâ€çª—å£ï¼Œé€€å‡ºï¼");
                 Exit();
             });
         }
         public void Exit() {
             foreach (string pro in KillProcessList)
                 if (!pro.IsNullEmpty()) Safe.KillProcess(pro);
-            WriteLog("ÍË³öÏµÍ³£¡");
+            WriteLog("é€€å‡ºç³»ç»Ÿï¼");
             Environment.Exit(0);
         }
         public void WriteLog(string msg, bool selected = false) {
@@ -333,12 +333,12 @@ namespace ispring2swf {
             if (UseLog) FileDirectory.FileWrite("log.txt".GetMapPath(), "[{0}] {1}".FormatWith(DateTime.Now.ToDateTime(), msg));
         }
         /// <summary>
-        /// ¶¨Ê±Æ÷
+        /// å®šæ—¶å™¨
         /// </summary>
-        /// <param name="run">Ö´ĞĞº¯Êı</param>
-        /// <param name="interval">¼ÆÊ±Æ÷ 1000Îª1Ãë</param>
-        /// <param name="degree">µø´ú´ÎÊı</param>
-        /// <param name="error">Á¬Ğø·µ»ØfalseÊ±Ö´ĞĞ</param>
+        /// <param name="run">æ‰§è¡Œå‡½æ•°</param>
+        /// <param name="interval">è®¡æ—¶å™¨ 1000ä¸º1ç§’</param>
+        /// <param name="degree">è·Œä»£æ¬¡æ•°</param>
+        /// <param name="error">è¿ç»­è¿”å›falseæ—¶æ‰§è¡Œ</param>
         private static void setTimeout(Func<bool> run, int interval = 1000, int degree = 60, Action error = null) {
             int _degree = 0;
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
@@ -361,12 +361,12 @@ namespace ispring2swf {
             };
         }
         /// <summary>
-        /// ¶¨Ê±Æ÷
+        /// å®šæ—¶å™¨
         /// </summary>
-        /// <param name="run">Ö´ĞĞº¯Êı</param>
-        /// <param name="interval">¼ÆÊ±Æ÷ 1000Îª1Ãë</param>
-        /// <param name="degree">µø´ú´ÎÊı</param>
-        /// <param name="error">Á¬Ğø·µ»ØfalseÊ±Ö´ĞĞ</param>
+        /// <param name="run">æ‰§è¡Œå‡½æ•°</param>
+        /// <param name="interval">è®¡æ—¶å™¨ 1000ä¸º1ç§’</param>
+        /// <param name="degree">è·Œä»£æ¬¡æ•°</param>
+        /// <param name="error">è¿ç»­è¿”å›falseæ—¶æ‰§è¡Œ</param>
         private static void setTimeout(Func<int, bool> run, int interval = 1000, int degree = 60, Action error = null) {
             int _degree = 0;
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
