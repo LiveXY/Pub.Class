@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{03413AF8-CCAE-48C5-BBAA-E9EB73750FAD}</ProjectGuid>
+    <ProjectGuid>{300E2662-0C07-4042-BF45-84711264C862}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pub.Class.Protobuf</RootNamespace>
-    <AssemblyName>Pub.Class.Protobuf</AssemblyName>
+    <RootNamespace>Pub.Class.MySql</RootNamespace>
+    <AssemblyName>Pub.Class.MySql</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -52,17 +52,16 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="protobuf-net">
-      <HintPath>.\protobuf-net.dll</HintPath>
+    <Reference Include="MySql.Data">
+      <HintPath>MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SerializerBytes.cs" />
+    <Compile Include="MySql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

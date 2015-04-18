@@ -96,7 +96,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pub.Class\Pub.Class.csproj">
+    <ProjectReference Include="..\Pub.Class\Pub.Class4.0_Mono.csproj">
       <Project>{2AD0BF74-CE88-4004-A609-239C7EBD51BF}</Project>
       <Name>Pub.Class</Name>
     </ProjectReference>

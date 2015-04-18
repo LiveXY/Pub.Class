@@ -210,19 +210,19 @@
     <Compile Include="TableFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pub.Class.Access\Pub.Class.Access.csproj">
+    <ProjectReference Include="..\Pub.Class.Access\Pub.Class.Access4.0_Mono.csproj">
       <Project>{212BF800-7D04-4079-BB6B-EDEAF63D0454}</Project>
       <Name>Pub.Class.Access</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pub.Class.Odbc\Pub.Class.Odbc.csproj">
+    <ProjectReference Include="..\Pub.Class.Odbc\Pub.Class.Odbc4.0_Mono.csproj">
       <Project>{0DE8AB60-32FE-4099-963C-127FD2544A5A}</Project>
       <Name>Pub.Class.Odbc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pub.Class.OleDb\Pub.Class.OleDb.csproj">
+    <ProjectReference Include="..\Pub.Class.OleDb\Pub.Class.OleDb4.0_Mono.csproj">
       <Project>{24C00348-8FF0-4A1F-95B0-6193EC79F8F4}</Project>
       <Name>Pub.Class.OleDb</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pub.Class.SqlServer\Pub.Class.SqlServer.csproj">
+    <ProjectReference Include="..\Pub.Class.SqlServer\Pub.Class.SqlServer4.0_Mono.csproj">
       <Project>{FDE94D2C-3A45-4073-83EB-2A0D192DDDAF}</Project>
       <Name>Pub.Class.SqlServer</Name>
     </ProjectReference>
