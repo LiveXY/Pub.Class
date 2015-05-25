@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.Oracle2.0_Mono", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.MySql2.0_Mono", "Pub.Class.MySql\Pub.Class.MySql2.0_Mono.csproj", "{300E2662-0C07-4042-BF45-84711264C862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.SQLite2.0_Mono", "Pub.Class.SQLite\Pub.Class.SQLite2.0_Mono.csproj", "{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.MonoSQLite2.0", "Pub.Class.MonoSQLite.SQLite\Pub.Class.MonoSQLite2.0.csproj", "{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pub.Class.Excel", "Pub.Class.Excel", "{45DC8A16-3686-462F-8C09-BD71A14736E8}"
 EndProject
@@ -308,19 +308,25 @@ Global
 		{86B6087A-8B3B-4C1B-8B74-5A032EB4942D}.Release|x64.ActiveCfg = Release|Any CPU
 		{86B6087A-8B3B-4C1B-8B74-5A032EB4942D}.Release|x86.ActiveCfg = Release|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|.NET.Build.0 = Debug|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|x64.Build.0 = Debug|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Debug|x86.Build.0 = Debug|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|.NET.ActiveCfg = Release|Any CPU
+		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|.NET.Build.0 = Release|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|x64.ActiveCfg = Release|Any CPU
+		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|x64.Build.0 = Release|Any CPU
 		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|x86.ActiveCfg = Release|Any CPU
+		{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}.Release|x86.Build.0 = Release|Any CPU
 		{A075E415-E2A9-4A87-8C02-5E55419DC3D4}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{A075E415-E2A9-4A87-8C02-5E55419DC3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A075E415-E2A9-4A87-8C02-5E55419DC3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -639,7 +645,7 @@ Global
 		{03413AF8-CCAE-48C5-BBAA-E9EB73750FAD} = {A43006D0-5D9F-4845-B9F1-766113FAEEE2}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Pub.Class\Pub.Class2.0_Mono.csproj
+		StartupItem = SendEmailTest\SendEmailTest\SendEmailTest2.0_Mono.csproj
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = EntityTool5.3.vsmdi

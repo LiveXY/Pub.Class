@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A4934B25-370A-4167-A682-D737707BAE0D}</ProjectGuid>
+    <ProjectGuid>{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pub.Class.Email.CDOMessage</RootNamespace>
-    <AssemblyName>Pub.Class.Email.CDOMessage</AssemblyName>
+    <RootNamespace>Pub.Class.MonoSQLite</RootNamespace>
+    <AssemblyName>Pub.Class.MonoSQLite</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -53,20 +53,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Interop.ADODB">
-      <HintPath>Interop.ADODB.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.CDO">
-      <HintPath>Interop.CDO.dll</HintPath>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>net2.0\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SendEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MonoSQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -84,10 +80,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Interop.ADODB.dll" />
-    <Content Include="Interop.CDO.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
