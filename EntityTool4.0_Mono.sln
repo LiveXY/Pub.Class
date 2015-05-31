@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.Oracle4.0_Mono", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.MySql4.0_Mono", "Pub.Class.MySql\Pub.Class.MySql4.0_Mono.csproj", "{300E2662-0C07-4042-BF45-84711264C862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.SQLite4.0_Mono", "Pub.Class.SQLite\Pub.Class.SQLite4.0_Mono.csproj", "{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.MonoSQLite4.0", "Pub.Class.MonoSQLite\Pub.Class.MonoSQLite4.0.csproj", "{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.Mongodb4.0_Mono", "Pub.Class.Mongodb\Pub.Class.Mongodb4.0_Mono.csproj", "{D405343F-156A-43C8-84DB-9B5F45ED3D0D}"
 EndProject

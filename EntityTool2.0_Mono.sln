@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.Oracle2.0_Mono", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.MySql2.0_Mono", "Pub.Class.MySql\Pub.Class.MySql2.0_Mono.csproj", "{300E2662-0C07-4042-BF45-84711264C862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.MonoSQLite2.0", "Pub.Class.MonoSQLite.SQLite\Pub.Class.MonoSQLite2.0.csproj", "{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pub.Class.MonoSQLite2.0", "Pub.Class.MonoSQLite\Pub.Class.MonoSQLite2.0.csproj", "{90BF1FF8-2019-477E-BA4C-9692E21BB2BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pub.Class.Excel", "Pub.Class.Excel", "{45DC8A16-3686-462F-8C09-BD71A14736E8}"
 EndProject

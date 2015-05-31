@@ -55,7 +55,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NVelocity">
-      <HintPath>..\web\bin\NVelocity.dll</HintPath>
+      <HintPath>bin\NVelocity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

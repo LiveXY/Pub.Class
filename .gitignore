@@ -71,3 +71,4 @@ EntityTool/bin/Pub.Class.Access.dll
 EntityTool/bin/Pub.Class.Access.pdb
 EntityTool/bin/Pub.Class.SqlServer.pdb
 Pub.Class.Dynamic/obj/
+Pub.Class.MonoSQLite/obj/
