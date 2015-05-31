@@ -50,5 +50,22 @@ namespace Pub.Class {
         /// </summary>
         [EntityInfo("取数据SQL")]
         public string DataSql { set; get; }
+		/// <summary>
+		/// SQL数据转成实体数据
+		/// </summary>
+		/// <returns>实体数据</returns>
+		/// <param name="totalRecords">总记录数</param>
+		/// <param name="dbkey">Dbkey.</param>
+		/// <typeparam name="T">实体类</typeparam>
+		public IList<T> ToList<T>(out long totalRecords, string dbkey = "") where T : class, new() {
+			IList<T> list = new List<T>(); totalRecords = 0;
+			IDataReader dr = Data.Pool(dbkey).GetDbDataReader(DataSql + ";" + CountSql);
+			if (dr.IsNull()) return list;
+			list = dr.ToList<T>(false);
+			bool result = dr.NextResult();
+			if (result) { dr.Read(); totalRecords = dr[0].ToString().ToBigInt(); }
+			dr.Close (); dr.Dispose(); dr = null;
+			return list;
+		}
     }
 }
