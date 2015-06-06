@@ -645,7 +645,7 @@ Global
 		{03413AF8-CCAE-48C5-BBAA-E9EB73750FAD} = {A43006D0-5D9F-4845-B9F1-766113FAEEE2}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = SendEmailTest\SendEmailTest\SendEmailTest2.0_Mono.csproj
+		StartupItem = EntityTool\EntityTool2.0_Mono.csproj
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = EntityTool5.3.vsmdi

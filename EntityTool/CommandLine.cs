@@ -11,5 +11,7 @@ using Pub.Class;
 using System.Collections.Generic;
 
 public class CommandLine {
+	public static void Start(string[] args){
 
+	}
 }

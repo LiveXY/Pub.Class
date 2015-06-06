@@ -8,9 +8,13 @@ namespace EntityTool {
 		/// 应用程序的主入口点。
 		/// </summary>
 		[STAThread]
-		static void Main() {
+		static void Main(
+#if MONO 
+			string[] args
+#endif
+			) {
 #if MONO
-
+			CommandLine.Start(args);
 #else
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
