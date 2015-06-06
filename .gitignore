@@ -72,3 +72,7 @@ EntityTool/bin/Pub.Class.Access.pdb
 EntityTool/bin/Pub.Class.SqlServer.pdb
 Pub.Class.Dynamic/obj/
 Pub.Class.MonoSQLite/obj/
+EntityTool/EntityTool2.0.csproj.user
+EntityTool/EntityTool3.5.csproj.user
+EntityTool/EntityTool4.0.csproj.user
+EntityTool/EntityTool4.0_Mono.csproj.user
