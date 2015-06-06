@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <Table Name="EmailList" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="true" SelectByID="true" SelectPageList="true" SelectListByFK="false" SelectListByAll="true" UpdateAndInsert="false" />
+  <Table Name="HtmlTemplate" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="false" SelectByID="false" SelectPageList="false" SelectListByFK="false" SelectListByAll="true" UpdateAndInsert="false" />
+  <Table Name="SmtpList" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="true" SelectByID="true" SelectPageList="true" SelectListByFK="false" SelectListByAll="true" UpdateAndInsert="false" />
+  <Table Name="RouteList" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="false" SelectByID="false" SelectPageList="false" SelectListByFK="false" SelectListByAll="true" UpdateAndInsert="false" />
+  <Table Name="Setting" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="false" SelectByID="false" SelectPageList="false" SelectListByFK="false" SelectListByAll="true" UpdateAndInsert="false" />
+  <Table Name="IpHistory" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="true" SelectByID="false" SelectPageList="true" SelectListByFK="false" SelectListByAll="true" UpdateAndInsert="false" />
+  <Table Name="IpSetting" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="false" SelectByID="false" SelectPageList="false" SelectListByFK="false" SelectListByAll="true" UpdateAndInsert="false" />
+  <Table Name="ModelSetting" Entity="true" Insert="true" Update="true" Delete="false" IsExistByID="false" SelectByID="true" SelectPageList="false" SelectListByFK="false" SelectListByAll="false" UpdateAndInsert="false" />
+  <Table Name="RouteSetting" Entity="true" Insert="true" Update="true" Delete="false" IsExistByID="false" SelectByID="true" SelectPageList="false" SelectListByFK="false" SelectListByAll="false" UpdateAndInsert="false" />
+  <Table Name="SendSetting" Entity="true" Insert="true" Update="true" Delete="false" IsExistByID="false" SelectByID="true" SelectPageList="false" SelectListByFK="false" SelectListByAll="false" UpdateAndInsert="false" />
+  <Table Name="TanYiSetting" Entity="true" Insert="true" Update="true" Delete="false" IsExistByID="false" SelectByID="true" SelectPageList="false" SelectListByFK="false" SelectListByAll="false" UpdateAndInsert="false" />
+  <Table Name="TianYiSetting" Entity="true" Insert="true" Update="true" Delete="true" IsExistByID="false" SelectByID="true" SelectPageList="true" SelectListByFK="true" SelectListByAll="false" UpdateAndInsert="false" />
+</root>

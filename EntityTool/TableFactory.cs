@@ -138,7 +138,32 @@ namespace EntityTool {
 
 		public static string DBTypeToCSType(string dbType) {
 			switch (dbType) {
+				case "integer":
 				case "int": return "Int";
+				case "tinyint": return "TinyInt";
+				case "bigint": return "BigInt";
+				case "float": return "Float";
+				case "smallint": return "SmallInt";
+				case "numeric": return "Decimal";
+				case "decimal": return "Decimal";
+				case "char": return "Char";
+				case "nchar": return "NChar";
+				case "ntext": return "NText";
+				case "nvarchar": return "NVarChar";
+				case "text": return "Text";
+				case "varchar": return "VarChar";
+				case "datetime": return "VarChar";
+				case "smalldatetime": return "VarChar";
+				case "bit": return "Bit";
+				case "money": return "Money";
+				case "uniqueidentifier": return "UniqueIdentifier";
+			}
+			return "";
+		}
+		public static string SQLiteDBTypeToCSType(string dbType) {
+			switch (dbType) {
+				case "integer":
+				case "int": return "BigInt";
 				case "tinyint": return "TinyInt";
 				case "bigint": return "BigInt";
 				case "float": return "Float";
@@ -454,28 +479,37 @@ AND table_schema = '{1}'
 			} else if (Data.DBType == "SQLite" || Data.DBType == "MonoSQLite") {
 				#region SQLite
 				string strSql = string.Format("select sql from sqlite_master where type='table' and name='{0}'", tableName);
-				string sql = Data.GetScalar(strSql).ToString();
-				if (sql) {
-					string type = dr["type"].ToString().Trim();
-					string type = dr["type"].ToString().Trim();
+				IList<string> sqls = Data.GetScalar(strSql).ToString().Replace("\"", "").Replace("[", "").Replace("]", "").GetLines();
+				if (sqls.IsNullEmpty() || sqls.Count < 3) return tabStructList;
+				bool ispk = sqls[sqls.Count - 2].Trim(',').Trim().StartsWith("primary key", StringComparison.InvariantCultureIgnoreCase);
+				string pks = ispk ? sqls[sqls.Count - 2].Trim(',').Trim().Substring(11) : "";
+				for(int i=1, len = sqls.Count - (ispk ? 2 : 1); i< len; i++){
+					string[] rows = sqls[i].Trim().Trim(',').Split(' ');
+					bool rowAutoID = sqls[i].IndexOf("AUTOINCREMENT", StringComparison.InvariantCultureIgnoreCase) != -1;
+					bool rowPKey = pks.IndexOf(rows[0], StringComparison.InvariantCultureIgnoreCase) != -1;
+					if (!rowPKey) rowPKey = sqls[i].IndexOf("PRIMARY KEY ", StringComparison.InvariantCultureIgnoreCase) != -1;
 					TableStructureEntity tabStatuctEntity = new TableStructureEntity();
-					tabStatuctEntity.ColumnName = dr["name"].ToString().Trim();
-					tabStatuctEntity.ColumnType = dr["DATA_TYPE"].ToString().Trim();
+					tabStatuctEntity.ColumnName = rows[0];
+					tabStatuctEntity.ColumnType = rows[1].Trim().ToLower();
+					if (rows[1].IndexOf("(") != -1) {
+						tabStatuctEntity.ColumnType = rows[1].Trim().ToLower().Substring(0, rows[1].IndexOf("("));
+						tabStatuctEntity.Length = rows[1].Trim().ToLower().Substring(rows[1].IndexOf("(")).Replace("(", "").Replace(")", "").ToInt();
+					}
 					tabStatuctEntity.DBType = tabStatuctEntity.ColumnType;
-					tabStatuctEntity.CSType = DBTypeToCSType(tabStatuctEntity.ColumnType);
+					tabStatuctEntity.CSType = SQLiteDBTypeToCSType(tabStatuctEntity.ColumnType);
 					//tabStatuctEntity.ColOrder = dr["ColOrder"].ToString().ToInt();
-					tabStatuctEntity.IsIdentity = dr["EXTRA"].IsDBNull() ? false : (dr["EXTRA"].ToString() == "auto_increment" ? true : false);
-					tabStatuctEntity.IsPK = dr["COLUMN_KEY"].IsDBNull() ? false : (dr["COLUMN_KEY"].ToString() == "PRI" ? true : false);
+					tabStatuctEntity.IsIdentity = rowAutoID;
+					tabStatuctEntity.IsPK = rowPKey;
 					//tabStatuctEntity.IsFK = dr["FK"].ToString() == "1" ? true : false;
-					string _colType = dr["COLUMN_TYPE"].ToString();
+					string _colType = rows[1];
 					if (_colType.IndexOf("(") != -1 && _colType.Split('(').Length == 2) {
 						tabStatuctEntity.Bytes = _colType.Split('(')[1].Replace(")", "").Split(',')[0].ToInt();
 					}
-					tabStatuctEntity.Length = dr["CHARACTER_MAXIMUM_LENGTH"].ToString().ToInt();
+					//tabStatuctEntity.Length = dr["CHARACTER_MAXIMUM_LENGTH"].ToString().ToInt();
 					//tabStatuctEntity.Decimals = dr["Decimals"].ToString().ToInt();
-					tabStatuctEntity.IsNull = dr["IS_NULLABLE"].ToString() == "YES" ? true : false;
-					tabStatuctEntity.Default = dr["COLUMN_DEFAULT"].ToString().Trim();
-					tabStatuctEntity.Memo = dr["COLUMN_COMMENT"].ToString().Trim().ReplaceRN();
+					//tabStatuctEntity.IsNull = dr["IS_NULLABLE"].ToString() == "YES" ? true : false;
+					//tabStatuctEntity.Default = dr["COLUMN_DEFAULT"].ToString().Trim();
+					//tabStatuctEntity.Memo = dr["COLUMN_COMMENT"].ToString().Trim().ReplaceRN();
 					
 					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("编号") >= 0 ? tabStatuctEntity.Memo.Replace("编号", "") : "";
 					
@@ -491,9 +525,10 @@ AND table_schema = '{1}'
 					string columnType = tabStatuctEntity.ColumnType;
 					string type = "," + columnType + ",";
 					string def = tabStatuctEntity.Default.TrimEnd(')').TrimStart('(');
-					if (",int,tinyint,bigint,float,smallint,numeric,decimal,money,".IndexOf(type) >= 0) {
+					if (",int,integer,tinyint,bigint,float,smallint,numeric,decimal,money,".IndexOf(type) >= 0) {
 						tabStatuctEntity.Default = "= null";
 						if (columnType == "bigint") tabStatuctEntity.ColumnType = "Int64";
+						else if (columnType == "integer") tabStatuctEntity.ColumnType = "Int64";
 						else if (columnType == "float") tabStatuctEntity.ColumnType = "float";
 						else if (columnType == "numeric") tabStatuctEntity.ColumnType = "decimal";
 						else if (columnType == "decimal") tabStatuctEntity.ColumnType = "decimal";
@@ -523,7 +558,7 @@ AND table_schema = '{1}'
 					} else if (",bit,".IndexOf(type) >= 0) {
 						//tabStatuctEntity.Default = string.IsNullOrEmpty(def.Trim()) ? "= null" : def.Trim()=="0" ? "= false" : "= true";
 						tabStatuctEntity.Default = "= null";
-						tabStatuctEntity.ColumnType = "UInt64";
+						tabStatuctEntity.ColumnType = "bool";
 					} else if (",uniqueidentifier,".IndexOf(type) >= 0) {
 						if (tabStatuctEntity.Default == "(newid())") tabStatuctEntity.IsIdentity = true;
 						tabStatuctEntity.Default = "= null";

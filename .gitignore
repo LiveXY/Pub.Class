@@ -76,3 +76,6 @@ EntityTool/EntityTool2.0.csproj.user
 EntityTool/EntityTool3.5.csproj.user
 EntityTool/EntityTool4.0.csproj.user
 EntityTool/EntityTool4.0_Mono.csproj.user
+EntityTool/bin/EntityTool.vshost.exe
+EntityTool/bin/EntityTool.vshost.exe.config
+EntityTool/bin/EntityTool.vshost.exe.manifest
