@@ -59,6 +59,19 @@ namespace EntityTool {
 					tabList.Add(tabEntity);
 				}
 				dr.Close(); dr.Dispose(); dr = null;
+			} else if (Data.DBType == "SQLite" || Data.DBType == "MonoSQLite") {
+				string strSql = "select name from sqlite_master where type='table'";
+				DbDataReader dr = Data.GetDbDataReader(strSql);
+				if (dr.IsNull()) return tabList;
+				while (dr.Read()) {
+					string tabName = dr["name"].ToString();
+
+					TableEntity tabEntity = new TableEntity();
+					tabEntity.isView = false;
+					tabEntity.Name = tabName;
+					tabList.Add(tabEntity);
+				}
+				dr.Close(); dr.Dispose(); dr = null;
 			}
 			return tabList;
 		}
@@ -208,7 +221,7 @@ order by a.id,a.colorder", tableName);
 					tabStatuctEntity.Default = dr["_Default"].ToString().Trim();
 					tabStatuctEntity.Memo = dr["_Memo"].ToString().Trim().ReplaceRN();
 
-					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("±‡∫≈") >= 0 ? tabStatuctEntity.Memo.Replace("±‡∫≈", "") : "";
+					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("ÁºñÂè∑") >= 0 ? tabStatuctEntity.Memo.Replace("ÁºñÂè∑", "") : "";
 
 					//if (!tabStatuctEntity.IsFK) {}
 					if (tabStatuctEntity.Memo.Length >= 2) {
@@ -300,7 +313,7 @@ order by a.id,a.colorder", tableName);
 						tabStatuctEntity.Memo = tabStatuctEntity.ColumnName.ReplaceRN();
 					}
 
-					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("±‡∫≈") >= 0 ? tabStatuctEntity.Memo.Replace("±‡∫≈", "") : "";
+					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("ÁºñÂè∑") >= 0 ? tabStatuctEntity.Memo.Replace("ÁºñÂè∑", "") : "";
 					if (tabStatuctEntity.Memo.Length >= 2) {
 						if (tabStatuctEntity.Memo.Substring(0, 2).ToLower() == "fk") {
 							tabStatuctEntity.IsFK = true;
@@ -378,7 +391,7 @@ AND table_schema = '{1}'
 					tabStatuctEntity.Default = dr["COLUMN_DEFAULT"].ToString().Trim();
 					tabStatuctEntity.Memo = dr["COLUMN_COMMENT"].ToString().Trim().ReplaceRN();
 
-					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("±‡∫≈") >= 0 ? tabStatuctEntity.Memo.Replace("±‡∫≈", "") : "";
+					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("ÁºñÂè∑") >= 0 ? tabStatuctEntity.Memo.Replace("ÁºñÂè∑", "") : "";
 
 					//if (!tabStatuctEntity.IsFK) {}
 					if (tabStatuctEntity.Memo.Length >= 2) {
@@ -437,6 +450,91 @@ AND table_schema = '{1}'
 					tabStructList.Add(tabStatuctEntity);
 				}
 				dr.Close(); dr.Dispose(); dr = null;
+				#endregion
+			} else if (Data.DBType == "SQLite" || Data.DBType == "MonoSQLite") {
+				#region SQLite
+				string strSql = string.Format("select sql from sqlite_master where type='table' and name='{0}'", tableName);
+				string sql = Data.GetScalar(strSql).ToString();
+				if (sql) {
+					string type = dr["type"].ToString().Trim();
+					string type = dr["type"].ToString().Trim();
+					TableStructureEntity tabStatuctEntity = new TableStructureEntity();
+					tabStatuctEntity.ColumnName = dr["name"].ToString().Trim();
+					tabStatuctEntity.ColumnType = dr["DATA_TYPE"].ToString().Trim();
+					tabStatuctEntity.DBType = tabStatuctEntity.ColumnType;
+					tabStatuctEntity.CSType = DBTypeToCSType(tabStatuctEntity.ColumnType);
+					//tabStatuctEntity.ColOrder = dr["ColOrder"].ToString().ToInt();
+					tabStatuctEntity.IsIdentity = dr["EXTRA"].IsDBNull() ? false : (dr["EXTRA"].ToString() == "auto_increment" ? true : false);
+					tabStatuctEntity.IsPK = dr["COLUMN_KEY"].IsDBNull() ? false : (dr["COLUMN_KEY"].ToString() == "PRI" ? true : false);
+					//tabStatuctEntity.IsFK = dr["FK"].ToString() == "1" ? true : false;
+					string _colType = dr["COLUMN_TYPE"].ToString();
+					if (_colType.IndexOf("(") != -1 && _colType.Split('(').Length == 2) {
+						tabStatuctEntity.Bytes = _colType.Split('(')[1].Replace(")", "").Split(',')[0].ToInt();
+					}
+					tabStatuctEntity.Length = dr["CHARACTER_MAXIMUM_LENGTH"].ToString().ToInt();
+					//tabStatuctEntity.Decimals = dr["Decimals"].ToString().ToInt();
+					tabStatuctEntity.IsNull = dr["IS_NULLABLE"].ToString() == "YES" ? true : false;
+					tabStatuctEntity.Default = dr["COLUMN_DEFAULT"].ToString().Trim();
+					tabStatuctEntity.Memo = dr["COLUMN_COMMENT"].ToString().Trim().ReplaceRN();
+					
+					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("ÁºñÂè∑") >= 0 ? tabStatuctEntity.Memo.Replace("ÁºñÂè∑", "") : "";
+					
+					//if (!tabStatuctEntity.IsFK) {}
+					if (tabStatuctEntity.Memo.Length >= 2) {
+						if (tabStatuctEntity.Memo.Substring(0, 2).ToLower() == "fk") {
+							tabStatuctEntity.IsFK = true;
+							tabStatuctEntity.Memo = tabStatuctEntity.Memo.Substring(2).Trim();
+						}
+					}
+					if (string.IsNullOrEmpty(tabStatuctEntity.Memo)) tabStatuctEntity.Memo = tabStatuctEntity.ColumnName;
+					
+					string columnType = tabStatuctEntity.ColumnType;
+					string type = "," + columnType + ",";
+					string def = tabStatuctEntity.Default.TrimEnd(')').TrimStart('(');
+					if (",int,tinyint,bigint,float,smallint,numeric,decimal,money,".IndexOf(type) >= 0) {
+						tabStatuctEntity.Default = "= null";
+						if (columnType == "bigint") tabStatuctEntity.ColumnType = "Int64";
+						else if (columnType == "float") tabStatuctEntity.ColumnType = "float";
+						else if (columnType == "numeric") tabStatuctEntity.ColumnType = "decimal";
+						else if (columnType == "decimal") tabStatuctEntity.ColumnType = "decimal";
+						else if (columnType == "tinyint") tabStatuctEntity.ColumnType = "bool";
+						else if (columnType == "smallint") tabStatuctEntity.ColumnType = "short";
+						else if (columnType == "money") tabStatuctEntity.ColumnType = "decimal";
+						else tabStatuctEntity.ColumnType = "int";
+						if (tabStatuctEntity.ColumnType != "decimal") tabStatuctEntity.Length = tabStatuctEntity.Bytes;
+						
+						//System.Windows.Forms.MessageBox.Show(tabStatuctEntity.ColumnType + " " + tabStatuctEntity.ColumnName + " " + tabStatuctEntity.Default);
+					} else if (",char,nchar,ntext,nvarchar,text,varchar,longtext,".IndexOf(type) >= 0) {
+						tabStatuctEntity.Default = "= null";
+						if (tabStatuctEntity.ColumnType == "text") tabStatuctEntity.Length = 0;
+						if (tabStatuctEntity.ColumnType == "ntext") tabStatuctEntity.Length = 0;
+						
+						tabStatuctEntity.ColumnType = "string";
+					} else if (",datetime,smalldatetime,".IndexOf(type) >= 0) {
+						tabStatuctEntity.Default = "= null";
+						tabStatuctEntity.ColumnType = "DateTime";
+						if (def.Trim().ToLower().IndexOf("getdate(") >= 0) tabStatuctEntity.IsIdentity = true;
+						tabStatuctEntity.DBType = "string";
+						tabStatuctEntity.Length = 23;
+					} else if (",bool,boolean,".IndexOf(type) >= 0) {
+						//tabStatuctEntity.Default = string.IsNullOrEmpty(def.Trim()) ? "= null" : def.Trim()=="0" ? "= false" : "= true";
+						tabStatuctEntity.Default = "= null";
+						tabStatuctEntity.ColumnType = "bool";
+					} else if (",bit,".IndexOf(type) >= 0) {
+						//tabStatuctEntity.Default = string.IsNullOrEmpty(def.Trim()) ? "= null" : def.Trim()=="0" ? "= false" : "= true";
+						tabStatuctEntity.Default = "= null";
+						tabStatuctEntity.ColumnType = "UInt64";
+					} else if (",uniqueidentifier,".IndexOf(type) >= 0) {
+						if (tabStatuctEntity.Default == "(newid())") tabStatuctEntity.IsIdentity = true;
+						tabStatuctEntity.Default = "= null";
+						tabStatuctEntity.ColumnType = "Guid";
+						tabStatuctEntity.Length = 36;
+						//tabStatuctEntity.DBType = "Guid";
+					}
+					//if (tabStatuctEntity.IsPK) tabStatuctEntity.IsIdentity = true;
+					
+					tabStructList.Add(tabStatuctEntity);
+				}
 				#endregion
 			}
 			return tabStructList;
@@ -607,7 +705,7 @@ AND table_schema = '{1}'
 				FileDirectory.FileDelete(aspxPath + entityName + "Manage.aspx.cs");
 				FileDirectory.FileWrite(aspxPath + entityName + "Manage.aspx.cs", csCode.ToString());
 				if (!string.IsNullOrEmpty(config.AdminPath) && config.IsAll) {
-					dbCode.AppendFormat(string.Format("    <table cellspacing='0' cellpadding='0' style='width: 100%;'><tbody><tr class='MenuItemRow'><td style='width: 7px;' /><td align='RIGHT' style='width: 10px; vertical-align: top;'><div class='IconContainer' style='width: 10px;'></div></td><td style='padding: 0px 9px 0px 5px;'><font class='MenuItemLabel'><a href='#' onclick=\"parent.window.frames[1].location.href='{0}'\" style='text-decoration:none; color:#428eff'>{1}</a></font></td></tr></tbody></table>", "../" + folder + "/" + entityName + "Manage.aspx", (string.IsNullOrEmpty(title) ? tableName : title) + "π‹¿Ì"));
+					dbCode.AppendFormat(string.Format("    <table cellspacing='0' cellpadding='0' style='width: 100%;'><tbody><tr class='MenuItemRow'><td style='width: 7px;' /><td align='RIGHT' style='width: 10px; vertical-align: top;'><div class='IconContainer' style='width: 10px;'></div></td><td style='padding: 0px 9px 0px 5px;'><font class='MenuItemLabel'><a href='#' onclick=\"parent.window.frames[1].location.href='{0}'\" style='text-decoration:none; color:#428eff'>{1}</a></font></td></tr></tbody></table>", "../" + folder + "/" + entityName + "Manage.aspx", (string.IsNullOrEmpty(title) ? tableName : title) + "ÁÆ°ÁêÜ"));
 					FileDirectory.FileWrite(config.AdminPath + "\\xml\\db.aspx", dbCode.ToString());
 				}
 				if (!isOnePage) {
@@ -774,7 +872,7 @@ AND table_schema = '{1}'
 				FileDirectory.FileDelete(aspxPath + entityName + "Manage.aspx.cs");
 				FileDirectory.FileWrite(aspxPath + entityName + "Manage.aspx.cs", csCode.ToString());
 				if (!string.IsNullOrEmpty(config.AdminPath) && config.IsAll) {
-					dbCode.AppendFormat(string.Format("    <table cellspacing='0' cellpadding='0' style='width: 100%;'><tbody><tr class='MenuItemRow'><td style='width: 7px;' /><td align='RIGHT' style='width: 10px; vertical-align: top;'><div class='IconContainer' style='width: 10px;'></div></td><td style='padding: 0px 9px 0px 5px;'><font class='MenuItemLabel'><a href='#' onclick=\"parent.window.frames[1].location.href='{0}'\" style='text-decoration:none; color:#428eff'>{1}</a></font></td></tr></tbody></table>", "../" + folder + "/" + entityName + "Manage.aspx", (string.IsNullOrEmpty(title) ? tableName : title) + "π‹¿Ì"));
+					dbCode.AppendFormat(string.Format("    <table cellspacing='0' cellpadding='0' style='width: 100%;'><tbody><tr class='MenuItemRow'><td style='width: 7px;' /><td align='RIGHT' style='width: 10px; vertical-align: top;'><div class='IconContainer' style='width: 10px;'></div></td><td style='padding: 0px 9px 0px 5px;'><font class='MenuItemLabel'><a href='#' onclick=\"parent.window.frames[1].location.href='{0}'\" style='text-decoration:none; color:#428eff'>{1}</a></font></td></tr></tbody></table>", "../" + folder + "/" + entityName + "Manage.aspx", (string.IsNullOrEmpty(title) ? tableName : title) + "ÁÆ°ÁêÜ"));
 					FileDirectory.FileWrite(config.AdminPath + "\\xml\\db.aspx", dbCode.ToString());
 				}
 				if (!isOnePage) {
