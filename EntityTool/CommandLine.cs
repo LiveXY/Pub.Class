@@ -8,11 +8,13 @@ using NVelocity.Context;
 using NVelocity.Runtime;
 using Commons.Collections;
 using Pub.Class;
+using Pub.Class.Linq;
 using System.Collections.Generic;
 
 namespace EntityTool {
 	public class CommandLine {
-		private static Config config = null;
+		private static Config config = TableStructureFactory.GetConfig();
+		private static IDictionary<string, bool> tables = new Dictionary<string, bool>();
 		public static void Start(string[] args) {
 			Data.UsePool("ConnString");
 			if (args.Length == 0) Help(); else Parse(args.Join(" "), true);
@@ -44,13 +46,50 @@ namespace EntityTool {
 			}
 		}
 		public static void Run(bool exit = false) {
+			WriteLog("END");
+			Input(exit);
 		}
 		public static void Init(bool exit = false) {
-
+			config.OPList = TableStructureFactory.LoadOPList(config, entity => { 
+				tables.Add((entity.isView ? "* " : "") + entity.Name, entity.isView ? false : true);
+			});
+			Console.Write("Table".PadRight(20, ' '));
+			Console.Write(" | E ");
+			Console.Write("| I ");
+			Console.Write("| U ");
+			Console.Write("| UI ");
+			Console.Write("| D ");
+			Console.Write("| E ");
+			Console.Write("| S ");
+			Console.Write("| SP ");
+			Console.Write("| FK ");
+			Console.Write("| All ");
+			Console.WriteLine();
+			WriteLog("-".PadLeft(70, '-'));
+			foreach(string key in tables.Keys) {
+				TableOperator to = config.OPList.Where(p=>p.Table == key).FirstOrDefault();
+				Console.Write(key.SubString(20, "").PadRight(20, ' '));
+				Console.Write(" | {0} ", to.Entity ? 1 : 0);
+				Console.Write("| {0} ", to.Insert ? 1 : 0);
+				Console.Write("| {0} ", to.Update ? 1 : 0);
+				Console.Write("| {0}  ", to.UpdateAndInsert ? 1 : 0);
+				Console.Write("| {0} ", to.DeleteByID ? 1 : 0);
+				Console.Write("| {0} ", to.IsExistByID ? 1 : 0);
+				Console.Write("| {0} ", to.SelectByID ? 1 : 0);
+				Console.Write("| {0}  ", to.SelectPageList ? 1 : 0);
+				Console.Write("| {0}  ", to.SelectListByFK ? 1 : 0);
+				Console.Write("| {0}   ", to.SelectListByAll ? 1 : 0);
+				Console.WriteLine();
+			}
+			WriteLog("END");
+			Input(exit);
 		}
 		public static void Config(bool exit = false) {
-			Config config = TableStructureFactory.GetConfig();
+			config = TableStructureFactory.GetConfig();
 			WriteLog("EntityTool.exe.config");
+			WriteLog("======数据库===================================================================");
+			WriteLog("数据库：{0}", Data.DBType);
+			WriteLog("连接字符串(ConnString)：{0}", Data.ConnString);
 			WriteLog("======项目=====================================================================");
 			WriteLog("项目名(Project)：{0}", config.Project);
 			WriteLog("作者(Author)：{0}", config.Author);
