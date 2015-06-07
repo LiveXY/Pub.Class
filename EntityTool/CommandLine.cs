@@ -49,48 +49,48 @@ namespace EntityTool {
 
 		}
 		public static void Config(bool exit = false) {
-			int len = 25;
 			Config config = TableStructureFactory.GetConfig();
 			WriteLog("EntityTool.exe.config");
-			Console.Write("项目名(Project)：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
-			Console.Write("()：".PadRight(len, ' ')); WriteLog(config.Project);
+			WriteLog("======项目=====================================================================");
+			WriteLog("项目名(Project)：{0}", config.Project);
+			WriteLog("作者(Author)：{0}", config.Author);
+			WriteLog("项目开始时间(ProjectStartDate)：{0}", config.ProjectStartDate);
+			WriteLog("版权(CopyRight)：{0}", config.CopyRight);
+			WriteLog("======设计模式=================================================================");
+			WriteLog("设计模式(DesignPattern)：{0}", config.DesignPattern);
+			WriteLog("生成代码模板(TemplateName)：{0}", config.TemplateName);
+			if (config.DesignPattern == "Model-DAL-BLL") {
+				WriteLog("实体类生成路径(ModelPath)：{0}", config.ModelPath);
+				WriteLog("数据操作类生成路径(DALPath)：{0}", config.DALPath);
+				WriteLog("数据操作接口生成路径(IDALPath)：{0}", config.IDALPath);
+				WriteLog("业务处理类生成路径(BLLPath)：{0}", config.BLLPath);
+			} else {
+				WriteLog("设计模式后缀(DesignPatternExtName)：{0}", config.DesignPatternExtName);
+				WriteLog("实体类生成路径(EntityPath)：{0}", config.EntityPath);
+				WriteLog("工厂类生成路径(FactoryPath)：{0}", config.FactoryPath);
+			}
+			WriteLog("数据分页(PagerSqlEnum)：{0}", config.PagerSqlEnum);
+			if (!config.AdminPath.IsNullEmpty()) {
+				WriteLog("======后台=====================================================================");
+				WriteLog("后台生成路径(AdminPath)：{0}", config.AdminPath);
+				WriteLog("后台分页大小默认(PageSize)：{0}", config.PageSize);
+				WriteLog("使用单页(UseOneProject)：{0}", config.UseOneProject.ToString());
+			}
+			WriteLog("END");
 			Input(exit);
 		}
 		public static void Help(bool exit = false) {
-			int len = 25;
+			int len = 15;
 			Console.Clear();
 			WriteLog("实体类生成工具：");
 			WriteLog("1,请先设置配置文件(vi EntityTool.exe.config)");
-			Console.Write("config(c)".PadRight(len, ' '));
+			Console.Write("  config(c)".PadRight(len, ' '));
 			WriteLog("查看配置");
 			WriteLog("2,然后初始化项目配置文件和设置项目配置文件(vi 项目名.xml)");
-			Console.Write("init(i)".PadRight(len, ' '));
+			Console.Write("  init(i)".PadRight(len, ' '));
 			WriteLog("初始化项目配置文件");
 			WriteLog("3,生成实体类代码");
-			Console.Write("run(r)".PadRight(len, ' '));
+			Console.Write("  run(r)".PadRight(len, ' '));
 			WriteLog("生成代码");
 			Console.Write("help(h)".PadRight(len, ' '));
 			WriteLog("帮助");
