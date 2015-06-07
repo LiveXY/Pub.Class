@@ -79,7 +79,29 @@ namespace EntityTool {
 
 	public class TableStructureFactory {
 		public static IList<TableStructureEntity> list = null;
-
+		public static Config GetConfig() {
+			return new Config() {
+				ModelPath = string.IsNullOrEmpty(WebConfig.GetApp("ModelPath")) ? "" : WebConfig.GetApp("ModelPath").TrimEnd('/') + "/",
+				DALPath = string.IsNullOrEmpty(WebConfig.GetApp("DALPath")) ? "" : WebConfig.GetApp("DALPath").TrimEnd('/') + "/",
+				IDALPath = string.IsNullOrEmpty(WebConfig.GetApp("IDALPath")) ? "" : WebConfig.GetApp("IDALPath").TrimEnd('/') + "/",
+				BLLPath = string.IsNullOrEmpty(WebConfig.GetApp("BLLPath")) ? "" : WebConfig.GetApp("BLLPath").TrimEnd('/') + "/",
+				EntityPath = string.IsNullOrEmpty(WebConfig.GetApp("EntityPath")) ? "" : WebConfig.GetApp("EntityPath").TrimEnd('/') + "/",
+				FactoryPath = string.IsNullOrEmpty(WebConfig.GetApp("FactoryPath")) ? "" : WebConfig.GetApp("FactoryPath").TrimEnd('/') + "/",
+				AdminPath = string.IsNullOrEmpty(WebConfig.GetApp("AdminPath")) ? "" : WebConfig.GetApp("AdminPath").TrimEnd('/') + "/",
+				Author = string.IsNullOrEmpty(WebConfig.GetApp("Author")) ? "LiveXY" : WebConfig.GetApp("Author"),
+				CopyRight = string.IsNullOrEmpty(WebConfig.GetApp("CopyRight")) ? "LiveXY" : WebConfig.GetApp("CopyRight"),
+				TemplateName = string.IsNullOrEmpty(WebConfig.GetApp("TemplateName")) ? "Model-DAL-BLL-SqlServer-Text" : WebConfig.GetApp("TemplateName"),
+				DesignPattern = string.IsNullOrEmpty(WebConfig.GetApp("DesignPattern")) ? "Static" : WebConfig.GetApp("DesignPattern"),
+				DesignPatternExtName = string.IsNullOrEmpty(WebConfig.GetApp("DesignPatternExtName")) ? "Helper" : WebConfig.GetApp("DesignPatternExtName"),
+				UseOneProject = string.IsNullOrEmpty(WebConfig.GetApp("UseOneProject")) ? false : WebConfig.GetApp("UseOneProject").ToBool(false),
+				CacheTime = (string.IsNullOrEmpty(WebConfig.GetApp("CacheTime")) ? "0" : WebConfig.GetApp("CacheTime")).ToInt(),
+				PageSize = (string.IsNullOrEmpty(WebConfig.GetApp("PageSize"))) ? "15" : WebConfig.GetApp("PageSize"),
+				PagerSqlEnum = (string.IsNullOrEmpty(WebConfig.GetApp("PagerSqlEnum"))) ? "Base.PagerSqlEnum" : WebConfig.GetApp("PagerSqlEnum"),
+				ProjectStartDate = string.IsNullOrEmpty(WebConfig.GetApp("ProjectStartDate")) ? DateTime.Now.ToString("yyyy-MM-dd") : WebConfig.GetApp("ProjectStartDate"),
+				OPList = new List<TableOperator>(),
+				Project = string.IsNullOrEmpty(WebConfig.GetApp("Project")) ? "Test" : WebConfig.GetApp("Project")
+			};
+		}
 		public static void CreateXML(string fileName, IList<TableOperator> oplist) {
 			Xml2.Create(fileName, "", "", "utf-8", "<root></root>");
 			Xml2 xml = new Xml2(fileName);
@@ -94,7 +116,7 @@ namespace EntityTool {
 			xml.Save();
 			xml.Close();
 		}
-		public static IList<TableOperator> LoadOPList(Config config, Action<TableEntity> process) { 
+		public static IList<TableOperator> LoadOPList(Config config, Action<TableEntity> process) {
 			string xmlFile = "".GetMapPath() + config.Project + ".xml";
 			bool xmlExist = FileDirectory.FileExists(xmlFile);
 			IList<TableEntity> list = TableFactory.GetTable();
@@ -483,7 +505,7 @@ AND table_schema = '{1}'
 				if (sqls.IsNullEmpty() || sqls.Count < 3) return tabStructList;
 				bool ispk = sqls[sqls.Count - 2].Trim(',').Trim().StartsWith("primary key", StringComparison.InvariantCultureIgnoreCase);
 				string pks = ispk ? sqls[sqls.Count - 2].Trim(',').Trim().Substring(11) : "";
-				for(int i=1, len = sqls.Count - (ispk ? 2 : 1); i< len; i++){
+				for (int i = 1, len = sqls.Count - (ispk ? 2 : 1); i < len; i++) {
 					string[] rows = sqls[i].Trim().Trim(',').Split(' ');
 					bool rowAutoID = sqls[i].IndexOf("AUTOINCREMENT", StringComparison.InvariantCultureIgnoreCase) != -1;
 					bool rowPKey = pks.IndexOf(rows[0], StringComparison.InvariantCultureIgnoreCase) != -1;
@@ -510,9 +532,9 @@ AND table_schema = '{1}'
 					//tabStatuctEntity.IsNull = dr["IS_NULLABLE"].ToString() == "YES" ? true : false;
 					//tabStatuctEntity.Default = dr["COLUMN_DEFAULT"].ToString().Trim();
 					//tabStatuctEntity.Memo = dr["COLUMN_COMMENT"].ToString().Trim().ReplaceRN();
-					
+
 					if (tabStatuctEntity.IsPK) title = tabStatuctEntity.Memo.IndexOf("编号") >= 0 ? tabStatuctEntity.Memo.Replace("编号", "") : "";
-					
+
 					//if (!tabStatuctEntity.IsFK) {}
 					if (tabStatuctEntity.Memo.Length >= 2) {
 						if (tabStatuctEntity.Memo.Substring(0, 2).ToLower() == "fk") {
@@ -521,7 +543,7 @@ AND table_schema = '{1}'
 						}
 					}
 					if (string.IsNullOrEmpty(tabStatuctEntity.Memo)) tabStatuctEntity.Memo = tabStatuctEntity.ColumnName;
-					
+
 					string columnType = tabStatuctEntity.ColumnType;
 					string type = "," + columnType + ",";
 					string def = tabStatuctEntity.Default.TrimEnd(')').TrimStart('(');
@@ -537,13 +559,13 @@ AND table_schema = '{1}'
 						else if (columnType == "money") tabStatuctEntity.ColumnType = "decimal";
 						else tabStatuctEntity.ColumnType = "int";
 						if (tabStatuctEntity.ColumnType != "decimal") tabStatuctEntity.Length = tabStatuctEntity.Bytes;
-						
+
 						//System.Windows.Forms.MessageBox.Show(tabStatuctEntity.ColumnType + " " + tabStatuctEntity.ColumnName + " " + tabStatuctEntity.Default);
 					} else if (",char,nchar,ntext,nvarchar,text,varchar,longtext,".IndexOf(type) >= 0) {
 						tabStatuctEntity.Default = "= null";
 						if (tabStatuctEntity.ColumnType == "text") tabStatuctEntity.Length = 0;
 						if (tabStatuctEntity.ColumnType == "ntext") tabStatuctEntity.Length = 0;
-						
+
 						tabStatuctEntity.ColumnType = "string";
 					} else if (",datetime,smalldatetime,".IndexOf(type) >= 0) {
 						tabStatuctEntity.Default = "= null";
@@ -567,7 +589,7 @@ AND table_schema = '{1}'
 						//tabStatuctEntity.DBType = "Guid";
 					}
 					//if (tabStatuctEntity.IsPK) tabStatuctEntity.IsIdentity = true;
-					
+
 					tabStructList.Add(tabStatuctEntity);
 				}
 				#endregion
@@ -575,7 +597,7 @@ AND table_schema = '{1}'
 			return tabStructList;
 		}
 
-		public static string GetTableStructCode(Config config,string tableName, string projectName, out string idalCode, out string dalCode, out string bllCode, out string sqlCode, bool isView) {
+		public static string GetTableStructCode(Config config, string tableName, string projectName, out string idalCode, out string dalCode, out string bllCode, out string sqlCode, bool isView) {
 			string title = string.Empty;
 			list = GetTableStructure(tableName, out title);
 
@@ -784,7 +806,7 @@ AND table_schema = '{1}'
 			return code;
 			//return sb.ToString();
 		}
-		public static string GetTableStructCode(Config config,string tableName, string projectName, out string factoryCode, out string sqlCode, bool isView) {
+		public static string GetTableStructCode(Config config, string tableName, string projectName, out string factoryCode, out string sqlCode, bool isView) {
 			string title = string.Empty;
 			list = GetTableStructure(tableName, out title);
 

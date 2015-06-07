@@ -13,29 +13,7 @@ using System.Reflection;
 
 namespace EntityTool {
 	public partial class frmEntity : Form {
-		private string strSql = string.Empty;
-		private Config config = new Config() {
-			ModelPath = string.IsNullOrEmpty(WebConfig.GetApp("ModelPath")) ? "" : WebConfig.GetApp("ModelPath").TrimEnd('/') + "/",
-			DALPath = string.IsNullOrEmpty(WebConfig.GetApp("DALPath")) ? "" : WebConfig.GetApp("DALPath").TrimEnd('/') + "/",
-			IDALPath = string.IsNullOrEmpty(WebConfig.GetApp("IDALPath")) ? "" : WebConfig.GetApp("IDALPath").TrimEnd('/') + "/",
-			BLLPath = string.IsNullOrEmpty(WebConfig.GetApp("BLLPath")) ? "" : WebConfig.GetApp("BLLPath").TrimEnd('/') + "/",
-			EntityPath = string.IsNullOrEmpty(WebConfig.GetApp("EntityPath")) ? "" : WebConfig.GetApp("EntityPath").TrimEnd('/') + "/",
-			FactoryPath = string.IsNullOrEmpty(WebConfig.GetApp("FactoryPath")) ? "" : WebConfig.GetApp("FactoryPath").TrimEnd('/') + "/",
-			AdminPath = string.IsNullOrEmpty(WebConfig.GetApp("AdminPath")) ? "" : WebConfig.GetApp("AdminPath").TrimEnd('/') + "/",
-			Author = string.IsNullOrEmpty(WebConfig.GetApp("Author")) ? "LiveXY" : WebConfig.GetApp("Author"),
-			CopyRight = string.IsNullOrEmpty(WebConfig.GetApp("CopyRight")) ? "LiveXY" : WebConfig.GetApp("CopyRight"),
-			TemplateName = string.IsNullOrEmpty(WebConfig.GetApp("TemplateName")) ? "Model-DAL-BLL-SqlServer-Text" : WebConfig.GetApp("TemplateName"),
-			DesignPattern = string.IsNullOrEmpty(WebConfig.GetApp("DesignPattern")) ? "Static" : WebConfig.GetApp("DesignPattern"),
-			DesignPatternExtName = string.IsNullOrEmpty(WebConfig.GetApp("DesignPatternExtName")) ? "Helper" : WebConfig.GetApp("DesignPatternExtName"),
-			UseOneProject = string.IsNullOrEmpty(WebConfig.GetApp("UseOneProject")) ? false : WebConfig.GetApp("UseOneProject").ToBool(false),
-			CacheTime = (string.IsNullOrEmpty(WebConfig.GetApp("CacheTime")) ? "0" : WebConfig.GetApp("CacheTime")).ToInt(),
-			PageSize = (string.IsNullOrEmpty(WebConfig.GetApp("PageSize"))) ? "15" : WebConfig.GetApp("PageSize"),
-			PagerSqlEnum = (string.IsNullOrEmpty(WebConfig.GetApp("PagerSqlEnum"))) ? "Base.PagerSqlEnum" : WebConfig.GetApp("PagerSqlEnum"),
-			ProjectStartDate = string.IsNullOrEmpty(WebConfig.GetApp("ProjectStartDate")) ? DateTime.Now.ToString("yyyy-MM-dd") : WebConfig.GetApp("ProjectStartDate"),
-			OPList = new List<TableOperator>(),
-			Project = string.IsNullOrEmpty(WebConfig.GetApp("Project")) ? "Test" : WebConfig.GetApp("Project")
-		};
-
+		private Config config = TableStructureFactory.GetConfig();
 		private Thread thread;
 		private StringBuilder sbSqlCode = new StringBuilder();
 		private string xmlFile = string.Empty;
